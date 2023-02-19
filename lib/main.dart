@@ -91,7 +91,7 @@ class BasicsPage extends StatelessWidget {
                       children: [
                         redTitle("WANTED "),
                         blackTitle(
-                            "DEUX DEVELOPPEURS EN RECHERCHE D'ALTERNANCE PRETS A REVOLUTIONNER L'APPLI DE LIBERATION"),
+                            "DEUX ALTERNANTS DEVELOPPEUSE ET DEVELOPPEUR PRETS A REVOLUTIONNER LES APPLIS DE LIBE"),
                       ],
                     ),
                   ),
@@ -147,7 +147,7 @@ class BasicsPage extends StatelessWidget {
                               top: 7,
                               left: 2,
                             ),
-                            child: paragraph("Née en Union Soviétique qu'elle connaîtra près d'une décennie avant sa chute, elle a passé une adolescence agitée dans la toute neuve Russie. Elle a acquis une conscience politique très jeune grâce aux traductions du journal Libération opérées par le S.F.I.O (Syndicat Fédéral d'Iochkar-Ola) envoyés par des habitants de sa fantastique ville jumelle Française, Bourges. Délivrant ses messages philosophico-politiques grâce à l'art du Tag sur les murs de l'agglomération, elle a réalisé ses premiers sabotages de navires à l'âge de 6 ans sur les bords du Malaya Kokshaga. Soucieuse de défendre un monde plus juste et la liberté de la presse, elle apprend actuellement les rudiments du développement entre deux manifestations Parisiennes.")
+                            child: paragraph("Née en Union Soviétique qu'elle connaîtra près d'une décennie avant sa chute, elle a passé une adolescence agitée dans la toute neuve Russie vendue au capitalisme par Gorbatchev. Elle a acquis une conscience politique très jeune grâce aux traductions du journal Libération opérées par le S.F.I.O (Syndicat Fédéral d'Iochkar-Ola) envoyés par la section communiste de Bourges avec qui elle n'est pas encore jumelée. Délivrant ses messages philosophico-politiques grâce à l'art du Tag sur les murs de l'agglomération, avec notamment un bien senti 'Mektoub mes couilles', elle a réalisé ses premiers sabotages de navires à l'âge de 6 ans sur les bords du Malaya Kokshaga. Soucieuse de défendre un monde plus juste et la liberté de la presse, elle apprend actuellement les rudiments du développement entre deux manifestations Parisiennes.")
                         ),
                       ],
                     ),
@@ -205,7 +205,7 @@ class BasicsPage extends StatelessWidget {
                               top: 7,
                               left: 2,
                             ),
-                            child: paragraph("Aussi à l'aise à la récupération grâce à sa fougue, à la relance avec son énergie ou en meneur de jeu avec sa créativité et sa vision stratégique, son expérience de la gestion de projet, de la mobilisation citoyenne et du développement du pouvoir d'agir dans différents mouvements d'éducation populaire, lui permet d'avoir de nombreuses cartes de son jeu. Comme le prouve la photo, il sait être drôle parfois. Et aussi fièrement abonné à la meilleure Newsletter de la toile Chez Pol.")
+                            child: paragraph("Aussi à l'aise à la récupération grâce à sa fougue, à la relance avec son énergie ou en meneur de jeu avec sa créativité et sa vision stratégique, ses expériences de la gestion de projet, de la mobilisation citoyenne et du développement du pouvoir d'agir dans différents mouvements d'éducation populaire, lui permettent d'avoir de nombreuses cartes de son jeu. Convaincu que la démocratie devrait être plus participative et que l'engagement citoyen est conditionné à être éclairé, il souhaite participer aux projets Tech de Libé qui est fondamental selon lui pour conscientiser les citoyens sur les grands sujets de société et favoriser la compréhension des enjeux contemporains. Pas fan de la propriété, ni de l'héritage, il se rêve en Che Guevarra (les purges en moins) sur son vélib certains soirs, parcourant la banlieue parisienne. Comme le prouve la photo, il sait être drôle parfois.\nEst aussi fièrement abonné à la meilleure Newsletter de la toile, 'Chez Pol'.")
                         ),
                       ],
                     ),
@@ -262,7 +262,7 @@ TextSpan blackTitle(String title) {
 
 Text paragraph(String paragraph) {
   return Text("$paragraph",
-      style: TextStyle(color: Colors.black87, fontSize: 10));
+      style: TextStyle(color: Colors.black87, fontSize: 15));
 }
 
 TextSpan redTitle2(String title) {
