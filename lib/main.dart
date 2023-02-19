@@ -101,7 +101,7 @@ class BasicsPage extends StatelessWidget {
                         left: 4,
                       ),
                       child: paragraph(
-                          "Fraichement issus du centre de formation d'Ada Tech School dans le 10e arrondissement de Paris (si t'es pas le numéro 10 à Paname...), Les plus si jeunes développeurs en puissance (75 ans à eux deux), seront de précieux alliés pour les projets tech de Libération. Plus à l'aise à domicile sur leurs terrains favoris (Dart, JavaScript, C#), ils sont complètement adaptables à d'autres contraintes techniques (Swift, Kotlin, Java, PHP...). Ils ont le bénéfice de leur grand âge, cette expérience qui permet d'être calme et productif même dans des contextes stressants et d'être les moteurs d'une dynamique collective."),),
+                          "Fraichement issus du centre de formation d'Ada Tech School dans le 10e arrondissement de Paris (si t'es pas le numéro 10 à Paname...), les plus si jeunes développeurs en puissance, 75 ans à eux deux, seront de précieux alliés pour les projets tech de Libération. Plus à l'aise à domicile sur leurs terrains de prédilection (Dart, JavaScript, C#), ils sont complètement adaptables à d'autres contraintes techniques (Swift, Kotlin, Java, PHP...). Ils ont le bénéfice de leur grand âge, cette expérience qui permet d'être calme et concentré y compris dans des contextes stressants. Ils savent aussi se mettre au diapason de la dynamique collective."),),
                 ],
               ),
             ),
@@ -205,7 +205,7 @@ class BasicsPage extends StatelessWidget {
                               top: 7,
                               left: 2,
                             ),
-                            child: paragraph("Aussi à l'aise à la récupération grâce à sa fougue, à la relance avec son énergie ou en meneur de jeu avec sa créativité et sa vision stratégique, son expérience de la gestion de projet, de la mobilisation citoyenne et du développement du pouvoir d'agir abattront les défis techniques. Comme le prouve la photo, il sait être drôle parfois. Et aussi fièrement abonné à la meilleure Newsletter de la toile Chez Pol.")
+                            child: paragraph("Aussi à l'aise à la récupération grâce à sa fougue, à la relance avec son énergie ou en meneur de jeu avec sa créativité et sa vision stratégique, son expérience de la gestion de projet, de la mobilisation citoyenne et du développement du pouvoir d'agir dans différents mouvements d'éducation populaire, lui permet d'avoir de nombreuses cartes de son jeu. Comme le prouve la photo, il sait être drôle parfois. Et aussi fièrement abonné à la meilleure Newsletter de la toile Chez Pol.")
                         ),
                       ],
                     ),
