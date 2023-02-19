@@ -138,7 +138,7 @@ class BasicsPage extends StatelessWidget {
                           text: TextSpan(
                             children: [
                               redTitle2("NASTIA LA ROUGE "),
-                              blackTitle2("FROM MARIES WITH RABIES"),
+                              blackTitle2("FROM MARIS WITH RABIES"),
                             ],
                           ),
                         ),
