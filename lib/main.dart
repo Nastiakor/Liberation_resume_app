@@ -295,7 +295,7 @@ Expanded theme(String theme) {
             style: TextStyle(
                 fontWeight: FontWeight.bold,
                 color: Colors.black45,
-                fontSize: 9),
+                fontSize: 13),
           ),
         ),
       ),
@@ -311,7 +311,7 @@ Expanded time(String time) {
         child: RichText(
           text: TextSpan(
             text: "$time",
-            style: TextStyle(color: Colors.black45, fontSize: 9),
+            style: TextStyle(color: Colors.black45, fontSize: 13),
           ),
         ),
       ),
@@ -327,7 +327,7 @@ Expanded abonne() {
         child: RichText(
           text: TextSpan(
             text: "Abonné",
-            style: TextStyle(color: Colors.amber, fontSize: 9),
+            style: TextStyle(color: Colors.amber, fontSize: 13),
           ),
         ),
       ),
