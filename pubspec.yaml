@@ -60,6 +60,8 @@ flutter:
   assets:
     - img/1200px-Libération.svg.png
     - img/85808-cherche-ancien-affiche-vectoriel.jpg
+    - img/NASTIA.JPG
+    - img/JOHAN.JPG
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
