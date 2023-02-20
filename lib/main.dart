@@ -1,53 +1,64 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(MyApp());
-}
+void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
+  const MyApp({super.key});
+
+  static const String _title = 'Flutter Code Sample';
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.blue,
-      ),
-      home: BasicsPage(),
+    return const MaterialApp(
+      title: _title,
+      home: MyStatefulWidget(),
     );
   }
 }
 
-class BasicsPage extends StatelessWidget {
+class MyStatefulWidget extends StatefulWidget {
+  const MyStatefulWidget({super.key});
+
+  @override
+  State<MyStatefulWidget> createState() => _MyStatefulWidgetState();
+}
+
+class _MyStatefulWidgetState extends State<MyStatefulWidget> {
+  int _selectedIndex = 0;
+  static const TextStyle optionStyle =
+  TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
+  static const List<Widget> _widgetOptions = <Widget>[
+    Text(
+      'Index 0: Accueil',
+      style: optionStyle,
+    ),
+    Text(
+      'Index 1: Business',
+      style: optionStyle,
+    ),
+    Text(
+      'Index 2: School',
+      style: optionStyle,
+    ),
+    Text(
+      'Index 3: Settings',
+      style: optionStyle,
+    ),
+  ];
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    var size = MediaQuery
-        .of(context)
-        .size;
-    var platform = Theme
-        .of(context)
-        .platform;
+    var size = MediaQuery.of(context).size;
+    var platform = Theme.of(context).platform;
     print("size: $size");
     print("platform: $platform");
-    double width = MediaQuery
-        .of(context)
-        .size
-        .width;
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
+    double width = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
@@ -96,12 +107,13 @@ class BasicsPage extends StatelessWidget {
                     ),
                   ),
                   Padding(
-                      padding: EdgeInsets.only(
-                        top: 7,
-                        left: 4,
-                      ),
-                      child: paragraph(
-                          "Fraichement issus du centre de formation d'Ada Tech School dans le 10e arrondissement de Paris (si t'es pas le numéro 10 à Paname...), les plus si jeunes développeurs en puissance, 75 ans à eux deux, seront de précieux alliés pour les projets tech de Libération. Plus à l'aise à domicile sur leurs terrains de prédilection (Dart, JavaScript, C#), ils sont complètement adaptables à d'autres contraintes techniques (Swift, Kotlin, Java, PHP...). Ils ont le bénéfice de leur grand âge, cette expérience qui permet d'être calme et concentré y compris dans des contextes stressants. Ils savent aussi se mettre au diapason de la dynamique collective."),),
+                    padding: EdgeInsets.only(
+                      top: 7,
+                      left: 4,
+                    ),
+                    child: paragraph(
+                        "Pensionnaires du centre de formation de l'équipe féministe Ada Tech School dans le 10e arrondissement de Paris (si t'es pas le numéro 10 à Paname...), les plus si jeunes développeurs en puissance, 75 ans à eux deux quand même, seront de précieux alliés pour les projets tech de Libération. Plus à l'aise à domicile sur leurs terrains de prédilection (Dart, JavaScript, C#), ils sont complètement adaptables à d'autres contraintes techniques (Swift, Kotlin, Java, PHP...). Ils ont le bénéfice de leur grand âge, en capacité à résister à la pression, apprécie le travail en équipe, empathiques et de grandes qualités relationnelles. Ils savent aussi se mettre au diapason de la dynamique collective et s'y fondre."),
+                  ),
                 ],
               ),
             ),
@@ -112,7 +124,7 @@ class BasicsPage extends StatelessWidget {
                 time("Il y a 5 minutes"),
                 abonne(),
                 Expanded(
-                  flex: 3,
+                  flex: 1,
                   child: Padding(
                     padding: EdgeInsets.only(right: 10),
                     child: Row(
@@ -126,12 +138,13 @@ class BasicsPage extends StatelessWidget {
             Divider(
               thickness: 2,
             ),
-            Padding(padding: EdgeInsets.only(top: 10, left: 10),
+            Padding(
+              padding: EdgeInsets.only(top: 10, left: 10),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Expanded(
-                    flex:2,
+                    flex: 2,
                     child: Wrap(
                       children: [
                         RichText(
@@ -147,19 +160,20 @@ class BasicsPage extends StatelessWidget {
                               top: 7,
                               left: 2,
                             ),
-                            child: paragraph("Née en Union Soviétique qu'elle connaîtra près d'une décennie avant sa chute, elle a passé une adolescence agitée dans la toute neuve Russie vendue au capitalisme par Gorbatchev. Elle a acquis une conscience politique très jeune grâce aux traductions du journal Libération opérées par le S.F.I.O (Syndicat Fédéral d'Iochkar-Ola) envoyés par la section communiste de Bourges avec qui elle n'est pas encore jumelée. Délivrant ses messages philosophico-politiques grâce à l'art du Tag sur les murs de l'agglomération, avec notamment un bien senti 'Mektoub mes couilles', elle a réalisé ses premiers sabotages de navires à l'âge de 6 ans sur les bords du Malaya Kokshaga. Soucieuse de défendre un monde plus juste et la liberté de la presse, elle apprend actuellement les rudiments du développement entre deux manifestations Parisiennes.")
-                        ),
+                            child: paragraph(
+                                "Née en Union Soviétique qu'elle connaîtra près d'une décennie avant sa chute, elle a passé une adolescence agitée dans la toute neuve Russie vendue au capitalisme par Gorbatchev. Elle a acquis une conscience politique très jeune grâce aux traductions du journal Libération opérées par le S.F.I.O (Syndicat Fédéral d'Iochkar-Ola) envoyés par la section communiste de Bourges avec qui elle n'est pas encore jumelée. Délivrant ses messages philosophico-politiques grâce à l'art du Tag sur les murs de l'agglomération, avec notamment un bien senti 'Mektoub mes couilles', elle a réalisé ses premiers sabotages de navires à l'âge de 6 ans sur les bords du Malaya Kokshaga. Soucieuse de défendre un monde plus juste et la liberté de la presse, elle apprend actuellement les rudiments du développement entre deux manifestations Parisiennes avec en ligne de mire l'intégation à l'équipe de dev de Libé qui doit être formidable.")),
                       ],
                     ),
                   ),
-                  Expanded(child: Padding(padding: EdgeInsets.only(left:5),
-                    child: Container(
-                      child: Image.asset(
-                        'img/NASTIA.JPG',
-                      ),
-                    ),
-                  )
-                  )
+                  Expanded(
+                      child: Padding(
+                        padding: EdgeInsets.only(left: 5),
+                        child: Container(
+                          child: Image.asset(
+                            'img/NASTIA.JPG',
+                          ),
+                        ),
+                      ))
                 ],
               ),
             ),
@@ -170,7 +184,7 @@ class BasicsPage extends StatelessWidget {
                 time("Il y a 25 minutes"),
                 abonne(),
                 Expanded(
-                  flex: 3,
+                  flex: 1,
                   child: Padding(
                     padding: EdgeInsets.only(right: 10),
                     child: Row(
@@ -184,19 +198,21 @@ class BasicsPage extends StatelessWidget {
             Divider(
               thickness: 2,
             ),
-            Padding(padding: EdgeInsets.only(top: 10, left: 10),
+            Padding(
+              padding: EdgeInsets.only(top: 10, left: 10),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Expanded(
-                    flex:2,
+                    flex: 2,
                     child: Wrap(
                       children: [
                         RichText(
                           text: TextSpan(
                             children: [
                               redTitle2("JOJO LE BOX-TO-BOX "),
-                              blackTitle2("POLYVALENT ET DETERMINE QUELQUE SOIT SON POSTE SUR LA GAUCHE DU TERRAIN"),
+                              blackTitle2(
+                                  "POLYVALENT ET DETERMINE QUELQUE SOIT SON POSTE SUR LA GAUCHE DU TERRAIN"),
                             ],
                           ),
                         ),
@@ -205,19 +221,20 @@ class BasicsPage extends StatelessWidget {
                               top: 7,
                               left: 2,
                             ),
-                            child: paragraph("Aussi à l'aise à la récupération grâce à sa fougue, à la relance avec son énergie ou en meneur de jeu avec sa créativité et sa vision stratégique, ses expériences de la gestion de projet, de la mobilisation citoyenne et du développement du pouvoir d'agir dans différents mouvements d'éducation populaire, lui permettent d'avoir de nombreuses cartes de son jeu. Convaincu que la démocratie devrait être plus participative et que l'engagement citoyen est conditionné à être éclairé, il souhaite participer aux projets Tech de Libé qui est fondamental selon lui pour conscientiser les citoyens sur les grands sujets de société et favoriser la compréhension des enjeux contemporains. Pas fan de la propriété, ni de l'héritage, il se rêve en Che Guevarra (les purges en moins) sur son vélib certains soirs, parcourant la banlieue parisienne. Comme le prouve la photo, il sait être drôle parfois.\nEst aussi fièrement abonné à la meilleure Newsletter de la toile, 'Chez Pol'.")
-                        ),
+                            child: paragraph(
+                                "Aussi à l'aise à la récupération grâce à sa fougue, à la relance avec son énergie ou en meneur de jeu avec sa créativité et sa vision stratégique, ses expériences de la gestion de projet, de la mobilisation citoyenne et du développement du pouvoir d'agir dans différents mouvements d'éducation populaire, lui permettent d'avoir de nombreuses cartes de son jeu. Convaincu que la démocratie devrait être plus participative et que l'engagement citoyen est conditionné à être éclairé, il souhaite participer aux projets Tech de Libé qui est fondamental selon lui pour conscientiser les citoyens sur les grands sujets de société et favoriser la compréhension des enjeux contemporains. Pas fan de la propriété, ni de l'héritage, il se rêve en Che Guevarra (les purges en moins) sur son vélib certains soirs, parcourant la banlieue parisienne. Un peu bobo, un peu beauf, il squatte Bauer et ne jure que par l'étoile rouge. Un peu austère, il ne boit pas d'alcool, ne fume pas, ne mange pas de cadavres et est contre l'avion. Mais comme le prouve la photo, il sait être drôle parfois.\nEst aussi fièrement abonné à la meilleure Newsletter de la toile, 'Chez Pol'.")),
                       ],
                     ),
                   ),
-                  Expanded(child: Padding(padding: EdgeInsets.only(left:5),
-                    child: Container(
-                      child: Image.asset(
-                        'img/JOHAN.JPG',
-                      ),
-                    ),
-                  )
-                  )
+                  Expanded(
+                      child: Padding(
+                        padding: EdgeInsets.only(left: 5),
+                        child: Container(
+                          child: Image.asset(
+                            'img/JOHAN.JPG',
+                          ),
+                        ),
+                      ))
                 ],
               ),
             ),
@@ -228,7 +245,7 @@ class BasicsPage extends StatelessWidget {
                 time("Il y a 45 minutes"),
                 abonne(),
                 Expanded(
-                  flex: 3,
+                  flex: 1,
                   child: Padding(
                     padding: EdgeInsets.only(right: 10),
                     child: Row(
@@ -239,8 +256,39 @@ class BasicsPage extends StatelessWidget {
                 ),
               ],
             ),
-                ],
-            ),
+          ],
+        ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        showSelectedLabels: true,
+        showUnselectedLabels: true,
+        unselectedItemColor: Colors.black,
+        unselectedLabelStyle: TextStyle(color: Colors.red),
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'A la une',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.newspaper),
+            label: 'Fil info',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.my_library_books_sharp),
+            label: 'Le journal',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.bookmark_border),
+            label: 'Mon Libé',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.menu_rounded),
+            label: 'Menu',
+          ),
+        ],
+        currentIndex: _selectedIndex,
+        selectedItemColor: Colors.red,
+        onTap: _onItemTapped,
       ),
     );
   }
@@ -306,7 +354,7 @@ Expanded theme(String theme) {
 Expanded time(String time) {
   return Expanded(
     child: Padding(
-      padding: EdgeInsets.only(left: 0),
+      padding: EdgeInsets.only(right: 0),
       child: Container(
         child: RichText(
           text: TextSpan(
@@ -322,7 +370,7 @@ Expanded time(String time) {
 Expanded abonne() {
   return Expanded(
     child: Padding(
-      padding: EdgeInsets.only(left: 0),
+      padding: EdgeInsets.only(left: 10),
       child: Container(
         child: RichText(
           text: TextSpan(
