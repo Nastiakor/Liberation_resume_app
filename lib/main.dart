@@ -1,3 +1,4 @@
+import 'package:cv_flutter_libe/icons.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(const MyApp());
@@ -26,7 +27,7 @@ class MyStatefulWidget extends StatefulWidget {
 class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   int _selectedIndex = 0;
   static const TextStyle optionStyle =
-  TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
+      TextStyle(fontSize: 50, fontWeight: FontWeight.bold);
   static const List<Widget> _widgetOptions = <Widget>[
     Text(
       'Index 0: Accueil',
@@ -167,13 +168,13 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                   ),
                   Expanded(
                       child: Padding(
-                        padding: EdgeInsets.only(left: 5),
-                        child: Container(
-                          child: Image.asset(
-                            'img/NASTIA.JPG',
-                          ),
-                        ),
-                      ))
+                    padding: EdgeInsets.only(left: 5),
+                    child: Container(
+                      child: Image.asset(
+                        'img/NASTIA.JPG',
+                      ),
+                    ),
+                  ))
                 ],
               ),
             ),
@@ -228,13 +229,13 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                   ),
                   Expanded(
                       child: Padding(
-                        padding: EdgeInsets.only(left: 5),
-                        child: Container(
-                          child: Image.asset(
-                            'img/JOHAN.JPG',
-                          ),
-                        ),
-                      ))
+                    padding: EdgeInsets.only(left: 5),
+                    child: Container(
+                      child: Image.asset(
+                        'img/JOHAN.JPG',
+                      ),
+                    ),
+                  ))
                 ],
               ),
             ),
@@ -262,19 +263,20 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
       bottomNavigationBar: BottomNavigationBar(
         showSelectedLabels: true,
         showUnselectedLabels: true,
+        type: BottomNavigationBarType.fixed,
         unselectedItemColor: Colors.black,
         unselectedLabelStyle: TextStyle(color: Colors.red),
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'A la une',
+            icon: Icon(MyFlutterApp.libelogo, size:20),
+            label: '           A la une',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.newspaper),
+            icon: Icon(MyFlutterApp.passage_du_temps, size:35),
             label: 'Fil info',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.my_library_books_sharp),
+            icon: Icon(Icons.menu_book, size: 30),
             label: 'Le journal',
           ),
           BottomNavigationBarItem(
@@ -282,7 +284,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
             label: 'Mon Libé',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.menu_rounded),
+            icon: Icon(Icons.menu_open_rounded, size: 30,),
             label: 'Menu',
           ),
         ],
