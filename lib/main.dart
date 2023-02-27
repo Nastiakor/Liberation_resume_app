@@ -1,5 +1,7 @@
 import 'package:cv_flutter_libe/icons.dart';
 import 'package:flutter/material.dart';
+import 'package:cv_flutter_libe/homearticles.dart';
+import 'package:cv_flutter_libe/style.dart';
 
 void main() => runApp(const MyApp());
 
@@ -13,6 +15,9 @@ class MyApp extends StatelessWidget {
     return const MaterialApp(
       title: _title,
       home: MyStatefulWidget(),
+
+
+
     );
   }
 }
@@ -72,6 +77,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
             children: <Widget>[
               Text('Libé'),
               Container(
+
                 //  margin: const EdgeInsets.only(right: 75),
                 child: Image.asset(
                   'img/1200px-Libération.svg.png',
@@ -174,21 +180,26 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                       flex: 2,
                       child: Wrap(
                         children: [
-                          RichText(
-                            text: TextSpan(
-                              children: [
-                                redTitle2("NASTIA LA ROUGE "),
-                                blackTitle2("FROM MARIS WITH RABIES"),
-                              ],
-                            ),
-                          ),
+                          InkWell(
+                            onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) => nastiaHomePresentation())),
+                            child:
+                            RichText(
+                              text: TextSpan(
+                                children: [
+                                  redTitle2("NASTIA LA ROUGE "),
+                                  blackTitle2(
+                                      "FROM MARIS WITH LOVE "),
+                                ],
+                              ),
+                            ),),
+
                           Padding(
                               padding: EdgeInsets.only(
                                 top: 7,
                                 left: 2,
                               ),
                               child: paragraph(
-                                  "Née en Union Soviétique qu'elle connaîtra près d'une décennie avant sa chute, elle a passé une adolescence agitée dans la toute neuve Russie vendue au capitalisme par Gorbatchev. Elle a acquis une conscience politique très jeune grâce aux traductions du journal Libération opérées par le S.F.I.O (Syndicat Fédéral d'Iochkar-Ola) envoyés par la section communiste de Bourges avec qui elle n'est pas encore jumelée. Délivrant ses messages philosophico-politiques grâce à l'art du Tag sur les murs de l'agglomération, avec notamment un bien senti 'Mektoub mes couilles', elle a réalisé ses premiers sabotages de navires à l'âge de 6 ans sur les bords du Malaya Kokshaga. Soucieuse de défendre un monde plus juste et la liberté de la presse, elle apprend actuellement les rudiments du développement entre deux manifestations Parisiennes avec en ligne de mire l'intégation à l'équipe de dev de Libé qui doit être formidable.")),
+                                  "Née en Union Soviétique qu'elle connaîtra près d'une décennie avant sa chute, elle a passé une adolescence agitée dans la toute neuve Russie vendue au capitalisme par Gorbatchev. Elle a acquis une conscience politique très jeune grâce aux traductions du journal Libération opérées par le S.F.I.O (Syndicat Fédéral d'Iochkar-Ola) envoyés par la section communiste de Bourges ...")),
                         ],
                       ),
                     ),
@@ -205,7 +216,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                 ),
               ),
               Row(
-                children: [
+                children: <Widget>[
                   Padding(padding: EdgeInsets.only(top: 20)),
                   theme("Candidature"),
                   time("Il y a 25 minutes"),
@@ -229,12 +240,14 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                 padding: EdgeInsets.only(top: 10, left: 10),
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
+                  children: <Widget> [
                     Expanded(
                       flex: 2,
                       child: Wrap(
                         children: [
-                          RichText(
+                          InkWell(
+                            onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) => jojoHomePresentation())),
+                            child: RichText(
                             text: TextSpan(
                               children: [
                                 redTitle2("JOJO LE BOX-TO-BOX "),
@@ -242,24 +255,29 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                                     "POLYVALENT ET DETERMINE QUELQUE SOIT SON POSTE SUR LA GAUCHE DU TERRAIN"),
                               ],
                             ),
-                          ),
+                          ),),
                           Padding(
                               padding: EdgeInsets.only(
                                 top: 7,
                                 left: 2,
                               ),
+                              child: InkWell(
+                                  onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) => jojoHomePresentation())),
                               child: paragraph(
-                                  "Aussi à l'aise à la récupération grâce à sa fougue, à la relance avec son énergie ou en meneur de jeu avec sa créativité et sa vision stratégique, ses expériences de la gestion de projet, de la mobilisation citoyenne et du développement du pouvoir d'agir dans différents mouvements d'éducation populaire, lui permettent d'avoir de nombreuses cartes de son jeu. Convaincu que la démocratie devrait être plus participative et que l'engagement citoyen est conditionné à être éclairé, il souhaite participer aux projets Tech de Libé qui est fondamental selon lui pour conscientiser les citoyens sur les grands sujets de société et favoriser la compréhension des enjeux contemporains. Pas fan de la propriété, ni de l'héritage, il se rêve en Che Guevarra (les purges en moins) sur son vélib certains soirs, parcourant la banlieue parisienne. Un peu bobo, un peu beauf, il squatte Bauer et ne jure que par l'étoile rouge. Un peu austère, il ne boit pas d'alcool, ne fume pas, ne mange pas de cadavres et est contre l'avion. Mais comme le prouve la photo, il sait être drôle parfois.\nEst aussi fièrement abonné à la meilleure Newsletter de la toile, 'Chez Pol'.")),
-                        ],
+                                  "Aussi à l'aise à la récupération grâce à sa fougue, à la relance avec son énergie ou en meneur de jeu avec sa créativité et sa vision stratégique, ses expériences de la gestion de projet, de la mobilisation citoyenne et du développement du pouvoir d'agir dans différents mouvements d'éducation populaire, lui permettent d'avoir de nombreuses cartes de son jeu.")),
+                          ),],
                       ),
                     ),
                     Expanded(
                         child: Padding(
                       padding: EdgeInsets.only(left: 5),
                       child: Container(
-                        child: Image.asset(
+                        child: InkWell(
+                          onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) => jojoHomePresentation())),
+                          child: Image.asset(
                           'img/JOHAN.JPG',
-                        ),
+                        ),)
+
                       ),
                     ))
                   ],
@@ -323,94 +341,4 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
       ),
     );
   }
-}
-
-TextSpan redTitle(String title) {
-  return TextSpan(
-      text: "$title",
-      style: TextStyle(
-          fontWeight: FontWeight.bold, color: Colors.red, fontSize: 20, fontFamily:),
-  );
-}
-
-TextSpan blackTitle(String title) {
-  return TextSpan(
-      text: "$title",
-      style: TextStyle(
-          fontWeight: FontWeight.bold, color: Colors.black, fontSize: 20));
-}
-
-Text paragraph(String paragraph) {
-  return Text("$paragraph",
-      style: TextStyle(color: Colors.black87, fontSize: 15));
-}
-
-TextSpan redTitle2(String title) {
-  return TextSpan(
-      text: "$title",
-      style: TextStyle(
-          fontWeight: FontWeight.bold, color: Colors.red, fontSize: 15));
-}
-
-TextSpan blackTitle2(String title) {
-  return TextSpan(
-      text: "$title",
-      style: TextStyle(
-          fontWeight: FontWeight.bold, color: Colors.black, fontSize: 15));
-}
-
-Text paragraph2(String paragraph) {
-  return Text("$paragraph",
-      style: TextStyle(color: Colors.black87, fontSize: 8));
-}
-
-Expanded theme(String theme) {
-  return Expanded(
-    child: Padding(
-      padding: EdgeInsets.only(left: 10),
-      child: Container(
-        child: RichText(
-          text: TextSpan(
-            text: "$theme",
-            style: TextStyle(
-                fontWeight: FontWeight.bold,
-                color: Colors.black45,
-                fontSize: 13),
-          ),
-        ),
-      ),
-    ),
-  );
-}
-
-Expanded time(String time) {
-  return Expanded(
-    child: Padding(
-      padding: EdgeInsets.only(right: 0),
-      child: Container(
-        child: RichText(
-          text: TextSpan(
-            text: "$time",
-            style: TextStyle(color: Colors.black45, fontSize: 13),
-          ),
-        ),
-      ),
-    ),
-  );
-}
-
-Expanded abonne() {
-  return Expanded(
-    child: Padding(
-      padding: EdgeInsets.only(left: 10),
-      child: Container(
-        child: RichText(
-          text: TextSpan(
-            text: "Abonné",
-            style: TextStyle(color: Colors.amber, fontSize: 13),
-          ),
-        ),
-      ),
-    ),
-  );
 }
