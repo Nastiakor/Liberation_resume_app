@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 
-
 TextSpan redTitle(String title) {
   return TextSpan(
     text: "$title",
-    style: TextStyle(
-        fontWeight: FontWeight.bold, color: Colors.red, fontSize: 20),
+    style:
+        TextStyle(fontWeight: FontWeight.bold, color: Colors.red, fontSize: 20),
   );
 }
 
@@ -18,9 +17,7 @@ TextSpan blackTitle(String title) {
 
 TextSpan sousTitre(String title) {
   return TextSpan(
-      text: "$title",
-      style: TextStyle(
-          color: Colors.black, fontSize: 16));
+      text: "$title", style: TextStyle(color: Colors.black, fontSize: 16));
 }
 
 Text paragraph(String paragraph) {
@@ -29,10 +26,14 @@ Text paragraph(String paragraph) {
 }
 
 Padding legendePictures(String legende) {
-  return Padding(padding: EdgeInsets.only(left:10, top:5, bottom: 10, right:10),
-                child: Text("$legende",
-                textAlign: TextAlign.center,
-                style: TextStyle(color: Colors.black87, fontSize: 13),),);
+  return Padding(
+    padding: EdgeInsets.only(left: 10, top: 5, bottom: 10, right: 10),
+    child: Text(
+      "$legende",
+      textAlign: TextAlign.center,
+      style: TextStyle(color: Colors.black87, fontSize: 13),
+    ),
+  );
 }
 
 TextSpan redTitle2(String title) {
@@ -61,14 +62,15 @@ Text paragraph2(String paragraph) {
       style: TextStyle(color: Colors.black87, fontSize: 8));
 }
 
-RichText byArticle (String name) {
+RichText byArticle(String name) {
   return RichText(
-      text: TextSpan(
+    text: TextSpan(
       children: [
-      TextSpan(text:"par ",style: TextStyle(color: Colors.black)),
-  TextSpan(text:"$name", style: TextStyle(color: Colors.red))
-  ],
-  ),);
+        TextSpan(text: "par ", style: TextStyle(color: Colors.black)),
+        TextSpan(text: "$name", style: TextStyle(color: Colors.red))
+      ],
+    ),
+  );
 }
 
 Expanded theme(String theme) {
@@ -121,3 +123,18 @@ Expanded abonne() {
     ),
   );
 }
+
+Expanded bookmark() {
+  return Expanded(
+    flex: 1,
+    child: Padding(
+      padding: EdgeInsets.only(right: 10),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [Icon(Icons.bookmark_border)],
+      ),
+    ),
+  );
+}
+
+
