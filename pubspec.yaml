@@ -68,6 +68,7 @@ flutter:
     - family: MyFlutterApp
       fonts:
         - asset: assets/MyFlutterApp.ttf
+        - asset: assets/Heading-Pro-Bold-trial.ttf
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
