@@ -103,16 +103,18 @@ class nastiaHomePresentation extends StatelessWidget {
       body: SingleChildScrollView(
           child: Column(
         children: [
-          Row(
+          Column(
             children: [
               Padding(
-                padding: EdgeInsets.only(top: 50, left: 20, right: 30),
+                padding: EdgeInsets.only(top: 50, left: 8, right: 8),
                 child: Wrap(
                   children: [
                     Container(
+                      alignment: Alignment.bottomLeft,
                       child: RichText(
                         text: TextSpan(children: [
-                          redTitle2("NASTIA LA ROUGE "),
+                          redTitle("NASTIA LA ROUGE "),
+                          blackTitle("FROM MARIS WITH LOVE")
                         ]),
                       ),
                     ),
@@ -123,7 +125,7 @@ class nastiaHomePresentation extends StatelessWidget {
           ),
           // Padding 2
           Padding(
-            padding: EdgeInsets.only(top: 2, left: 20, right: 30),
+            padding: EdgeInsets.only(top: 2, left: 8, right: 8),
             child: Wrap(
               children: [
                 Container(
@@ -142,7 +144,7 @@ class nastiaHomePresentation extends StatelessWidget {
           Row(
             children: [
               Padding(
-                  padding: EdgeInsets.only(top: 8, left: 20, right: 30),
+                  padding: EdgeInsets.only(top: 8, left: 8),
                   child: byArticle("Anastasia Korotkova")),
             ],
           ),
@@ -150,7 +152,7 @@ class nastiaHomePresentation extends StatelessWidget {
             children: [
               Padding(
                 padding:
-                    EdgeInsets.only(top: 8, left: 20, right: 30, bottom: 8),
+                    EdgeInsets.only(top: 8, left: 8, right: 30, bottom: 8),
                 child: RichText(
                   text: TextSpan(
                     children: [
@@ -191,80 +193,15 @@ class firstHomeArticle extends StatelessWidget {
     return Scaffold(
       appBar: MyAppBar(),
       body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Padding(
-              padding: EdgeInsets.only(top: 50, left: 20, right: 30),
-              child: Wrap(
-                children: [
-                  Container(
-                    child: RichText(
-                      text: TextSpan(children: [
-                        redTitle('WANTED '),
-                        blackTitle(
-                            'DEUX ÉTUDIANTS POSSÉDANT DE FORTES COMPÉTENCES EN FLUTTER. RÉCOMPENSE: ALTERNANCE'),
-                      ]),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.only(top: 10, left: 20, right: 30),
-              child: Wrap(
-                children: [
-                  Container(
-                    child: RichText(
-                      text: TextSpan(children: [
-                        sousTitre(
-                            "Plus à l'aise à domicile sur leurs terrains de prédilection (Dart, JavaScript, C#), ils sont complètement adaptables à d'autres contraintes techniques (Swift, Kotlin, Java, PHP...).")
-                      ]),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Row(
-              children: [
-                Padding(
-                    padding: EdgeInsets.only(top: 8, left: 20, right: 30),
-                    child: byArticle("Anastasia et Johan")),
-              ],
-            ),
-            Row(
-              children: [
-                Padding(
-                  padding:
-                      EdgeInsets.only(top: 8, left: 20, right: 30, bottom: 8),
-                  child: RichText(
-                    text: TextSpan(
-                      children: [
-                        publishDate("Publié le 26 Février 2023 à 18h20"),
-                      ],
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            Row(children: [
-              Image.asset(
-                'img/85808-cherche-ancien-affiche-vectoriel.jpg',
-                width: size.width,
-                fit: BoxFit.cover,
-              ),
-            ]),
-            Padding(
-              padding: EdgeInsets.only(top: 12, left: 20, right: 30),
-              child: legendePictures('Go les cocos'),
-            ),
-            Padding(
-              padding: EdgeInsets.only(top: 12, left: 20, right: 30),
-              child: paragraph(
-                  "Ils ont le bénéfice de leur grand âge, en capacité à résister à la pression, apprécie le travail en équipe, empathiques et de grandes qualités relationnelles. Ils savent aussi se mettre au diapason de la dynamique collective et s'y fondre."),
-            )
-          ],
-        ),
-      ),
+        child: megaGigaFunction(
+            "WANTED ",
+            'DEUX ÉTUDIANTS POSSÉDANT DE FORTES COMPÉTENCES EN FLUTTER. RÉCOMPENSE: ALTERNANCE',
+            "Plus à l'aise à domicile sur leurs terrains de prédilection (Dart, JavaScript, C#), ils sont complètement adaptables à d'autres contraintes techniques (Swift, Kotlin, Java, PHP...).",
+            "Anastasia et Johan",
+            "Publié le 26 Février 2023 à 18h20",
+            "img/85808-cherche-ancien-affiche-vectoriel.jpg",
+            "En recherche d'alternance pour la période de mi-juillet 2023 à mi-juin 2024 sur un rythme de 4 jours sur 5 en entreprise",
+            "Ils ont le bénéfice de leur grand âge, en capacité à résister à la pression, apprécie le travail en équipe, empathiques et de grandes qualités relationnelles. Ils savent aussi se mettre au diapason de la dynamique collective et s'y fondre.")),
     );
   }
 }
