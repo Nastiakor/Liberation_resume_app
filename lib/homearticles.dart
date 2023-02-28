@@ -8,6 +8,25 @@ class jojoHomePresentation extends StatelessWidget {
     var size = MediaQuery.of(context).size;
     var platform = Theme.of(context).platform;
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        // Here we take the value from the MyHomePage object that was created by
+        // the App.build method, and use it to set our appbar title.
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Container(
+              margin: EdgeInsets.only(right:50),
+              //  margin: const EdgeInsets.only(right: 75),
+              child: Image.asset(
+                'img/1200px-Libération.svg.png',
+                alignment: Alignment.center,
+                width: 100,
+              ),
+            ),
+          ],
+        ),
+      ),
       body: SingleChildScrollView(
           child: Column(
         children: [
@@ -98,6 +117,23 @@ class nastiaHomePresentation extends StatelessWidget {
     var size = MediaQuery.of(context).size;
     var platform = Theme.of(context).platform;
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        // Here we take the value from the MyHomePage object that was created by
+        // the App.build method, and use it to set our appbar title.
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Container(
+              //  margin: const EdgeInsets.only(right: 75),
+              child: Image.asset(
+                'img/1200px-Libération.svg.png',
+                width: 100,
+              ),
+            ),
+          ],
+        ),
+      ),
       body: SingleChildScrollView(
           child: Column(
         children: [
@@ -187,6 +223,24 @@ class firstHomeArticle extends StatelessWidget {
     var size = MediaQuery.of(context).size;
     var platform = Theme.of(context).platform;
     return Scaffold(
+        appBar: AppBar(
+        backgroundColor: Colors.white,
+        // Here we take the value from the MyHomePage object that was created by
+        // the App.build method, and use it to set our appbar title.
+        title: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+        Text('Libé'),
+    Container(
+    //  margin: const EdgeInsets.only(right: 75),
+    child: Image.asset(
+    'img/1200px-Libération.svg.png',
+    width: 100,
+    ),
+    ),
+    ],
+    ),
+        ),
       body: SingleChildScrollView(
         child: Column(children: [
           Padding(
@@ -259,3 +313,5 @@ class firstHomeArticle extends StatelessWidget {
     );
   }
 }
+
+class MyAppBar extends AppBar

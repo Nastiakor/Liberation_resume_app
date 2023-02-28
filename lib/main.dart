@@ -79,7 +79,6 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
           title: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Text('Libé'),
               Container(
                 //  margin: const EdgeInsets.only(right: 75),
                 child: Image.asset(
@@ -91,6 +90,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
           ),
           bottom: TabBar(
             indicatorSize: TabBarIndicatorSize.label,
+            indicatorColor: Colors.black,
             isScrollable: true,
             tabs: [
               Tab(
@@ -223,7 +223,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
           ],
         ),
       ),
-      Row(
+        Row(
         children: <Widget>[
           Padding(padding: EdgeInsets.only(top: 20)),
           theme("Candidature"),
