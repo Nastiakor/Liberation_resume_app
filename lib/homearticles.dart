@@ -196,9 +196,9 @@ class firstHomeArticle extends StatelessWidget {
                 Container(
                   child: RichText(
                     text: TextSpan(children: [
-                      redTitle('Wanted '),
+                      redTitle('WANTED '),
                       blackTitle(
-                          'Deux étudiants possédant de fortes compétences en Flutter. Récompense: alternance'),
+                          'DEUX ÉTUDIANTS POSSÉDANT DE FORTES COMPÉTENCES EN FLUTTER. RÉCOMPENSE: ALTERNANCE'),
                     ]),
                   ),
                 ),
@@ -241,7 +241,7 @@ class firstHomeArticle extends StatelessWidget {
               Row(
               children: [
               Image.asset(
-                'img/85808-cherche-ancien-affiche-vectoriel.jpg', width: size.width,
+                'img/85808-cherche-ancien-affiche-vectoriel.jpg', width: size.width, fit: BoxFit.cover,
               ),
         ]
           ),

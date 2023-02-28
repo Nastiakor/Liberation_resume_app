@@ -146,7 +146,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                   children: [
                     redTitle("WANTED "),
                     blackTitle(
-                        "Deux étudiants possédant de fortes compétences en Flutter. Récompense: alternance"),
+                        "DEUX ÉTUDIANTS POSSÉDANT DE FORTES COMPÉTENCES EN FLUTTER. RÉCOMPENSE: ALTERNANCE"),
 
                   ]
                 ),
