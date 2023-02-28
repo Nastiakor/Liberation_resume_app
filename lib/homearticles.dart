@@ -2,7 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:cv_flutter_libe/style.dart';
 import 'package:cv_flutter_libe/main.dart';
 
-class jojoHomePresentation extends StatelessWidget {
+void _onItemTapped(int index) {
+
+}
+class jojoHomePresentation extends StatefulWidget {
+  @override
+  _HomeState createState() => _HomeState();
+}
+
+class _HomeState extends State<jojoHomePresentation> {
+
+  int _currentIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -89,6 +100,36 @@ class jojoHomePresentation extends StatelessWidget {
           ),
         ],
       )),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _currentIndex,
+        showSelectedLabels: true,
+        showUnselectedLabels: true,
+        type: BottomNavigationBarType.fixed,
+        unselectedItemColor: Colors.black,
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.close, size: 20),
+            label: 'close',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.close, size: 20),
+            label: 'close',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.close, size: 20),
+            label: 'close',
+          ),
+        ],
+        onTap: (index) {
+          setState(() {
+            _currentIndex = index;
+
+            if (_currentIndex == 0) {
+              Navigator.of(context).pop();
+            }
+          });
+        },
+      ),
     );
   }
 }
@@ -151,8 +192,7 @@ class nastiaHomePresentation extends StatelessWidget {
           Row(
             children: [
               Padding(
-                padding:
-                    EdgeInsets.only(top: 8, left: 8, right: 30, bottom: 8),
+                padding: EdgeInsets.only(top: 8, left: 8, right: 30, bottom: 8),
                 child: RichText(
                   text: TextSpan(
                     children: [
@@ -193,15 +233,15 @@ class firstHomeArticle extends StatelessWidget {
     return Scaffold(
       appBar: MyAppBar(),
       body: SingleChildScrollView(
-        child: megaGigaFunction(
-            "WANTED ",
-            'DEUX ÉTUDIANTS POSSÉDANT DE FORTES COMPÉTENCES EN FLUTTER. RÉCOMPENSE: ALTERNANCE',
-            "Plus à l'aise à domicile sur leurs terrains de prédilection (Dart, JavaScript, C#), ils sont complètement adaptables à d'autres contraintes techniques (Swift, Kotlin, Java, PHP...).",
-            "Anastasia et Johan",
-            "Publié le 26 Février 2023 à 18h20",
-            "img/85808-cherche-ancien-affiche-vectoriel.jpg",
-            "En recherche d'alternance pour la période de mi-juillet 2023 à mi-juin 2024 sur un rythme de 4 jours sur 5 en entreprise",
-            "Ils ont le bénéfice de leur grand âge, en capacité à résister à la pression, apprécie le travail en équipe, empathiques et de grandes qualités relationnelles. Ils savent aussi se mettre au diapason de la dynamique collective et s'y fondre.")),
+          child: megaGigaFunction(
+              "WANTED ",
+              'DEUX ÉTUDIANTS POSSÉDANT DE FORTES COMPÉTENCES EN FLUTTER. RÉCOMPENSE: ALTERNANCE',
+              "Plus à l'aise à domicile sur leurs terrains de prédilection (Dart, JavaScript, C#), ils sont complètement adaptables à d'autres contraintes techniques (Swift, Kotlin, Java, PHP...).",
+              "Anastasia et Johan",
+              "Publié le 26 Février 2023 à 18h20",
+              "img/85808-cherche-ancien-affiche-vectoriel.jpg",
+              "En recherche d'alternance pour la période de mi-juillet 2023 à mi-juin 2024 sur un rythme de 4 jours sur 5 en entreprise",
+              "Ils ont le bénéfice de leur grand âge, en capacité à résister à la pression, apprécie le travail en équipe, empathiques et de grandes qualités relationnelles. Ils savent aussi se mettre au diapason de la dynamique collective et s'y fondre.")),
     );
   }
 }
@@ -226,3 +266,4 @@ class MyAppBar extends AppBar {
           ),
         );
 }
+
