@@ -8,25 +8,7 @@ class jojoHomePresentation extends StatelessWidget {
     var size = MediaQuery.of(context).size;
     var platform = Theme.of(context).platform;
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Container(
-              margin: EdgeInsets.only(right:50),
-              //  margin: const EdgeInsets.only(right: 75),
-              child: Image.asset(
-                'img/1200px-Libération.svg.png',
-                alignment: Alignment.center,
-                width: 100,
-              ),
-            ),
-          ],
-        ),
-      ),
+      appBar: MyAppBar(),
       body: SingleChildScrollView(
           child: Column(
         children: [
@@ -117,23 +99,7 @@ class nastiaHomePresentation extends StatelessWidget {
     var size = MediaQuery.of(context).size;
     var platform = Theme.of(context).platform;
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Container(
-              //  margin: const EdgeInsets.only(right: 75),
-              child: Image.asset(
-                'img/1200px-Libération.svg.png',
-                width: 100,
-              ),
-            ),
-          ],
-        ),
-      ),
+      appBar: MyAppBar(),
       body: SingleChildScrollView(
           child: Column(
         children: [
@@ -223,95 +189,103 @@ class firstHomeArticle extends StatelessWidget {
     var size = MediaQuery.of(context).size;
     var platform = Theme.of(context).platform;
     return Scaffold(
-        appBar: AppBar(
-        backgroundColor: Colors.white,
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-        Text('Libé'),
-    Container(
-    //  margin: const EdgeInsets.only(right: 75),
-    child: Image.asset(
-    'img/1200px-Libération.svg.png',
-    width: 100,
-    ),
-    ),
-    ],
-    ),
-        ),
+      appBar: MyAppBar(),
       body: SingleChildScrollView(
-        child: Column(children: [
-          Padding(
-            padding: EdgeInsets.only(top: 50, left: 20, right: 30),
-            child: Wrap(
-              children: [
-                Container(
-                  child: RichText(
-                    text: TextSpan(children: [
-                      redTitle('WANTED '),
-                      blackTitle(
-                          'DEUX ÉTUDIANTS POSSÉDANT DE FORTES COMPÉTENCES EN FLUTTER. RÉCOMPENSE: ALTERNANCE'),
-                    ]),
+        child: Column(
+          children: [
+            Padding(
+              padding: EdgeInsets.only(top: 50, left: 20, right: 30),
+              child: Wrap(
+                children: [
+                  Container(
+                    child: RichText(
+                      text: TextSpan(children: [
+                        redTitle('WANTED '),
+                        blackTitle(
+                            'DEUX ÉTUDIANTS POSSÉDANT DE FORTES COMPÉTENCES EN FLUTTER. RÉCOMPENSE: ALTERNANCE'),
+                      ]),
+                    ),
                   ),
-                ),
-              ],
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.only(top: 10, left: 20, right: 30),
-            child: Wrap(
-              children: [
-                Container(
-                  child: RichText(
-                    text: TextSpan(children: [
-                      sousTitre(
-                          "Plus à l'aise à domicile sur leurs terrains de prédilection (Dart, JavaScript, C#), ils sont complètement adaptables à d'autres contraintes techniques (Swift, Kotlin, Java, PHP...).")
-                    ]),
-                  ),
-                ),
-              ],
-            ),
-          ),
-          Row(
-            children: [
-              Padding(
-                  padding: EdgeInsets.only(top: 8, left: 20, right: 30),
-                  child: byArticle("Anastasia et Johan")),
-            ],
-          ),
-          Row(
-            children: [
-              Padding(
-                  padding: EdgeInsets.only(top: 8, left: 20, right: 30, bottom: 8),
-                      child: RichText(
-                      text: TextSpan(
-                          children: [
-                              publishDate("Publié le 26 Février 2023 à 18h20"),
-                            ],
-                      ),),),],
-          ),
-              Row(
-              children: [
-              Image.asset(
-                'img/85808-cherche-ancien-affiche-vectoriel.jpg', width: size.width, fit: BoxFit.cover,
+                ],
               ),
-        ]
-          ),
-          Padding(
-            padding: EdgeInsets.only(top: 12, left: 20, right: 30),
-            child: legendePictures('Go les cocos'),
-          ),
-          Padding(
-            padding: EdgeInsets.only(top: 12, left: 20, right: 30),
-            child: paragraph(
-                "Ils ont le bénéfice de leur grand âge, en capacité à résister à la pression, apprécie le travail en équipe, empathiques et de grandes qualités relationnelles. Ils savent aussi se mettre au diapason de la dynamique collective et s'y fondre."),
-          )],
+            ),
+            Padding(
+              padding: EdgeInsets.only(top: 10, left: 20, right: 30),
+              child: Wrap(
+                children: [
+                  Container(
+                    child: RichText(
+                      text: TextSpan(children: [
+                        sousTitre(
+                            "Plus à l'aise à domicile sur leurs terrains de prédilection (Dart, JavaScript, C#), ils sont complètement adaptables à d'autres contraintes techniques (Swift, Kotlin, Java, PHP...).")
+                      ]),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Row(
+              children: [
+                Padding(
+                    padding: EdgeInsets.only(top: 8, left: 20, right: 30),
+                    child: byArticle("Anastasia et Johan")),
+              ],
+            ),
+            Row(
+              children: [
+                Padding(
+                  padding:
+                      EdgeInsets.only(top: 8, left: 20, right: 30, bottom: 8),
+                  child: RichText(
+                    text: TextSpan(
+                      children: [
+                        publishDate("Publié le 26 Février 2023 à 18h20"),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            Row(children: [
+              Image.asset(
+                'img/85808-cherche-ancien-affiche-vectoriel.jpg',
+                width: size.width,
+                fit: BoxFit.cover,
+              ),
+            ]),
+            Padding(
+              padding: EdgeInsets.only(top: 12, left: 20, right: 30),
+              child: legendePictures('Go les cocos'),
+            ),
+            Padding(
+              padding: EdgeInsets.only(top: 12, left: 20, right: 30),
+              child: paragraph(
+                  "Ils ont le bénéfice de leur grand âge, en capacité à résister à la pression, apprécie le travail en équipe, empathiques et de grandes qualités relationnelles. Ils savent aussi se mettre au diapason de la dynamique collective et s'y fondre."),
+            )
+          ],
         ),
       ),
     );
   }
 }
 
-class MyAppBar extends AppBar
+class MyAppBar extends AppBar {
+  MyAppBar({Key? key})
+      : super(
+// Here we take the value from the MyHomePage object that was created by
+// the App.build method, and use it to set our appbar title.
+          backgroundColor: Colors.white,
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Container(
+                margin: const EdgeInsets.only(right: 50),
+                child: Image.asset(
+                  'img/1200px-Libération.svg.png',
+                  width: 100,
+                ),
+              ),
+            ],
+          ),
+        );
+}
