@@ -102,8 +102,8 @@ class _HomeState extends State<jojoHomePresentation> {
       )),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
-        showSelectedLabels: true,
-        showUnselectedLabels: true,
+        showSelectedLabels: false,
+        showUnselectedLabels: false,
         type: BottomNavigationBarType.fixed,
         unselectedItemColor: Colors.black,
         items: const <BottomNavigationBarItem>[
@@ -112,11 +112,7 @@ class _HomeState extends State<jojoHomePresentation> {
             label: 'close',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.close, size: 20),
-            label: 'close',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.close, size: 20),
+            icon: Icon(Icons.bookmark_border, size: 20),
             label: 'close',
           ),
         ],
