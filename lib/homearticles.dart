@@ -1,23 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:cv_flutter_libe/style.dart';
 import 'package:cv_flutter_libe/main.dart';
+import 'package:cv_flutter_libe/functions.dart';
 
-void _onItemTapped(int index) {
+void _onItemTapped(int index) {}
 
-}
 class jojoHomePresentation extends StatefulWidget {
   @override
   _HomeState createState() => _HomeState();
 }
 
 class _HomeState extends State<jojoHomePresentation> {
-
   int _currentIndex = 0;
 
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     var platform = Theme.of(context).platform;
+    final DateTime articlePublishingDate = DateTime(2023, 02, 27);
+
+// Define the function to calculate the days until the birthday
+    String daysUntilArticle() {
+      return calculatePublishingDate(articlePublishingDate);
+    }
+
     return Scaffold(
       appBar: MyAppBar(),
       body: SingleChildScrollView(
@@ -74,7 +80,7 @@ class _HomeState extends State<jojoHomePresentation> {
                 child: RichText(
                   text: TextSpan(
                     children: [
-                      publishDate("Publié le 26 Février 2023 à 10h20"),
+                      publishDate("${daysUntilArticle()}"),
                     ],
                   ),
                 ),
@@ -108,12 +114,12 @@ class _HomeState extends State<jojoHomePresentation> {
         unselectedItemColor: Colors.black,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.close, size: 20),
-            label: 'close',
+            icon: Icon(Icons.close, size: 25),
+            label: '',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.bookmark_border, size: 20),
-            label: 'close',
+            icon: Icon(Icons.bookmark_border, size: 25),
+            label: '',
           ),
         ],
         onTap: (index) {
@@ -135,6 +141,12 @@ class nastiaHomePresentation extends StatelessWidget {
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     var platform = Theme.of(context).platform;
+    final DateTime articlePublishingDate = DateTime(2023, 02, 28);
+
+// Define the function to calculate the days until the birthday
+    String daysUntilArticle() {
+      return calculatePublishingDate(articlePublishingDate);
+    }
     return Scaffold(
       appBar: MyAppBar(),
       body: SingleChildScrollView(
@@ -192,7 +204,7 @@ class nastiaHomePresentation extends StatelessWidget {
                 child: RichText(
                   text: TextSpan(
                     children: [
-                      publishDate("Publié le 26 Février 2023 à 10h20"),
+                      publishDate("Publié il y a ${daysUntilArticle()}"),
                     ],
                   ),
                 ),
@@ -203,6 +215,7 @@ class nastiaHomePresentation extends StatelessWidget {
             children: [
               Image.asset(
                 'img/NASTIA.JPG',
+                width: size.width,
               ),
             ],
           ),
@@ -262,4 +275,3 @@ class MyAppBar extends AppBar {
           ),
         );
 }
-

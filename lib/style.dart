@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:cv_flutter_libe/main.dart';
 
@@ -206,7 +208,6 @@ Column megaGigaFunction(String redTitleVar, String blackTitleVar, String sousTit
         children: [
           Image.asset(
             '$imageAssetpath',
-            width: 400,
             fit: BoxFit.cover,
           ),
         ],
