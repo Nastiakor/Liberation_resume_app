@@ -2,7 +2,7 @@ import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import 'package:cv_flutter_libe/main.dart';
-
+import 'package:cv_flutter_libe/functions.dart';
 
 TextSpan redTitle(String title) {
   return TextSpan(
@@ -140,7 +140,28 @@ Expanded bookmark() {
     ),
   );
 }
-Column megaGigaFunction(String redTitleVar, String blackTitleVar, String sousTitreVar, String byArticleVar, String publishDateVar, String imageAssetpath, String legendePicturesVar, String paragraphVar) {
+
+Column megaGigaFunction(
+    String redTitleVar,
+    String blackTitleVar,
+    String sousTitreVar,
+    String byArticleVar,
+    String publishDateParam,
+    String imageAssetpath,
+    String legendePicturesVar,
+    String paragraphVar,
+    String sizeWidth) {
+  double sizeWidthParsed = double.parse(sizeWidth);
+
+  DateTime publishDateParamParsed = DateTime.parse(publishDateParam);
+
+  final DateTime articlePublishingDate = publishDateParamParsed;
+
+// Define the function to calculate the days until the birthday
+  String daysUntilArticle() {
+    return calculatePublishingDate(articlePublishingDate);
+  }
+
   return Column(
     children: [
       Column(
@@ -172,8 +193,7 @@ Column megaGigaFunction(String redTitleVar, String blackTitleVar, String sousTit
               alignment: Alignment.bottomLeft,
               child: RichText(
                 text: TextSpan(children: [
-                  sousTitre(
-                      "$sousTitreVar"),
+                  sousTitre("$sousTitreVar"),
                 ]),
               ),
             ),
@@ -192,12 +212,11 @@ Column megaGigaFunction(String redTitleVar, String blackTitleVar, String sousTit
       Row(
         children: [
           Padding(
-            padding:
-            EdgeInsets.only(top: 8, left: 8, right: 30, bottom: 8),
+            padding: EdgeInsets.only(top: 8, left: 8, right: 30, bottom: 8),
             child: RichText(
               text: TextSpan(
                 children: [
-                  publishDate("$publishDateVar"),
+                  publishDate("${daysUntilArticle()}"),
                 ],
               ),
             ),
@@ -209,6 +228,7 @@ Column megaGigaFunction(String redTitleVar, String blackTitleVar, String sousTit
           Image.asset(
             '$imageAssetpath',
             fit: BoxFit.cover,
+            width: sizeWidthParsed,
           ),
         ],
       ),
@@ -218,15 +238,12 @@ Column megaGigaFunction(String redTitleVar, String blackTitleVar, String sousTit
       ),
 
       Padding(
-          padding: EdgeInsets.only(top: 12, left: 20, right: 30),
-            child: Container(
-            alignment: Alignment.bottomLeft,
-              child: paragraph(
-            "$paragraphVar"),
-      ),),
+        padding: EdgeInsets.only(top: 12, left: 20, right: 30),
+        child: Container(
+          alignment: Alignment.bottomLeft,
+          child: paragraph("$paragraphVar"),
+        ),
+      ),
     ],
   );
 }
-
-
-

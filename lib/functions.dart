@@ -1,7 +1,7 @@
 String calculatePublishingDate(DateTime publishingDate) {
   DateTime now = DateTime.now();
   DateTime howLongFromNow =
-      DateTime(now.year, publishingDate.month, publishingDate.day);
+      DateTime(publishingDate.year, publishingDate.month, publishingDate.day);
 
   Duration duration = now.difference(howLongFromNow);
   int durationInDays = duration.inDays;
