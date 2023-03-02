@@ -306,8 +306,8 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
           ],
         ),
         bottomNavigationBar: BottomNavigationBar(
-          showSelectedLabels: false,
-          showUnselectedLabels: false,
+          showSelectedLabels: true,
+          showUnselectedLabels: true,
           type: BottomNavigationBarType.fixed,
           unselectedItemColor: Colors.black,
           items: const <BottomNavigationBarItem>[

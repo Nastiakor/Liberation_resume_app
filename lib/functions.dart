@@ -11,3 +11,4 @@ String calculatePublishingDate(DateTime publishingDate) {
     return "Publié il y a $durationInDays jours";
   }
 }
+
