@@ -124,3 +124,10 @@ Text paragraph(String paragraph) {
     style: TextStyle(color: Colors.black45, fontSize: 10),
   );
 }
+
+DateTime momentInTime = DateTime(2022, 1, 1, 0, 0, 0); // set your moment in time
+DateTime currentTime = DateTime.now();
+
+Duration timeElapsed = currentTime.difference(momentInTime);
+
+
