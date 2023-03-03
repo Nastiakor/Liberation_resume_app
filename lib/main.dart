@@ -117,17 +117,13 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> {
           ),
         ),
         body: TabBarView(
-          children: [
-            homePage()
-          ],
+          children: [homePage()],
         ),
         bottomNavigationBar: MyBottomNavigationBar(
-        selectedIndex: _selectedIndex,
-        onItemTapped: _onItemTapped,
-      ),
+          selectedIndex: _selectedIndex,
+          onItemTapped: _onItemTapped,
         ),
+      ),
     );
   }
 }
-
-
