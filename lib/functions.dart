@@ -28,7 +28,8 @@ Column megaGigaFunction(
     String imageAssetpath,
     String legendePicturesVar,
     String paragraphVar,
-    String sizeWidth) {
+    String sizeWidth,
+    ) {
   double sizeWidthParsed = double.parse(sizeWidth);
 
   DateTime publishDateParamParsed = DateTime.parse(publishDateParam);
@@ -135,21 +136,26 @@ Column megaGigaFunction(
   );
 }
 
-class MainArticle {
-
-
+class MainArticle extends StatelessWidget {
+  String imagePath;
   String title;
-  MainArticle({required this.title});
+  String titlethen;
+  String paragraphMainArticle;
+  String themeMainArticle;
+  String publishDate;
+  String writtenBy;
+  MainArticle({required this.imagePath, required this.title, required this.titlethen, required this.paragraphMainArticle, required this.themeMainArticle, required this.publishDate, required this.writtenBy});
 
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     var width = size.width;
+
     return Column(mainAxisAlignment: MainAxisAlignment.center, children: [
       Row(
         children: [
           Container(
             width: size.width,
-            child: Image.asset('img/85808-cherche-ancien-affiche-vectoriel.jpg',
+            child: Image.asset(imagePath,
                 width: size.width, fit: BoxFit.cover),
           ),
         ],
@@ -162,10 +168,19 @@ class MainArticle {
           child: Wrap(
             children: [
               RichText(
-                text: TextSpan(children: [
+                text: TextSpan(children: writtenBy == "Johan Anquetil"
+                    ? [
                   redTitle(title),
-                  blackTitle(
-                      "DEUX ÉTUDIANTS POSSÉDANT DE FORTES COMPÉTENCES EN FLUTTER. RÉCOMPENSE: ALTERNANCE"),
+                  blackTitle(titlethen)
+                ]
+                    : writtenBy == "Anastasia Korotkova"
+                    ? [
+                  greenTitle(title),
+                  blackTitle(titlethen)
+                ]
+                    : [
+                  orangeTitle(title),
+                  blackTitle(titlethen)
                 ]),
               ),
               Padding(
@@ -173,8 +188,7 @@ class MainArticle {
                   top: 7,
                   left: 4,
                 ),
-                child: paragraph(
-                    "Pensionnaires du centre de formation de l'équipe féministe Ada Tech School dans le 10e arrondissement de Paris (si t'es pas le numéro 10 à Paname...), les plus si jeunes développeurs en puissance, 75 ans à eux deux quand même, seront de précieux alliés pour les projets tech de Libération."),
+                child: paragraph(paragraphMainArticle),
               ),
             ],
           ),
@@ -183,8 +197,8 @@ class MainArticle {
       Row(
         children: [
           Padding(padding: EdgeInsets.only(top: 20)),
-          theme("Chômage"),
-          time("Il y a 5 minutes"),
+          theme(themeMainArticle),
+          time(publishDate),
           abonne(),
           bookmark(),
         ],
@@ -193,69 +207,6 @@ class MainArticle {
         thickness: 2,
       ),
     ]);
-  }
-}
 
-//
-class secondaryArticle extends StatelessWidget {
-  secondaryArticle({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    var size = MediaQuery.of(context).size;
-    var width = size.width;
-    return Column(
-      children: [
-        Padding(
-          padding: EdgeInsets.only(top: 10, left: 10),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              Expanded(
-                flex: 2,
-                child: Wrap(
-                  children: [
-                    InkWell(
-                      onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => jojoHomePresentation())),
-                      child: RichText(
-                        text: TextSpan(
-                          children: [
-                            redTitle2("JOJO LE BOX-TO-BOX "),
-                            blackTitle2(
-                                "POLYVALENT ET DETERMINE QUELQUE SOIT SON POSTE SUR LA GAUCHE DU TERRAIN"),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Expanded(
-                  child: Padding(
-                padding: EdgeInsets.only(left: 5),
-                child: Container(
-                    child: InkWell(
-                  onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => jojoHomePresentation())),
-                  child: Image.asset(
-                    'img/JOHAN.JPG',
-                  ),
-                )),
-              ))
-            ],
-          ),
-        ),
-          Row(
-            children: [
-              Padding(padding: EdgeInsets.only(top: 20)),
-              theme("Révolution"),
-              time("Il y a 45 minutes"),
-              abonne(),
-              bookmark(),
-            ],
-          ),
-      ],
-    );
   }
 }

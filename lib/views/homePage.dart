@@ -17,10 +17,18 @@ class homePage extends StatelessWidget {
 
     return SingleChildScrollView(
       child: Column(
-        children: [
-          MainArticle(title: "Wanted"),
-    ],
-      ),
+        children :[
+          MainArticle(
+            imagePath: "img/85808-cherche-ancien-affiche-vectoriel.jpg",
+            title: "WANTED ",
+            titlethen: "DEUX ETUDIANTS FLUTTER ET APPS MOBILES EN RECHERCHE D'ALTERNANCE. RECOMPENSE : DEUX BOMBES",
+            paragraphMainArticle: "Pensionnaires du centre de formation de l'équipe féministe Ada Tech School dans le 10e arrondissement de Paris (si t'es pas le numéro 10 à Paname...), les plus si jeunes développeurs en puissance, 75 ans à eux deux quand même, seront de précieux alliés pour les projets tech de Libération.",
+            themeMainArticle: "Chômage",
+            publishDate: "Il y a 10 minutes",
+            writtenBy: "Anastasia et Johan",
+          ),
+        ],
+          ),
     );
   }
 }
