@@ -12,6 +12,22 @@ TextSpan redTitle(String title) {
   );
 }
 
+TextSpan orangeTitle(String title) {
+  return TextSpan(
+    text: "$title",
+    style:
+    TextStyle(fontWeight: FontWeight.bold, color: Colors.purple, fontSize: 20),
+  );
+}
+
+TextSpan greenTitle(String title) {
+  return TextSpan(
+    text: "$title",
+    style:
+    TextStyle(fontWeight: FontWeight.bold, color: Colors.greenAccent, fontSize: 20),
+  );
+}
+
 TextSpan blackTitle(String title) {
   return TextSpan(
       text: "$title",

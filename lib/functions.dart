@@ -20,10 +20,10 @@ String calculatePublishingDate(DateTime publishingDate) {
 }
 
 Column megaGigaFunction(
-    String redTitleVar,
+    String mainTitle,
     String blackTitleVar,
     String sousTitreVar,
-    String byArticleVar,
+    String writtenBy,
     String publishDateParam,
     String imageAssetpath,
     String legendePicturesVar,
@@ -51,12 +51,15 @@ Column megaGigaFunction(
                 Container(
                   alignment: Alignment.bottomLeft,
                   child: RichText(
-                    text: TextSpan(children: [
-                      redTitle("$redTitleVar"),
-                      blackTitle("$blackTitleVar")
-                    ]),
+                      text: TextSpan(
+                          children: writtenBy == "Johan Anquetil"
+                              ? [redTitle("$mainTitle"), blackTitle("$blackTitleVar")]
+                              : writtenBy == "Anastasia Korotkova"
+                              ? [greenTitle("$mainTitle"), blackTitle("$blackTitleVar")]
+                              : [orangeTitle("$mainTitle"), blackTitle("$blackTitleVar")]
+                      )
                   ),
-                ),
+                    )
               ],
             ),
           ),
@@ -83,7 +86,7 @@ Column megaGigaFunction(
         children: [
           Padding(
               padding: EdgeInsets.only(top: 8, left: 8),
-              child: byArticle("$byArticleVar")),
+              child: byArticle("$writtenBy")),
         ],
       ),
       Row(
