@@ -24,7 +24,7 @@ TextSpan greenTitle(String title) {
   return TextSpan(
     text: "$title",
     style:
-    TextStyle(fontWeight: FontWeight.bold, color: Colors.greenAccent, fontSize: 20),
+    TextStyle(fontWeight: FontWeight.bold, color: Colors.green[600], fontSize: 20),
   );
 }
 

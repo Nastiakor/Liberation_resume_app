@@ -163,7 +163,7 @@ class nastiaHomePresentation extends StatelessWidget {
                       child: RichText(
                         text: TextSpan(children: [
                           redTitle("NASTIA LA ROUGE "),
-                          blackTitle("FROM MARIS WITH LOVE")
+                          blackTitle("FROM RUSSIA WITH LOVE")
                         ]),
                       ),
                     ),
@@ -247,7 +247,7 @@ class firstHomeArticle extends StatelessWidget {
               "WANTED ",
               'DEUX ÉTUDIANTS POSSÉDANT DE FORTES COMPÉTENCES EN FLUTTER. RÉCOMPENSE: ALTERNANCE',
               "Plus à l'aise à domicile sur leurs terrains de prédilection (Dart, JavaScript, C#), ils sont complètement adaptables à d'autres contraintes techniques (Swift, Kotlin, Java, PHP...).",
-              "Anastasia et Johan",
+              "Anastasia Korotkova",
               "2023-02-10",
               "img/85808-cherche-ancien-affiche-vectoriel.jpg",
               "En recherche d'alternance pour la période de mi-juillet 2023 à mi-juin 2024 sur un rythme de 4 jours sur 5 en entreprise",
