@@ -8,16 +8,30 @@ import 'dart:ffi';
 String calculatePublishingDate(DateTime publishingDate) {
   DateTime now = DateTime.now();
   DateTime howLongFromNow =
-      DateTime(publishingDate.year, publishingDate.month, publishingDate.day);
-
+  DateTime(publishingDate.year, publishingDate.month, publishingDate.day,
+      publishingDate.minute);
+print(now);
   Duration duration = now.difference(howLongFromNow);
   int durationInDays = duration.inDays;
+  int durationinMinute = duration.inMinutes;
+  int durationinHours = duration.inHours;
   if (durationInDays == 1) {
     return "$durationInDays jour";
-  } else {
+  } else if (durationInDays > 1) {
     return "$durationInDays jours";
-  }
+  } else if (durationinHours < 1 && durationinMinute > 1) {
+    return "$durationinMinute minutes";
+  } else if (durationinMinute < 1) {
+    return "$durationinMinute minute";
+  } else if (durationinHours > 1 && durationinHours < 24) {
+    return "$durationinHours heures";}
+  else if (durationinHours == 1) {
+    return "$durationinHours heure";
+  } else return "erreur";
+
 }
+
+
 
 Column megaGigaFunction(
     String mainTitle,
@@ -144,6 +158,7 @@ class MainArticle extends StatelessWidget {
   String themeMainArticle;
   String writtenBy;
   String publishDateParam;
+  bool hiddenArticle = false;
 
   MainArticle({
     required this.imagePath,
@@ -154,8 +169,6 @@ class MainArticle extends StatelessWidget {
     required this.writtenBy,
     required this.publishDateParam,
   });
-
-
 
 // Define the function to calculate the days until the birthday
   String daysUntilArticle() {
@@ -171,11 +184,23 @@ class MainArticle extends StatelessWidget {
     return Column(mainAxisAlignment: MainAxisAlignment.center, children: [
       Row(
         children: [
-          Container(
+    InkWell(
+    onTap: () => Navigator.of(context)
+        .push(MaterialPageRoute(builder: (context) => MainArticleComplete(
+      completeArticle: "Ils ont le bénéfice de leur grand âge, en capacité à résister à la pression, apprécie le travail en équipe, empathiques et de grandes qualités relationnelles. Ils savent aussi se mettre au diapason de la dynamique collective et s'y fondre. Plus à l'aise à domicile sur leurs terrains de prédilection (Dart, JavaScript, C#), ils sont complètement adaptables à d'autres contraintes techniques (Swift, Kotlin, Java, PHP...).",
+      legend: "En recherche d'alternance pour la période de mi-juillet 2023 à mi-juin 2024 sur un rythme de 4 jours sur 5 en entreprise",
+      imagePath: imagePath,
+      title: title,
+      titlethen: titlethen,
+      paragraphMainArticle: paragraphMainArticle,
+      themeMainArticle: themeMainArticle,
+      publishDateParam: publishDateParam,
+      writtenBy: writtenBy,),)),
+          child: Container(
             width: size.width,
             child: Image.asset(imagePath,
                 width: size.width, fit: BoxFit.cover),
-          ),
+          ),),
         ],
       ),
       InkWell(
@@ -228,13 +253,14 @@ class MainArticle extends StatelessWidget {
           time("Il y a ${daysUntilArticle()}"),
           abonne(),
           bookmark(),
-        ],
+      ],
       ),
       Divider(
         thickness: 2,
       ),
-    ]);
+        ]);
   }
+
 }
 
 class MainArticleComplete extends MainArticle {
