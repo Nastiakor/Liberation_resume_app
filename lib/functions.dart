@@ -13,9 +13,9 @@ String calculatePublishingDate(DateTime publishingDate) {
   Duration duration = now.difference(howLongFromNow);
   int durationInDays = duration.inDays;
   if (durationInDays == 1) {
-    return "Publié il y a $durationInDays jour";
+    return "$durationInDays jour";
   } else {
-    return "Publié il y a $durationInDays jours";
+    return "$durationInDays jours";
   }
 }
 
@@ -104,7 +104,7 @@ Column megaGigaFunction(
             child: RichText(
               text: TextSpan(
                 children: [
-                  publishDate("${daysUntilArticle()}"),
+                  publishDate("Publié il y a ${daysUntilArticle()}"),
                 ],
               ),
             ),
@@ -142,9 +142,27 @@ class MainArticle extends StatelessWidget {
   String titlethen;
   String paragraphMainArticle;
   String themeMainArticle;
-  String publishDate;
   String writtenBy;
-  MainArticle({required this.imagePath, required this.title, required this.titlethen, required this.paragraphMainArticle, required this.themeMainArticle, required this.publishDate, required this.writtenBy});
+  String publishDateParam;
+
+  MainArticle({
+    required this.imagePath,
+    required this.title,
+    required this.titlethen,
+    required this.paragraphMainArticle,
+    required this.themeMainArticle,
+    required this.writtenBy,
+    required this.publishDateParam,
+  });
+
+
+
+// Define the function to calculate the days until the birthday
+  String daysUntilArticle() {
+    DateTime publishDateParamParsed = DateTime.parse(publishDateParam);
+    final DateTime articlePublishingDate = publishDateParamParsed;
+    return calculatePublishingDate(articlePublishingDate);
+  }
 
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -162,7 +180,16 @@ class MainArticle extends StatelessWidget {
       ),
       InkWell(
         onTap: () => Navigator.of(context)
-            .push(MaterialPageRoute(builder: (context) => firstHomeArticle())),
+            .push(MaterialPageRoute(builder: (context) => MainArticleComplete(
+          completeArticle: "Ils ont le bénéfice de leur grand âge, en capacité à résister à la pression, apprécie le travail en équipe, empathiques et de grandes qualités relationnelles. Ils savent aussi se mettre au diapason de la dynamique collective et s'y fondre. Plus à l'aise à domicile sur leurs terrains de prédilection (Dart, JavaScript, C#), ils sont complètement adaptables à d'autres contraintes techniques (Swift, Kotlin, Java, PHP...).",
+          legend: "En recherche d'alternance pour la période de mi-juillet 2023 à mi-juin 2024 sur un rythme de 4 jours sur 5 en entreprise",
+          imagePath: imagePath,
+        title: title,
+        titlethen: titlethen,
+        paragraphMainArticle: paragraphMainArticle,
+        themeMainArticle: themeMainArticle,
+        publishDateParam: publishDateParam,
+        writtenBy: writtenBy,),)),
         child: Padding(
           padding: EdgeInsets.only(top: 10, left: 5),
           child: Wrap(
@@ -198,7 +225,7 @@ class MainArticle extends StatelessWidget {
         children: [
           Padding(padding: EdgeInsets.only(top: 20)),
           theme(themeMainArticle),
-          time(publishDate),
+          time("Il y a ${daysUntilArticle()}"),
           abonne(),
           bookmark(),
         ],
@@ -207,6 +234,52 @@ class MainArticle extends StatelessWidget {
         thickness: 2,
       ),
     ]);
-
   }
+}
+
+class MainArticleComplete extends MainArticle {
+  String completeArticle;
+  String legend;
+  MainArticleComplete({
+    required String imagePath,
+    required String title,
+    required String titlethen,
+    required String paragraphMainArticle,
+    required String themeMainArticle,
+    required String writtenBy,
+    required String publishDateParam,
+    required this.completeArticle,
+    required this.legend,
+
+  }) : super(
+    imagePath: imagePath,
+    title: title,
+    titlethen: titlethen,
+    paragraphMainArticle: paragraphMainArticle,
+    themeMainArticle: themeMainArticle,
+    writtenBy: writtenBy,
+    publishDateParam: publishDateParam,
+  );
+  @override
+  Widget build(BuildContext context) {
+    var size = MediaQuery.of(context).size;
+    var widthMax = size.width;
+    var platform = Theme.of(context).platform;
+    return Scaffold(
+      appBar: MyAppBar(),
+      body: SingleChildScrollView(
+        child: megaGigaFunction(
+            super.title,
+            super.titlethen,
+            super.paragraphMainArticle,
+            super.writtenBy,
+            super.publishDateParam,
+            super.imagePath,
+            legend,
+            completeArticle,
+            "$widthMax"),),
+    );
+  }
+
+// other methods and widgets
 }
