@@ -8,7 +8,7 @@ import 'dart:ffi';
 String calculatePublishingDate(DateTime publishingDate) {
   DateTime now = DateTime.now();
   DateTime howLongFromNow =
-  DateTime(publishingDate.year, publishingDate.month, publishingDate.day,
+  DateTime(publishingDate.year, publishingDate.month, publishingDate.day, publishingDate.hour,
       publishingDate.minute);
 print(now);
   Duration duration = now.difference(howLongFromNow);
@@ -21,7 +21,7 @@ print(now);
     return "$durationInDays jours";
   } else if (durationinHours < 1 && durationinMinute > 1) {
     return "$durationinMinute minutes";
-  } else if (durationinMinute < 1) {
+  } else if (durationinMinute <= 1) {
     return "$durationinMinute minute";
   } else if (durationinHours > 1 && durationinHours < 24) {
     return "$durationinHours heures";}
