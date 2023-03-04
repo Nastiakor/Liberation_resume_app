@@ -158,7 +158,8 @@ class MainArticle extends StatelessWidget {
   String themeMainArticle;
   String writtenBy;
   String publishDateParam;
-  bool hiddenArticle = false;
+  String legendPicture;
+  String completeArticle;
 
   MainArticle({
     required this.imagePath,
@@ -168,6 +169,8 @@ class MainArticle extends StatelessWidget {
     required this.themeMainArticle,
     required this.writtenBy,
     required this.publishDateParam,
+    required this.legendPicture,
+    required this.completeArticle
   });
 
 // Define the function to calculate the days until the birthday
@@ -177,25 +180,26 @@ class MainArticle extends StatelessWidget {
     return calculatePublishingDate(articlePublishingDate);
   }
 
+
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     var width = size.width;
-
+    print(legendPicture);
     return Column(mainAxisAlignment: MainAxisAlignment.center, children: [
       Row(
         children: [
     InkWell(
     onTap: () => Navigator.of(context)
         .push(MaterialPageRoute(builder: (context) => MainArticleComplete(
-      completeArticle: "Ils ont le bénéfice de leur grand âge, en capacité à résister à la pression, apprécie le travail en équipe, empathiques et de grandes qualités relationnelles. Ils savent aussi se mettre au diapason de la dynamique collective et s'y fondre. Plus à l'aise à domicile sur leurs terrains de prédilection (Dart, JavaScript, C#), ils sont complètement adaptables à d'autres contraintes techniques (Swift, Kotlin, Java, PHP...).",
-      legend: "En recherche d'alternance pour la période de mi-juillet 2023 à mi-juin 2024 sur un rythme de 4 jours sur 5 en entreprise",
       imagePath: imagePath,
       title: title,
       titlethen: titlethen,
       paragraphMainArticle: paragraphMainArticle,
       themeMainArticle: themeMainArticle,
       publishDateParam: publishDateParam,
-      writtenBy: writtenBy,),)),
+      writtenBy: writtenBy,
+      legendPicture: legendPicture,
+      completeArticle: completeArticle,),)),
           child: Container(
             width: size.width,
             child: Image.asset(imagePath,
@@ -206,15 +210,16 @@ class MainArticle extends StatelessWidget {
       InkWell(
         onTap: () => Navigator.of(context)
             .push(MaterialPageRoute(builder: (context) => MainArticleComplete(
-          completeArticle: "Ils ont le bénéfice de leur grand âge, en capacité à résister à la pression, apprécie le travail en équipe, empathiques et de grandes qualités relationnelles. Ils savent aussi se mettre au diapason de la dynamique collective et s'y fondre. Plus à l'aise à domicile sur leurs terrains de prédilection (Dart, JavaScript, C#), ils sont complètement adaptables à d'autres contraintes techniques (Swift, Kotlin, Java, PHP...).",
-          legend: "En recherche d'alternance pour la période de mi-juillet 2023 à mi-juin 2024 sur un rythme de 4 jours sur 5 en entreprise",
-          imagePath: imagePath,
+            imagePath: imagePath,
         title: title,
         titlethen: titlethen,
         paragraphMainArticle: paragraphMainArticle,
         themeMainArticle: themeMainArticle,
         publishDateParam: publishDateParam,
-        writtenBy: writtenBy,),)),
+        writtenBy: writtenBy,
+        legendPicture: legendPicture,
+        completeArticle: completeArticle),
+        )),
         child: Padding(
           padding: EdgeInsets.only(top: 10, left: 5),
           child: Wrap(
@@ -264,8 +269,7 @@ class MainArticle extends StatelessWidget {
 }
 
 class MainArticleComplete extends MainArticle {
-  String completeArticle;
-  String legend;
+
   MainArticleComplete({
     required String imagePath,
     required String title,
@@ -274,8 +278,8 @@ class MainArticleComplete extends MainArticle {
     required String themeMainArticle,
     required String writtenBy,
     required String publishDateParam,
-    required this.completeArticle,
-    required this.legend,
+    required String legendPicture,
+    required String completeArticle,
 
   }) : super(
     imagePath: imagePath,
@@ -285,6 +289,8 @@ class MainArticleComplete extends MainArticle {
     themeMainArticle: themeMainArticle,
     writtenBy: writtenBy,
     publishDateParam: publishDateParam,
+    legendPicture : legendPicture,
+    completeArticle: completeArticle,
   );
   @override
   Widget build(BuildContext context) {
@@ -301,8 +307,8 @@ class MainArticleComplete extends MainArticle {
             super.writtenBy,
             super.publishDateParam,
             super.imagePath,
-            legend,
-            completeArticle,
+            super.legendPicture,
+            super.completeArticle,
             "$widthMax"),),
     );
   }

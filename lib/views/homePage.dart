@@ -26,6 +26,8 @@ class homePage extends StatelessWidget {
             themeMainArticle: "Chômage",
             writtenBy: "Anastasia et Johan",
             publishDateParam: "2023-03-04 10:48:00",
+            legendPicture: "En recherche d'alternance pour la période de mi-juillet 2023 à mi-juin 2024 sur un rythme de 4 jours sur 5 en entreprise",
+            completeArticle: "Ils ont le bénéfice de leur grand âge, en capacité à résister à la pression, apprécie le travail en équipe, empathiques et de grandes qualités relationnelles. Ils savent aussi se mettre au diapason de la dynamique collective et s'y fondre. Plus à l'aise à domicile sur leurs terrains de prédilection (Dart, JavaScript, C#), ils sont complètement adaptables à d'autres contraintes techniques (Swift, Kotlin, Java, PHP...).",
           ),
         ],
           ),
