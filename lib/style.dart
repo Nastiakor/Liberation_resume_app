@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:cv_flutter_libe/main.dart';
 import 'package:cv_flutter_libe/functions.dart';

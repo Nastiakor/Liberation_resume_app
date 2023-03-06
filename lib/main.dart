@@ -5,7 +5,6 @@ import 'package:cv_flutter_libe/style.dart';
 import 'package:cv_flutter_libe/functions.dart';
 import 'package:cv_flutter_libe/classes/bottomNavigationBar.dart';
 import 'package:cv_flutter_libe/views/homePage.dart';
-import 'dart:ffi';
 
 void main() => runApp(const MyApp());
 

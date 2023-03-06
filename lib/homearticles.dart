@@ -147,6 +147,7 @@ class nastiaHomePresentation extends StatelessWidget {
     String daysUntilArticle() {
       return calculatePublishingDate(articlePublishingDate);
     }
+
     return Scaffold(
       appBar: MyAppBar(),
       body: SingleChildScrollView(

@@ -3,14 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:cv_flutter_libe/homearticles.dart';
 import 'package:cv_flutter_libe/style.dart';
 import 'package:cv_flutter_libe/views/homePage.dart';
-import 'dart:ffi';
 
 String calculatePublishingDate(DateTime publishingDate) {
   DateTime now = DateTime.now();
-  DateTime howLongFromNow =
-  DateTime(publishingDate.year, publishingDate.month, publishingDate.day, publishingDate.hour,
-      publishingDate.minute);
-print(now);
+  DateTime howLongFromNow = DateTime(publishingDate.year, publishingDate.month,
+      publishingDate.day, publishingDate.hour, publishingDate.minute);
   Duration duration = now.difference(howLongFromNow);
   int durationInDays = duration.inDays;
   int durationinMinute = duration.inMinutes;
@@ -24,26 +21,24 @@ print(now);
   } else if (durationinMinute <= 1) {
     return "$durationinMinute minute";
   } else if (durationinHours > 1 && durationinHours < 24) {
-    return "$durationinHours heures";}
-  else if (durationinHours == 1) {
+    return "$durationinHours heures";
+  } else if (durationinHours == 1) {
     return "$durationinHours heure";
-  } else return "erreur";
-
+  } else
+    return "erreur";
 }
 
-
-
 Column megaGigaFunction(
-    String mainTitle,
-    String blackTitleVar,
-    String sousTitreVar,
-    String writtenBy,
-    String publishDateParam,
-    String imageAssetpath,
-    String legendePicturesVar,
-    String paragraphVar,
-    String sizeWidth,
-    ) {
+  String mainTitle,
+  String blackTitleVar,
+  String sousTitreVar,
+  String writtenBy,
+  String publishDateParam,
+  String imageAssetpath,
+  String legendePicturesVar,
+  String paragraphVar,
+  String sizeWidth,
+) {
   double sizeWidthParsed = double.parse(sizeWidth);
 
   DateTime publishDateParamParsed = DateTime.parse(publishDateParam);
@@ -161,17 +156,16 @@ class MainArticle extends StatelessWidget {
   String legendPicture;
   String completeArticle;
 
-  MainArticle({
-    required this.imagePath,
-    required this.title,
-    required this.titlethen,
-    required this.paragraphMainArticle,
-    required this.themeMainArticle,
-    required this.writtenBy,
-    required this.publishDateParam,
-    required this.legendPicture,
-    required this.completeArticle
-  });
+  MainArticle(
+      {required this.imagePath,
+      required this.title,
+      required this.titlethen,
+      required this.paragraphMainArticle,
+      required this.themeMainArticle,
+      required this.writtenBy,
+      required this.publishDateParam,
+      required this.legendPicture,
+      required this.completeArticle});
 
 // Define the function to calculate the days until the birthday
   String daysUntilArticle() {
@@ -180,7 +174,6 @@ class MainArticle extends StatelessWidget {
     return calculatePublishingDate(articlePublishingDate);
   }
 
-
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     var width = size.width;
@@ -188,62 +181,58 @@ class MainArticle extends StatelessWidget {
     return Column(mainAxisAlignment: MainAxisAlignment.center, children: [
       Row(
         children: [
-    InkWell(
-    onTap: () => Navigator.of(context)
-        .push(MaterialPageRoute(builder: (context) => MainArticleComplete(
-      imagePath: imagePath,
-      title: title,
-      titlethen: titlethen,
-      paragraphMainArticle: paragraphMainArticle,
-      themeMainArticle: themeMainArticle,
-      publishDateParam: publishDateParam,
-      writtenBy: writtenBy,
-      legendPicture: legendPicture,
-      completeArticle: completeArticle,),)),
-          child: Container(
-            width: size.width,
-            child: Image.asset(imagePath,
-                width: size.width, fit: BoxFit.cover),
-          ),),
+          InkWell(
+            onTap: () => Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => FullArticle(
+                imagePath: imagePath,
+                title: title,
+                titlethen: titlethen,
+                paragraphMainArticle: paragraphMainArticle,
+                themeMainArticle: themeMainArticle,
+                publishDateParam: publishDateParam,
+                writtenBy: writtenBy,
+                legendPicture: legendPicture,
+                completeArticle: completeArticle,
+              ),
+            )),
+            child: Container(
+              width: size.width,
+              child:
+                  Image.asset(imagePath, width: size.width, fit: BoxFit.cover),
+            ),
+          ),
         ],
       ),
       InkWell(
-        onTap: () => Navigator.of(context)
-            .push(MaterialPageRoute(builder: (context) => MainArticleComplete(
-            imagePath: imagePath,
-        title: title,
-        titlethen: titlethen,
-        paragraphMainArticle: paragraphMainArticle,
-        themeMainArticle: themeMainArticle,
-        publishDateParam: publishDateParam,
-        writtenBy: writtenBy,
-        legendPicture: legendPicture,
-        completeArticle: completeArticle),
+        onTap: () => Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) => FullArticle(
+              imagePath: imagePath,
+              title: title,
+              titlethen: titlethen,
+              paragraphMainArticle: paragraphMainArticle,
+              themeMainArticle: themeMainArticle,
+              publishDateParam: publishDateParam,
+              writtenBy: writtenBy,
+              legendPicture: legendPicture,
+              completeArticle: completeArticle),
         )),
         child: Padding(
           padding: EdgeInsets.only(top: 10, left: 5),
           child: Wrap(
             children: [
               RichText(
-                text: TextSpan(children: writtenBy == "Johan Anquetil"
-                    ? [
-                  redTitle(title),
-                  blackTitle(titlethen)
-                ]
-                    : writtenBy == "Anastasia Korotkova"
-                    ? [
-                  greenTitle(title),
-                  blackTitle(titlethen)
-                ]
-                    : [
-                  orangeTitle(title),
-                  blackTitle(titlethen)
-                ]),
+                text: TextSpan(
+                    children: writtenBy == "Johan Anquetil"
+                        ? [redTitle(title), blackTitle(titlethen)]
+                        : writtenBy == "Anastasia Korotkova"
+                            ? [greenTitle(title), blackTitle(titlethen)]
+                            : [orangeTitle(title), blackTitle(titlethen)]),
               ),
               Padding(
                 padding: EdgeInsets.only(
                   top: 7,
                   left: 4,
+                  bottom: 10,
                 ),
                 child: paragraph(paragraphMainArticle),
               ),
@@ -258,19 +247,17 @@ class MainArticle extends StatelessWidget {
           time("Il y a ${daysUntilArticle()}"),
           abonne(),
           bookmark(),
-      ],
+        ],
       ),
       Divider(
         thickness: 2,
       ),
-        ]);
+    ]);
   }
-
 }
 
-class MainArticleComplete extends MainArticle {
-
-  MainArticleComplete({
+class FullArticle extends MainArticle {
+  FullArticle({
     required String imagePath,
     required String title,
     required String titlethen,
@@ -280,18 +267,18 @@ class MainArticleComplete extends MainArticle {
     required String publishDateParam,
     required String legendPicture,
     required String completeArticle,
-
   }) : super(
-    imagePath: imagePath,
-    title: title,
-    titlethen: titlethen,
-    paragraphMainArticle: paragraphMainArticle,
-    themeMainArticle: themeMainArticle,
-    writtenBy: writtenBy,
-    publishDateParam: publishDateParam,
-    legendPicture : legendPicture,
-    completeArticle: completeArticle,
-  );
+          imagePath: imagePath,
+          title: title,
+          titlethen: titlethen,
+          paragraphMainArticle: paragraphMainArticle,
+          themeMainArticle: themeMainArticle,
+          writtenBy: writtenBy,
+          publishDateParam: publishDateParam,
+          legendPicture: legendPicture,
+          completeArticle: completeArticle,
+        );
+
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -309,9 +296,98 @@ class MainArticleComplete extends MainArticle {
             super.imagePath,
             super.legendPicture,
             super.completeArticle,
-            "$widthMax"),),
+            "$widthMax"),
+      ),
     );
   }
 
 // other methods and widgets
+}
+
+class SecondaryArticle extends StatelessWidget {
+  String daysUntilArticle() {
+    DateTime publishDateParamParsed = DateTime.parse(publishDateParam);
+    final DateTime articlePublishingDate = publishDateParamParsed;
+    return calculatePublishingDate(articlePublishingDate);
+  }
+
+  String imagePath;
+  String title;
+  String titlethen;
+  String paragraphMainArticle;
+  String themeMainArticle;
+  String writtenBy;
+  String publishDateParam;
+  String legendPicture;
+  String completeArticle;
+
+  SecondaryArticle({
+    required this.imagePath,
+    required this.title,
+    required this.titlethen,
+    required this.paragraphMainArticle,
+    required this.themeMainArticle,
+    required this.writtenBy,
+    required this.publishDateParam,
+    required this.legendPicture,
+    required this.completeArticle,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    var size = MediaQuery.of(context).size;
+    double maxSize = size.width;
+    return Column(children: [
+      Padding(
+        padding: EdgeInsets.only(top: 7, left: 4),
+        child: InkWell(
+          onTap: () => Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) => FullArticle(
+              imagePath: imagePath,
+              title: title,
+              titlethen: titlethen,
+              paragraphMainArticle: paragraphMainArticle,
+              themeMainArticle: themeMainArticle,
+              publishDateParam: publishDateParam,
+              writtenBy: writtenBy,
+              legendPicture: legendPicture,
+              completeArticle: completeArticle,
+            ),
+          )),
+          child: Row(children: [
+            Expanded(
+              flex: 2,
+              child: Wrap(
+                children: [
+                  RichText(
+                    text: TextSpan(
+                        children: writtenBy == "Johan Anquetil"
+                            ? [redTitle(title), blackTitle(titlethen)]
+                            : writtenBy == "Anastasia Korotkova"
+                                ? [greenTitle(title), blackTitle(titlethen)]
+                                : [orangeTitle(title), blackTitle(titlethen)]),
+                  ),
+                ],
+              ),
+            ),
+            Expanded(child: Image.asset(imagePath)),
+          ]),
+        ),
+      ),
+      Padding(
+        padding: EdgeInsets.only(top: 10, left: 5),
+        child: Row(
+          children: [
+            theme(themeMainArticle),
+            time('Il y a ${daysUntilArticle()}'),
+            abonne(),
+            bookmark()
+          ],
+        ),
+      ),
+      Divider(
+        thickness: 2,
+      ),
+    ]);
+  }
 }
