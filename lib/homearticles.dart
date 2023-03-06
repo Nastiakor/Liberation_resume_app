@@ -3,51 +3,6 @@ import 'package:cv_flutter_libe/style.dart';
 import 'package:cv_flutter_libe/main.dart';
 import 'package:cv_flutter_libe/functions.dart';
 
-void _onItemTapped(int index) {}
-
-class BottomBarObject extends StatefulWidget {
-  @override
-  _BottomBarArticle createState() => _BottomBarArticle();
-}
-
-class _BottomBarArticle extends State<BottomBarObject> {
-  int _currentIndex = 0;
-
-  @override
-  Widget build(BuildContext context) {
-    var size = MediaQuery.of(context).size;
-    var platform = Theme.of(context).platform;
-    final DateTime articlePublishingDate = DateTime(2023, 02, 27);
-
-    return BottomNavigationBar(
-        currentIndex: _currentIndex,
-        showSelectedLabels: false,
-        showUnselectedLabels: false,
-        type: BottomNavigationBarType.fixed,
-        unselectedItemColor: Colors.black,
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.close, size: 25),
-            label: '',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.bookmark_border, size: 25),
-            label: '',
-          ),
-        ],
-        onTap: (index) {
-          setState(() {
-            _currentIndex = index;
-
-            if (_currentIndex == 0) {
-              Navigator.of(context).pop();
-            }
-          });
-        },
-    );
-  }
-}
-
 class nastiaHomePresentation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
