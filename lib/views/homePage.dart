@@ -17,7 +17,7 @@ class homePage extends StatelessWidget {
       child: Column(
         children: [
           MainArticle(
-            imagePath: "img/85808-cherche-ancien-affiche-vectoriel.jpg",
+            imagePath: "img/PhotoshopWanted.jpg",
             title: "WANTED ",
             titlethen:
                 "DEUX ÉTUDIANTS POSSÉDANT DE FORTES COMPÉTENCES EN FLUTTER. RÉCOMPENSE: ALTERNANCE",

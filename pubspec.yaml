@@ -64,6 +64,7 @@ flutter:
     - img/NASTIA.JPG
     - img/JOHAN.JPG
     - img/libelogo.svg
+    - img/PhotoshopWanted.jpg
   fonts:
     - family: MyFlutterApp
       fonts:
