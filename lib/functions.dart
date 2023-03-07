@@ -1,9 +1,9 @@
 import 'package:cv_flutter_libe/icons.dart';
 import 'package:flutter/material.dart';
-import 'package:cv_flutter_libe/homearticles.dart';
 import 'package:cv_flutter_libe/style.dart';
 import 'package:cv_flutter_libe/views/homePage.dart';
 import 'package:cv_flutter_libe/Controllers/BottomBarArticle.dart';
+import 'package:cv_flutter_libe/Controllers/AppBar.dart';
 
 String calculatePublishingDate(DateTime publishingDate) {
   DateTime now = DateTime.now();
@@ -217,7 +217,7 @@ int _currentIndex = 0;
                     alignment: Alignment.bottomLeft,
                     child: RichText(
                       text: TextSpan(children: [
-                        sousTitre(super.paragraphMainArticle),
+                        sousTitre(super.paragraphMainArticle, 14.0),
                       ]),
                     ),
                   ),
@@ -271,7 +271,7 @@ int _currentIndex = 0;
           ],
         ),
       ),
-    bottomNavigationBar: BottomBarArticle();
+        bottomNavigationBar: BottomBarObject()
     );
   }
 // other methods and widgets
