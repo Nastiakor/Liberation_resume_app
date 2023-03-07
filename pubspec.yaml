@@ -65,6 +65,7 @@ flutter:
     - img/JOHAN.JPG
     - img/libelogo.svg
     - img/PhotoshopWanted.jpg
+    - img/Formations/AdaTechschool.webp
   fonts:
     - family: MyFlutterApp
       fonts:
