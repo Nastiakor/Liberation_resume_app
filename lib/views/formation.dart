@@ -43,17 +43,38 @@ class Formations extends StatelessWidget {
           imagePath: "img/Formations/UnivEvry.png",
           title: "2009 - 2011 : ",
           titlethen: "MASTER AMENAGEMENT ET DEVELOPPEMENT TERRITORIAL",
-          paragraphMainArticle: "Après avoir l'obtention de ma Licence .",
+          paragraphMainArticle:
+              "Après l'obtention de ma Licence et une année de réflexion, j'ai décidé de me tourner vers ce Master qui forme des cadres territoriaux et associatifs dans le développement social local.",
           themeMainArticle: "Social",
           writtenBy: "Johan Anquetil",
           publishDateParam: "2023-03-08 10:29:00",
           legendPicture: "",
-          completeArticle: "",
+          completeArticle:
+              "Lors de ces deux années, j'ai pu acquérir compétences transversales, managériales, organisationnelles, de pilotage de projets, de fonctionnement des Collectivités Territoriales, aux politiques publiques d'Aménagement Territorial.\n\nLors de mes deux stages effectués au sein des villes de Courcouronnes et des Ulis, j'avais pour mission d'évaluer des coûts d'équipements sportifs, de réaliser un film promotionnel du service.\n\nMon mémoire questionnait les valeurs d'éducation et le vecteur d'inclusion du sport.",
         ),
         SecondaryArticle(
           imagePath: "img/Formations/STAPSLYON1.png",
           title: "2007 - 2008 :",
           titlethen: " LICENCE STAPS MANAGEMENT DES ORGANISATIONS SPORTIVES",
+          paragraphMainArticle:
+              "Suite à mon DUT, ma priorité était de m'inscrire dans une carrière liée au monde professionnel du sport",
+          themeMainArticle: "Management",
+          writtenBy: "Johan Anquetil",
+          publishDateParam: "2023-03-08 10:29:00",
+          legendPicture:
+              "Département Sciences et Techniques des Activités Physiques et Sportives de l'Université Lyon 1",
+          completeArticle:
+              "La Licence 3 Management des Organisations Sportives prépare aux métiers de développement et du Marketing dans le champ du sport. Ma volonté était à l'époque de travailler au sein d'un club professionnel. \n\n J'ai effectué mon stage au sein du Villeurbanne Handball Association (qui était en D2 à l'époque et redescendait de 1ère division avec l'ambition de remonter) avec pour feuille de route de développer les partenariats et proposer un nouveau site Internet (que j'ai conçu). \n\n J'ai également été acteur d'une opération de Marketing avec l'ASVEL (Association Sportive Villeurbanne Eveil Lyonnais) de vente de places d'un match de coupe d'Europe.",
+        ),
+        SecondaryArticle(
+          imagePath: "img/Formations/IUTIndre.webp",
+          title: "2005 - 2007 :",
+          titlethen: " DUT TECHNIQUES DE COMMERCIALISATION",
+          paragraphMainArticle:
+              "Après avoir obtenu mon Baccalauréat Economique et Social à Bourges, j'ai longuement hésité.",
+          themeMainArticle: "Commerce",
+          writtenBy: "Johan Anquetil",
+          publishDateParam: "2023-03-08 10:29:00",
           paragraphMainArticle: "",
           themeMainArticle: "Management",
           writtenBy: "Johan Anquetil",
@@ -62,7 +83,7 @@ class Formations extends StatelessWidget {
           completeArticle: "",
         ),
         SecondaryArticle(
-          imagePath: "img/Formations/ESIT.png",
+          imagePath: "img/Formations/logoESIT.png",
           title: "2020 - 2021 :",
           titlethen: " MASTER 1 TRADUCTION ÉDITORIALE, ÉCONOMIQUE ET TECHNIQUE",
           paragraphMainArticle:
@@ -86,7 +107,7 @@ class Formations extends StatelessWidget {
               "- Master 2 Sciences du langage (niveau)\n- Master 1 Sciences du langage (mention Bien)\n- Licence 3 Sciences du langage, spécialité Français\n  Langue Étrangère (mention Bien)",
         ),
         SecondaryArticle(
-          imagePath: "img/Formations/PedInstitut.jpg",
+          imagePath: "img/Formations/pedInstitut.jpg",
           title: "2000 - 2005 :",
           titlethen: " MASTER PROFESSEURE D'ANGLAIS ET DE FRANÇAIS",
           paragraphMainArticle: "INSTITUT PÉDAGOGIQUE DE IOCHKAR-OLA (RUSSIE)",
