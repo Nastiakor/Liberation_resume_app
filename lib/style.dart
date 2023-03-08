@@ -1,8 +1,8 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:cv_flutter_libe/main.dart';
 import 'package:cv_flutter_libe/functions.dart';
+
+double _fontSize = 16.0;
 
 TextSpan redTitle(String title) {
   return TextSpan(
@@ -24,7 +24,7 @@ TextSpan greenTitle(String title) {
   return TextSpan(
     text: "$title",
     style:
-    TextStyle(fontWeight: FontWeight.bold, color: Colors.greenAccent, fontSize: 20),
+    TextStyle(fontWeight: FontWeight.bold, color: Colors.green[600], fontSize: 20),
   );
 }
 
@@ -35,9 +35,9 @@ TextSpan blackTitle(String title) {
           fontWeight: FontWeight.bold, color: Colors.black, fontSize: 20));
 }
 
-TextSpan sousTitre(String title) {
+TextSpan sousTitre(String title, double fontSize) {
   return TextSpan(
-      text: "$title", style: TextStyle(color: Colors.black, fontSize: 16));
+      text: "$title", style: TextStyle(color: Colors.black, fontSize: fontSize));
 }
 
 Text paragraph(String paragraph) {

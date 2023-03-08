@@ -64,6 +64,15 @@ flutter:
     - img/NASTIA.JPG
     - img/JOHAN.JPG
     - img/libelogo.svg
+    - img/PhotoshopWanted.jpg
+    - img/Formations/AdaTechschool.webp
+    - img/Formations/IUTIndre.webp
+    - img/Formations/STAPSLYON1.png
+    - img/Formations/techforgoodtour.png
+    - img/Formations/UnivEvry.png
+    - img/Formations/ESIT.png
+    - img/Formations/Logo_Paris_Descartes.png
+    - img/Formations/PedInstitut.jpg
   fonts:
     - family: MyFlutterApp
       fonts:
