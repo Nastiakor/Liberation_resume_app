@@ -70,6 +70,9 @@ flutter:
     - img/Formations/STAPSLYON1.png
     - img/Formations/techforgoodtour.png
     - img/Formations/UnivEvry.png
+    - img/Formations/logoESIT.png
+    - img/Formations/pedInstitut.jpg
+    - img/Formations/Logo_Paris_Descartes.png
   fonts:
     - family: MyFlutterApp
       fonts:
