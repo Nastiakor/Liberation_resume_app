@@ -1,133 +1,136 @@
 import 'package:flutter/material.dart';
+import 'package:cv_flutter_libe/classes/bottomNavigationBar.dart';
+import 'package:cv_flutter_libe/views/homePage.dart';
+import 'package:cv_flutter_libe/views/projects.dart';
+import 'package:cv_flutter_libe/views/divers.dart';
+import 'package:cv_flutter_libe/views/experiences.dart';
+import 'package:cv_flutter_libe/views/contact.dart';
+import 'package:cv_flutter_libe/views/formation.dart';
 
-void main() {
-  runApp(MyApp());
-}
+void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
+  const MyApp({super.key});
+
+  static const String _title = 'Flutter Code Sample';
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.blue,
-      ),
-      home: BasicsPage(),
+    return const MaterialApp(
+      title: _title,
+      home: MyStatefulWidget(),
     );
   }
 }
 
-class BasicsPage extends StatelessWidget {
+class MyStatefulWidget extends StatefulWidget {
+  const MyStatefulWidget({super.key});
+
+  @override
+  State<MyStatefulWidget> createState() => MyStatefulWidgetState();
+}
+
+class MyStatefulWidgetState extends State<MyStatefulWidget> {
+  int _selectedIndex = 0;
+  static const TextStyle optionStyle =
+      TextStyle(fontSize: 50, fontWeight: FontWeight.bold);
+  static const List<Widget> _widgetOptions = <Widget>[
+    Text(
+      'Index 0: Accueil',
+      style: optionStyle,
+    ),
+    Text(
+      'Index 1: Business',
+      style: optionStyle,
+    ),
+    Text(
+      'Index 2: School',
+      style: optionStyle,
+    ),
+    Text(
+      'Index 3: Settings',
+      style: optionStyle,
+    ),
+  ];
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     var platform = Theme.of(context).platform;
-    print("size: $size");
+    var contextest = context;
+    print("context: $contextest");
     print("platform: $platform");
     double width = MediaQuery.of(context).size.width;
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: SizedBox(
-          child: Image.asset('img/1200px-Libération.svg.png',
-              height: 100, width: 100),
-        ),
-      ),
-      body: SingleChildScrollView(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Row(
-              children: [
-                Container(
-                  width: size.width,
-                  child: Image.asset(
-                      'img/85808-cherche-ancien-affiche-vectoriel.jpg',
-                      width: size.width,
-                      fit: BoxFit.cover),
+    return DefaultTabController(
+      length: 6,
+      child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+          // Here we take the value from the MyHomePage object that was created by
+          // the App.build method, and use it to set our appbar title.
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Container(
+                //  margin: const EdgeInsets.only(right: 75),
+                child: Image.asset(
+                  'img/1200px-Libération.svg.png',
+                  width: 100,
                 ),
-              ],
-            ),
-            Row(
-              children:[
-                Container(
-                width: size.width,
-                  child: Row(
-                  children:[
-                  redTitle("WANTED"),
-                    blackTitle("Deux développeurs repentis en cavale en recherche d'une alternance")
-            ],
-            ),
               ),
-                ],
-            ),
+            ],
+          ),
+          bottom: TabBar(
+            indicatorSize: TabBarIndicatorSize.label,
+            indicatorColor: Colors.black,
+            isScrollable: true,
+            tabs: [
+              Tab(
+                child: Text("A la une", style: TextStyle(color: Colors.black)),
+              ),
+              Tab(
+                child:
+                    Text("Nos projets", style: TextStyle(color: Colors.black)),
+              ),
+              Tab(
+                child:
+                    Text("Formations", style: TextStyle(color: Colors.black)),
+              ),
+              Tab(
+                child: Text("Expérience pro",
+                    style: TextStyle(color: Colors.black)),
+              ),
+              Tab(
+                child: Text("Divers", style: TextStyle(color: Colors.black)),
+              ),
+              Tab(
+                child: Text("Nous contacter",
+                    style: TextStyle(color: Colors.black)),
+              ),
+            ],
+          ),
+        ),
+        body: TabBarView(
+          children: [
+            homePage(),
+            Projects(),
+            Formations(),
+            Experiences(),
+            Divers(),
+            Contact(),
           ],
+        ),
+        bottomNavigationBar: MyBottomNavigationBar(
+          selectedIndex: _selectedIndex,
+          onItemTapped: _onItemTapped,
         ),
       ),
     );
   }
 }
-
-Text redTitle(String title) {
-  return Text(
-    "$title",
-    style:
-        TextStyle(color: Colors.red, fontWeight: FontWeight.bold, fontSize: 20),
-  );
-}
-
-Text blackTitle(String title) {
-  return Text(
-    "$title",
-    style: TextStyle(
-        color: Colors.black, fontWeight: FontWeight.bold, fontSize: 20),
-  );
-}
-
-Text paragraph(String paragraph) {
-  return Text(
-    "$paragraph",
-    style: TextStyle(color: Colors.black45, fontSize: 10),
-  );
-}
-
-DateTime momentInTime = DateTime(2022, 1, 1, 0, 0, 0); // set your moment in time
-DateTime currentTime = DateTime.now();
-
-Duration timeElapsed = currentTime.difference(momentInTime);
-
-
