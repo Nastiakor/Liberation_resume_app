@@ -66,6 +66,10 @@ flutter:
     - img/libelogo.svg
     - img/PhotoshopWanted.jpg
     - img/Formations/AdaTechschool.webp
+    - img/Formations/IUTIndre.webp
+    - img/Formations/STAPSLYON1.png
+    - img/Formations/techforgoodtour.png
+    - img/Formations/UnivEvry.png
   fonts:
     - family: MyFlutterApp
       fonts:
