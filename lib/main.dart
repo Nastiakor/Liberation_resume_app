@@ -1,10 +1,11 @@
-import 'package:cv_flutter_libe/icons.dart';
 import 'package:flutter/material.dart';
-import 'package:cv_flutter_libe/homearticles.dart';
-import 'package:cv_flutter_libe/style.dart';
-import 'package:cv_flutter_libe/functions.dart';
 import 'package:cv_flutter_libe/classes/bottomNavigationBar.dart';
 import 'package:cv_flutter_libe/views/homePage.dart';
+import 'package:cv_flutter_libe/views/projects.dart';
+import 'package:cv_flutter_libe/views/divers.dart';
+import 'package:cv_flutter_libe/views/experiences.dart';
+import 'package:cv_flutter_libe/views/contact.dart';
+import 'package:cv_flutter_libe/views/formation.dart';
 
 void main() => runApp(const MyApp());
 
@@ -116,7 +117,14 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> {
           ),
         ),
         body: TabBarView(
-          children: [homePage()],
+          children: [
+            homePage(),
+            Projects(),
+            Formations(),
+            Experiences(),
+            Divers(),
+            Contact(),
+          ],
         ),
         bottomNavigationBar: MyBottomNavigationBar(
           selectedIndex: _selectedIndex,
@@ -126,3 +134,5 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> {
     );
   }
 }
+
+
