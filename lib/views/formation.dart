@@ -79,14 +79,14 @@ class Formations extends StatelessWidget {
               titlethen:
               " DUT TECHNIQUES DE COMMERCIALISATION",
               paragraphMainArticle:
-              "Après avoir obtenu mon Baccalauréat Economique et Social à Bourges, j'ai longuement hésité.",
+              "Après avoir obtenu mon Baccalauréat Economique et Social à Bourges, j'ai passsé deux ans à Issoudun et son IUT de l'Indre.",
               themeMainArticle: "Commerce",
               writtenBy: "Johan Anquetil",
               publishDateParam: "2023-03-08 10:29:00",
               legendPicture:
-              "",
+              "Issoudun, ville situé entre Bourges et Chateauroux",
               completeArticle:
-              "",
+              "Le Diplôme Universitaire de Technologie (DUT) Techniques de Commercialisation. La formation permet aux étudiantes et étudiants d’acquérir de solides connaissances générales dans le domaine du marketing, de la négociation, des études commerciales, etc. mais également en achat, stratégie, psychosociologie des organisations, logistique, etc.",
             ),
           ]
         ),
