@@ -73,6 +73,9 @@ flutter:
     - img/Formations/logoESIT.png
     - img/Formations/pedInstitut.jpg
     - img/Formations/Logo_Paris_Descartes.png
+    - img/Experiences/Full-lobby-Hotel-Fabric.webp
+    - img/Experiences/ERGONCAPITALPARTNERS.png
+    - img/Experiences/CiteDeLaMusique.jpg
   fonts:
     - family: MyFlutterApp
       fonts:
