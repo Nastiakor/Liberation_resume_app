@@ -68,7 +68,7 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> {
     print("platform: $platform");
     double width = MediaQuery.of(context).size.width;
     return DefaultTabController(
-      length: 6,
+      length: 5,
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.white,
@@ -103,14 +103,11 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> {
                     Text("Formations", style: TextStyle(color: Colors.black)),
               ),
               Tab(
-                child: Text("Expérience pro",
+                child: Text("Expériences pros",
                     style: TextStyle(color: Colors.black)),
               ),
               Tab(
-                child: Text("Divers", style: TextStyle(color: Colors.black)),
-              ),
-              Tab(
-                child: Text("Nous contacter",
+                child: Text("Contact",
                     style: TextStyle(color: Colors.black)),
               ),
             ],
@@ -122,7 +119,6 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> {
             Projects(),
             Formations(),
             Experiences(),
-            Divers(),
             Contact(),
           ],
         ),

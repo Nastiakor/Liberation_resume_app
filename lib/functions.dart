@@ -175,7 +175,6 @@ String daysUntilArticle() {
 Widget build(BuildContext context) {
   var size = MediaQuery.of(context).size;
   var width = size.width;
-  print(legendPicture);
   return Column(mainAxisAlignment: MainAxisAlignment.center, children: [
     Row(
       children: [

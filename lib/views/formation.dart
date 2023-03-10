@@ -44,6 +44,18 @@ class Formations extends StatelessWidget {
               "Le Tech for Good tour, coordonné par deux professionnels et animé par des bénévoles dont je fais partie, pars à l'assaut de l'hexagone pour éveiller les consciences aux enjeux de la Tech. Créé en 2019 par makesense et Latitudes, le Tech for Good Tour est un tour de France visant à accélérer les réflexions et le passage à l’action pour construire une tech plus engagée et responsable. \n\nLa conviction est que, utilisée à bon escient, la technologie peut faire partie de la réponse aux problèmes sociaux et environnementaux de notre époque, \n\nPour ce faire, Tech for good et Latitudes nous ont formés sur deux volets : \n\n - Pédagogique : Comment animer cet atelier dans une logique de facilitation ? Pour faire discuter et pousser aux réflexions individuelles, collectives à propos des conséquences et à devenir force de proposition sur des alternatives, voire s'engager, nous animons un atelier articulé autour d'un jeu de cartes à piocher puis à positionner sur une matrice en petits groupes.\n\n - Technique : Quels sont les constats, analyses, opportunités et menaces ?\nJ'ai pu découvrir les enjeux de la Tech afin de rendre les outils numérique plus accessibilité, diverse, sobre, respectueux de l'humain. \n\nLa formation s'étale sur un mois, avec un rythme de 5 heures d'apprentissage théoriques hebdomadaires et 3 visio-conférences d'échange et de test de l'atelier.\n\nGrâce à cet engagement bénévole, j'ai pu développer :\n - Communication \n - Animation de groupe\n - Transmission d'idées\n - impulser des réflexions et des dynamiques de groupe \n - Travail en équipe \n - Accompagner les prises de conscience \n - Organisation",
             ),
             SecondaryArticle(
+              imagePath: "img/Formations/logoESIT.png",
+              title: "2020 - 2021 :",
+              titlethen: " MASTER 1 TRADUCTION ÉDITORIALE, ÉCONOMIQUE ET TECHNIQUE",
+              paragraphMainArticle:
+              "ESIT (ÉCOLE SUPÉRIEURE D’INTERPRÈTES ET DE TRADUCTEURS)",
+              themeMainArticle: "Traduction",
+              writtenBy: "Anastasia Korotkova",
+              publishDateParam: "2023-03-08 11:55:00",
+              legendPicture: "",
+              completeArticle: "",
+            ),
+            SecondaryArticle(
               imagePath: "img/Formations/UnivEvry.png",
               title: "2009 - 2011 : ",
               titlethen:
@@ -74,6 +86,18 @@ class Formations extends StatelessWidget {
               "La Licence 3 Management des Organisations Sportives prépare aux métiers de développement et du Marketing dans le champ du sport. Ma volonté était à l'époque de travailler au sein d'un club professionnel. \n\n J'ai effectué mon stage au sein du Villeurbanne Handball Association (qui était en D2 à l'époque et redescendait de 1ère division avec l'ambition de remonter) avec pour feuille de route de développer les partenariats et proposer un nouveau site Internet (que j'ai conçu). \n\n J'ai également été acteur d'une opération de Marketing avec l'ASVEL (Association Sportive Villeurbanne Eveil Lyonnais) de vente de places d'un match de coupe d'Europe.",
             ),
             SecondaryArticle(
+              imagePath: "img/Formations/Logo_Paris_Descartes.png",
+              title: "2006 - 2009 :",
+              titlethen: " LICENCE 3 - MASTER 1 SCIENCES DU LANGAGE",
+              paragraphMainArticle: "UNIVERSITÉ PARIS V DESCARTES",
+              themeMainArticle: "Sciences du langage",
+              writtenBy: "Anastasia Korotkova",
+              publishDateParam: "2023-03-08 11:55:00",
+              legendPicture: "",
+              completeArticle:
+              "- Master 2 Sciences du langage (niveau)\n- Master 1 Sciences du langage (mention Bien)\n- Licence 3 Sciences du langage, spécialité Français\n  Langue Étrangère (mention Bien)",
+            ),
+            SecondaryArticle(
               imagePath: "img/Formations/IUTIndre.webp",
               title: "2005 - 2007 :",
               titlethen:
@@ -87,6 +111,17 @@ class Formations extends StatelessWidget {
               "Issoudun, ville situé entre Bourges et Chateauroux",
               completeArticle:
               "Le Diplôme Universitaire de Technologie (DUT) Techniques de Commercialisation. La formation permet aux étudiantes et étudiants d’acquérir de solides connaissances générales dans le domaine du marketing, de la négociation, des études commerciales, etc. mais également en achat, stratégie, psychosociologie des organisations, logistique, etc.",
+            ),
+            SecondaryArticle(
+              imagePath: "img/Formations/pedInstitut.jpg",
+              title: "2000 - 2005 :",
+              titlethen: " MASTER PROFESSEURE D'ANGLAIS ET DE FRANÇAIS",
+              paragraphMainArticle: "INSTITUT PÉDAGOGIQUE DE IOCHKAR-OLA (RUSSIE)",
+              themeMainArticle: "Langues étrangères",
+              writtenBy: "Anastasia Korotkova",
+              publishDateParam: "2023-03-08 12:32:00",
+              legendPicture: "",
+              completeArticle: "Master 2 Langues Étrangères (mention Très Bien)",
             ),
           ]
         ),
