@@ -23,12 +23,12 @@ class _BottomBarObjectState extends State<BottomBarObject> {
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: Text('Select font size'),
+          title: Text('Sélectionner la taille de la police'),
           content: SingleChildScrollView(
             child: ListBody(
               children: [
                 RadioListTile(
-                  title: Text('Small'),
+                  title: Text('Petit'),
                   value: 12.0,
                   groupValue: _selectedFontSize,
                   onChanged: (value) {
@@ -38,7 +38,7 @@ class _BottomBarObjectState extends State<BottomBarObject> {
                   },
                 ),
                 RadioListTile(
-                  title: Text('Medium'),
+                  title: Text('Moyen'),
                   value: 16.0,
                   groupValue: _selectedFontSize,
                   onChanged: (value) {
@@ -48,7 +48,7 @@ class _BottomBarObjectState extends State<BottomBarObject> {
                   },
                 ),
                 RadioListTile(
-                  title: Text('Large'),
+                  title: Text('Grand'),
                   value: 20.0,
                   groupValue: _selectedFontSize,
                   onChanged: (value) {

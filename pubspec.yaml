@@ -70,6 +70,14 @@ flutter:
     - img/Formations/STAPSLYON1.png
     - img/Formations/techforgoodtour.png
     - img/Formations/UnivEvry.png
+    - img/logos/APF.webp
+    - img/IEMNLG.webp
+    - img/APF93.webp
+    - img/Projets/Chrome.webp
+    - img/Projets/Norton_Kong.webp
+    - img/Projets/resoc.webp
+    - img/Projets/Unity.png
+    - img/Projets/Studio_Ghibli.webp
   fonts:
     - family: MyFlutterApp
       fonts:
