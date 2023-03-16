@@ -14,7 +14,7 @@ class Contact extends StatelessWidget {
       child: Column(
           children: [
             MainArticle(
-              imagePath: "img/logos/contact.png",
+              imagePath: "img/image_0.webp",
               title: "NOUS ",
               titlethen:
               "CONTACTER",
@@ -22,7 +22,7 @@ class Contact extends StatelessWidget {
               "Vous êtes intéressé.e par nos profils pour renforcer vos équipes dans le cadre d'une alternance en un an ?",
               themeMainArticle: "",
               writtenBy: "Johan et Anastasia",
-              publishDateParam: "2023-03-06 10:13:00",
+              publishDateParam: "2023-03-10 19:36:00",
               legendPicture:
               "",
               completeArticle:
