@@ -119,7 +119,6 @@ class Formations extends StatelessWidget {
             ),
           ]
         ),
-      ]),
     );
   }
 }
