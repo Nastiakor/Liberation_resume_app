@@ -11,21 +11,17 @@ class MyBottomNavigationBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return BottomNavigationBar(
       showSelectedLabels: true,
-      showUnselectedLabels: true,
+      showUnselectedLabels: false,
       type: BottomNavigationBarType.fixed,
       unselectedItemColor: Colors.black,
       items: const <BottomNavigationBarItem>[
         BottomNavigationBarItem(
-          icon: Icon(MyFlutterApp.libelogo, size: 22),
+          icon: Icon(MyFlutterApp.libelogo, size: 19),
           label: '          A la une',
         ),
         BottomNavigationBarItem(
           icon: Icon(MyFlutterApp.passage_du_temps, size: 25),
           label: 'Fil info',
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.school, size: 30),
-          label: 'School',
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.settings),
