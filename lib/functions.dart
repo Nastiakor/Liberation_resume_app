@@ -254,8 +254,7 @@ Widget build(BuildContext context) {
 }
 
 class FullArticle extends MainArticle {
-
-int _currentIndex = 0;
+  int _currentIndex = 0;
 
   FullArticle({
     required String imagePath,
@@ -285,105 +284,104 @@ int _currentIndex = 0;
     var widthMax = size.width;
     var platform = Theme.of(context).platform;
     return Scaffold(
-      appBar: MyAppBar(),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Column(
-              children: [
-                Padding(
-                  padding: EdgeInsets.only(top: 50, left: 8, right: 8),
-                  child: Wrap(
-                    children: [
-                      Container(
-                        alignment: Alignment.bottomLeft,
-                        child: RichText(
-                            text: TextSpan(
-                                children: writtenBy == "Johan Anquetil"
-                                    ? [
-                                        redTitle(super.title),
-                                        blackTitle(super.titlethen)
-                                      ]
-                                    : writtenBy == "Anastasia Korotkova"
-                                        ? [
-                                            greenTitle(super.title),
-                                            blackTitle(super.titlethen)
-                                          ]
-                                        : [
-                                            orangeTitle(super.title),
-                                            blackTitle(super.titlethen)
-                                          ])),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-            // Padding 2
-            Padding(
-              padding: EdgeInsets.only(top: 2, left: 8, right: 8),
-              child: Wrap(
+        appBar: MyAppBar(),
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              Column(
                 children: [
-                  Container(
-                    alignment: Alignment.bottomLeft,
-                    child: RichText(
-                      text: TextSpan(children: [
-                        sousTitre(super.paragraphMainArticle, 14.0),
-                      ]),
+                  Padding(
+                    padding: EdgeInsets.only(top: 50, left: 8, right: 8),
+                    child: Wrap(
+                      children: [
+                        Container(
+                          alignment: Alignment.bottomLeft,
+                          child: RichText(
+                              text: TextSpan(
+                                  children: writtenBy == "Johan Anquetil"
+                                      ? [
+                                          redTitle(super.title),
+                                          blackTitle(super.titlethen)
+                                        ]
+                                      : writtenBy == "Anastasia Korotkova"
+                                          ? [
+                                              greenTitle(super.title),
+                                              blackTitle(super.titlethen)
+                                            ]
+                                          : [
+                                              orangeTitle(super.title),
+                                              blackTitle(super.titlethen)
+                                            ])),
+                        ),
+                      ],
                     ),
                   ),
                 ],
               ),
-            ),
-            //images
-            Row(
-              children: [
-                Padding(
-                    padding: EdgeInsets.only(top: 8, left: 8),
-                    child: byArticle(super.writtenBy)),
-              ],
-            ),
-            Row(
-              children: [
-                Padding(
-                  padding:
-                      EdgeInsets.only(top: 8, left: 8, right: 30, bottom: 8),
-                  child: RichText(
-                    text: TextSpan(
-                      children: [
-                        publishDate("Publié il y a ${daysUntilArticle()}"),
-                      ],
+              // Padding 2
+              Padding(
+                padding: EdgeInsets.only(top: 2, left: 8, right: 8),
+                child: Wrap(
+                  children: [
+                    Container(
+                      alignment: Alignment.bottomLeft,
+                      child: RichText(
+                        text: TextSpan(children: [
+                          sousTitre(super.paragraphMainArticle, 14.0),
+                        ]),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              //images
+              Row(
+                children: [
+                  Padding(
+                      padding: EdgeInsets.only(top: 8, left: 8),
+                      child: byArticle(super.writtenBy)),
+                ],
+              ),
+              Row(
+                children: [
+                  Padding(
+                    padding:
+                        EdgeInsets.only(top: 8, left: 8, right: 30, bottom: 8),
+                    child: RichText(
+                      text: TextSpan(
+                        children: [
+                          publishDate("Publié il y a ${daysUntilArticle()}"),
+                        ],
+                      ),
                     ),
                   ),
-                ),
-              ],
-            ),
-            Row(
-              children: [
-                Image.asset(
-                  super.imagePath,
-                  fit: BoxFit.cover,
-                  width: size.width,
-                ),
-              ],
-            ),
-            Padding(
-              padding: EdgeInsets.only(top: 12, left: 20, right: 30),
-              child: legendePictures(super.legendPicture),
-            ),
-
-            Padding(
-              padding: EdgeInsets.only(top: 12, left: 20, right: 30),
-              child: Container(
-                alignment: Alignment.bottomLeft,
-                child: paragraph(super.completeArticle),
+                ],
               ),
-            ),
-          ],
+              Row(
+                children: [
+                  Image.asset(
+                    super.imagePath,
+                    fit: BoxFit.cover,
+                    width: size.width,
+                  ),
+                ],
+              ),
+              Padding(
+                padding: EdgeInsets.only(top: 12, left: 20, right: 30),
+                child: legendePictures(super.legendPicture),
+              ),
+
+              Padding(
+                padding: EdgeInsets.only(top: 12, left: 20, right: 30),
+                child: Container(
+                  alignment: Alignment.bottomLeft,
+                  child: paragraph(super.completeArticle),
+                ),
+              ),
+            ],
+          ),
         ),
-      ),
-        bottomNavigationBar: BottomBarObject()
-    );
+        bottomNavigationBar: BottomBarObject());
   }
 // other methods and widgets
 }
