@@ -32,7 +32,6 @@ dependencies:
   flutter:
     sdk: flutter
 
-
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
@@ -70,9 +69,23 @@ flutter:
     - img/Formations/STAPSLYON1.png
     - img/Formations/techforgoodtour.png
     - img/Formations/UnivEvry.png
+    - img/logos/APF.webp
+    - img/IEMNLG.webp
+    - img/APF93.webp
+    - img/Projets/Chrome.webp
+    - img/Projets/Norton_Kong.webp
+    - img/Projets/resoc.webp
+    - img/Projets/Unity.png
+    - img/Projets/Studio_Ghibli.webp
+    - img/logos/contact.png
+    - img/Formations/ESIT.png
+    - img/Formations/Logo_Paris_Descartes.png
     - img/Formations/logoESIT.png
     - img/Formations/pedInstitut.jpg
-    - img/Formations/Logo_Paris_Descartes.png
+    - img/Experiences/CiteDeLaMusique.jpg
+    - img/Experiences/ERGONCAPITALPARTNERS.png
+    - img/Experiences/Full-lobby-Hotel-Fabric.webp
+    - img/image_0.webp
   fonts:
     - family: MyFlutterApp
       fonts:
