@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:cv_flutter_libe/classes/bottomNavigationBar.dart';
+import 'package:cv_flutter_libe/Controllers/bottomNavigationBar.dart';
 import 'package:cv_flutter_libe/views/homePage.dart';
 import 'package:cv_flutter_libe/views/projects.dart';
 import 'package:cv_flutter_libe/views/divers.dart';
@@ -122,10 +122,12 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> {
             Contact(),
           ],
         ),
-        bottomNavigationBar: MyBottomNavigationBar(
-          selectedIndex: _selectedIndex,
-          onItemTapped: _onItemTapped,
-        ),
+        resizeToAvoidBottomInset: false,
+       bottomNavigationBar: MyBottomHomeNavigationBar(),
+       // bottomNavigationBar: MyBottomNavigationBar(
+          //selectedIndex: _selectedIndex,
+          //onItemTapped: _onItemTapped,
+        // ),
       ),
     );
   }
