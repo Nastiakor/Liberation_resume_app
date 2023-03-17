@@ -22,22 +22,19 @@ void showModal(BuildContext context) {
 }
 
 class MyBottomHomeNavigationBar extends StatefulWidget {
-  MyBottomHomeNavigationBar({Key? key}) : super(key: key);
+  int currentIndex;
+
+  MyBottomHomeNavigationBar({Key? key, required this.currentIndex}) : super(key: key);
 
   @override
-  State<MyBottomHomeNavigationBar> createState() =>
-      _MyBottomHomeNavigationBarState();
+  State<MyBottomHomeNavigationBar> createState() => MyBottomHomeNavigationBarState();
 }
 
-//final int selectedIndex;
-// final void Function(int) onItemTapped;
-class _MyBottomHomeNavigationBarState extends State<MyBottomHomeNavigationBar> {
-  int _currentIndex = 0;
-
+class MyBottomHomeNavigationBarState extends State<MyBottomHomeNavigationBar> {
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
-      currentIndex: _currentIndex,
+      currentIndex: widget.currentIndex,
       showSelectedLabels: true,
       showUnselectedLabels: false,
       type: BottomNavigationBarType.fixed,
@@ -59,16 +56,13 @@ class _MyBottomHomeNavigationBarState extends State<MyBottomHomeNavigationBar> {
       selectedItemColor: Colors.red,
       onTap: (index) {
         setState(() {
-          _currentIndex = index;
-          if (_currentIndex == 2) {
+          widget.currentIndex = index;
+          if (widget.currentIndex == 2) {
             showModal(context);
-          } else if (_currentIndex == 0) {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => const MyApp()));
-          } else if (_currentIndex == 1) {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => const newsFeed()));
-            // your code for the second tab
+          } else if (widget.currentIndex == 0) {
+            Navigator.push(context, MaterialPageRoute(builder: (context) => const MyApp()));
+          } else if (widget.currentIndex == 1) {
+            Navigator.push(context, MaterialPageRoute(builder: (context) => NYTAPI()));
           }
         });
       },

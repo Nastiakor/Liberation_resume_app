@@ -123,7 +123,7 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> {
           ],
         ),
         resizeToAvoidBottomInset: false,
-       bottomNavigationBar: MyBottomHomeNavigationBar(),
+       bottomNavigationBar: MyBottomHomeNavigationBar(currentIndex: 0),
        // bottomNavigationBar: MyBottomNavigationBar(
           //selectedIndex: _selectedIndex,
           //onItemTapped: _onItemTapped,
