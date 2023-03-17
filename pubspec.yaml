@@ -85,6 +85,7 @@ flutter:
     - img/Experiences/CiteDeLaMusique.jpg
     - img/Experiences/ERGONCAPITALPARTNERS.png
     - img/Experiences/Full-lobby-Hotel-Fabric.webp
+    - img/image_0.webp
   fonts:
     - family: MyFlutterApp
       fonts:
