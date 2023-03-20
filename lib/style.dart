@@ -136,10 +136,9 @@ Expanded theme(String theme) {
         child: RichText(
           text: TextSpan(
             text: "$theme",
-            style: TextStyle(
-                fontWeight: FontWeight.bold,
-                color: Colors.black45,
-                fontSize: 13),
+            style: GoogleFonts.sourceSansPro(
+                textStyle: TextStyle(
+                    color: Colors.black45, fontSize: 13, letterSpacing: 0.5)),
           ),
         ),
       ),
@@ -155,7 +154,9 @@ Expanded time(String time) {
         child: RichText(
           text: TextSpan(
             text: "$time",
-            style: TextStyle(color: Colors.black45, fontSize: 13),
+            style: GoogleFonts.sourceSansPro(
+                textStyle: TextStyle(
+                    color: Colors.black45, fontSize: 13, letterSpacing: 0.5)),
           ),
         ),
       ),
@@ -171,7 +172,10 @@ Expanded abonne() {
         child: RichText(
           text: TextSpan(
             text: "Abonné",
-            style: TextStyle(color: Colors.amber, fontSize: 13),
+            style: GoogleFonts.sourceSansPro(
+              textStyle: TextStyle(
+                  color: Colors.amber, fontSize: 13, letterSpacing: 0.5),
+            ),
           ),
         ),
       ),
@@ -193,8 +197,10 @@ Expanded bookmark() {
 }
 
 Text appBarMenu(item) {
-  return Text("$item",
-      style: GoogleFonts.sourceSansPro(
-          textStyle: TextStyle(
-              color: Colors.black, fontSize: 18, letterSpacing: 0.5)));
+  return Text(
+    "$item",
+    style: GoogleFonts.sourceSansPro(
+        textStyle:
+            TextStyle(color: Colors.black, fontSize: 18, letterSpacing: 0.5)),
+  );
 }

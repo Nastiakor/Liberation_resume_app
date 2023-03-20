@@ -24,10 +24,12 @@ void showModal(BuildContext context) {
 class MyBottomHomeNavigationBar extends StatefulWidget {
   int currentIndex;
 
-  MyBottomHomeNavigationBar({Key? key, required this.currentIndex}) : super(key: key);
+  MyBottomHomeNavigationBar({Key? key, required this.currentIndex})
+      : super(key: key);
 
   @override
-  State<MyBottomHomeNavigationBar> createState() => MyBottomHomeNavigationBarState();
+  State<MyBottomHomeNavigationBar> createState() =>
+      MyBottomHomeNavigationBarState();
 }
 
 class MyBottomHomeNavigationBarState extends State<MyBottomHomeNavigationBar> {
@@ -60,9 +62,11 @@ class MyBottomHomeNavigationBarState extends State<MyBottomHomeNavigationBar> {
           if (widget.currentIndex == 2) {
             showModal(context);
           } else if (widget.currentIndex == 0) {
-            Navigator.push(context, MaterialPageRoute(builder: (context) => const MyApp()));
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => const MyApp()));
           } else if (widget.currentIndex == 1) {
-            Navigator.push(context, MaterialPageRoute(builder: (context) => NYTAPI()));
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => NYTAPI()));
           }
         });
       },
