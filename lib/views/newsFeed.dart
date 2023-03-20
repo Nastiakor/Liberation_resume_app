@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:cv_flutter_libe/Controllers/AppBar.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:url_launcher/url_launcher.dart';
@@ -43,6 +44,7 @@ class _NYTAPIState extends State<NYTAPI> {
     return MaterialApp(
       title: 'NYT Most Popular',
       home: Scaffold(
+        appBar: MyAppBar(),
         body: _articles.isNotEmpty
             ? ListView.builder(
           itemCount: _articles.length,
@@ -139,12 +141,11 @@ class ArticlePage extends StatelessWidget {
       imageUrl = article['media'][0]['media-metadata'][0]['url'];
     }
     return Scaffold(
-      appBar: AppBar(
-        title: Text(article['title'] ?? ''),
-      ),
+      appBar: MyAppBar(),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
             SizedBox(height: 16),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -167,20 +168,17 @@ class ArticlePage extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(height: 16),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Text(
                 article['abstract'] ?? '',
                 style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.w600,
+                  fontSize: 18,
                 ),
               ),
             ),
-            SizedBox(height: 16),
             Padding(
-              padding: const EdgeInsets.all(16.0),
+              padding: const EdgeInsets.all(8.0),
               child: Text(
                 article['body'] ?? '',
                 style: TextStyle(
@@ -188,6 +186,13 @@ class ArticlePage extends StatelessWidget {
                 ),
               ),
             ),
+              if (imageUrl != null)
+              Image.network(
+                imageUrl,
+                height: 200,
+                width: double.infinity,
+                fit: BoxFit.cover,
+              ),
           ],
         ),
       ),
