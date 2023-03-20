@@ -118,7 +118,7 @@ class MainArticle extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.only(
                   top: 7,
-                  left: 4,
+                  left: 1,
                   bottom: 10,
                 ),
                 child: paragraph(paragraphMainArticle),
@@ -291,7 +291,7 @@ class FullArticle extends MainArticle {
               Column(
                 children: [
                   Padding(
-                    padding: EdgeInsets.only(top: 50, left: 8, right: 8),
+                    padding: EdgeInsets.only(top: 50, left: 15, right: 15),
                     child: Wrap(
                       children: [
                         Container(
@@ -320,7 +320,7 @@ class FullArticle extends MainArticle {
               ),
               // Padding 2
               Padding(
-                padding: EdgeInsets.only(top: 2, left: 8, right: 8),
+                padding: EdgeInsets.only(top: 2, left: 15, right: 15),
                 child: Wrap(
                   children: [
                     Container(
@@ -338,7 +338,7 @@ class FullArticle extends MainArticle {
               Row(
                 children: [
                   Padding(
-                      padding: EdgeInsets.only(top: 8, left: 8),
+                      padding: EdgeInsets.only(top: 8, left: 15),
                       child: byArticle(super.writtenBy)),
                 ],
               ),
@@ -346,7 +346,7 @@ class FullArticle extends MainArticle {
                 children: [
                   Padding(
                     padding:
-                        EdgeInsets.only(top: 8, left: 8, right: 30, bottom: 8),
+                        EdgeInsets.only(top: 8, left: 15, bottom: 8),
                     child: RichText(
                       text: TextSpan(
                         children: [
@@ -367,12 +367,12 @@ class FullArticle extends MainArticle {
                 ],
               ),
               Padding(
-                padding: EdgeInsets.only(top: 12, left: 20, right: 30),
+                padding: EdgeInsets.only(top: 12, left: 15, right: 15),
                 child: legendePictures(super.legendPicture),
               ),
 
               Padding(
-                padding: EdgeInsets.only(top: 12, left: 20, right: 30),
+                padding: EdgeInsets.only(top: 12, left: 15, right: 15),
                 child: Container(
                   alignment: Alignment.bottomLeft,
                   child: paragraph(super.completeArticle),

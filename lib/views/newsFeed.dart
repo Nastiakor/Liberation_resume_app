@@ -44,7 +44,7 @@ class _NYTAPIState extends State<NYTAPI> {
     return MaterialApp(
       title: 'NYT Most Popular',
       home: Scaffold(
-        appBar: MyAppBar(),
+        appBar: MyAppBarFeed(),
         body: _articles.isNotEmpty
             ? ListView.builder(
           itemCount: _articles.length,
@@ -141,7 +141,7 @@ class ArticlePage extends StatelessWidget {
       imageUrl = article['media'][0]['media-metadata'][0]['url'];
     }
     return Scaffold(
-      appBar: MyAppBar(),
+      appBar: MyAppBarFeed(),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

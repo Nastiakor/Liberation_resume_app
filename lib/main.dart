@@ -6,6 +6,9 @@ import 'package:cv_flutter_libe/views/divers.dart';
 import 'package:cv_flutter_libe/views/experiences.dart';
 import 'package:cv_flutter_libe/views/contact.dart';
 import 'package:cv_flutter_libe/views/formation.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:cv_flutter_libe/style.dart';
+
 
 void main() => runApp(const MyApp());
 
@@ -40,15 +43,15 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> {
       style: optionStyle,
     ),
     Text(
-      'Index 1: Business',
+      'Index 1: Projects',
       style: optionStyle,
     ),
     Text(
-      'Index 2: School',
+      'Index 2: Formations',
       style: optionStyle,
     ),
     Text(
-      'Index 3: Settings',
+      'Index 3: Experiences',
       style: optionStyle,
     ),
   ];
@@ -91,25 +94,11 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> {
             indicatorColor: Colors.black,
             isScrollable: true,
             tabs: [
-              Tab(
-                child: Text("A la une", style: TextStyle(color: Colors.black)),
-              ),
-              Tab(
-                child:
-                    Text("Nos projets", style: TextStyle(color: Colors.black)),
-              ),
-              Tab(
-                child:
-                    Text("Formations", style: TextStyle(color: Colors.black)),
-              ),
-              Tab(
-                child: Text("Expériences pros",
-                    style: TextStyle(color: Colors.black)),
-              ),
-              Tab(
-                child: Text("Contact",
-                    style: TextStyle(color: Colors.black)),
-              ),
+              Tab(child: appBarMenu('A la une')),
+              Tab(child: appBarMenu('Nos projets')),
+              Tab(child: appBarMenu('Nos formations')),
+              Tab(child: appBarMenu('Nos expériences')),
+              Tab(child: appBarMenu('Contacts')),
             ],
           ),
         ),
@@ -123,10 +112,10 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> {
           ],
         ),
         resizeToAvoidBottomInset: false,
-       bottomNavigationBar: MyBottomHomeNavigationBar(currentIndex: 0),
-       // bottomNavigationBar: MyBottomNavigationBar(
-          //selectedIndex: _selectedIndex,
-          //onItemTapped: _onItemTapped,
+        bottomNavigationBar: MyBottomHomeNavigationBar(currentIndex: 0),
+        // bottomNavigationBar: MyBottomNavigationBar(
+        //selectedIndex: _selectedIndex,
+        //onItemTapped: _onItemTapped,
         // ),
       ),
     );
