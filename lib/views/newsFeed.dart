@@ -1,13 +1,9 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:cv_flutter_libe/functions.dart';
+import 'package:http/http.dart' as http;
+import 'package:url_launcher/url_launcher.dart';
 import 'package:cv_flutter_libe/Controllers/bottomNavigationBar.dart';
-import 'package:http/http.dart' as http;
-import 'dart:convert';
-import 'dart:async';
-import 'dart:convert';
-import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
+import 'package:cv_flutter_libe/Controllers/BottomBarArticle.dart';
 
 void main() => runApp(NYTAPI());
 
@@ -20,14 +16,17 @@ class NYTAPI extends StatefulWidget {
 
 class _NYTAPIState extends State<NYTAPI> {
   final String apiKey = "0oUTF3Ux70XLMAopiLaFV6fzRa1XtgZ2";
-  final String apiUrl = "https://api.nytimes.com/svc/mostpopular/v2/emailed/7.json";
+  final String apiUrl =
+      "https://api.nytimes.com/svc/mostpopular/v2/emailed/7.json";
 
-  late List<dynamic> _articles;
+  List<dynamic> _articles = [];
 
-  Future<List<dynamic>> _fetchArticles() async {
+  Future<void> _fetchArticles() async {
     var response = await http.get(Uri.parse(apiUrl + "?api-key=" + apiKey));
     if (response.statusCode == 200) {
-      return json.decode(response.body)["results"];
+      setState(() {
+        _articles = json.decode(response.body)["results"];
+      });
     } else {
       throw Exception('Failed to fetch articles');
     }
@@ -36,11 +35,7 @@ class _NYTAPIState extends State<NYTAPI> {
   @override
   void initState() {
     super.initState();
-    _fetchArticles().then((data) {
-      setState(() {
-        _articles = data;
-      });
-    });
+    _fetchArticles();
   }
 
   @override
@@ -48,20 +43,155 @@ class _NYTAPIState extends State<NYTAPI> {
     return MaterialApp(
       title: 'NYT Most Popular',
       home: Scaffold(
-        body: _articles != null
+        body: _articles.isNotEmpty
             ? ListView.builder(
           itemCount: _articles.length,
           itemBuilder: (BuildContext context, int index) {
-            return ListTile(
-              title: Text(_articles[index]['title']),
-              subtitle: Text(_articles[index]['abstract']),
+            var updated =
+            _articles[index]['updated'].toString().substring(11, 16);
+            return InkWell(
+              onTap: () async {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) =>
+                        ArticlePage(article: _articles[index]),
+                  ),
+                );
+              },
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      width: 50,
+                      child: Column(
+                        children: [
+                          Text(
+                            updated,
+                            style: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.bold,
+                            ),
+                            textAlign: TextAlign.center,
+                          ),
+                          SizedBox(height: 5),
+                          Container(
+                            height: 40,
+                            child: VerticalDivider(
+                              thickness: 2,
+                              color: Colors.grey,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(width: 10),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            _articles[index]['title'],
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 18,
+                            ),
+                          ),
+                          SizedBox(height: 5),
+                          Text(
+                            _articles[index]['nytdsection'],
+                            style: TextStyle(
+                              color: Colors.grey[600],
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          SizedBox(height: 10),
+                          Divider(
+                            color: Colors.grey,
+                            thickness: 0.5,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             );
           },
         )
             : Center(child: CircularProgressIndicator()),
-        resizeToAvoidBottomInset: false,
-        bottomNavigationBar: MyBottomHomeNavigationBar(currentIndex: 1,),
+        bottomNavigationBar: MyBottomHomeNavigationBar(currentIndex: 1),
       ),
+    );
+  }
+}
+class ArticlePage extends StatelessWidget {
+  final Map<String, dynamic> article;
+
+  const ArticlePage({Key? key, required this.article}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    String? imageUrl;
+    if (article['media'] != null && article['media'].isNotEmpty) {
+      imageUrl = article['media'][0]['media-metadata'][0]['url'];
+    }
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(article['title'] ?? ''),
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+            SizedBox(height: 16),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: Text(
+                article['title'] ?? '',
+                style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+            SizedBox(height: 16),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: Text(
+                article['updated_date'] ?? '',
+                style: TextStyle(
+                  fontSize: 16,
+                  color: Colors.grey[600],
+                ),
+              ),
+            ),
+            SizedBox(height: 16),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: Text(
+                article['abstract'] ?? '',
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+            ),
+            SizedBox(height: 16),
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Text(
+                article['body'] ?? '',
+                style: TextStyle(
+                  fontSize: 18,
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+      bottomNavigationBar: BottomBarObject(),
     );
   }
 }
