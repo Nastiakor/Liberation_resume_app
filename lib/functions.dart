@@ -5,8 +5,6 @@ import 'package:cv_flutter_libe/views/homePage.dart';
 import 'package:cv_flutter_libe/Controllers/BottomBarArticle.dart';
 import 'package:cv_flutter_libe/Controllers/AppBar.dart';
 
-
-
 String calculatePublishingDate(DateTime publishingDate) {
   DateTime now = DateTime.now();
   DateTime howLongFromNow = DateTime(publishingDate.year, publishingDate.month,
@@ -142,6 +140,7 @@ class MainArticle extends StatelessWidget {
     ]);
   }
 }
+
 class APFArticle extends StatelessWidget {
   int _currentIndex = 0;
   String imagePath;
@@ -154,8 +153,8 @@ class APFArticle extends StatelessWidget {
   String legendPicture;
   String completeArticle;
 
-APFArticle(
-    {required this.imagePath,
+  APFArticle(
+      {required this.imagePath,
       required this.title,
       required this.titlethen,
       required this.paragraphMainArticle,
@@ -166,21 +165,43 @@ APFArticle(
       required this.completeArticle});
 
 // Define the function to calculate the days until the birthday
-String daysUntilArticle() {
-  DateTime publishDateParamParsed = DateTime.parse(publishDateParam);
-  final DateTime articlePublishingDate = publishDateParamParsed;
-  return calculatePublishingDate(articlePublishingDate);
-}
+  String daysUntilArticle() {
+    DateTime publishDateParamParsed = DateTime.parse(publishDateParam);
+    final DateTime articlePublishingDate = publishDateParamParsed;
+    return calculatePublishingDate(articlePublishingDate);
+  }
 
-Widget build(BuildContext context) {
-  var size = MediaQuery.of(context).size;
-  var width = size.width;
-  return Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-    Row(
-      children: [
-        InkWell(
-          onTap: () => Navigator.of(context).push(MaterialPageRoute(
-            builder: (context) => FullArticle(
+  Widget build(BuildContext context) {
+    var size = MediaQuery.of(context).size;
+    var width = size.width;
+    return Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+      Row(
+        children: [
+          InkWell(
+            onTap: () => Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => FullArticle(
+                imagePath: imagePath,
+                title: title,
+                titlethen: titlethen,
+                paragraphMainArticle: paragraphMainArticle,
+                themeMainArticle: themeMainArticle,
+                publishDateParam: publishDateParam,
+                writtenBy: writtenBy,
+                legendPicture: legendPicture,
+                completeArticle: completeArticle,
+              ),
+            )),
+            child: Container(
+              width: size.width,
+              child:
+                  Image.asset(imagePath, width: size.width, fit: BoxFit.cover),
+            ),
+          ),
+        ],
+      ),
+      InkWell(
+        onTap: () => Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) => FullArticle(
               imagePath: imagePath,
               title: title,
               titlethen: titlethen,
@@ -189,68 +210,46 @@ Widget build(BuildContext context) {
               publishDateParam: publishDateParam,
               writtenBy: writtenBy,
               legendPicture: legendPicture,
-              completeArticle: completeArticle,
-            ),
-          )),
-          child: Container(
-            width: size.width,
-            child:
-            Image.asset(imagePath, width: size.width, fit: BoxFit.cover),
+              completeArticle: completeArticle),
+        )),
+        child: Padding(
+          padding: EdgeInsets.only(top: 10, left: 5),
+          child: Wrap(
+            children: [
+              RichText(
+                text: TextSpan(
+                    children: writtenBy == "Johan Anquetil"
+                        ? [redTitle(title), blackTitle(titlethen)]
+                        : writtenBy == "Anastasia Korotkova"
+                            ? [greenTitle(title), blackTitle(titlethen)]
+                            : [orangeTitle(title), blackTitle(titlethen)]),
+              ),
+              Padding(
+                padding: EdgeInsets.only(
+                  top: 7,
+                  left: 4,
+                  bottom: 10,
+                ),
+                child: paragraph(paragraphMainArticle),
+              ),
+            ],
           ),
         ),
-      ],
-    ),
-    InkWell(
-      onTap: () => Navigator.of(context).push(MaterialPageRoute(
-        builder: (context) => FullArticle(
-            imagePath: imagePath,
-            title: title,
-            titlethen: titlethen,
-            paragraphMainArticle: paragraphMainArticle,
-            themeMainArticle: themeMainArticle,
-            publishDateParam: publishDateParam,
-            writtenBy: writtenBy,
-            legendPicture: legendPicture,
-            completeArticle: completeArticle),
-      )),
-      child: Padding(
-        padding: EdgeInsets.only(top: 10, left: 5),
-        child: Wrap(
-          children: [
-            RichText(
-              text: TextSpan(
-                  children: writtenBy == "Johan Anquetil"
-                      ? [redTitle(title), blackTitle(titlethen)]
-                      : writtenBy == "Anastasia Korotkova"
-                      ? [greenTitle(title), blackTitle(titlethen)]
-                      : [orangeTitle(title), blackTitle(titlethen)]),
-            ),
-            Padding(
-              padding: EdgeInsets.only(
-                top: 7,
-                left: 4,
-                bottom: 10,
-              ),
-              child: paragraph(paragraphMainArticle),
-            ),
-          ],
-        ),
       ),
-    ),
-    Row(
-      children: [
-        Padding(padding: EdgeInsets.only(top: 20)),
-        theme(themeMainArticle),
-        time("Il y a ${daysUntilArticle()}"),
-        abonne(),
-        bookmark(),
-      ],
-    ),
-    Divider(
-      thickness: 2,
-    ),
-  ]);
-}
+      Row(
+        children: [
+          Padding(padding: EdgeInsets.only(top: 20)),
+          theme(themeMainArticle),
+          time("Il y a ${daysUntilArticle()}"),
+          abonne(),
+          bookmark(),
+        ],
+      ),
+      Divider(
+        thickness: 2,
+      ),
+    ]);
+  }
 }
 
 class FullArticle extends MainArticle {
@@ -345,8 +344,7 @@ class FullArticle extends MainArticle {
               Row(
                 children: [
                   Padding(
-                    padding:
-                        EdgeInsets.only(top: 8, left: 15, bottom: 8),
+                    padding: EdgeInsets.only(top: 8, left: 15, bottom: 8),
                     child: RichText(
                       text: TextSpan(
                         children: [

@@ -9,7 +9,6 @@ import 'package:cv_flutter_libe/views/formation.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:cv_flutter_libe/style.dart';
 
-
 void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
@@ -93,6 +92,8 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> {
             indicatorSize: TabBarIndicatorSize.label,
             indicatorColor: Colors.black,
             isScrollable: true,
+            labelStyle: TextStyle(fontWeight: FontWeight.w700),
+            unselectedLabelStyle: TextStyle(),
             tabs: [
               Tab(child: appBarMenu('A la une')),
               Tab(child: appBarMenu('Nos projets')),
