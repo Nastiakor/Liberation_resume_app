@@ -171,7 +171,7 @@ Expanded abonne() {
       child: Container(
         child: RichText(
           text: TextSpan(
-            text: "Abonné",
+            text: "Abonnés",
             style: GoogleFonts.sourceSansPro(
               textStyle: TextStyle(
                   color: Colors.amber, fontSize: 13, letterSpacing: 0.5),
