@@ -56,7 +56,7 @@ class Experiences extends StatelessWidget {
               "- 2014 - 2016 Ergon Capital Advisors France\n- 2011 - 2014 Rietumu Bank\n- 2010 Moreno, Ruby et associés",
             ),
             SecondaryArticle(
-              imagePath: "img/IEMNLG.webp",
+              imagePath: "img/Experiences/IEMNLG.webp",
               title: "2015 - 2016 : CHARGE DE MISSION SOCIOCULTUREL",
               titlethen:
               " AVEC DES ADOLESCENTS ET JEUNES ADULTES EN SITUATION DE HANDICAP ET POLYHANDICAP",
@@ -85,7 +85,7 @@ class Experiences extends StatelessWidget {
               "",
             ),
             SecondaryArticle(
-              imagePath: "img/APF93.webp",
+              imagePath: "img/Experiences/APF93.webp",
               title: "2013 - 2015 : CHARGE DE MISSION ACTIONS ASSOCIATIVES",
               titlethen:
               " APF FRANCE HANDICAP - DELEGATION DU 93",
@@ -100,7 +100,6 @@ class Experiences extends StatelessWidget {
               "Lors de ces deux années, j'ai contribué au développement de l'association en Seine-Saint-Denis. Composé de plus de 300 adhérents, nous mobilisions les adhérents autour d'actions et projets de défense des droits (accompagnement social, représentations dans les instances représentatives, sensibilisations dans les écoles et les entreprises, actions collectives) et d'inclusion sociale (mise en place d'ateliers socioculturels et de sorties de loisirs, partenariats avec La Villette, certaines villes de Seine-Saint-Denis et des centres culturels du département pour favoriser la visibilité du handicap) et organisation d'opérations pour accroître les ressources financières de l'association.\n\nCette expérience m'a permis d'appliquer et développer les savoirs et savoir-faire suivant : \n\n-Gestion de projets\n-Diagnostic et évaluation\n-Animation de groupes de pairs\n-Management de bénévoles\n-Négociation",
             ),
           ]
-
       ),
     );
   }
