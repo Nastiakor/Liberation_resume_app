@@ -14,7 +14,7 @@ class Experiences extends StatelessWidget {
       child: Column(
           children: [
             MainArticle(
-              imagePath: "img/Experiences/Full-lobby-Hotel-Fabric.webp",
+              imagePath: "img/Experiences/Lobby_Fabric.webp",
               title: "2018 - 2022 RECEPTIONNISTE",
               titlethen: " HOTELS A PARIS",
               paragraphMainArticle:
@@ -27,7 +27,7 @@ class Experiences extends StatelessWidget {
               "- 2021 - 2022 Hôtel Paradis\n- 2018 - 2020 Hôtel Fabric\n- 2017 - 2018 Hôtel des Marronniers\n",
             ),
             APFArticle(
-              imagePath: "img/logos/APF.webp",
+              imagePath: "img/Experiences/APF2.webp",
               title: "2016 - 2022 : CHEF DE PROJET REGIONAL ACTIONS ASSOCIATIVES ",
               titlethen:
               "APF FRANCE HANDICAP",
@@ -71,7 +71,7 @@ class Experiences extends StatelessWidget {
               "L'Institut d'Education Motrice (composé de 40 jeunes de 12 à 20 ans en internat ou externat) propose un accompagnement éducatif (avec des enseignants détachés de l'Education Nationale et des éducateurs spécialisés) et médical (médecin, kinésithérapeute, ergothérapeute, psychomotricien...) en internat ou externat. En quelque sorte, l'Institut est une offre alternative au collège et lycée. Les jeunes peuvent ainsi développer leurs potentiels, acquérir des savoirs dans un cadre sécurisant et collectif. La limite de ce type d'établissement est le repli et l'entre-soi. Ces 'bulles' peuvent avoir pour effet pervers de générer lui-même cette exclusion et de ne pas résorber le fossé avec le reste de la société, bien que des actions de rencontres avec d'autres jeunes sont mises en place. Aucune offre n'était proposée par l'institut pour soutenir les jeunes dans leur quartier ou leur ville, autour de leur domicile.\n\nMa mission était de travailler avec les jeunes et leurs familles à définir un projet autour d'une passion ou d'une volonté de s'impliquer de le quotidien de leur quartier, de leur ville, et de rechercher les adaptations et ressources possibles pour pallier à la situation de handicap. Et surtout de donner les clés aux jeunes et familles pour s'autonomiser et s'affranchir du suivi médico-social.\n\nEn parallèle, je soutenais les enseignantes et éducateurs dans leurs projets, j'organisais par exemple des échanges avec le collège voisin en mettant en place de cycles d'Education Physiques et Sportifs et d'activités en commun, en mixité, avec les jeunes de cet établissement scolaire. \nDévelopper le pouvoir d'agir de ces jeunes nécessite des qualités d'écoute, de compréhension, d'empathie pour donner confiance aux jeunes et à dévelopepr un esprit critique. Enfin, j'ai renforcé ma capacités à rédiger et piloter des projets et animer des dynamiques partenariales.",
             ),
             SecondaryArticle(
-              imagePath: "img/Experiences/CiteDeLaMusique.jpg",
+              imagePath: "img/Experiences/CiteDeLaMusique.png",
               title:
               "2011 HOTESSE D'ACCUEIL",
               titlethen: " CITÉ DE LA MUSIQUE",
