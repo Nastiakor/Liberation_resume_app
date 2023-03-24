@@ -26,7 +26,7 @@ class Experiences extends StatelessWidget {
               completeArticle:
               "- 2021 - 2022 Hôtel Paradis\n- 2018 - 2020 Hôtel Fabric\n- 2017 - 2018 Hôtel des Marronniers\n",
             ),
-            APFArticle(
+            MainArticle(
               imagePath: "img/logos/APF.webp",
               title: "2016 - 2022 : CHEF DE PROJET REGIONAL ACTIONS ASSOCIATIVES ",
               titlethen:
