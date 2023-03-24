@@ -2,6 +2,8 @@ import 'package:cv_flutter_libe/icons.dart';
 import 'package:cv_flutter_libe/views/newsFeed.dart';
 import 'package:flutter/material.dart';
 import 'package:cv_flutter_libe/main.dart';
+import 'package:cv_flutter_libe/views/libeAPI.dart';
+import 'package:cv_flutter_libe/views/chezpol.dart';
 import 'package:cv_flutter_libe/views/homePage.dart';
 
 void showModal(BuildContext context) {
@@ -50,21 +52,21 @@ class MyBottomHomeNavigationBarState extends State<MyBottomHomeNavigationBar> {
           icon: Icon(MyFlutterApp.passage_du_temps, size: 24),
           label: 'Fil info',
         ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.settings, size: 29),
-          label: 'Settings',
+        BottomNavigationBarItem(icon: Icon(Icons.ads_click, size: 27),
+          label: 'Most views NYT',
         ),
       ],
       selectedItemColor: Colors.red,
       onTap: (index) {
         setState(() {
           widget.currentIndex = index;
-          if (widget.currentIndex == 2) {
-            showModal(context);
+          if (widget.currentIndex == 1) {
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => LiberationAPI()));
           } else if (widget.currentIndex == 0) {
             Navigator.push(context,
                 MaterialPageRoute(builder: (context) => const MyApp()));
-          } else if (widget.currentIndex == 1) {
+          } else if (widget.currentIndex == 2) {
             Navigator.push(
                 context, MaterialPageRoute(builder: (context) => NYTAPI()));
           }
