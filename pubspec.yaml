@@ -75,7 +75,7 @@ flutter:
     - img/logos/contact.png
 
     - img/Formations/AdaTechschool2.webp
-    - img/Formations/IUTIndre.png
+    - img/Formations/IUTIndre.webp
     - img/Formations/Logo_Paris_Descartes.png
     - img/Formations/logoESIT.png
     - img/Formations/pedInstitut.jpg
@@ -96,9 +96,9 @@ flutter:
     - img/Projets/Unity2.png
     - img/Projets/Dataviz.webp
     - img/Projets/My_mood_2.webp
-    - img/Projets/Norton_Kong_2.webp
+    - img/Projets/Norton_Kong.webp
     - img/Projets/Réseau_PHP_2.jpg
-    - img/Projets/PHP_Logo.png
+    - img/Projets/PHP-logo.png
 
   fonts:
     - family: MyFlutterApp

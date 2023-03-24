@@ -105,7 +105,7 @@ class Formations extends StatelessWidget {
             completeArticle: "Master 2 Langues Étrangères (mention Très Bien)",
           ),
           SecondaryArticle(
-            imagePath: "img/Formations/IUTIndre.png",
+            imagePath: "img/Formations/IUTIndre.webp",
             title: "2005 - 2007 :",
             titlethen: " DUT TECHNIQUES DE COMMERCIALISATION",
             paragraphMainArticle:

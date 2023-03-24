@@ -94,7 +94,7 @@ class Projects extends StatelessWidget {
           "- Durée: 2 semaines\n- Langage : JavaScript\n- Gestion de base de données: MongoDB\n.",
         ),
         SecondaryArticle(
-          imagePath: "img/Projets/Norton_Kong_2.webp",
+          imagePath: "img/Projets/Norton_Kong.webp",
           title: "CREATION D'UN NIVEAU D'UN JEU-VIDEO ",
           titlethen:
           "EN LUA GRACE A LA PLATEFORME PICO-8",
@@ -109,7 +109,7 @@ class Projects extends StatelessWidget {
           "Les défis posés par ce premier projet était nombreux, comprendre le LUA (dérivé du langage C), apprendre à travailler en équipe, à découper les tâches...  et techniques : designer le jeu, gérer les déplacements, la gravité, créer des ennemis qui se déplacent et réapparaissent, gérer un système de tir avec des balles qui tuent les ennemis, des collisions et de la vie...",
         ),
         SecondaryArticle(
-          imagePath: "img/Projets/PHP_Logo.png",
+          imagePath: "img/Projets/PHP-logo.png",
           title: "RESEAU SOCIAL PHP",
           titlethen: "",
           paragraphMainArticle: "",
