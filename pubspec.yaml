@@ -69,35 +69,36 @@ flutter:
     - img/85808-cherche-ancien-affiche-vectoriel.jpg
     - img/NASTIA.JPG
     - img/JOHAN.JPG
-    - img/libelogo.svg
     - img/PhotoshopWanted.jpg
-    - img/Formations/AdaTechschool.webp
-    - img/Formations/IUTIndre.webp
-    - img/Formations/STAPSLYON1.png
-    - img/Formations/techforgoodtour.png
-    - img/Formations/UnivEvry.png
-    - img/logos/APF.webp
-    - img/IEMNLG.webp
-    - img/APF93.webp
-    - img/Projets/Chrome.webp
-    - img/Projets/Norton_Kong.webp
-    - img/Projets/resoc.webp
-    - img/Projets/Unity.png
-    - img/Projets/Studio_Ghibli.webp
+    - img/libelogo.svg
+    - img/image_0.webp
     - img/logos/contact.png
-    - img/Formations/ESIT.png
+
+    - img/Formations/AdaTechschool2.webp
+    - img/Formations/IUTIndre.png
     - img/Formations/Logo_Paris_Descartes.png
     - img/Formations/logoESIT.png
     - img/Formations/pedInstitut.jpg
-    - img/image_0.webp
-    - img/Formations/Logo_Paris_Descartes.png
-    - img/Experiences/Full-lobby-Hotel-Fabric.webp
+    - img/Formations/STAPSLYON1.png
+    - img/Formations/UnivEvry.png
+    - img/Formations/techforgood.png
+
+    - img/Experiences/Lobby_Fabric.webp
+    - img/Experiences/APF2.webp
+    - img/Experiences/IEMNLG.webp
+    - img/Experiences/APF93.webp
     - img/Experiences/ERGONCAPITALPARTNERS.png
-    - img/Experiences/CiteDeLaMusique.jpg
-    - img/Projets/Pico8.png
-    - img/Projets/Dataviz.png
-    - img/Projets/My_mood.png
-    - img/Projets/Réseau_PHP.png
+    - img/Experiences/CiteDeLaMusique.png
+
+    - img/Projets/Chrome2.webp
+    - img/Projets/Pico8_2.webp
+    - img/Projets/Studio_Ghibli_2.jpg
+    - img/Projets/Unity2.png
+    - img/Projets/Dataviz.webp
+    - img/Projets/My_mood_2.webp
+    - img/Projets/Norton_Kong_2.webp
+    - img/Projets/Réseau_PHP_2.jpg
+    - img/Projets/PHP_Logo.png
 
   fonts:
     - family: MyFlutterApp
