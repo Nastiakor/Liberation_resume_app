@@ -36,16 +36,18 @@ class NYTAppBar extends AppBar {
             children: <Widget>[
               Container(
                 margin: const EdgeInsets.only(left: 15),
-                child: Text('New-York Times best articles',
-                    style: GoogleFonts.encodeSansCondensed(
-                        textStyle: TextStyle(
-                            fontWeight: FontWeight.w700,
-                            color: titleColor,
-                            fontSize: 25,
-                            letterSpacing: 0.2))),
+                child: Text(
+                  'New-York Times best articles',
+                  style: GoogleFonts.encodeSansCondensed(
+                    textStyle: TextStyle(
+                        fontWeight: FontWeight.w700,
+                        color: titleColor,
+                        fontSize: 25,
+                        letterSpacing: 0.2),
+                  ),
+                ),
               ),
             ],
           ),
         );
 }
-

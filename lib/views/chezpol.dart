@@ -10,7 +10,8 @@ class ChezPolApi extends StatefulWidget {
 }
 
 class _ChezPolApiState extends State<ChezPolApi> {
-  final String apiUrl = 'https://crossorigin.me/https://newsletters-list.api.libe.fr/chezpol';
+  final String apiUrl =
+      'https://crossorigin.me/https://newsletters-list.api.libe.fr/chezpol';
   final String apiKey = '604eHwRmXE4E1TY6Q9aCQ2C8eTYNgUxC8Vjy3ar8';
 
   List<dynamic> _articles = [];
@@ -56,13 +57,15 @@ class _ChezPolApiState extends State<ChezPolApi> {
             final article = _articles[index];
             final title = article['title'] ?? '';
             final url = article['url'] ?? '';
-            final imageUrl = article['image'] != null ? article['image']['url'] : '';
+            final imageUrl =
+                article['image'] != null ? article['image']['url'] : '';
 
             return ListTile(
               title: Text(title),
               subtitle: Text(url),
               leading: imageUrl.isNotEmpty
-                  ? Image.network(imageUrl, width: 50, height: 50, fit: BoxFit.cover)
+                  ? Image.network(imageUrl,
+                      width: 50, height: 50, fit: BoxFit.cover)
                   : SizedBox(width: 50, height: 50),
             );
           },

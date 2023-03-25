@@ -12,38 +12,30 @@ class Divers extends StatelessWidget {
 
     return SingleChildScrollView(
       child: Column(
-          children: [
-            MainArticle(
-              imagePath: "",
-              title: " ",
-              titlethen:
-              "",
-              paragraphMainArticle:
-              "",
-              themeMainArticle: "",
-              writtenBy: "",
-              publishDateParam: "2023-03-06 10:13:00",
-              legendPicture:
-              "",
-              completeArticle:
-              "",
-            ),
-            SecondaryArticle(
-              imagePath: "",
-              title: "",
-              titlethen:
-              "",
-              paragraphMainArticle:
-              "",
-              themeMainArticle: "",
-              writtenBy: "",
-              publishDateParam: "2023-03-06 10:13:00",
-              legendPicture:
-              "",
-              completeArticle:
-              "",
-            ),
-          ]
+        children: [
+          MainArticle(
+            imagePath: "",
+            title: " ",
+            titlethen: "",
+            paragraphMainArticle: "",
+            themeMainArticle: "",
+            writtenBy: "",
+            publishDateParam: "2023-03-06 10:13:00",
+            legendPicture: "",
+            completeArticle: "",
+          ),
+          SecondaryArticle(
+            imagePath: "",
+            title: "",
+            titlethen: "",
+            paragraphMainArticle: "",
+            themeMainArticle: "",
+            writtenBy: "",
+            publishDateParam: "2023-03-06 10:13:00",
+            legendPicture: "",
+            completeArticle: "",
+          ),
+        ],
       ),
     );
   }

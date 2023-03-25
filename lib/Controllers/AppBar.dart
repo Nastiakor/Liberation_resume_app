@@ -36,13 +36,16 @@ class MyAppBarFeed extends AppBar {
             children: <Widget>[
               Container(
                 margin: const EdgeInsets.only(left: 15),
-                child: Text('Fil info',
-                    style: GoogleFonts.encodeSansCondensed(
-                        textStyle: TextStyle(
-                            fontWeight: FontWeight.w700,
-                            color: titleColor,
-                            fontSize: 35,
-                            letterSpacing: 0.2))),
+                child: Text(
+                  'Fil info',
+                  style: GoogleFonts.encodeSansCondensed(
+                    textStyle: TextStyle(
+                        fontWeight: FontWeight.w700,
+                        color: titleColor,
+                        fontSize: 35,
+                        letterSpacing: 0.2),
+                  ),
+                ),
               ),
             ],
           ),

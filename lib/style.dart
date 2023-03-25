@@ -137,8 +137,9 @@ Expanded theme(String theme) {
           text: TextSpan(
             text: "$theme",
             style: GoogleFonts.sourceSansPro(
-                textStyle: TextStyle(
-                    color: Colors.black45, fontSize: 13, letterSpacing: 0.5)),
+              textStyle: TextStyle(
+                  color: Colors.black45, fontSize: 13, letterSpacing: 0.5),
+            ),
           ),
         ),
       ),

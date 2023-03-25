@@ -52,8 +52,9 @@ class MyBottomHomeNavigationBarState extends State<MyBottomHomeNavigationBar> {
           icon: Icon(MyFlutterApp.passage_du_temps, size: 24),
           label: 'Fil info',
         ),
-        BottomNavigationBarItem(icon: Icon(Icons.ads_click, size: 27),
-          label: 'Most views NYT',
+        BottomNavigationBarItem(
+          icon: Icon(Icons.ads_click, size: 27),
+          label: 'Most viewed on NYT',
         ),
       ],
       selectedItemColor: Colors.red,
@@ -61,8 +62,8 @@ class MyBottomHomeNavigationBarState extends State<MyBottomHomeNavigationBar> {
         setState(() {
           widget.currentIndex = index;
           if (widget.currentIndex == 1) {
-            Navigator.push(
-                context, MaterialPageRoute(builder: (context) => LiberationAPI()));
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => LiberationAPI()));
           } else if (widget.currentIndex == 0) {
             Navigator.push(context,
                 MaterialPageRoute(builder: (context) => const MyApp()));

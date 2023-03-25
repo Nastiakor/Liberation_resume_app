@@ -28,6 +28,7 @@ String calculatePublishingDate(DateTime publishingDate) {
   } else
     return "erreur";
 }
+
 class MainArticle extends StatelessWidget {
   final String imagePath;
   final String title;
@@ -83,7 +84,8 @@ class MainArticle extends StatelessWidget {
             Image.asset(
               imagePath,
               width: size.width,
-              height: size.width * 9 / 16, // set the height to keep the aspect ratio of the image
+              height: size.width * 9 / 16,
+              // set the height to keep the aspect ratio of the image
               fit: BoxFit.cover,
             ),
             Padding(
@@ -96,8 +98,8 @@ class MainArticle extends StatelessWidget {
                       children: writtenBy == "Johan Anquetil"
                           ? [redTitle(title), blackTitle(titlethen)]
                           : writtenBy == "Anastasia Korotkova"
-                          ? [greenTitle(title), blackTitle(titlethen)]
-                          : [orangeTitle(title), blackTitle(titlethen)],
+                              ? [greenTitle(title), blackTitle(titlethen)]
+                              : [orangeTitle(title), blackTitle(titlethen)],
                     ),
                   ),
                   const SizedBox(height: 10),
@@ -417,35 +419,37 @@ class SecondaryArticle extends StatelessWidget {
               ),
             )),
             child: Padding(
-              padding: EdgeInsets.only(left:16, right: 10),
+              padding: EdgeInsets.only(left: 16, right: 10),
               child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Expanded(
-                  flex: 2,
-                  child: RichText(
-                    text: TextSpan(
-                      children: writtenBy == "Johan Anquetil"
-                          ? [redTitle(title), blackTitle(titlethen)]
-                          : writtenBy == "Anastasia Korotkova"
-                          ? [greenTitle(title), blackTitle(titlethen)]
-                          : [orangeTitle(title), blackTitle(titlethen)],
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Expanded(
+                    flex: 2,
+                    child: RichText(
+                      text: TextSpan(
+                        children: writtenBy == "Johan Anquetil"
+                            ? [redTitle(title), blackTitle(titlethen)]
+                            : writtenBy == "Anastasia Korotkova"
+                                ? [greenTitle(title), blackTitle(titlethen)]
+                                : [orangeTitle(title), blackTitle(titlethen)],
+                      ),
                     ),
                   ),
-                ),
-                SizedBox(width: 10),
-                Container(
-                  width: maxSize * 0.3,
-                  height: maxSize * 0.3 * 0.75, // set the height to keep the aspect ratio of the image
-                  child: ClipRRect(
-                    child: Image.asset(
-                      imagePath,
-                      fit: BoxFit.cover,
+                  SizedBox(width: 10),
+                  Container(
+                    width: maxSize * 0.3,
+                    height: maxSize * 0.3 * 0.75,
+                    // set the height to keep the aspect ratio of the image
+                    child: ClipRRect(
+                      child: Image.asset(
+                        imagePath,
+                        fit: BoxFit.cover,
+                      ),
                     ),
                   ),
-                ),
-              ],
-            ),),
+                ],
+              ),
+            ),
           ),
         ),
         Padding(
