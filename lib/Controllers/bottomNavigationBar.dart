@@ -54,7 +54,7 @@ class MyBottomHomeNavigationBarState extends State<MyBottomHomeNavigationBar> {
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.ads_click, size: 27),
-          label: 'Most viewed on NYT',
+          label: 'Fil info NYT',
         ),
       ],
       selectedItemColor: Colors.red,

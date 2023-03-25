@@ -37,7 +37,7 @@ class NYTAppBar extends AppBar {
               Container(
                 margin: const EdgeInsets.only(left: 15),
                 child: Text(
-                  'New-York Times best articles',
+                  'Best of The New York Times',
                   style: GoogleFonts.encodeSansCondensed(
                     textStyle: TextStyle(
                         fontWeight: FontWeight.w700,
