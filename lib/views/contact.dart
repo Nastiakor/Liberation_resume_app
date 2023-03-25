@@ -24,7 +24,7 @@ class Contact extends StatelessWidget {
             publishDateParam: "2023-03-10 19:36:00",
             legendPicture: "",
             completeArticle:
-                "Vous pouvez nous joindre : \n\nAnastasia Korotkova\n    * P ar téléphone au 06-..-..-..-..\n    * Par mail à .......@......ru\n\nJohan Anquetil \n    * Par téléphone au 06-23-32-03-21 \n    * Par mail à anquetil.johan@laposte.net",
+                "Vous pouvez nous joindre : \n\nAnastasia Korotkova\n    * Par téléphone au 06-37-03-68-45\n    * Par mail à a.korotkova@yahoo.fr\n\nJohan Anquetil \n    * Par téléphone au 06-23-32-03-21 \n    * Par mail à anquetil.johan@laposte.net",
           ),
         ],
       ),
