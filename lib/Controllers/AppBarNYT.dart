@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 
 const titleColor = Color(0XFFE60004);
 
@@ -34,6 +35,10 @@ class NYTAppBar extends AppBar {
           title: Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
+              Animate(
+                  onPlay: (controller) => controller.repeat(), // the loop
+                  child: Icon(Icons.brightness_1, color: Colors.red, size: 15).animate()
+              ).fadeIn(delay: 1500.ms),
               Container(
                 margin: const EdgeInsets.only(left: 15),
                 child: Text(
