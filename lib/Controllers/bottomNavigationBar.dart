@@ -45,16 +45,16 @@ class MyBottomHomeNavigationBarState extends State<MyBottomHomeNavigationBar> {
       unselectedItemColor: Colors.black,
       items: const <BottomNavigationBarItem>[
         BottomNavigationBarItem(
-          icon: Icon(MyFlutterApp.libelogo, size: 11),
-          label: '   A la une',
+          icon: Icon(MyFlutterApp.libelogo, size: 12),
+          label: '     A la une',
         ),
         BottomNavigationBarItem(
           icon: Icon(MyFlutterApp.passage_du_temps, size: 24),
           label: 'Fil info',
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.ads_click, size: 27),
-          label: 'Fil info NYT',
+          icon: Icon(Icons.ads_click, size: 28),
+          label: 'Best of the NYT',
         ),
       ],
       selectedItemColor: Colors.red,

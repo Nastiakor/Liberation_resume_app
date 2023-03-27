@@ -48,7 +48,7 @@ class MyAppBarFeed extends AppBar {
                     textStyle: TextStyle(
                         fontWeight: FontWeight.w700,
                         color: titleColor,
-                        fontSize: 35,
+                        fontSize: 25,
                         letterSpacing: 0.2),
                   ),
                 ),
