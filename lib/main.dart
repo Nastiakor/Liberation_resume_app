@@ -9,6 +9,7 @@ import 'package:cv_flutter_libe/views/formation.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:cv_flutter_libe/style.dart';
 import 'package:cv_flutter_libe/views/libeAPI.dart';
+import 'package:intl/date_symbol_data_local.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
