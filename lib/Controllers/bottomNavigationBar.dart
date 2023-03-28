@@ -63,13 +63,13 @@ class MyBottomHomeNavigationBarState extends State<MyBottomHomeNavigationBar> {
           widget.currentIndex = index;
           if (widget.currentIndex == 1) {
             Navigator.push(context,
-                MaterialPageRoute(builder: (context) => LiberationAPI()));
+                MaterialPageRoute(builder: (context) => MyApp()));
           } else if (widget.currentIndex == 0) {
             Navigator.push(context,
                 MaterialPageRoute(builder: (context) => const MyApp()));
           } else if (widget.currentIndex == 2) {
             Navigator.push(
-                context, MaterialPageRoute(builder: (context) => NYTAPI()));
+                context, MaterialPageRoute(builder: (context) => MyApp()));
           }
         });
       },

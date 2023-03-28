@@ -5,6 +5,8 @@ import 'package:intl/intl.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:cv_flutter_libe/Controllers/AppBar.dart';
 import 'package:cv_flutter_libe/Controllers/bottomNavigationBar.dart';
+import 'package:intl/date_symbol_data_local.dart';
+
 
 void main() => runApp(LiberationAPI());
 
@@ -39,7 +41,7 @@ class _LiberationAPIState extends State<LiberationAPI> {
       final response =
           await http.get(Uri.parse('$apiUrl?$queryParams'), headers: headers);
       if (response.statusCode == 200) {
-        final data = json.decode(utf8.decode(response.bodyBytes));
+        final data = json.decode(utf8.decode(response.bodyBytes)) as Map<String, dynamic>;
         if (data != null && data['content_elements'] != null) {
           setState(() {
             _contentElements =
@@ -83,33 +85,26 @@ class _LiberationAPIState extends State<LiberationAPI> {
                               itemCount: _contentElements.length,
                               itemBuilder: (BuildContext context, int index) {
                                 final contentElement = _contentElements[index];
-                                final primarySectionName =
-                                    contentElement['taxonomy']
-                                            ?['primary_section']?['name'] ??
-                                        '';
-                                print(primarySectionName);
-                                final headlines =
-                                    contentElement['headlines'] ?? {};
-                                final canonicalUrl =
-                                    contentElement['canonical_url'] ?? '';
-                                final displayDate =
-                                    contentElement['display_date'] ?? '';
-                                final dateTime = DateTime.parse(displayDate)
-                                    .add(Duration(hours: 1));
+                                final primarySection = contentElement['taxonomy']['primary_section'];
+                                final primarySectionName = primarySection != null ? primarySection['name'] : '';
+                                final headlines = contentElement['headlines'] ?? {};
+                                final canonicalUrl = contentElement['canonical_url'] ?? '';
+                                final displayDate = contentElement['display_date'] ?? '';
+                                final dateTime = DateTime.parse(displayDate).add(Duration(hours: 1));
                                 final hourFormat = DateFormat('HH:mm');
-                                final formattedHour =
-                                    hourFormat.format(dateTime);
+                                final formattedHour = hourFormat.format(dateTime);
                                 return InkWell(
                                   onTap: () {
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) =>
-                                              ArticleDetailsPage(
-                                                  article: Article.fromJson(
-                                                      contentElement))),
+                                        builder: (context) => ArticleDetailsPage(
+                                          article: Article.fromJson(contentElement),
+                                        ),
+                                      ),
                                     );
                                   },
+
                                   child: Container(
                                     decoration: BoxDecoration(
                                       border: Border(
@@ -208,21 +203,74 @@ class Article {
   final Map<String, dynamic> headlines;
   final List<ContentElement> contentElements;
   final String primarySectionName;
+  final String imageUrl;
+  Map<String, dynamic> subheadlines;
+  final String credit1;
+  final credit2;
+  final DateTime first_publish_date;
+  final String themeTitle;
+  final String caption;
 
   Article(
       {required this.id,
-      required this.title,
-      required this.headlines,
-      required this.contentElements,
-      required this.primarySectionName});
+        required this.title,
+        required this.headlines,
+        required this.contentElements,
+        required this.primarySectionName,
+        required this.imageUrl,
+        required this.subheadlines,
+        required this.credit1,
+        this.credit2,
+        required this.first_publish_date,
+        required this.themeTitle,
+        required this.caption,
+      });
+
+//La méthode fromJson est une méthode statique utilisée pour convertir un objet JSON en un objet Dart.
+// Cette méthode est généralement utilisée dans le cadre de la serialization/désérialization
+// de données, où les données sont envoyées sous forme de chaînes JSON et
+// converties en objets Dart pour être utilisées dans l'application.
+// La méthode fromJson peut être implémentée dans une classe pour permettre
+// à cette classe de gérer la conversion de données JSON en objet Dart
+
+ // Une méthode factory est une méthode spéciale dans Dart qui permet de créer
+  // une instance d'une classe de différentes manières. Contrairement à un constructeur normal
+  // qui crée une instance en appelant le constructeur avec des arguments,
+  // une méthode factory peut utiliser des algorithmes plus complexes pour
+  // déterminer comment créer une instance.
+  // L'utilisation d'une méthode factory peut améliorer la lisibilité du code
+  // et offrir une plus grande flexibilité dans la création d'objets.
+  // Par exemple, dans le cas d'une classe Article, la méthode factory fromJson
+  // peut être utilisée pour créer une instance de Article
+  // à partir d'un objet JSON. Cela permet de séparer la logique de création
+  // de l'objet de la logique qui l'utilise.
+
+  //Cette ligne de code filtre les éléments de données contentElementsData
+  // en sélectionnant uniquement ceux dont le type est 'text'.
+  // Ensuite, il utilise la méthode map pour convertir chaque élément filtré
+  // en un objet ContentElement en utilisant la méthode fromJson.
+  // Enfin, la méthode toList est utilisée pour convertir l'objet résultant en une liste d'objets ContentElement.
+  //
+  // En résumé, cette ligne de code extrait les éléments de type 'text' des données contentElementsData et les convertit en une liste d'objets ContentElement.
+
+
 
   factory Article.fromJson(Map<String, dynamic> json) {
     List<dynamic> contentElementsData = json['content_elements'] ?? [];
     List<ContentElement> contentElements = contentElementsData
+        .where((element) => element['type'] == 'text')
         .map((element) => ContentElement.fromJson(element))
         .toList();
-    final primarySectionName =
-        json['taxonomy']?['primary_section']?['name'] ?? '';
+
+      final primarySection = json['taxonomy']['primary_section'];
+    final primarySectionName = primarySection != null ? primarySection['name'] : '';
+
+    final String imageUrl = json['promo_items']['basic']['url'];
+    final credit1 = json['credits']['by'][0]['name'];
+    final credit2 = json['credits']['by'].length >= 2 ? json['credits']['by'][1]['name'] : null;
+    final first_publish_date = DateTime.parse(json['first_publish_date']);
+    final themeTitle = json['label']['basic']['text'];
+    final caption = json['promo_items']['basic']['caption'];
 
     return Article(
       id: json['_id'],
@@ -230,7 +278,13 @@ class Article {
       headlines: json['headlines'],
       contentElements: contentElements,
       primarySectionName: primarySectionName,
-      //primarySection : primarySection,
+      imageUrl: imageUrl,
+      subheadlines: json['subheadlines'] as Map<String, dynamic>,
+      credit1: credit1,
+      credit2: credit2,
+      first_publish_date: first_publish_date,
+      themeTitle: themeTitle,
+      caption: caption,
     );
   }
 }
@@ -253,30 +307,161 @@ class ContentElement {
       id: json['_id'],
       type: json['type'],
       subtype: json['subtype'],
-      content: json['content'],
+      content: json['content'] != null ? json['content'] is Map<String, dynamic> ? Map<String, dynamic>.from(json['content']) : null : null,
     );
   }
 }
-
 class ArticleDetailsPage extends StatefulWidget {
   final Article article;
 
   const ArticleDetailsPage({Key? key, required this.article}) : super(key: key);
-
+  Future<void> _initializeDateFormatting() async {
+    await initializeDateFormatting('fr');
+  }
   @override
   _ArticleDetailsPageState createState() => _ArticleDetailsPageState();
 }
 
 class _ArticleDetailsPageState extends State<ArticleDetailsPage> {
   @override
+
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.article.title),
+        title: Text(widget.article.headlines['basic'] ?? ''),
       ),
-      body: Center(
-        child: Text(widget.article.contentElements.toString()),
+      body: ListView(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+              widget.article.themeTitle,
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+              widget.article.headlines['basic'] ?? '',
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+            child: Text(
+              widget.article.primarySectionName,
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+                color: Colors.grey,
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+            child: Text(
+              widget.article.subheadlines['basic'] ?? '',
+              style: TextStyle(
+                fontSize: 16,
+                fontStyle: FontStyle.italic,
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+            child: RichText(
+              text: TextSpan(
+                text: widget.article.credit1,
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.grey,
+                ),
+                children: [
+                  if (widget.article.credit2 != null)
+                    TextSpan(
+                      text: ' et ${widget.article.credit2}',
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.grey,
+                      ),
+                    ),
+                ],
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+            child: Text(
+              CustomDateFormat("dd MMMM yyyy 'à' HH'h'mm", locale: 'fr').format(widget.article.first_publish_date.add(Duration(hours: 2))),
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+                color: Colors.grey,
+              ),
+            ),
+          ),
+          Expanded(
+            child: Container(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                      child: Text(
+                        widget.article.caption,
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontStyle: FontStyle.italic,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          Column(
+            children: widget.article.contentElements.map((contentElement) {
+              return ListTile(
+                title: Text(contentElement.content?['text'] ?? ''),
+                subtitle: contentElement.subtype != null
+                    ? Text(contentElement.subtype!)
+                    : null,
+              );
+            }).toList(),
+          ),
+        ],
       ),
     );
+
+    // Column(
+          //   children: widget.article.contentElements.map((contentElement) {
+          //     return ListTile(
+          //       title: Text(contentElement.content?['text'] ?? ''),
+          //       subtitle: contentElement.subtype != null
+          //           ? Text(contentElement.subtype!)
+          //           : null,
+          //     );
+          //   }).toList(),
+          // ),
+  }
+}
+
+class CustomDateFormat {
+  final String pattern;
+  final String locale;
+
+  CustomDateFormat(this.pattern, {required this.locale});
+
+  String format(DateTime dateTime) {
+    return DateFormat(pattern, locale).format(dateTime);
   }
 }
