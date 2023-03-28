@@ -6,6 +6,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:cv_flutter_libe/Controllers/AppBar.dart';
 import 'package:cv_flutter_libe/Controllers/bottomNavigationBar.dart';
 import 'package:intl/date_symbol_data_local.dart';
+import 'package:html_unescape/html_unescape.dart';
+final unescape = HtmlUnescape();
 
 
 void main() => runApp(LiberationAPI());
@@ -256,6 +258,9 @@ class Article {
 
 
   factory Article.fromJson(Map<String, dynamic> json) {
+
+
+
     List<dynamic> contentElementsData = json['content_elements'] ?? [];
     List<ContentElement> contentElements = contentElementsData
         .where((element) => element['type'] == 'text')
@@ -264,13 +269,13 @@ class Article {
 
     final primarySection = json['taxonomy']['primary_section'];
     final primarySectionName = primarySection != null ? primarySection['name'] : '';
-
     final String imageUrl = json['promo_items']['basic']['url'];
     final credit1 = json['credits']['by'][0]['name'];
     final credit2 = json['credits']['by'].length >= 2 ? json['credits']['by'][1]['name'] : null;
     final first_publish_date = DateTime.parse(json['first_publish_date']);
     final themeTitle = json['label']['basic']['text'];
     final caption = json['promo_items']['basic']['caption'];
+  print(contentElementsData);
 
     return Article(
       id: json['_id'],
@@ -303,14 +308,25 @@ class ContentElement {
   });
 
   factory ContentElement.fromJson(Map<String, dynamic> json) {
+
+    final jsonC = {
+      'content': {
+        'content': 'Hello &amp; World!'
+      }
+    };
+    print(jsonC);
     return ContentElement(
       id: json['_id'],
       type: json['type'],
       subtype: json['subtype'],
-      content: json['content'] != null ? json['content'] is Map<String, dynamic> ? Map<String, dynamic>.from(json['content']) : null : null,
+      content: jsonC['content'] != null ? json['content'] is Map<String, dynamic> ? Map<String, dynamic>.from(json['content']) : null : null,
     );
   }
+
 }
+
+
+
 class ArticleDetailsPage extends StatefulWidget {
   final Article article;
 
@@ -323,6 +339,26 @@ class ArticleDetailsPage extends StatefulWidget {
 }
 
 class _ArticleDetailsPageState extends State<ArticleDetailsPage> {
+
+  Widget MyJsonContentWidget(List<ContentElement> contentElements) {
+    return Column(
+      children: contentElements.map((element) {
+        if (element.type == 'text') {
+          return Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+              element.content?['content'] ?? '',
+              style: TextStyle(
+                fontSize: 18,
+              ),
+            ),
+          );
+        }
+        return Container();
+      }).toList(),
+    );
+  }
+
   @override
 
   Widget build(BuildContext context) {
@@ -424,6 +460,7 @@ class _ArticleDetailsPageState extends State<ArticleDetailsPage> {
                       ),
                     ),
                   ),
+                  MyJsonContentWidget(widget.article.contentElements),
                 ],
               ),
             ),
@@ -453,6 +490,7 @@ class _ArticleDetailsPageState extends State<ArticleDetailsPage> {
     //   }).toList(),
     // ),
   }
+
 }
 
 class CustomDateFormat {
@@ -465,3 +503,5 @@ class CustomDateFormat {
     return DateFormat(pattern, locale).format(dateTime);
   }
 }
+
+
