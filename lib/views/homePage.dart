@@ -22,7 +22,7 @@ class homePage extends StatelessWidget {
                 "DEUX ÉTUDIANTS EN DEVELOPPEMENT MOBILE. RÉCOMPENSE: ALTERNANCE",
             paragraphMainArticle:
                 "Pensionnaires du centre de formation de l'équipe féministe Ada Tech School dans le 10e arrondissement de Paris (si t'es pas le numéro 10 à Paname...), les plus si jeunes développeurs en puissance, 75 ans à eux deux quand même, seront de précieux alliés pour les projets tech de Libération.",
-            themeMainArticle: "Chômage",
+            themeMainArticle: "Alternance",
             writtenBy: "Anastasia et Johan",
             publishDateParam: "2023-03-06 10:13:00",
             legendPicture:
@@ -33,10 +33,10 @@ class homePage extends StatelessWidget {
           SecondaryArticle(
             imagePath: "img/NASTIA.JPG",
             title: "ANASTASIA KOROTKOVA ",
-            titlethen: "FROM RUSSIA WITH LOVE",
+            titlethen: "",
             paragraphMainArticle:
                 "Pensionnaires du centre de formation de l'équipe féministe Ada Tech School dans le 10e arrondissement de Paris (si t'es pas le numéro 10 à Paname...), les plus si jeunes développeurs en puissance, 75 ans à eux deux quand même, seront de précieux alliés pour les projets tech de Libération.",
-            themeMainArticle: "Chômage",
+            themeMainArticle: "Présentation",
             writtenBy: "Anastasia Korotkova",
             publishDateParam: "2023-03-06 10:13:00",
             legendPicture:

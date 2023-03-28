@@ -23,8 +23,7 @@ class NYTAPI extends StatefulWidget {
 
 class _NYTAPIState extends State<NYTAPI> {
   final String apiKey = "0oUTF3Ux70XLMAopiLaFV6fzRa1XtgZ2";
-  final String apiUrl =
-      "https://api.nytimes.com/svc/mostpopular/v2/emailed/7.json";
+  final String apiUrl = "https://api.nytimes.com/svc/mostpopular/v2/emailed/7.json";
 
   List<dynamic> _articles = [];
 
