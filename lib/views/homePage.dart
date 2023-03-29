@@ -22,7 +22,7 @@ class homePage extends StatelessWidget {
                 "DEUX ÉTUDIANTS EN DEVELOPPEMENT MOBILE. RÉCOMPENSE: ALTERNANCE",
             paragraphMainArticle:
                 "Pensionnaires du centre de formation de l'équipe féministe Ada Tech School dans le 10e arrondissement de Paris (si t'es pas le numéro 10 à Paname...), les plus si jeunes développeurs en puissance, 75 ans à eux deux quand même, seront de précieux alliés pour les projets tech de Libération.",
-            themeMainArticle: "Chômage",
+            themeMainArticle: "Alternance",
             writtenBy: "Anastasia et Johan",
             publishDateParam: "2023-03-06 10:13:00",
             legendPicture:
@@ -33,16 +33,16 @@ class homePage extends StatelessWidget {
           SecondaryArticle(
             imagePath: "img/NASTIA.JPG",
             title: "ANASTASIA KOROTKOVA ",
-            titlethen: "FROM RUSSIA WITH LOVE",
+            titlethen: "VERS UNE NOUVELLE PASSION",
             paragraphMainArticle:
-                "Pensionnaires du centre de formation de l'équipe féministe Ada Tech School dans le 10e arrondissement de Paris (si t'es pas le numéro 10 à Paname...), les plus si jeunes développeurs en puissance, 75 ans à eux deux quand même, seront de précieux alliés pour les projets tech de Libération.",
-            themeMainArticle: "Chômage",
+                "",
+            themeMainArticle: "Présentation",
             writtenBy: "Anastasia Korotkova",
             publishDateParam: "2023-03-06 10:13:00",
             legendPicture:
                 "En recherche d'alternance pour la période de mi-juillet 2023 à mi-juin 2024 sur un rythme de 4 jours sur 5 en entreprise",
             completeArticle:
-                "Ils ont le bénéfice de leur grand âge, en capacité à résister à la pression, apprécie le travail en équipe, empathiques et de grandes qualités relationnelles. Ils savent aussi se mettre au diapason de la dynamique collective et s'y fondre. Plus à l'aise à domicile sur leurs terrains de prédilection (Dart, JavaScript, C#), ils sont complètement adaptables à d'autres contraintes techniques (Swift, Kotlin, Java, PHP...).",
+                "Actuellement en reconversion professionnelle dans le domaine du développement d'applications et de logiciels, je suis, depuis octobre 2022, une formation à Ada Tech School qui me permet d'acquérir les compétences nécessaires pour créer des applications performantes et intuitives. Je suis particulièrement intéressée par le mobile, et notamment, par Flutter, un SDK de développement d'applications multiplateforme. Au sein de mon école, j'ai travaillé sur plusieurs projets intéressants, notamment une application mobile en Flutter, un jeu vidéo sur Pico-8 en Lua, un site Internet basé sur l'API 'Que faire à Paris ?' en JavaScript, ainsi qu'une extension de navigateur Chrome en Javascript et MongoDB.Avant de me lancer dans le développement d'applications, j'ai travaillé dans le domaine de l'hôtellerie en tant que réceptionniste, ainsi en tant qu’assistante de direction générale. J'ai également une formation en langues étrangères, ce qui me permet de communiquer avec des personnes de cultures différentes.Je suis passionnée de nouvelles technologies, de musique , de cinéma et de littérature. J'aime aussi voyager et découvrir de nouvelles cultures. Je suis très motivée pour continuer à apprendre et à évoluer dans le domaine du développement d'applications, et je suis convaincue que mes compétences et mon expérience précédente seront des atouts pour réussir dans ce domaine.",
           ),
           SecondaryArticle(
             imagePath: "img/JOHAN.JPG",
