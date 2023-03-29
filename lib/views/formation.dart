@@ -50,8 +50,8 @@ class Formations extends StatelessWidget {
             themeMainArticle: "Traduction",
             writtenBy: "Anastasia Korotkova",
             publishDateParam: "2023-03-08 11:55:00",
-            legendPicture: "",
-            completeArticle: "",
+            legendPicture: "Logo de l'ESIT",
+            completeArticle: "Ma formation à l'ESIT dont l'enseignement est basé sur la Théorie interprétative de la traduction m'a permis d'acquérir des compétences en traduction, ainsi que d'enrichir ma culture générale grâce à des cours de l'économie, de l'introduction au droit, des Fondements scientifiques et techniques, des Outils informatiques du traducteur etc.",
           ),
           SecondaryArticle(
             imagePath: "img/Formations/UnivEvry.png",
@@ -76,7 +76,8 @@ class Formations extends StatelessWidget {
             publishDateParam: "2023-03-08 11:55:00",
             legendPicture: "",
             completeArticle:
-                "- Master 2 Sciences du langage (niveau)\n- Master 1 Sciences du langage (mention Bien)\n- Licence 3 Sciences du langage, spécialité Français\n  Langue Étrangère (mention Bien)",
+                "Diplômes obtenus:\n\n- Master 2 Sciences du langage (niveau)\n- Master 1 Sciences du langage (mention Bien)\n- Licence 3 Sciences du langage, spécialité Français Langue Étrangère (mention Bien)\n\n"
+                "Cette formation m'a permis de développer une connaissance approfondie de la structure des langues, de l'\analyse du discours, ainsi que des notions en Sociolinguistique, en Sémantique, en Pragmatique etc."
           ),
           SecondaryArticle(
             imagePath: "img/Formations/STAPSLYON1.png",
@@ -102,7 +103,7 @@ class Formations extends StatelessWidget {
             writtenBy: "Anastasia Korotkova",
             publishDateParam: "2023-03-08 12:32:00",
             legendPicture: "",
-            completeArticle: "Master 2 Langues Étrangères (mention Très Bien)",
+            completeArticle: "Master 2 Langues Étrangères (mention Très Bien)\n\nCette formation m'a permis d'avoir une connaissance approfondie d'anglais et de français, de la culture des pays anglophones et francopones, j'ai également pu apprendre les théories de l'enseignement et de l'apprentissage, ainsi que les stratégies pédagogiques pour enseigner efficacement les langues étrangères",
           ),
           SecondaryArticle(
             imagePath: "img/Formations/IUTIndre.webp",
