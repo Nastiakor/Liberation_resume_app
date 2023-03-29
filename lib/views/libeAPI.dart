@@ -106,7 +106,6 @@ class _LiberationAPIState extends State<LiberationAPI> {
                           ),
                         );
                       },
-
                       child: Container(
                         decoration: BoxDecoration(
                           border: Border(
@@ -258,14 +257,13 @@ class Article {
 
 
   factory Article.fromJson(Map<String, dynamic> json) {
-
-
-
     List<dynamic> contentElementsData = json['content_elements'] ?? [];
     List<ContentElement> contentElements = contentElementsData
         .where((element) => element['type'] == 'text')
         .map((element) => ContentElement.fromJson(element))
         .toList();
+    // make sure contentElements is always a list even if empty
+    contentElements = contentElements.isNotEmpty ? contentElements : [ContentElement(id: '', type: '', content: null)];
 
     final primarySection = json['taxonomy']['primary_section'];
     final primarySectionName = primarySection != null ? primarySection['name'] : '';
@@ -314,7 +312,7 @@ class ContentElement {
         'content': 'Hello &amp; World!'
       }
     };
-    print(jsonC);
+
     return ContentElement(
       id: json['_id'],
       type: json['type'],
@@ -341,8 +339,11 @@ class ArticleDetailsPage extends StatefulWidget {
 class _ArticleDetailsPageState extends State<ArticleDetailsPage> {
 
   Widget MyJsonContentWidget(List<ContentElement> contentElements) {
+    print('contentElements length: ${contentElements.length}');
+
     return Column(
       children: contentElements.map((element) {
+        print('element type: ${element.type}, subtype: ${element.subtype}');
         if (element.type == 'text') {
           return Padding(
             padding: const EdgeInsets.all(8.0),
@@ -358,11 +359,11 @@ class _ArticleDetailsPageState extends State<ArticleDetailsPage> {
       }).toList(),
     );
   }
-
   @override
 
   Widget build(BuildContext context) {
-
+    print("ace");
+    print(widget.article.contentElements);
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.article.headlines['basic'] ?? ''),
@@ -464,16 +465,6 @@ class _ArticleDetailsPageState extends State<ArticleDetailsPage> {
                 ],
               ),
             ),
-          ),
-          Column(
-            children: widget.article.contentElements.map((contentElement) {
-              return ListTile(
-                title: Text(contentElement.content?['text'] ?? ''),
-                subtitle: contentElement.subtype != null
-                    ? Text(contentElement.subtype!)
-                    : null,
-              );
-            }).toList(),
           ),
         ],
       ),
