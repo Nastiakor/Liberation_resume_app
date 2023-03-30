@@ -7,6 +7,7 @@ import 'package:cv_flutter_libe/Controllers/AppBar.dart';
 import 'package:cv_flutter_libe/Controllers/bottomNavigationBar.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:html_unescape/html_unescape.dart';
+// import 'package:flutter_html/flutter_html.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 const titleColor = Color(0XFFE60004);
@@ -295,10 +296,6 @@ class Article {
     final caption = json['promo_items']['basic']['caption'];
     final articlesContenus = json['content_elements'];
 
-    for (int i = 0; i < articlesContenus.length; i++) {
-      print("article");
-      print(articlesContenus[i]['content']);
-    }
     return Article(
       id: json['_id'],
       title: json['headlines']['basic'],
@@ -392,18 +389,6 @@ class _ArticleDetailsPageState extends State<ArticleDetailsPage> {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8.0),
           child: Text(
-            'Contenus :',
-            style: TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-        ),
-      );
-      paddingWidgets.add(
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8.0),
-          child: Text(
             widget.article.articlesContenus!.map((article) {
               if (article['content'] != null) {
                 return HtmlUnescape().convert(article['content']) + '\n\n';
@@ -411,7 +396,9 @@ class _ArticleDetailsPageState extends State<ArticleDetailsPage> {
                 return '';
               }
             }).join(),
-            style: TextStyle(fontSize: 16),
+            style: GoogleFonts.tinos(
+          textStyle: TextStyle(
+          color: Colors.black, fontSize: 18, letterSpacing: 0.6))
           ),
         ),
       );
@@ -545,16 +532,6 @@ class _ArticleDetailsPageState extends State<ArticleDetailsPage> {
       ),
     );
 
-    // Column(
-    //   children: widget.article.contentElements.map((contentElement) {
-    //     return ListTile(
-    //       title: Text(contentElement.content?['text'] ?? ''),
-    //       subtitle: contentElement.subtype != null
-    //           ? Text(contentElement.subtype!)
-    //           : null,
-    //     );
-    //   }).toList(),
-    // ),
   }
 }
 
