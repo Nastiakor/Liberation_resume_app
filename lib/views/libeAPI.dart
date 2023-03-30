@@ -7,7 +7,7 @@ import 'package:cv_flutter_libe/Controllers/AppBar.dart';
 import 'package:cv_flutter_libe/Controllers/bottomNavigationBar.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:html_unescape/html_unescape.dart';
-// import 'package:flutter_html/flutter_html.dart';
+import 'package:flutter_html/flutter_html.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 const titleColor = Color(0XFFE60004);
