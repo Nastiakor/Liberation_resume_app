@@ -14,7 +14,7 @@ class Contact extends StatelessWidget {
       child: Column(
         children: [
           MainArticle(
-            imagePath: "img/image_0.webp",
+            imagePath: "img/contact.webp",
             title: "NOUS ",
             titlethen: "CONTACTER",
             paragraphMainArticle:

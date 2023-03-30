@@ -21,3 +21,59 @@ class firstHomeArticle extends StatelessWidget {
     );
   }
 }*/
+
+/*double _fontSize = 16.0;
+double _selectedFontSize = 16.0;
+
+void _updateFontSize(double newSize) {
+  setState(() {
+    _fontSize = newSize;
+  });
+}
+
+void _handleFontSizeTap() {
+  showDialog(
+    context: context,
+    builder: (context) {
+      return AlertDialog(
+        title: Text('Sélectionner la taille de la police'),
+        content: SingleChildScrollView(
+          child: ListBody(
+            children: [
+              RadioListTile(
+                title: Text('Petit'),
+                value: 12.0,
+                groupValue: _selectedFontSize,
+                onChanged: (value) {
+                  _updateFontSize(value!);
+                  _selectedFontSize = value;
+                  Navigator.pop(context);
+                },
+              ),
+              RadioListTile(
+                title: Text('Moyen'),
+                value: 16.0,
+                groupValue: _selectedFontSize,
+                onChanged: (value) {
+                  _updateFontSize(value!);
+                  _selectedFontSize = value;
+                  Navigator.pop(context);
+                },
+              ),
+              RadioListTile(
+                title: Text('Grand'),
+                value: 20.0,
+                groupValue: _selectedFontSize,
+                onChanged: (value) {
+                  _updateFontSize(value!);
+                  _selectedFontSize = value;
+                  Navigator.pop(context);
+                },
+              ),
+            ],
+          ),
+        ),
+      );
+    },
+  );
+}*/

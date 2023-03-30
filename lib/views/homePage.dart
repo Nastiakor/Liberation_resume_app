@@ -16,7 +16,7 @@ class homePage extends StatelessWidget {
       child: Column(
         children: [
           MainArticle(
-            imagePath: "img/PhotoshopWanted.jpg",
+            imagePath: "img/Wanted_photoshop.jpg",
             title: "WANTED ",
             titlethen:
                 "DEUX ÉTUDIANTS EN DEVELOPPEMENT MOBILE. RÉCOMPENSE: ALTERNANCE",
