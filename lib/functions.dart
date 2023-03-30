@@ -89,7 +89,7 @@ class MainArticle extends StatelessWidget {
               fit: BoxFit.cover,
             ),
             Padding(
-              padding: const EdgeInsets.all(16.0),
+              padding: const EdgeInsets.only(left: 15, top: 20, right: 10),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -105,16 +105,16 @@ class MainArticle extends StatelessWidget {
                   const SizedBox(height: 10),
                   paragraph(paragraphMainArticle),
                   const SizedBox(height: 20),
-                  Row(
-                    children: [
-                      theme(themeMainArticle),
-                      time("Il y a ${daysUntilArticle()}"),
-                      abonne(),
-                      bookmark(),
-                    ],
-                  ),
                 ],
               ),
+            ),
+            Row(
+              children: [
+                theme(themeMainArticle),
+                time("Il y a ${daysUntilArticle()}"),
+                abonne(),
+                bookmark(),
+              ],
             ),
             const Divider(thickness: 2),
           ],
@@ -196,7 +196,7 @@ class APFArticle extends StatelessWidget {
               completeArticle: completeArticle),
         )),
         child: Padding(
-          padding: EdgeInsets.only(top: 10, left: 5),
+          padding: EdgeInsets.only(top: 10, left: 15),
           child: Wrap(
             children: [
               RichText(
@@ -210,7 +210,6 @@ class APFArticle extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.only(
                   top: 7,
-                  left: 4,
                   bottom: 10,
                 ),
                 child: paragraph(paragraphMainArticle),
@@ -221,7 +220,6 @@ class APFArticle extends StatelessWidget {
       ),
       Row(
         children: [
-          Padding(padding: EdgeInsets.only(top: 20)),
           theme(themeMainArticle),
           time("Il y a ${daysUntilArticle()}"),
           abonne(),
@@ -404,7 +402,7 @@ class SecondaryArticle extends StatelessWidget {
     return Column(
       children: [
         Padding(
-          padding: EdgeInsets.only(top: 7, left: 4),
+          padding: EdgeInsets.only(),
           child: InkWell(
             onTap: () => Navigator.of(context).push(MaterialPageRoute(
               builder: (context) => FullArticle(
@@ -420,7 +418,7 @@ class SecondaryArticle extends StatelessWidget {
               ),
             )),
             child: Padding(
-              padding: EdgeInsets.only(left: 16, right: 10),
+              padding: EdgeInsets.only(left: 15, right: 10),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
@@ -454,7 +452,7 @@ class SecondaryArticle extends StatelessWidget {
           ),
         ),
         Padding(
-          padding: EdgeInsets.only(top: 10, left: 5),
+          padding: EdgeInsets.only(top: 10),
           child: Row(
             children: [
               theme(themeMainArticle),

@@ -131,7 +131,7 @@ RichText byArticle(String name) {
 Expanded theme(String theme) {
   return Expanded(
     child: Padding(
-      padding: EdgeInsets.only(left: 10),
+      padding: EdgeInsets.only(left:15),
       child: Container(
         child: RichText(
           text: TextSpan(

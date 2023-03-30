@@ -19,7 +19,7 @@ class Contact extends StatelessWidget {
             titlethen: "CONTACTER",
             paragraphMainArticle:
                 "Vous êtes intéressé.e par nos profils pour renforcer vos équipes dans le cadre d'une alternance en un an ?",
-            themeMainArticle: "",
+            themeMainArticle: "Contact",
             writtenBy: "Johan et Anastasia",
             publishDateParam: "2023-03-10 19:36:00",
             legendPicture: "",

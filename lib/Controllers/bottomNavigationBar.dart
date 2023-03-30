@@ -57,10 +57,6 @@ class MyBottomHomeNavigationBarState extends State<MyBottomHomeNavigationBar> {
           icon: Icon(Icons.ads_click, size: 28),
           label: 'Best of the NYT',
         ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.train, size: 28),
-          label: 'SNCF Connect',
-        ),
       ],
       selectedItemColor: Colors.red,
       onTap: (index) {
@@ -75,9 +71,6 @@ class MyBottomHomeNavigationBarState extends State<MyBottomHomeNavigationBar> {
           } else if (widget.currentIndex == 2) {
             Navigator.push(
                 context, MaterialPageRoute(builder: (context) => NYTAPI()));
-          } else if (widget.currentIndex == 3) {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => SNCFConnect()));
           }
         });
       },

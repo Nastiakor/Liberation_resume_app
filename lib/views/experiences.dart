@@ -19,7 +19,7 @@ class Experiences extends StatelessWidget {
             titlethen: " HOTELS A PARIS",
             paragraphMainArticle:
                 "Pendant 5 ans, 'ai travaillé en tant que réceptionniste dans de divers hôtels à Paris.",
-            themeMainArticle: "",
+            themeMainArticle: "Réception",
             writtenBy: "Anastasia Korotkova",
             publishDateParam: "2023-03-06 15:13:00",
             legendPicture: "",
@@ -48,7 +48,7 @@ class Experiences extends StatelessWidget {
             titlethen: " DIVERS ENTREPRISES A PARIS",
             paragraphMainArticle:
                 "J'ai travaillé dans plusieurs entreprises en tant qu'Assistante de Direction Générale",
-            themeMainArticle: "",
+            themeMainArticle: "Secrétariat",
             writtenBy: "Anastasia Korotkova",
             publishDateParam: "2023-03-06 10:13:00",
             legendPicture: "",
@@ -76,7 +76,7 @@ class Experiences extends StatelessWidget {
             titlethen: " CITÉ DE LA MUSIQUE",
             paragraphMainArticle:
                 "",
-            themeMainArticle: "",
+            themeMainArticle: "Accueil",
             writtenBy: "Anastasia Korotkova",
             publishDateParam: "2023-03-06 10:13:00",
             legendPicture: "",

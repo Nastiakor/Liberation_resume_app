@@ -49,7 +49,7 @@ class homePage extends StatelessWidget {
             title: "JOHAN ANQUETIL ",
             titlethen: "DE LA GESTION DE PROJET AU CODE",
             paragraphMainArticle:
-                "Créatif, curieux, motivé et profondément collectif, je suis en reconversion professionnel dans le domaine du développement après avoir oeuvré 10 ans dans le secteur associatif.",
+                "Créatif, curieux, motivé et profondément collectif, je suis en reconversion professionnelle dans le domaine du développement après avoir oeuvré 10 ans dans le secteur associatif.",
             themeMainArticle: "Présentation",
             writtenBy: "Johan Anquetil",
             publishDateParam: "2023-03-06 10:13:00",
