@@ -46,7 +46,7 @@ class Formations extends StatelessWidget {
             titlethen:
                 " MASTER 1 TRADUCTION ÉDITORIALE, ÉCONOMIQUE ET TECHNIQUE",
             paragraphMainArticle:
-                "\nESIT (ÉCOLE SUPÉRIEURE D’INTERPRÈTES ET DE TRADUCTEURS)",
+                "ESIT (ÉCOLE SUPÉRIEURE D’INTERPRÈTES ET DE TRADUCTEURS)",
             themeMainArticle: "Traduction",
             writtenBy: "Anastasia Korotkova",
             publishDateParam: "2023-03-08 11:55:00",
@@ -70,7 +70,7 @@ class Formations extends StatelessWidget {
             imagePath: "img/Formations/Logo_Paris_Descartes.png",
             title: "2006 - 2009 :",
             titlethen: " LICENCE 3 - MASTER 1 SCIENCES DU LANGAGE",
-            paragraphMainArticle: "\nUNIVERSITÉ PARIS V DESCARTES",
+            paragraphMainArticle: "UNIVERSITÉ PARIS V DESCARTES",
             themeMainArticle: "Sciences du langage",
             writtenBy: "Anastasia Korotkova",
             publishDateParam: "2023-03-08 11:55:00",
@@ -98,7 +98,7 @@ class Formations extends StatelessWidget {
             title: "2000 - 2005 :",
             titlethen: " MASTER PROFESSEURE D'ANGLAIS ET DE FRANÇAIS",
             paragraphMainArticle:
-                "\nINSTITUT PÉDAGOGIQUE DE IOCHKAR-OLA (RUSSIE)",
+                "INSTITUT PÉDAGOGIQUE DE IOCHKAR-OLA (RUSSIE)",
             themeMainArticle: "Langues étrangères",
             writtenBy: "Anastasia Korotkova",
             publishDateParam: "2023-03-08 12:32:00",

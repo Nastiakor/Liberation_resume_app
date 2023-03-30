@@ -302,7 +302,7 @@ class FullArticle extends MainArticle {
             ),
             // Padding 2
             Padding(
-              padding: EdgeInsets.only(top: 2, left: 15, right: 15),
+              padding: EdgeInsets.only(top: 15, left: 15, right: 15),
               child: Wrap(
                 children: [
                   Container(

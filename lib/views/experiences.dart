@@ -18,7 +18,7 @@ class Experiences extends StatelessWidget {
             title: "2018 - 2022 RECEPTIONNISTE",
             titlethen: " HOTELS A PARIS",
             paragraphMainArticle:
-                "\nPendant 5 ans, 'ai travaillé en tant que réceptionniste dans de divers hôtels à Paris.",
+                "Pendant 5 ans, 'ai travaillé en tant que réceptionniste dans de divers hôtels à Paris.",
             themeMainArticle: "",
             writtenBy: "Anastasia Korotkova",
             publishDateParam: "2023-03-06 15:13:00",
@@ -47,7 +47,7 @@ class Experiences extends StatelessWidget {
                 "2010 - 2016 ASSISTANTE DE DIRECTION GÉNÉRALE / OFFICE MANAGER",
             titlethen: " DIVERS ENTREPRISES A PARIS",
             paragraphMainArticle:
-                "\nJ'ai travaillé dans plusieurs entreprises en tant qu'Assistante de Direction Générale",
+                "J'ai travaillé dans plusieurs entreprises en tant qu'Assistante de Direction Générale",
             themeMainArticle: "",
             writtenBy: "Anastasia Korotkova",
             publishDateParam: "2023-03-06 10:13:00",
