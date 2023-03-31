@@ -222,12 +222,12 @@ class Article {
   final List<ContentElement> contentElements;
   final String primarySectionName;
   final String imageUrl;
-  Map<String, dynamic> subheadlines;
+  Map<String, dynamic>? subheadlines;
   final String credit1;
   final credit2;
   final DateTime first_publish_date;
   final String themeTitle;
-  final String caption;
+  final String? caption;
   final List<dynamic>? articlesContenus;
 
   Article({
@@ -237,12 +237,12 @@ class Article {
     required this.contentElements,
     required this.primarySectionName,
     required this.imageUrl,
-    required this.subheadlines,
+    this.subheadlines,
     required this.credit1,
     this.credit2,
     required this.first_publish_date,
     required this.themeTitle,
-    required this.caption,
+    this.caption,
     this.articlesContenus,
   });
 
@@ -412,6 +412,16 @@ class _ArticleDetailsPageState extends State<ArticleDetailsPage> {
       body: ListView(
         children: [
           Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+            child: Text(
+              widget.article.primarySectionName,
+              style: GoogleFonts.sourceSansPro(
+                  textStyle: TextStyle(
+                      color: Colors.black45, fontSize: 18, letterSpacing: 0.5)
+              ),
+            ),
+          ),
+          Padding(
             padding: const EdgeInsets.only(top:8.0,left:8.0),
             child: Text(widget.article.themeTitle,
                 style: GoogleFonts.encodeSansCondensed(
@@ -434,20 +444,9 @@ class _ArticleDetailsPageState extends State<ArticleDetailsPage> {
                 ),
               )),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8.0),
-            child: Text(
-              widget.article.primarySectionName,
-              style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
-                color: Colors.grey,
-              ),
-            ),
-          ),
-          Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8.0),
               child: Text(
-                widget.article.subheadlines['basic'] ?? '',
+                widget.article.subheadlines?['basic'] ?? '',
                 style: GoogleFonts.tinos(
                   textStyle: TextStyle(
                       color: Colors.black, fontSize: 18, letterSpacing: 0.6),
@@ -522,11 +521,10 @@ class _ArticleDetailsPageState extends State<ArticleDetailsPage> {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8.0),
                     child: Text(
-                      widget.article.caption,
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontStyle: FontStyle.italic,
-                      ),
+                      widget.article.caption ?? '',
+                        style: GoogleFonts.sourceSansPro(
+                            textStyle: TextStyle(
+                                color: Colors.black, fontSize: 15, letterSpacing: 0.5))
                     ),
                   ),
                   Column(
@@ -540,7 +538,6 @@ class _ArticleDetailsPageState extends State<ArticleDetailsPage> {
         ],
       ),
     );
-
   }
 }
 
