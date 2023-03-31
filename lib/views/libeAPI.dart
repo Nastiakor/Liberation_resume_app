@@ -7,8 +7,9 @@ import 'package:cv_flutter_libe/Controllers/AppBar.dart';
 import 'package:cv_flutter_libe/Controllers/bottomNavigationBar.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:html_unescape/html_unescape.dart';
-import 'package:flutter_html/flutter_html.dart';
+import 'package:web_browser/web_browser.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:web_browser/web_browser.dart';
 
 const titleColor = Color(0XFFE60004);
 final unescape = HtmlUnescape();
@@ -403,6 +404,7 @@ class _ArticleDetailsPageState extends State<ArticleDetailsPage> {
         ),
       );
     }
+    String imageUrl =  widget.article.imageUrl ?? '';
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.article.headlines['basic'] ?? ''),
@@ -505,6 +507,13 @@ class _ArticleDetailsPageState extends State<ArticleDetailsPage> {
               ),
             ),
           ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Image.network(
+              widget.article.imageUrl ?? '',
+              fit: BoxFit.fitWidth,
+            ),
+          ),
           Expanded(
             child: Container(
               child: Column(
@@ -545,4 +554,3 @@ class CustomDateFormat {
     return DateFormat(pattern, locale).format(dateTime);
   }
 }
-
