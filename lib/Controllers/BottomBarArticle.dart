@@ -46,12 +46,28 @@ class _BottomBarObjectState extends State<BottomBarObject> {
           if (_currentIndex == 0) {
             Navigator.of(context).pop();
          } else if (_currentIndex == 1) {
-            Navigator.push(
-                context, MaterialPageRoute(builder: (context) => NYTAPI()));
+            _showModal(context);
            // _handleFontSizeTap();
           }
         });
       },
     );
   }
+}
+
+void _showModal(BuildContext context) {
+  showDialog(
+    context: context,
+    builder: (BuildContext context) => AlertDialog(
+      content: const Text('A&J @2023'),
+      actions: <TextButton>[
+        TextButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          child: const Text('Close'),
+        )
+      ],
+    ),
+  );
 }

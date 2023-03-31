@@ -7,9 +7,12 @@ import 'package:cv_flutter_libe/Controllers/AppBar.dart';
 import 'package:cv_flutter_libe/Controllers/bottomNavigationBar.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:html_unescape/html_unescape.dart';
+import 'package:cv_flutter_libe/Controllers/BottomBarArticle.dart';
+import 'package:html/parser.dart' show parse;
 import 'package:web_browser/web_browser.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:web_browser/web_browser.dart';
+
 
 const titleColor = Color(0XFFE60004);
 final unescape = HtmlUnescape();
@@ -346,6 +349,7 @@ class ContentElement {
   }
 }
 
+
 class ArticleDetailsPage extends StatefulWidget {
   final Article article;
 
@@ -385,30 +389,30 @@ class _ArticleDetailsPageState extends State<ArticleDetailsPage> {
   @override
   Widget build(BuildContext context) {
     List<Widget> paddingWidgets = [];
+
     if (widget.article.articlesContenus?.isNotEmpty == true) {
       paddingWidgets.add(
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8.0),
           child: Text(
-            widget.article.articlesContenus!.map((article) {
-              if (article['content'] != null) {
-                return HtmlUnescape().convert(article['content']) + '\n\n';
-              } else {
-                return '';
-              }
-            }).join(),
-            style: GoogleFonts.tinos(
-          textStyle: TextStyle(
-          color: Colors.black, fontSize: 18, letterSpacing: 0.6))
+              widget.article.articlesContenus!.map((article) {
+                if (article['content'] != null) {
+                  return HtmlUnescape().convert(article['content']) + '\n\n';
+                } else {
+                  return '';
+                }
+              }).join(),
+              style: GoogleFonts.tinos(
+                  textStyle: TextStyle(
+                      color: Colors.black, fontSize: 18, letterSpacing: 0.6))
           ),
         ),
       );
     }
+
     String imageUrl =  widget.article.imageUrl ?? '';
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.article.headlines['basic'] ?? ''),
-      ),
+      appBar: MyAppBarFeed(),
       body: ListView(
         children: [
           Padding(
@@ -537,6 +541,7 @@ class _ArticleDetailsPageState extends State<ArticleDetailsPage> {
           ),
         ],
       ),
+      bottomNavigationBar: BottomBarObject(),
     );
   }
 }
