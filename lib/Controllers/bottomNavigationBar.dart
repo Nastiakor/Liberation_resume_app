@@ -69,8 +69,7 @@ class MyBottomHomeNavigationBarState extends State<MyBottomHomeNavigationBar> {
             Navigator.push(context,
                 MaterialPageRoute(builder: (context) => const MyApp()));
           } else if (widget.currentIndex == 2) {
-            Navigator.push(
-                context, MaterialPageRoute(builder: (context) => NYTAPI()));
+                showModal(context);
           }
         });
       },
