@@ -10,11 +10,19 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:cv_flutter_libe/style.dart';
 import 'package:cv_flutter_libe/views/libeAPI.dart';
 import 'package:intl/date_symbol_data_local.dart';
+import 'package:device_preview/device_preview.dart';
+import 'package:flutter/foundation.dart';
 
-Future<void> main() async {
+// Wrap your app for device preview
+void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  await initializeDateFormatting('fr');
-  runApp(MyApp());
+  //initializeDateFormatting('fr');
+  runApp(
+    DevicePreview(
+      enabled: !kReleaseMode,
+      builder: (context) => MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -24,7 +32,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
+      useInheritedMediaQuery: true,
+      locale: DevicePreview.locale(context),
+      builder: DevicePreview.appBuilder,
       title: _title,
       home: MyStatefulWidget(),
     );
