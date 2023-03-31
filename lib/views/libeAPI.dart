@@ -12,7 +12,8 @@ import 'package:html/parser.dart' show parse;
 import 'package:web_browser/web_browser.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:web_browser/web_browser.dart';
-
+import 'package:html/parser.dart' as html_parser;
+import 'package:html/dom.dart' as html_dom;
 
 const titleColor = Color(0XFFE60004);
 final unescape = HtmlUnescape();
@@ -44,18 +45,18 @@ class _LiberationAPIState extends State<LiberationAPI> {
         "from": "0",
         "sort": "display_date:desc",
         "_sourceInclude":
-        "_id,canonical_url,content_restrictions.content_code,type,subtype,headlines.basic,subheadlines.basic,label.basic.text,label.live.display,label.live.text,first_publish_date,publish_date,display_date,credits.by.name,credits.affiliation.name,content_elements._id,content_elements.type,content_elements.subtype,content_elements.content,content_elements.credits.by.name,content_elements.credits.affiliation.name,content_elements.height,content_elements.width,content_elements.text,content_elements.title,content_elements.subtitle,content_elements.caption,content_elements.url,content_elements.level,content_elements.raw_oembed.type,content_elements.raw_oembed.html,content_elements.raw_oembed.height,content_elements.raw_oembed.width,content_elements.raw_oembed.url,content_elements.embed.config.displayTimestamp,content_elements.embed.config.initTimestamp,content_elements.embed.config.content,content_elements.embed.config.title,content_elements.embed.config.alternateName.label,content_elements.embed.config.alternateName.value,content_elements.embed.config.claimReviewed.label,content_elements.embed.config.claimReviewed.value,content_elements.items._id,content_elements.items.content,content_elements.items.description._id,content_elements.items.description.content,content_elements.items.description.type,content_elements.items.type,content_elements.items.url,content_elements.citation.content,content_elements.citation.type,content_elements.content_elements.content,content_elements.content_elements.type,promo_items.basic._id,promo_items.basic.url,promo_items.basic.caption,promo_items.basic.height,promo_items.basic.width,promo_items.basic.credits.by.name,promo_items.basic.credits.affiliation.name,promo_items.basic.focal_point,promo_items.basic.type,promo_items.basic.additional_properties.focal_point,promo_items.lead_art._id,promo_items.lead_art.url,promo_items.lead_art.caption,promo_items.lead_art.height,promo_items.lead_art.width,promo_items.lead_art.credits.by.name,promo_items.lead_art.credits.affiliation.name,taxonomy.primary_section.name,taxonomy.primary_section.path,taxonomy.tags.slug,taxonomy.tags.description,taxonomy.tags.text"
+            "_id,canonical_url,content_restrictions.content_code,type,subtype,headlines.basic,subheadlines.basic,label.basic.text,label.live.display,label.live.text,first_publish_date,publish_date,display_date,credits.by.name,credits.affiliation.name,content_elements._id,content_elements.type,content_elements.subtype,content_elements.content,content_elements.credits.by.name,content_elements.credits.affiliation.name,content_elements.height,content_elements.width,content_elements.text,content_elements.title,content_elements.subtitle,content_elements.caption,content_elements.url,content_elements.level,content_elements.raw_oembed.type,content_elements.raw_oembed.html,content_elements.raw_oembed.height,content_elements.raw_oembed.width,content_elements.raw_oembed.url,content_elements.embed.config.displayTimestamp,content_elements.embed.config.initTimestamp,content_elements.embed.config.content,content_elements.embed.config.title,content_elements.embed.config.alternateName.label,content_elements.embed.config.alternateName.value,content_elements.embed.config.claimReviewed.label,content_elements.embed.config.claimReviewed.value,content_elements.items._id,content_elements.items.content,content_elements.items.description._id,content_elements.items.description.content,content_elements.items.description.type,content_elements.items.type,content_elements.items.url,content_elements.citation.content,content_elements.citation.type,content_elements.content_elements.content,content_elements.content_elements.type,promo_items.basic._id,promo_items.basic.url,promo_items.basic.caption,promo_items.basic.height,promo_items.basic.width,promo_items.basic.credits.by.name,promo_items.basic.credits.affiliation.name,promo_items.basic.focal_point,promo_items.basic.type,promo_items.basic.additional_properties.focal_point,promo_items.lead_art._id,promo_items.lead_art.url,promo_items.lead_art.caption,promo_items.lead_art.height,promo_items.lead_art.width,promo_items.lead_art.credits.by.name,promo_items.lead_art.credits.affiliation.name,taxonomy.primary_section.name,taxonomy.primary_section.path,taxonomy.tags.slug,taxonomy.tags.description,taxonomy.tags.text"
       };
       final queryParams = Uri(queryParameters: params).query;
       final response =
-      await http.get(Uri.parse('$apiUrl?$queryParams'), headers: headers);
+          await http.get(Uri.parse('$apiUrl?$queryParams'), headers: headers);
       if (response.statusCode == 200) {
         final data = json.decode(utf8.decode(response.bodyBytes))
-        as Map<String, dynamic>;
+            as Map<String, dynamic>;
         if (data != null && data['content_elements'] != null) {
           setState(() {
             _contentElements =
-            List<Map<String, dynamic>>.from(data['content_elements']);
+                List<Map<String, dynamic>>.from(data['content_elements']);
             print(
                 "Content elements retrieved, count: ${_contentElements.length}");
           });
@@ -88,130 +89,130 @@ class _LiberationAPIState extends State<LiberationAPI> {
         body: _contentElements.isEmpty
             ? Center(child: CircularProgressIndicator())
             : Row(
-          children: [
-            _contentElements.isNotEmpty
-                ? Expanded(
-              child: ListView.builder(
-                  itemCount: _contentElements.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    final contentElement = _contentElements[index];
-                    final primarySection =
-                    contentElement['taxonomy']
-                    ['primary_section'];
-                    final primarySectionName =
-                    primarySection != null
-                        ? primarySection['name']
-                        : '';
-                    final headlines =
-                        contentElement['headlines'] ?? {};
-                    final canonicalUrl =
-                        contentElement['canonical_url'] ?? '';
-                    final displayDate =
-                        contentElement['display_date'] ?? '';
-                    final dateTime = DateTime.parse(displayDate)
-                        .add(Duration(hours: 1));
-                    final hourFormat = DateFormat('HH:mm');
-                    final formattedHour =
-                    hourFormat.format(dateTime);
-                    return InkWell(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) =>
-                                ArticleDetailsPage(
-                                  article:
-                                  Article.fromJson(contentElement),
-                                ),
-                          ),
-                        );
-                      },
-                      child: Container(
-                        decoration: BoxDecoration(
-                          border: Border(
-                            left: BorderSide(
-                              color: Colors.grey.shade300,
-                              width: 2.0,
-                            ),
-                          ),
-                        ),
-                        padding: const EdgeInsets.only(left: 8.0),
-                        margin: const EdgeInsets.symmetric(
-                            vertical: 8.0),
-                        child: Row(
-                          crossAxisAlignment:
-                          CrossAxisAlignment.start,
+                children: [
+                  _contentElements.isNotEmpty
+                      ? Expanded(
+                          child: ListView.builder(
+                              itemCount: _contentElements.length,
+                              itemBuilder: (BuildContext context, int index) {
+                                final contentElement = _contentElements[index];
+                                final primarySection =
+                                    contentElement['taxonomy']
+                                        ['primary_section'];
+                                final primarySectionName =
+                                    primarySection != null
+                                        ? primarySection['name']
+                                        : '';
+                                final headlines =
+                                    contentElement['headlines'] ?? {};
+                                final canonicalUrl =
+                                    contentElement['canonical_url'] ?? '';
+                                final displayDate =
+                                    contentElement['display_date'] ?? '';
+                                final dateTime = DateTime.parse(displayDate)
+                                    .add(Duration(hours: 1));
+                                final hourFormat = DateFormat('HH:mm');
+                                final formattedHour =
+                                    hourFormat.format(dateTime);
+                                return InkWell(
+                                  onTap: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) =>
+                                            ArticleDetailsPage(
+                                          article:
+                                              Article.fromJson(contentElement),
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      border: Border(
+                                        left: BorderSide(
+                                          color: Colors.grey.shade300,
+                                          width: 2.0,
+                                        ),
+                                      ),
+                                    ),
+                                    padding: const EdgeInsets.only(left: 8.0),
+                                    margin: const EdgeInsets.symmetric(
+                                        vertical: 8.0),
+                                    child: Row(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Padding(
+                                          padding: EdgeInsets.only(top: 5),
+                                          child: Column(
+                                            children: [
+                                              Text(
+                                                formattedHour,
+                                                style: TextStyle(
+                                                  fontSize: 14,
+                                                  fontWeight: FontWeight.bold,
+                                                ),
+                                              ),
+                                              SizedBox(height: 5),
+                                              Container(
+                                                height: 40,
+                                                child: VerticalDivider(
+                                                  thickness: 1,
+                                                  color: Colors.grey,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        SizedBox(width: 8.0),
+                                        Expanded(
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                headlines['basic'] ?? '',
+                                                style: GoogleFonts
+                                                    .encodeSansCondensed(
+                                                        textStyle: TextStyle(
+                                                            fontWeight:
+                                                                FontWeight.w700,
+                                                            color: Colors.black,
+                                                            fontSize: 18,
+                                                            letterSpacing:
+                                                                0.5)),
+                                              ),
+                                              SizedBox(height: 4.0),
+                                              Text(
+                                                primarySectionName ?? '',
+                                                style: TextStyle(
+                                                    fontWeight: FontWeight.bold,
+                                                    color: Colors.black45,
+                                                    fontSize: 13),
+                                              ),
+                                              SizedBox(height: 4.0),
+                                              Divider(
+                                                thickness: 1,
+                                                color: Colors.grey,
+                                              )
+                                            ],
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                );
+                              }),
+                        )
+                      : Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Padding(
-                              padding: EdgeInsets.only(top: 5),
-                              child: Column(
-                                children: [
-                                  Text(
-                                    formattedHour,
-                                    style: TextStyle(
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                  SizedBox(height: 5),
-                                  Container(
-                                    height: 40,
-                                    child: VerticalDivider(
-                                      thickness: 1,
-                                      color: Colors.grey,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            SizedBox(width: 8.0),
-                            Expanded(
-                              child: Column(
-                                crossAxisAlignment:
-                                CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    headlines['basic'] ?? '',
-                                    style: GoogleFonts
-                                        .encodeSansCondensed(
-                                        textStyle: TextStyle(
-                                            fontWeight:
-                                            FontWeight.w700,
-                                            color: Colors.black,
-                                            fontSize: 18,
-                                            letterSpacing:
-                                            0.5)),
-                                  ),
-                                  SizedBox(height: 4.0),
-                                  Text(
-                                    primarySectionName ?? '',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.black45,
-                                        fontSize: 13),
-                                  ),
-                                  SizedBox(height: 4.0),
-                                  Divider(
-                                    thickness: 1,
-                                    color: Colors.grey,
-                                  )
-                                ],
-                              ),
-                            ),
+                            Center(child: CircularProgressIndicator())
                           ],
-                        ),
-                      ),
-                    );
-                  }),
-            )
-                : Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Center(child: CircularProgressIndicator())
-              ],
-            )
-          ],
-        ),
+                        )
+                ],
+              ),
         bottomNavigationBar: MyBottomHomeNavigationBar(currentIndex: 1),
       ),
     );
@@ -289,7 +290,7 @@ class Article {
 
     final primarySection = json['taxonomy']['primary_section'];
     final primarySectionName =
-    primarySection != null ? primarySection['name'] : '';
+        primarySection != null ? primarySection['name'] : '';
     final String imageUrl = json['promo_items']['basic']['url'];
     final credit1 = json['credits']['by'][0]['name'];
     final credit2 = json['credits']['by'].length >= 2
@@ -342,13 +343,12 @@ class ContentElement {
       subtype: json['subtype'],
       content: jsonC['content'] != null
           ? json['content'] is Map<String, dynamic>
-          ? Map<String, dynamic>.from(json['content'])
-          : null
+              ? Map<String, dynamic>.from(json['content'])
+              : null
           : null,
     );
   }
 }
-
 
 class ArticleDetailsPage extends StatefulWidget {
   final Article article;
@@ -395,22 +395,22 @@ class _ArticleDetailsPageState extends State<ArticleDetailsPage> {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8.0),
           child: Text(
-              widget.article.articlesContenus!.map((article) {
-                if (article['content'] != null) {
-                  return HtmlUnescape().convert(article['content']) + '\n\n';
-                } else {
-                  return '';
-                }
-              }).join(),
-              style: GoogleFonts.tinos(
-                  textStyle: TextStyle(
-                      color: Colors.black, fontSize: 18, letterSpacing: 0.6))
+            widget.article.articlesContenus!.map((article) {
+              if (article['content'] != null) {
+                return stripHtmlTags(article['content']) + '\n\n';
+              } else {
+                return '';
+              }
+            }).join(),
+            style: GoogleFonts.tinos(
+                textStyle: TextStyle(
+                    color: Colors.black, fontSize: 18, letterSpacing: 0.6)),
           ),
         ),
       );
     }
 
-    String imageUrl =  widget.article.imageUrl ?? '';
+    String imageUrl = widget.article.imageUrl ?? '';
     return Scaffold(
       appBar: MyAppBarFeed(),
       body: ListView(
@@ -421,12 +421,11 @@ class _ArticleDetailsPageState extends State<ArticleDetailsPage> {
               widget.article.primarySectionName,
               style: GoogleFonts.sourceSansPro(
                   textStyle: TextStyle(
-                      color: Colors.black45, fontSize: 18, letterSpacing: 0.5)
-              ),
+                      color: Colors.black45, fontSize: 18, letterSpacing: 0.5)),
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(top:8.0,left:8.0),
+            padding: const EdgeInsets.only(top: 8.0, left: 8.0),
             child: Text(widget.article.themeTitle,
                 style: GoogleFonts.encodeSansCondensed(
                     textStyle: TextStyle(
@@ -524,12 +523,12 @@ class _ArticleDetailsPageState extends State<ArticleDetailsPage> {
                 children: [
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                    child: Text(
-                      widget.article.caption ?? '',
+                    child: Text(widget.article.caption ?? '',
                         style: GoogleFonts.sourceSansPro(
                             textStyle: TextStyle(
-                                color: Colors.black, fontSize: 15, letterSpacing: 0.5))
-                    ),
+                                color: Colors.black,
+                                fontSize: 15,
+                                letterSpacing: 0.5))),
                   ),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -555,4 +554,12 @@ class CustomDateFormat {
   String format(DateTime dateTime) {
     return DateFormat(pattern, locale).format(dateTime);
   }
+}
+
+String stripHtmlTags(String? htmlContent) {
+  if (htmlContent == null) {
+    return '';
+  }
+  html_dom.DocumentFragment fragment = html_parser.parseFragment(htmlContent);
+  return fragment.text ?? '';
 }

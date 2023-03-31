@@ -48,6 +48,8 @@ dependencies:
   flutter_animate: ^4.1.1+1
   web_browser: ^0.7.4
   html: ^0.15.0
+  html2md: ^1.2.6
+  flutter_markdown: ^0.6.14
 
 dev_dependencies:
   flutter_test:
