@@ -94,7 +94,7 @@ class _NYTAPIState extends State<NYTAPI> {
                                 Text(
                                   updated,
                                   style: TextStyle(
-                                    fontSize: 14,
+                                    fontSize: 14, // l'heure
                                     fontWeight: FontWeight.bold,
                                   ),
                                   textAlign: TextAlign.center,

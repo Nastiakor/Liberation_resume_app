@@ -136,7 +136,8 @@ class _LiberationAPIState extends State<LiberationAPI> {
                                         ),
                                       ),
                                     ),
-                                    padding: const EdgeInsets.only(left: 8.0),
+                                    padding: const EdgeInsets.only(
+                                        left: 8.0, right: 8),
                                     margin: const EdgeInsets.symmetric(
                                         vertical: 8.0),
                                     child: Row(
@@ -158,14 +159,14 @@ class _LiberationAPIState extends State<LiberationAPI> {
                                               Container(
                                                 height: 40,
                                                 child: VerticalDivider(
-                                                  thickness: 1,
+                                                  thickness: 2,
                                                   color: Colors.grey,
                                                 ),
                                               ),
                                             ],
                                           ),
                                         ),
-                                        SizedBox(width: 8.0),
+                                        SizedBox(width: 10),
                                         Expanded(
                                           child: Column(
                                             crossAxisAlignment:
@@ -177,13 +178,13 @@ class _LiberationAPIState extends State<LiberationAPI> {
                                                     .encodeSansCondensed(
                                                         textStyle: TextStyle(
                                                             fontWeight:
-                                                                FontWeight.w700,
+                                                                FontWeight.w800,
                                                             color: Colors.black,
-                                                            fontSize: 18,
+                                                            fontSize: 20,
                                                             letterSpacing:
                                                                 0.5)),
                                               ),
-                                              SizedBox(height: 4.0),
+                                              SizedBox(height: 5),
                                               Text(
                                                 primarySectionName ?? '',
                                                 style: TextStyle(
@@ -191,9 +192,9 @@ class _LiberationAPIState extends State<LiberationAPI> {
                                                     color: Colors.black45,
                                                     fontSize: 13),
                                               ),
-                                              SizedBox(height: 4.0),
+                                              SizedBox(height: 10),
                                               Divider(
-                                                thickness: 1,
+                                                thickness: 0.5,
                                                 color: Colors.grey,
                                               )
                                             ],
@@ -393,7 +394,7 @@ class _ArticleDetailsPageState extends State<ArticleDetailsPage> {
     if (widget.article.articlesContenus?.isNotEmpty == true) {
       paddingWidgets.add(
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+          padding: const EdgeInsets.all(15.0), // le corps de l'article
           child: Text(
             widget.article.articlesContenus!.map((article) {
               if (article['content'] != null) {
@@ -416,7 +417,7 @@ class _ArticleDetailsPageState extends State<ArticleDetailsPage> {
       body: ListView(
         children: [
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+            padding: const EdgeInsets.only(left: 15.0, top: 8), //Thème
             child: Text(
               widget.article.primarySectionName,
               style: GoogleFonts.sourceSansPro(
@@ -425,17 +426,19 @@ class _ArticleDetailsPageState extends State<ArticleDetailsPage> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(top: 8.0, left: 8.0),
+            padding: const EdgeInsets.only(top: 10.0, left: 15.0),
+            // Titre rouge
             child: Text(widget.article.themeTitle,
                 style: GoogleFonts.encodeSansCondensed(
                     textStyle: TextStyle(
                         fontWeight: FontWeight.w800,
                         color: titleColor,
                         fontSize: 20,
-                        letterSpacing: 0.6))),
+                        letterSpacing: 0.5))),
           ),
           Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.only(left: 15.0, top: 2, right: 15),
+              // titre noir
               child: Text(
                 widget.article.headlines['basic'] ?? '',
                 style: GoogleFonts.encodeSansCondensed(
@@ -447,7 +450,7 @@ class _ArticleDetailsPageState extends State<ArticleDetailsPage> {
                 ),
               )),
           Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8.0),
+              padding: const EdgeInsets.all(15), // premier paragraphe
               child: Text(
                 widget.article.subheadlines?['basic'] ?? '',
                 style: GoogleFonts.tinos(
@@ -456,7 +459,7 @@ class _ArticleDetailsPageState extends State<ArticleDetailsPage> {
                 ),
               )),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+            padding: const EdgeInsets.only(left: 15.0, bottom: 10), //Auteur
             child: RichText(
               text: TextSpan(children: [
                 TextSpan(
@@ -498,15 +501,13 @@ class _ArticleDetailsPageState extends State<ArticleDetailsPage> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+            padding: const EdgeInsets.only(left: 15.0),
             child: Text(
               CustomDateFormat("dd MMMM yyyy 'à' HH'h'mm", locale: 'fr').format(
                   widget.article.first_publish_date.add(Duration(hours: 2))),
-              style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
-                color: Colors.grey,
-              ),
+              style: GoogleFonts.sourceSansPro(
+                  textStyle: TextStyle(
+                      color: Colors.black45, fontSize: 13, letterSpacing: 0.5)),
             ),
           ),
           Padding(
@@ -522,7 +523,8 @@ class _ArticleDetailsPageState extends State<ArticleDetailsPage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                    padding: const EdgeInsets.only(
+                        left: 15, top: 8, bottom: 8, right: 15),
                     child: Text(widget.article.caption ?? '',
                         style: GoogleFonts.sourceSansPro(
                             textStyle: TextStyle(
