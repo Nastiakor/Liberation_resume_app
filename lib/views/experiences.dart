@@ -18,13 +18,13 @@ class Experiences extends StatelessWidget {
             title: "2018 - 2022 RECEPTIONNISTE",
             titlethen: " HOTELS A PARIS",
             paragraphMainArticle:
-                "Pendant 5 ans, 'ai travaillé en tant que réceptionniste dans de divers hôtels à Paris.",
+                "Pendant 5 ans, j'ai travaillé en tant que réceptionniste dans de divers hôtels à Paris.",
             themeMainArticle: "Réception",
             writtenBy: "Anastasia Korotkova",
             publishDateParam: "2023-03-06 15:13:00",
             legendPicture: "",
             completeArticle:
-                "- 2021 - 2022 Hôtel Paradis\n- 2018 - 2020 Hôtel Fabric\n- 2017 - 2018 Poste tournant: Hôtel des Marronniers, Hôtel des 2 Continents, Hôtel de Seine, Welcome Hôtel \n\nMes activités principales consistaient à accueillir et renseigner la clientèle, j'ai également fait de la conciergerie et du travail administratif : traitement des emails, prise, traitement et vérification des réservations, réponses aux commentaires des clients sur divers sites Internet, rédaction et traduction en anglais des brochures de communication)",
+                "- 2021 - 2022 Hôtel Paradis\n- 2018 - 2020 Hôtel Fabric\n- 2017 - 2018 Poste tournant: Hôtel des Marronniers, Hôtel des 2 Continents, Hôtel de Seine, Welcome Hôtel \n\nMes fonctions principales consistaient à accueillir et renseigner la clientèle, j'ai également fait de la conciergerie et du travail administratif : traitement des emails, prise, traitement et vérification des réservations, réponses aux commentaires des clients sur divers sites web, rédaction et traduction en anglais des brochures de communication.",
           ),
           APFArticle(
             imagePath: "img/Experiences/APF2.webp",
@@ -32,14 +32,14 @@ class Experiences extends StatelessWidget {
                 "2016 - 2022 : CHEF DE PROJET REGIONAL ACTIONS ASSOCIATIVES ",
             titlethen: "APF FRANCE HANDICAP",
             paragraphMainArticle:
-                "Durant 6 ans, j'ai oeuvré en tant que chef de projet régional en Ile-de-France pour l'association APF France handicap dont l'objet est la défense des droits des personnes en situation de handicap. J'avais pour missions principales de conseiller les élus, équipes et directions sur la stratégie de développement, d'accompagner le pouvoir d'agir des membres, d'animer des réseaux d'acteur et de piloter des projets.",
+                "Durant 6 ans, j'ai oeuvré en tant que chef de projet régional en Ile-de-France pour l'association APF France handicap dont l'objet est la défense des droits des personnes en situation de handicap. J'avais pour missions principales de conseiller les élus, équipes et directions sur la stratégie de développement, d'accompagner le pouvoir d'agir des membres, d'animer des réseaux d'acteurs et de piloter des projets.",
             themeMainArticle: "Gestion de projets",
             writtenBy: "Johan Anquetil",
             publishDateParam: "2023-03-08 15:13:00",
             legendPicture:
                 "Issu d'une action pour demander la mise en accessibilité du métro",
             completeArticle:
-            "Cette expérience fut la plus marquante de mon parcours, elle m'aura permis de grandir aussi bien sur les plans professionnels et personnels. J'ai eu en charge des missions larges et passionnante, en interaction avec de nombreux et diversifiés acteurs. \n\n Mes missions principales furent les suivantes : \n\n- Piloter des projets régionaux \n- Soutenir la stratégie de plaidoyer et la défense des droits des personnes en situation de handicap (organisation de tables-rondes citoyennes et débats avec des secrétaires d'Etat, ministre, parlementaires et élus locaux, organisation d'actions collectives et de co-rédaction de plaidoyers, de projets tels que la 'caravane des enfants' ou de suivre des actions médiatiques - Le Monde - France Info ...)\n- Mettre en place un réseau de juristes et organiser des permanences juridiques en garantissant la qualité des réponses apportées.\n- Impulser, piloter et définir la stratégie du média de l'association (Webradio et Web-TV)\n- Participer à l'ingénierie de formation en direction des élus bénévoles et de les co-animer.\n- Organiser des sensibilisations dans les entreprises, espace public, salons (sur les thèmes de l'emploi, la formation, la vie affective et sexuelle...)\n- Organiser un réseau d'entraide d'aidants familiaux (action repair'aidants)\n\nToutes actions sont menées en mobilisant les citoyens et en les mettant au cœur des projets. Mon rôle était d'accompagnement le développement du pouvoir d'agir des acteurs, et de coordonner les équipes de salariés et bénévoles dans le cadre des projets dont j'avais la charge.\n\nCet emploi a contribué à renforcer mes savoirs et savoir-être suivants :\n- Gestion de projet\n- Travail en équipe \n- Management transversal\n- Animation d'un réseau d'acteurs, de fédérer et faire vivre un collectif \n- Ingénierie et animation de formation\n- Démarche partenariale \n- Impulser des dynamiques locales \n- Faciliter les échanges de savoirs et l'entraide d'un collectif \n- Mobiliser les citoyens autour d'un sujet qui leur tient à coeur, les accompagner à développer leur capacité individuelle et collective d'action.)",
+            "Cette expérience fut la plus marquante de mon parcours, elle m'aura permis de grandir aussi bien sur les plans professionnels et personnels. J'ai eu en charge des missions larges et passionnantes, en interaction avec de nombreux et diversifiés acteurs. \n\n Mes missions principales furent les suivantes : \n\n- Piloter des projets régionaux \n- Soutenir la stratégie de plaidoyer et la défense des droits des personnes en situation de handicap (organisation de tables-rondes citoyennes et débats avec des secrétaires d'Etat, ministres, parlementaires et élus locaux, organisation d'actions collectives et de co-rédaction de plaidoyers, de projets tels que la 'caravane des enfants' ou de suivre des actions médiatiques - Le Monde - France Info ...)\n- Mettre en place un réseau de juristes et organiser des permanences juridiques en garantissant la qualité des réponses apportées.\n- Impulser, piloter et définir la stratégie du média de l'association (Webradio et Web-TV)\n- Participer à l'ingénierie de formation en direction des élus bénévoles et de les co-animer.\n- Organiser des sensibilisations dans les entreprises, espace public, salons (sur les thèmes de l'emploi, la formation, la vie affective et sexuelle...)\n- Organiser un réseau d'entraide d'aidants familiaux (action repair'aidants)\n\nToutes actions sont menées en mobilisant les citoyens et en les mettant au cœur des projets. Mon rôle était d'accompagner le développement du pouvoir d'agir des acteurs, et de coordonner les équipes de salariés et bénévoles dans le cadre des projets dont j'avais la charge.\n\nCet emploi a contribué à renforcer mes savoirs et savoir-être suivants :\n- Gestion de projet\n- Travail en équipe \n- Management transversal\n- Animation d'un réseau d'acteurs, de fédérer et faire vivre un collectif \n- Ingénierie et animation de formation\n- Démarche partenariale \n- Impulser des dynamiques locales \n- Faciliter les échanges de savoirs et l'entraide d'un collectif \n- Mobiliser les citoyens autour d'un sujet qui leur tient à coeur, les accompagner à développer leur capacité individuelle et collective d'action.)",
           ),
           SecondaryArticle(
             imagePath: "img/Experiences/ERGONCAPITALPARTNERS.png",
@@ -53,11 +53,11 @@ class Experiences extends StatelessWidget {
             publishDateParam: "2023-03-06 10:13:00",
             legendPicture: "",
             completeArticle:
-                "- 2014 - 2016 Ergon Capital Advisors France\n- 2011 - 2014 Rietumu Bank\n- 2010 Moreno, Ruby et associés\n\nMes expérences: \n\nAccueil physique et téléphonique, interprétariat, traduction de documents, gestion d'agenda, organisation de réunions et de déplacements, gestion des dépenses, organisation du bureau",
+                "- 2014 - 2016 Ergon Capital Advisors France\n- 2011 - 2014 Rietumu Bank\n- 2010 Moreno, Ruby et associés\n\nMes expérences: \n\n- accueil physique et téléphonique,\n- interprétariat, traduction de documents,\n- gestion d'agenda, organisation de réunions et de déplacements, gestion des dépenses, organisation du bureau",
           ),
           SecondaryArticle(
             imagePath: "img/Experiences/IEMNLG.webp",
-            title: "2015 - 2016 : CHARGE DE MISSION SOCIOCULTUREL",
+            title: "2015 - 2016 : CHARGE DE MISSION SOCIOCULTURELLE",
             titlethen:
                 " AVEC DES ADOLESCENTS ET JEUNES ADULTES EN SITUATION DE HANDICAP ET POLYHANDICAP",
             paragraphMainArticle:
@@ -80,7 +80,7 @@ class Experiences extends StatelessWidget {
             writtenBy: "Anastasia Korotkova",
             publishDateParam: "2023-03-06 10:13:00",
             legendPicture: "",
-            completeArticle: "Accueil et renseignement des visiteurs, en français et en anglais. Préparation et organisation des évènements culturels. Traduction de brochures et de documents publicitaires (français - anglais)",
+            completeArticle: "Mes fonctions principales étaient les suivantes:\n\n- Accueil et renseignement des visiteurs, en français et en anglais.\n- Préparation et organisation des évènements culturels.\n -Traduction de brochures et de documents publicitaires (français - anglais)",
           ),
           SecondaryArticle(
             imagePath: "img/Experiences/APF93.webp",

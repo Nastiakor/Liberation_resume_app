@@ -7,14 +7,13 @@ import 'package:cv_flutter_libe/Controllers/BottomBarArticle.dart';
 void main() => runApp(Contact());
 
 class Contact extends StatefulWidget {
-const Contact({Key? key}) : super(key: key);
+  const Contact({Key? key}) : super(key: key);
 
-@override
+  @override
   _ContactState createState() => _ContactState();
 }
 
 class _ContactState extends State<Contact> {
-
   @override
   void initState() {
     super.initState();
@@ -25,29 +24,26 @@ class _ContactState extends State<Contact> {
     var size = MediaQuery.of(context).size;
     var width = size.width;
 
-    return MaterialApp(
-      title: "Nous contacter",
-      home: Scaffold(
-      body: SingleChildScrollView(
-      child: Column(
-      children: [
-            MainArticle(
-            imagePath: "img/contact.webp",
-            title: "NOUS ",
-            titlethen: "CONTACTER",
-            paragraphMainArticle:
-            "Vous êtes intéressé.e par nos profils pour renforcer vos équipes dans le cadre d'une alternance en un an ?",
-            themeMainArticle: "Contact",
-            writtenBy: "Johan et Anastasia",
-            publishDateParam: "2023-03-10 19:36:00",
-            legendPicture: "",
-              completeArticle:
-            "Vous pouvez nous joindre : \n\nAnastasia Korotkova\n    * Par téléphone au 06-37-03-68-45\n    * Par mail à a.korotkova@yahoo.fr\n\nJohan Anquetil \n    * Par téléphone au 06-23-32-03-21 \n    * Par mail à anquetil.johan@laposte.net",
-            ),
+    return Scaffold(
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              MainArticle(
+                imagePath: "img/contact.webp",
+                title: "NOUS ",
+                titlethen: "CONTACTER",
+                paragraphMainArticle:
+                    "Vous êtes intéressé par nos profils pour renforcer vos équipes dans le cadre d'une alternance en un an ?",
+                themeMainArticle: "Contact",
+                writtenBy: "Johan et Anastasia",
+                publishDateParam: "2023-03-10 19:36:00",
+                legendPicture: "",
+                completeArticle:
+                    "Vous pouvez nous joindre : \n\nAnastasia Korotkova\n    * Par téléphone au 06-37-03-68-45\n    * Par mail à a.korotkova@yahoo.fr\n\nJohan Anquetil \n    * Par téléphone au 06-23-32-03-21 \n    * Par mail à anquetil.johan@laposte.net",
+              ),
             ],
-            ),
-            ),
-      ),
-      );
+          ),
+        ),
+    );
   }
 }

@@ -18,7 +18,7 @@ class Projects extends StatelessWidget {
             title: "APPREHENDER L'APPEL D'UNE API : ",
             titlethen: "PUBLICATION D'UN STUDIO GHIBLI",
             paragraphMainArticle:
-                "Ce projet avait pour objectif de développer une application web qui permette de visualiser des données de façon dynamique.",
+                "Ce projet avait pour objectif de développer une application web qui permet de visualiser des données de façon dynamique.",
             themeMainArticle: "API",
             writtenBy: "Johan Anquetil",
             publishDateParam: "2023-03-06 10:13:00",
@@ -36,7 +36,7 @@ class Projects extends StatelessWidget {
             publishDateParam: "2023-03-08 16:10:00",
             legendPicture: "",
             completeArticle:
-                "- Durée: 2 semaines\n- Moteur: Pico-8\n- Langage : Lua\n\nLe tout premier projet réalisé au sein d'Ada Tech School. Notre groupe, composé de 3 personnes, travaillait sur un jeu d'aventure où un pirate doit trouver 3 clés sur une île déserte afin de pouvoir ouvrir un coffre aux trésors.",
+                "- Durée: 2 semaines\n- Moteur: Pico-8\n- Langage : Lua\n\nLe tout premier projet réalisé au sein d'Ada Tech School. Notre groupe composé de 3 personnes travaillait sur un jeu d'aventure où un pirate doit trouver 3 clés sur une île déserte afin de pouvoir ouvrir un coffre aux trésors.",
           ),
           SecondaryArticle(
             imagePath: "img/Projets/Unity2.png",
@@ -49,25 +49,25 @@ class Projects extends StatelessWidget {
             publishDateParam: "2023-03-06 15:09:00",
             legendPicture: "Jeu réalisé grâce au FrameWork Unity",
             completeArticle:
-                "Avec une collègue de ma promotion, nous nous sommes lancés le défi de contruire un jeu, en parallèle du cursus d'ADA Tech School, nécessitant l'appréhension de concepts de base de C#. Le jeu se veut simple avec des graphismes en 2D réalisés par nos soins, quelques questions avec des réponses à choix multiples, qui impactent deux barres de vie et... à la fin soit vous perdez car la terre a explosé avec vous dessus... soit vous arrivez à vous échapper.\n\n Le jeu est en cours d'édition.",
+                "Avec une collègue de ma promotion, nous nous sommes lancés le défi de contruire un jeu, en parallèle du cursus d'Ada Tech School, nécessitant l'appréhension de concepts de base de C#. Le jeu se veut simple avec des graphismes en 2D réalisés par nos soins, quelques questions avec des réponses à choix multiples, qui impactent deux barres de vie et... à la fin soit vous perdez car la terre a explosé avec vous dessus... soit vous arrivez à vous échapper.\n\n Le jeu est en cours d'édition.",
           ),
           SecondaryArticle(
             imagePath: "img/Projets/Dataviz.webp",
             title: "DATAVIZ & API",
-            titlethen: " CREATION D'UNE PAGE SPECTACLES A PARIS",
+            titlethen: " CREATION D'UNE PAGE WEB SPECTACLES A PARIS",
             paragraphMainArticle: "APPEL D'UNE API",
             themeMainArticle: "API",
             writtenBy: "Anastasia Korotkova",
             publishDateParam: "2023-03-08 16:40:00",
             legendPicture: "",
-            completeArticle: "- Durée: 2 semaines\n- Langages : JavaScript, HTML, CSS\n\nCe projet, réalisé avec 2 autres camarades de l'école, nous a permis de découvrir comment effectuer des appels d'APIs, d'appliquer l'asynchrone, nous familiariser avec des bibliothèques de JavaScript, e.g. jQuery, de créer un repo commun sur Github ",
+            completeArticle: "- Durée: 2 semaines\n- Langages : JavaScript, HTML, CSS\n\nCe projet réalisé avec 2 autres camarades de l'école, nous a permis de découvrir comment effectuer des appels d'API, d'appliquer l'asynchrone, nous familiariser avec des bibliothèques de JavaScript, e.g. jQuery, de créer un repo commun sur Github ",
           ),
           SecondaryArticle(
             imagePath: "img/Projets/Chrome2.webp",
-            title: "EXTENSION DE NAVIGATEUR GOOGLE : ",
+            title: "EXTENSION DE NAVIGATEUR GOOGLE CHROME : ",
             titlethen: "EN JAVASCRIPT ET EN FAISANT APPEL A UNE API",
             paragraphMainArticle:
-                "Troisième projet de groupe, conçu avec deux camarades en 7 jours également, cette extension Google vous donne le temps passé par nom de domaine.",
+                "Troisième projet de groupe, conçu avec deux camarades en 7 jours également, cette extension Google Chrome vous donne le temps passé par nom de domaine.",
             themeMainArticle: "JavaScript",
             writtenBy: "Johan Anquetil",
             publishDateParam: "2023-03-06 15:09:00",
@@ -85,7 +85,7 @@ class Projects extends StatelessWidget {
             publishDateParam: "2023-03-08 16:40:00",
             legendPicture: "",
             completeArticle:
-                "- Durée: 2 semaines\n- Langage : JavaScript\n- Gestion de base de données: MongoDB\n\nCe projet avait pour but de créer une extension de navigateur Chrome qui permet d'enregistrer nos émotions tout au long de la journée afin de pouvoir les analyser par la suite. Nous avons créé une base de données avec les émotions de base et les profils d'utilisateurs ayant créé un compte pour pouvoir les enregistrer",
+                "- Durée: 2 semaines\n- Langage : JavaScript\n- Gestion de base de données: MongoDB\n\nCe projet avait pour but de créer une extension de navigateur Chrome qui permet d'enregistrer nos émotions tout au long de la journée afin de pouvoir les analyser par la suite. Nous avons créé une base de données contenant 6 émotions, ainsi que les profils d'utilisateurs ayant créé un compte",
           ),
           SecondaryArticle(
             imagePath: "img/Projets/Norton_Kong.webp",
@@ -98,7 +98,7 @@ class Projects extends StatelessWidget {
             publishDateParam: "2023-03-06 15:09:00",
             legendPicture: "Image de notre jeu",
             completeArticle:
-                "Les défis posés par ce premier projet était nombreux, comprendre le LUA (dérivé du langage C), apprendre à travailler en équipe, à découper les tâches...  et techniques : designer le jeu, gérer les déplacements, la gravité, créer des ennemis qui se déplacent et réapparaissent, gérer un système de tir avec des balles qui tuent les ennemis, des collisions et de la vie...",
+                "Les défis posés par ce premier projet était nombreux: comprendre le LUA (dérivé du langage C), designer le jeu, gérer les déplacements, la gravité, créer des ennemis qui se déplacent et réapparaissent, gérer un système de tirs avec des balles qui tuent les ennemis, des collisions et de la vie...",
           ),
           SecondaryArticle(
             imagePath: "img/Projets/PHP-logo.png",
@@ -117,13 +117,13 @@ class Projects extends StatelessWidget {
             title: "RESEAU SOCIAL EN SQL ",
             titlethen: "AVEC PHPMYADMIN",
             paragraphMainArticle:
-                "Quatrième projet à Ada Tech School, avec un groupe de quatre personnes, nous avons pu nous entraîner à créer et faire communiquer une base de données... ainsi que découvrir le PHP",
+                "Quatrième projet à Ada Tech School, avec un groupe de quatre personnes, nous avons pu nous entraîner à créer et faire communiquer une base de données ainsi que découvrir le PHP",
             themeMainArticle: "PHP/MYSQL",
             writtenBy: "Johan Anquetil",
             publishDateParam: "2023-03-06 15:09:00",
             legendPicture: "Illustration du site designé en CSS natif",
             completeArticle:
-                "Ce réseau social, réalisé en 7 jours, fut une étape importante dans notre formation car nous avons été confronté pour la première fois à une base de données SQL (avec MySQL). Nous avons réussi à créer une page d'inscription et se connection, créer les fonctionnalités d'abonnements à des ami.e.s, laisser des messages sur son mur, aimer un message ou annuler son 'j'aime', rechercher des mots-clés.",
+                "Ce réseau social, réalisé en 7 jours, fut une étape importante dans notre formation car nous avons été confrontés pour la première fois à une base de données SQL (avec MySQL). Nous avons créé une page d'inscription et de connection, les fonctionnalités d'abonnements à des ami.e.s, la possibilité de laisser des messages sur son mur, aimer un message ou annuler son 'j'aime', rechercher des mots-clés.",
           ),
         ],
       ),
