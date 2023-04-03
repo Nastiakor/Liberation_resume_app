@@ -67,7 +67,7 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> with SingleTickerPro
 
     return GestureDetector(
       onPanUpdate: (DragUpdateDetails details) {
-        if (!_isTabSwiped && details.delta.dx.abs() > 1gi0) { // swipe threshold
+        if (!_isTabSwiped && details.delta.dx.abs() > 10) { // swipe threshold
           _isTabSwiped = true;
           if (details.delta.dx.isNegative) {
             if (_tabController.index < _tabController.length - 1) {

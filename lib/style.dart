@@ -128,11 +128,8 @@ RichText byArticle(String name) {
   );
 }
 
-Expanded theme(String theme) {
+Expanded articleDetails(String theme, String time) {
   return Expanded(
-    child: Padding(
-      padding: EdgeInsets.only(left:15),
-      child: Container(
         child: RichText(
           text: TextSpan(
             text: "$theme",
@@ -140,11 +137,13 @@ Expanded theme(String theme) {
               textStyle: TextStyle(
                   color: Colors.black45, fontSize: 13, letterSpacing: 0.5),
             ),
+              children: const <TextSpan>[
+                TextSpan(),
+                TextSpan()
+              ],
           ),
         ),
-      ),
-    ),
-  );
+      );
 }
 
 Expanded time(String time) {

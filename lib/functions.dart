@@ -110,10 +110,12 @@ class MainArticle extends StatelessWidget {
             ),
             Row(
               children: [
-                theme(themeMainArticle),
-                time("Il y a ${daysUntilArticle()}"),
-                abonne(),
-                bookmark(),
+                articleDetails(
+                  themeMainArticle,
+                  time(() => time({"Il y a ${daysUntilArticle()}"})),
+                  // abonne(),
+                  // bookmark(),
+                ),
               ],
             ),
             const Divider(thickness: 2),
@@ -220,7 +222,7 @@ class APFArticle extends StatelessWidget {
       ),
       Row(
         children: [
-          theme(themeMainArticle),
+          // theme(themeMainArticle),
           time("Il y a ${daysUntilArticle()}"),
           abonne(),
           bookmark(),
@@ -455,7 +457,7 @@ class SecondaryArticle extends StatelessWidget {
           padding: EdgeInsets.only(top: 10),
           child: Row(
             children: [
-              theme(themeMainArticle),
+              // theme(themeMainArticle),
               time('Il y a ${daysUntilArticle()}'),
               abonne(),
               bookmark(),
