@@ -128,35 +128,50 @@ RichText byArticle(String name) {
   );
 }
 
-Expanded articleDetails(String theme, String time) {
-  return Expanded(
-        child: RichText(
-          text: TextSpan(
-            text: "$theme",
-            style: GoogleFonts.sourceSansPro(
-              textStyle: TextStyle(
-                  color: Colors.black45, fontSize: 13, letterSpacing: 0.5),
-            ),
-              children: const <TextSpan>[
-                TextSpan(),
-                TextSpan()
-              ],
+Row articleDetails(String theme, String time, double size) {
+  return Row(children: [
+    Padding(
+      padding: EdgeInsets.only(left: 15),
+      child: RichText(
+        text: TextSpan(
+          text: "$theme",
+          style: GoogleFonts.sourceSansPro(
+            textStyle: TextStyle(
+                color: Colors.black45, fontSize: 13, letterSpacing: 0.5),
           ),
+          children: [
+            WidgetSpan(
+              child: SizedBox(width: size),
+            ),
+            TextSpan(
+              text: "$time",
+              style: GoogleFonts.sourceSansPro(
+                  textStyle: TextStyle(
+                      color: Colors.black45, fontSize: 13, letterSpacing: 0.5)),
+            ),
+            WidgetSpan(child: SizedBox(width: size)),
+            TextSpan(
+              text: "Abonnés",
+              style: GoogleFonts.sourceSansPro(
+                textStyle: TextStyle(
+                    color: Colors.amber, fontSize: 13, letterSpacing: 0.5),
+              ),
+            ),
+          ],
         ),
-      );
+      ),
+    ),
+  ]);
 }
 
-Expanded time(String time) {
+/*Expanded time(String time) {
   return Expanded(
     child: Padding(
       padding: EdgeInsets.only(right: 0),
       child: Container(
         child: RichText(
           text: TextSpan(
-            text: "$time",
-            style: GoogleFonts.sourceSansPro(
-                textStyle: TextStyle(
-                    color: Colors.black45, fontSize: 13, letterSpacing: 0.5)),
+
           ),
         ),
       ),
@@ -194,7 +209,7 @@ Expanded bookmark() {
       ),
     ),
   );
-}
+}*/
 
 Text appBarMenu(item) {
   return Text(
