@@ -26,7 +26,7 @@ class Experiences extends StatelessWidget {
             completeArticle:
                 "- 2021 - 2022 Hôtel Paradis\n- 2018 - 2020 Hôtel Fabric\n- 2017 - 2018 Poste tournant: Hôtel des Marronniers, Hôtel des 2 Continents, Hôtel de Seine, Welcome Hôtel \n\nMes fonctions principales consistaient à accueillir et renseigner la clientèle, j'ai également fait de la conciergerie et du travail administratif : traitement des emails, prise, traitement et vérification des réservations, réponses aux commentaires des clients sur divers sites web, rédaction et traduction en anglais des brochures de communication.",
           ),
-          APFArticle(
+          MainArticle(
             imagePath: "img/Experiences/APF2.webp",
             title:
                 "2016 - 2022 : CHEF DE PROJET REGIONAL ACTIONS ASSOCIATIVES ",

@@ -10,32 +10,21 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:cv_flutter_libe/style.dart';
 import 'package:cv_flutter_libe/views/libeAPI.dart';
 import 'package:intl/date_symbol_data_local.dart';
-import 'package:device_preview/device_preview.dart';
-import 'package:flutter/foundation.dart';
 
-// Wrap your app for device preview
-void main() {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  //initializeDateFormatting('fr');
-  runApp(
-    DevicePreview(
-      enabled: !kReleaseMode,
-      builder: (context) => MyApp(),
-    ),
-  );
+  await initializeDateFormatting('fr');
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({Key? key}) : super(key: key);
 
   static const String _title = 'Flutter Code Sample';
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      useInheritedMediaQuery: true,
-      locale: DevicePreview.locale(context),
-      builder: DevicePreview.appBuilder,
       title: _title,
       home: MyStatefulWidget(),
     );
@@ -43,39 +32,26 @@ class MyApp extends StatelessWidget {
 }
 
 class MyStatefulWidget extends StatefulWidget {
-  const MyStatefulWidget({super.key});
+  const MyStatefulWidget({Key? key}) : super(key: key);
 
   @override
   State<MyStatefulWidget> createState() => MyStatefulWidgetState();
 }
 
-class MyStatefulWidgetState extends State<MyStatefulWidget> {
+class MyStatefulWidgetState extends State<MyStatefulWidget> with SingleTickerProviderStateMixin {
   int _selectedIndex = 0;
-  static const TextStyle optionStyle =
-      TextStyle(fontSize: 50, fontWeight: FontWeight.bold);
-  static const List<Widget> _widgetOptions = <Widget>[
-    Text(
-      'Index 0: Accueil',
-      style: optionStyle,
-    ),
-    Text(
-      'Index 1: Projects',
-      style: optionStyle,
-    ),
-    Text(
-      'Index 2: Formations',
-      style: optionStyle,
-    ),
-    Text(
-      'Index 3: Experiences',
-      style: optionStyle,
-    ),
-  ];
+  late TabController _tabController;
 
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
+  @override
+  void initState() {
+    super.initState();
+    _tabController = TabController(length: 5, vsync: this);
+  }
+
+  @override
+  void dispose() {
+    _tabController.dispose();
+    super.dispose();
   }
 
   @override
@@ -86,41 +62,59 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> {
     print("context: $contextest");
     print("platform: $platform");
     double width = MediaQuery.of(context).size.width;
-    return DefaultTabController(
-      length: 5,
+
+    bool _isTabSwiped = false;
+
+    return GestureDetector(
+      onPanUpdate: (DragUpdateDetails details) {
+        if (!_isTabSwiped && details.delta.dx.abs() > 10) { // swipe threshold
+          _isTabSwiped = true;
+          if (details.delta.dx.isNegative) {
+            if (_tabController.index < _tabController.length - 1) {
+              _tabController.animateTo(_tabController.index + 1);
+            }
+          } else {
+            if (_tabController.index > 0) {
+              _tabController.animateTo(_tabController.index - 1);
+            }
+          }
+        }
+      },
+      onPanEnd: (DragEndDetails details) {
+        _isTabSwiped = false;
+      },
       child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.white,
-          // Here we take the value from the MyHomePage object that was created by
-          // the App.build method, and use it to set our appbar title.
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Container(
-                //  margin: const EdgeInsets.only(right: 75),
-                child: Image.asset(
-                  'img/1200px-Libération.svg.png',
-                  width: 100,
-                ),
-              ),
-            ],
+      appBar: AppBar(
+      backgroundColor: Colors.white,
+      title: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Container(
+            child: Image.asset(
+              'img/1200px-Libération.svg.png',
+              width: 100,
+            ),
           ),
-          bottom: TabBar(
-            indicatorSize: TabBarIndicatorSize.label,
-            indicatorColor: Colors.black,
-            isScrollable: true,
-            labelStyle: TextStyle(fontWeight: FontWeight.w700),
-            unselectedLabelStyle: TextStyle(),
-            tabs: [
-              Tab(child: appBarMenu('A la une')),
-              Tab(child: appBarMenu('Nos projets')),
-              Tab(child: appBarMenu('Nos formations')),
-              Tab(child: appBarMenu('Nos expériences')),
-              Tab(child: appBarMenu('Contacts')),
-            ],
-          ),
-        ),
+        ],
+      ),
+      bottom: TabBar(
+        controller: _tabController,
+        indicatorSize: TabBarIndicatorSize.label,
+        indicatorColor: Colors.black,
+        isScrollable: true,
+        labelStyle: TextStyle(fontWeight: FontWeight.w700),
+        unselectedLabelStyle: TextStyle(),
+        tabs: [
+          Tab(child: appBarMenu('A la une')),
+          Tab(child: appBarMenu('Nos projets')),
+          Tab(child: appBarMenu('Nos formations')),
+          Tab(child: appBarMenu('Nos expériences')),
+          Tab(child: appBarMenu('Contacts')),
+        ],
+      ),
+    ),
         body: TabBarView(
+          controller: _tabController,
           children: [
             homePage(),
             Projects(),
@@ -131,11 +125,8 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> {
         ),
         resizeToAvoidBottomInset: false,
         bottomNavigationBar: MyBottomHomeNavigationBar(currentIndex: 0),
-        // bottomNavigationBar: MyBottomNavigationBar(
-        //selectedIndex: _selectedIndex,
-        //onItemTapped: _onItemTapped,
-        // ),
       ),
     );
   }
 }
+

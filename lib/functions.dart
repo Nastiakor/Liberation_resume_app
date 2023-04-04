@@ -108,128 +108,13 @@ class MainArticle extends StatelessWidget {
                 ],
               ),
             ),
-            Row(
-              children: [
-                theme(themeMainArticle),
-                time("Il y a ${daysUntilArticle()}"),
-                abonne(),
-                bookmark(),
-              ],
-            ),
+            articleDetails(
+                themeMainArticle, 'Il y a ${daysUntilArticle()}', size.width / 6),
             const Divider(thickness: 2),
           ],
         ),
       ),
     );
-  }
-}
-
-class APFArticle extends StatelessWidget {
-  int _currentIndex = 0;
-  String imagePath;
-  String title;
-  String titlethen;
-  String paragraphMainArticle;
-  String themeMainArticle;
-  String writtenBy;
-  String publishDateParam;
-  String legendPicture;
-  String completeArticle;
-
-  APFArticle(
-      {required this.imagePath,
-      required this.title,
-      required this.titlethen,
-      required this.paragraphMainArticle,
-      required this.themeMainArticle,
-      required this.writtenBy,
-      required this.publishDateParam,
-      required this.legendPicture,
-      required this.completeArticle});
-
-// Define the function to calculate the days until the birthday
-  String daysUntilArticle() {
-    DateTime publishDateParamParsed = DateTime.parse(publishDateParam);
-    final DateTime articlePublishingDate = publishDateParamParsed;
-    return calculatePublishingDate(articlePublishingDate);
-  }
-
-  Widget build(BuildContext context) {
-    var size = MediaQuery.of(context).size;
-    var width = size.width;
-    return Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-      Row(
-        children: [
-          InkWell(
-            onTap: () => Navigator.of(context).push(MaterialPageRoute(
-              builder: (context) => FullArticle(
-                imagePath: imagePath,
-                title: title,
-                titlethen: titlethen,
-                paragraphMainArticle: paragraphMainArticle,
-                themeMainArticle: themeMainArticle,
-                publishDateParam: publishDateParam,
-                writtenBy: writtenBy,
-                legendPicture: legendPicture,
-                completeArticle: completeArticle,
-              ),
-            )),
-            child: Container(
-              width: size.width,
-              child:
-                  Image.asset(imagePath, width: size.width, fit: BoxFit.cover),
-            ),
-          ),
-        ],
-      ),
-      InkWell(
-        onTap: () => Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => FullArticle(
-              imagePath: imagePath,
-              title: title,
-              titlethen: titlethen,
-              paragraphMainArticle: paragraphMainArticle,
-              themeMainArticle: themeMainArticle,
-              publishDateParam: publishDateParam,
-              writtenBy: writtenBy,
-              legendPicture: legendPicture,
-              completeArticle: completeArticle),
-        )),
-        child: Padding(
-          padding: EdgeInsets.only(top: 10, left: 15),
-          child: Wrap(
-            children: [
-              RichText(
-                text: TextSpan(
-                    children: writtenBy == "Johan Anquetil"
-                        ? [redTitle(title), blackTitle(titlethen)]
-                        : writtenBy == "Anastasia Korotkova"
-                            ? [greenTitle(title), blackTitle(titlethen)]
-                            : [orangeTitle(title), blackTitle(titlethen)]),
-              ),
-              Padding(
-                padding: EdgeInsets.only(
-                  top: 7,
-                  bottom: 10,
-                ),
-                child: paragraph(paragraphMainArticle),
-              ),
-            ],
-          ),
-        ),
-      ),
-      Row(
-        children: [
-          theme(themeMainArticle),
-          time("Il y a ${daysUntilArticle()}"),
-          abonne(),
-          bookmark(),
-        ],
-      ),
-      Divider(
-        thickness: 2,
-      ),
-    ]);
   }
 }
 
@@ -453,14 +338,8 @@ class SecondaryArticle extends StatelessWidget {
         ),
         Padding(
           padding: EdgeInsets.only(top: 10),
-          child: Row(
-            children: [
-              theme(themeMainArticle),
-              time('Il y a ${daysUntilArticle()}'),
-              abonne(),
-              bookmark(),
-            ],
-          ),
+          child: articleDetails(
+              themeMainArticle, 'Il y a ${daysUntilArticle()}', size.width / 6),
         ),
         Divider(
           thickness: 2,
