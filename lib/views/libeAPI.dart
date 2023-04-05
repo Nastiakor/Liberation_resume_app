@@ -57,8 +57,8 @@ class _LiberationAPIState extends State<LiberationAPI> {
           setState(() {
             _contentElements =
                 List<Map<String, dynamic>>.from(data['content_elements']);
-            print(
-                "Content elements retrieved, count: ${_contentElements.length}");
+            //print(
+               // "Content elements retrieved, count: ${_contentElements.length}");
           });
         }
       } else {
@@ -366,11 +366,11 @@ class ArticleDetailsPage extends StatefulWidget {
 
 class _ArticleDetailsPageState extends State<ArticleDetailsPage> {
   Widget MyJsonContentWidget(List<ContentElement> contentElements) {
-    print('contentElements length: ${contentElements.length}');
+    // print('contentElements length: ${contentElements.length}');
 
     return Column(
       children: contentElements.map((element) {
-        print('element type: ${element.type}, subtype: ${element.subtype}');
+        // print('element type: ${element.type}, subtype: ${element.subtype}');
         if (element.type == 'text') {
           return Padding(
             padding: const EdgeInsets.all(8.0),
@@ -389,8 +389,9 @@ class _ArticleDetailsPageState extends State<ArticleDetailsPage> {
 
   @override
   Widget build(BuildContext context) {
+    String imageUrl = Uri.parse(widget.article.imageUrl).toString();
     List<Widget> paddingWidgets = [];
-
+    print('imgurl ${imageUrl}');
     if (widget.article.articlesContenus?.isNotEmpty == true) {
       paddingWidgets.add(
         Padding(
@@ -410,8 +411,6 @@ class _ArticleDetailsPageState extends State<ArticleDetailsPage> {
         ),
       );
     }
-
-    String imageUrl = widget.article.imageUrl ?? '';
     return Scaffold(
       appBar: MyAppBarFeed(),
       body: ListView(
@@ -513,32 +512,25 @@ class _ArticleDetailsPageState extends State<ArticleDetailsPage> {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Image.network(
-              widget.article.imageUrl ?? '',
+              imageUrl ?? '',
+              height: 200,
+              width: double.infinity,
               fit: BoxFit.fitWidth,
             ),
           ),
-          Expanded(
-            child: Container(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(
-                        left: 15, top: 8, bottom: 8, right: 15),
-                    child: Text(widget.article.caption ?? '',
-                        style: GoogleFonts.sourceSansPro(
-                            textStyle: TextStyle(
-                                color: Colors.black,
-                                fontSize: 15,
-                                letterSpacing: 0.5))),
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: paddingWidgets,
-                  ),
-                ],
-              ),
-            ),
+          Padding(
+            padding:
+                const EdgeInsets.only(left: 15, top: 8, bottom: 8, right: 15),
+            child: Text(widget.article.caption ?? '',
+                style: GoogleFonts.sourceSansPro(
+                    textStyle: TextStyle(
+                        color: Colors.black,
+                        fontSize: 15,
+                        letterSpacing: 0.5))),
+          ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: paddingWidgets,
           ),
         ],
       ),

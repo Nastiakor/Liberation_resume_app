@@ -162,6 +162,7 @@ class ArticlePage extends StatelessWidget {
     if (article['media'] != null && article['media'].isNotEmpty) {
       imageUrl = article['media'][0]['media-metadata'][2]['url'];
     }
+    print(imageUrl);
     return Scaffold(
       appBar: NYTAppBar(),
       body: SingleChildScrollView(
