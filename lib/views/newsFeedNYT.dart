@@ -10,6 +10,7 @@ import 'package:flutter_web_browser/flutter_web_browser.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:cv_flutter_libe/Controllers/BottomBarArticle.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 const titleColor = Color(0XFFE60004);
 
@@ -227,9 +228,10 @@ class ArticlePage extends StatelessWidget {
                 fit: BoxFit.cover,
               ),
             TextButton(
-              onPressed: () async {
-                String articleUrl = article['url'];
-                await FlutterWebBrowser.openWebPage(
+              onPressed: () {
+                _launchURL();
+                /*String articleUrl = article['url'];
+                FlutterWebBrowser.openWebPage(
                   url: articleUrl,
                   customTabsOptions: CustomTabsOptions(
                     colorScheme: CustomTabsColorScheme.dark,
@@ -248,8 +250,7 @@ class ArticlePage extends StatelessWidget {
                     dismissButtonStyle:
                         SafariViewControllerDismissButtonStyle.close,
                     modalPresentationCapturesStatusBarAppearance: true,
-                  ),
-                );
+                  ),*/
               },
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -271,4 +272,16 @@ class ArticlePage extends StatelessWidget {
       bottomNavigationBar: BottomBarObject(),
     );
   }
+  _launchURL() async {
+    String url = article['url'];
+    final uri = Uri.parse(url);
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(uri);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
 }
+
+
+
