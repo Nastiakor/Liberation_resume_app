@@ -4,6 +4,7 @@ import 'package:cv_flutter_libe/style.dart';
 import 'package:cv_flutter_libe/views/homePage.dart';
 import 'package:cv_flutter_libe/Controllers/BottomBarArticle.dart';
 import 'package:cv_flutter_libe/Controllers/AppBar.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 String calculatePublishingDate(DateTime publishingDate) {
   DateTime now = DateTime.now();
@@ -39,18 +40,21 @@ class MainArticle extends StatelessWidget {
   final String publishDateParam;
   final String legendPicture;
   final String completeArticle;
+  final String? nextCompleteArticle;
+  final String? contactOrNot;
 
-  MainArticle({
-    required this.imagePath,
-    required this.title,
-    required this.titlethen,
-    required this.paragraphMainArticle,
-    required this.themeMainArticle,
-    required this.writtenBy,
-    required this.publishDateParam,
-    required this.legendPicture,
-    required this.completeArticle,
-  });
+  MainArticle(
+      {required this.imagePath,
+      required this.title,
+      required this.titlethen,
+      required this.paragraphMainArticle,
+      required this.themeMainArticle,
+      required this.writtenBy,
+      required this.publishDateParam,
+      required this.legendPicture,
+      required this.completeArticle,
+      this.nextCompleteArticle,
+      this.contactOrNot});
 
   // Define the function to calculate the days until the birthday
   String daysUntilArticle() {
@@ -63,19 +67,23 @@ class MainArticle extends StatelessWidget {
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return InkWell(
-      onTap: () => Navigator.of(context).push(MaterialPageRoute(
-        builder: (context) => FullArticle(
-          imagePath: imagePath,
-          title: title,
-          titlethen: titlethen,
-          paragraphMainArticle: paragraphMainArticle,
-          themeMainArticle: themeMainArticle,
-          publishDateParam: publishDateParam,
-          writtenBy: writtenBy,
-          legendPicture: legendPicture,
-          completeArticle: completeArticle,
+      onTap: () => Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (context) => FullArticle(
+            imagePath: imagePath,
+            title: title,
+            titlethen: titlethen,
+            paragraphMainArticle: paragraphMainArticle,
+            themeMainArticle: themeMainArticle,
+            publishDateParam: publishDateParam,
+            writtenBy: writtenBy,
+            legendPicture: legendPicture,
+            completeArticle: completeArticle,
+            nextCompleteArticle: nextCompleteArticle,
+            contactOrNot: contactOrNot,
+          ),
         ),
-      )),
+      ),
       child: Container(
         width: size.width,
         child: Column(
@@ -108,8 +116,8 @@ class MainArticle extends StatelessWidget {
                 ],
               ),
             ),
-            articleDetails(
-                themeMainArticle, 'Il y a ${daysUntilArticle()}', size.width / 6),
+            articleDetails(themeMainArticle, 'Il y a ${daysUntilArticle()}',
+                size.width / 6),
             const Divider(thickness: 2),
           ],
         ),
@@ -120,6 +128,7 @@ class MainArticle extends StatelessWidget {
 
 class FullArticle extends MainArticle {
   int _currentIndex = 0;
+  String? boolContact;
 
   FullArticle({
     required String imagePath,
@@ -131,6 +140,8 @@ class FullArticle extends MainArticle {
     required String publishDateParam,
     required String legendPicture,
     required String completeArticle,
+    String? nextCompleteArticle,
+    String? contactOrNot,
   }) : super(
           imagePath: imagePath,
           title: title,
@@ -141,10 +152,15 @@ class FullArticle extends MainArticle {
           publishDateParam: publishDateParam,
           legendPicture: legendPicture,
           completeArticle: completeArticle,
+          nextCompleteArticle: nextCompleteArticle,
+          contactOrNot: contactOrNot,
         );
 
   @override
   Widget build(BuildContext context) {
+    super.contactOrNot?.isEmpty == false ? boolContact == true : boolContact == false;
+    print(contactOrNot);
+    print(contactOrNot?.isEmpty);
     var size = MediaQuery.of(context).size;
     var widthMax = size.width;
     var platform = Theme.of(context).platform;
@@ -191,9 +207,11 @@ class FullArticle extends MainArticle {
                   Container(
                     alignment: Alignment.bottomLeft,
                     child: RichText(
-                      text: TextSpan(children: [
-                        sousTitre(super.paragraphMainArticle, 14.0),
-                      ]),
+                      text: TextSpan(
+                        children: [
+                          sousTitre(super.paragraphMainArticle, 14.0),
+                        ],
+                      ),
                     ),
                   ),
                 ],
@@ -234,7 +252,6 @@ class FullArticle extends MainArticle {
               padding: EdgeInsets.only(top: 12, left: 15, right: 15),
               child: legendePictures(super.legendPicture),
             ),
-
             Padding(
               padding: EdgeInsets.only(top: 12, left: 15, right: 15),
               child: Container(
@@ -242,6 +259,42 @@ class FullArticle extends MainArticle {
                 child: paragraph(super.completeArticle),
               ),
             ),
+           SizedBox(height: 20),
+                () {
+              return (contactOrNot?.isEmpty ?? true)
+                  ? Container()
+                  : InkWell(
+                onTap: () {
+                  _launchURL();
+                },
+                child: Image.asset(
+                  'img/logos/GitHub_logo.png',
+                  width: 120,
+                ),
+              );
+            }(),
+            Padding(
+              padding: EdgeInsets.only(top: 12, left: 15, right: 15),
+              child: Container(
+                alignment: Alignment.bottomLeft,
+                child: paragraph(super.nextCompleteArticle),
+              ),
+            ),
+            SizedBox(height: 20),
+           // Condition d'affichage
+                () {
+                  return (contactOrNot?.isEmpty ?? true)
+                      ? Container()
+                      : InkWell(
+                    onTap: () {
+                      _launchURL();
+                    },
+                    child: Image.asset(
+                      'img/logos/GitHub_logo.png',
+                      width: 120,
+                    ),
+                  );
+                }(),
           ],
         ),
       ),
@@ -267,18 +320,19 @@ class SecondaryArticle extends StatelessWidget {
   String publishDateParam;
   String legendPicture;
   String completeArticle;
+  String? nextCompleteArticle;
 
-  SecondaryArticle({
-    required this.imagePath,
-    required this.title,
-    required this.titlethen,
-    required this.paragraphMainArticle,
-    required this.themeMainArticle,
-    required this.writtenBy,
-    required this.publishDateParam,
-    required this.legendPicture,
-    required this.completeArticle,
-  });
+  SecondaryArticle(
+      {required this.imagePath,
+      required this.title,
+      required this.titlethen,
+      required this.paragraphMainArticle,
+      required this.themeMainArticle,
+      required this.writtenBy,
+      required this.publishDateParam,
+      required this.legendPicture,
+      required this.completeArticle,
+      this.nextCompleteArticle});
 
   @override
   Widget build(BuildContext context) {
@@ -346,5 +400,25 @@ class SecondaryArticle extends StatelessWidget {
         ),
       ],
     );
+  }
+}
+
+_launchURL() async {
+  const url = 'https://github.com/Nastiakor';
+  final uri = Uri.parse(url);
+  if (await canLaunchUrl(uri)) {
+    await launchUrl(uri);
+  } else {
+    throw 'Could not launch $url';
+  }
+}
+
+_launchURL2() async {
+  const url = 'https://github.com/JohanAnquetil';
+  final uri = Uri.parse(url);
+  if (await canLaunchUrl(uri)) {
+    await launchUrl(uri);
+  } else {
+    throw 'Could not launch $url';
   }
 }

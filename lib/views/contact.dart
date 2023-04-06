@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:cv_flutter_libe/functions.dart';
-import 'package:cv_flutter_libe/Controllers/AppBar.dart';
-import 'package:cv_flutter_libe/Controllers/BottomBarArticle.dart';
+
 
 void main() => runApp(Contact());
 
@@ -39,7 +38,9 @@ class _ContactState extends State<Contact> {
                 publishDateParam: "2023-03-10 19:36:00",
                 legendPicture: "",
                 completeArticle:
-                    "Vous pouvez nous joindre : \n\nAnastasia Korotkova\n    * Par téléphone au 06-37-03-68-45\n    * Par mail à a.korotkova@yahoo.fr\n\nJohan Anquetil \n    * Par téléphone au 06-23-32-03-21 \n    * Par mail à anquetil.johan@laposte.net",
+                    "Vous pouvez nous joindre : \n\nAnastasia Korotkova\n    * Par téléphone au 06-37-03-68-45\n    * Par mail à a.korotkova@yahoo.fr",
+                nextCompleteArticle: "Johan Anquetil \n    * Par téléphone au 06-23-32-03-21 \n    * Par mail à anquetil.johan@laposte.net",
+                contactOrNot: "Contacts à afficher",
               ),
             ],
           ),

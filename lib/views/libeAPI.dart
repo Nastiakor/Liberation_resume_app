@@ -29,8 +29,7 @@ class LiberationAPI extends StatefulWidget {
 
 class _LiberationAPIState extends State<LiberationAPI> {
   final String apiKey = "Vahholu0aiSojahRaish6OaDeihewo";
-  final String apiUrl =
-      "https://arc.api.liberation.fr/content/v4/search/published";
+  final String apiUrl = "https://arc.api.liberation.fr/content/v4/search/published";
 
   List<Map<String, dynamic>> _contentElements = [];
 

@@ -64,7 +64,7 @@ TextSpan sousTitre(String title, double fontSize) {
               color: Colors.black, fontSize: 18, letterSpacing: 0.6)));
 }
 
-Text paragraph(String paragraph) {
+Text paragraph(String? paragraph) {
   return Text("$paragraph",
       style: GoogleFonts.tinos(
           textStyle: TextStyle(

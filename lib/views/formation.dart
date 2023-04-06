@@ -17,7 +17,7 @@ class Formations extends StatelessWidget {
             imagePath: "img/Formations/AdaTechschool2.webp",
             title: "2022 - 2023 : ADA TECH SCHOOL ",
             titlethen:
-                "ECOLE FEMINISTE BASEE SUR UNE PEDAGOGIE INNOVANTE ET FORMANT DES DÉVELOPPEUSES / DÉVELOPPEURS D'APPLICATIONS ET LOGICIELS FULL STACK",
+                "ECOLE FEMINISTE BASEE SUR UNE PEDAGOGIE INNOVANTE ET FORMANT DES DÉVELOPPEUSES / DÉVELOPPEURS D'APPLICATIONS FULL STACK",
             paragraphMainArticle:
                 "Tous les deux étudiants au sein de la promotion Dorothy Vauhan d'Ada Tech School, cette formation nous prépare en deux ans aux métiers du développement informatique (Mobile, back-end et front-end) grâce à la pédagogie Montessori et à des projets collectifs.",
             themeMainArticle: "Reconversion",
