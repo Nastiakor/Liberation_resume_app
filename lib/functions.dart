@@ -158,7 +158,9 @@ class FullArticle extends MainArticle {
 
   @override
   Widget build(BuildContext context) {
-    super.contactOrNot?.isEmpty == false ? boolContact == true : boolContact == false;
+    super.contactOrNot?.isEmpty == false
+        ? boolContact == true
+        : boolContact == false;
     print(contactOrNot);
     print(contactOrNot?.isEmpty);
     var size = MediaQuery.of(context).size;
@@ -259,42 +261,46 @@ class FullArticle extends MainArticle {
                 child: paragraph(super.completeArticle),
               ),
             ),
-           SizedBox(height: 20),
-                () {
+            SizedBox(height: 20),
+            () {
               return (contactOrNot?.isEmpty ?? true)
                   ? Container()
                   : InkWell(
-                onTap: () {
-                  _launchURL();
-                },
-                child: Image.asset(
-                  'img/logos/GitHub_logo.png',
-                  width: 120,
-                ),
-              );
+                      onTap: () {
+                        _launchURL();
+                      },
+                      child: Image.asset(
+                        'img/logos/GitHub_logo.png',
+                        width: 120,
+                      ),
+                    );
             }(),
             Padding(
               padding: EdgeInsets.only(top: 12, left: 15, right: 15),
-              child: Container(
-                alignment: Alignment.bottomLeft,
-                child: paragraph(super.nextCompleteArticle),
-              ),
+              child: () {
+                return (nextCompleteArticle?.isEmpty ?? true)
+                    ? Container()
+                    : Container(
+                        alignment: Alignment.bottomLeft,
+                        child: paragraph(super.nextCompleteArticle),
+                      );
+              }(),
             ),
             SizedBox(height: 20),
-           // Condition d'affichage
-                () {
-                  return (contactOrNot?.isEmpty ?? true)
-                      ? Container()
-                      : InkWell(
-                    onTap: () {
-                      _launchURL();
-                    },
-                    child: Image.asset(
-                      'img/logos/GitHub_logo.png',
-                      width: 120,
-                    ),
-                  );
-                }(),
+            // Condition d'affichage
+            () {
+              return (contactOrNot?.isEmpty ?? true)
+                  ? Container()
+                  : InkWell(
+                      onTap: () {
+                        _launchURL2();
+                      },
+                      child: Image.asset(
+                        'img/logos/GitHub_logo.png',
+                        width: 120,
+                      ),
+                    );
+            }(),
           ],
         ),
       ),

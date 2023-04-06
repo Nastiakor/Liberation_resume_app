@@ -225,7 +225,7 @@ class Article {
   final Map<String, dynamic> headlines;
   final List<ContentElement> contentElements;
   final String primarySectionName;
-  final String imageUrl;
+  final String? imageUrl;
   Map<String, dynamic>? subheadlines;
   final String credit1;
   final credit2;
@@ -240,7 +240,7 @@ class Article {
     required this.headlines,
     required this.contentElements,
     required this.primarySectionName,
-    required this.imageUrl,
+    this.imageUrl,
     this.subheadlines,
     required this.credit1,
     this.credit2,
@@ -388,9 +388,19 @@ class _ArticleDetailsPageState extends State<ArticleDetailsPage> {
 
   @override
   Widget build(BuildContext context) {
-    String imageUrl = Uri.parse(widget.article.imageUrl).toString();
+    String? imageUrl = widget.article.imageUrl;
+
+ /*   void imageURL() {
+      if (widget.article.imageUrl?.isNotEmpty ?? false) {
+        String? imageUrl = widget.article.imageUrl;
+        if (imageUrl != null) {
+          imageUrl = Uri.parse(imageUrl).toString();
+        }
+      }
+    }*/
+
+
     List<Widget> paddingWidgets = [];
-    print('imgurl ${imageUrl}');
     if (widget.article.articlesContenus?.isNotEmpty == true) {
       paddingWidgets.add(
         Padding(
@@ -508,16 +518,20 @@ class _ArticleDetailsPageState extends State<ArticleDetailsPage> {
                       color: Colors.black45, fontSize: 13, letterSpacing: 0.5)),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Image.network(
-              imageUrl ?? '',
-              height: 200,
-              width: double.infinity,
-              fit: BoxFit.fitWidth,
-            ),
-          ),
-          Padding(
+              () {
+            return (imageUrl?.isEmpty ?? true)
+                ? Container()
+                : Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Image.network(
+                imageUrl ?? '',
+                height: 200,
+                width: double.infinity,
+                fit: BoxFit.fitWidth,
+              ),
+            );
+          }(),
+         Padding(
             padding:
                 const EdgeInsets.only(left: 15, top: 8, bottom: 8, right: 15),
             child: Text(widget.article.caption ?? '',
