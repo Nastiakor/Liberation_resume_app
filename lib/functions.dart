@@ -117,7 +117,7 @@ class MainArticle extends StatelessWidget {
               ),
             ),
             articleDetails(themeMainArticle, 'Il y a ${daysUntilArticle()}',
-                size.width / 6),
+                size.width / 12),
             const Divider(thickness: 2),
           ],
         ),
@@ -399,7 +399,7 @@ class SecondaryArticle extends StatelessWidget {
         Padding(
           padding: EdgeInsets.only(top: 10),
           child: articleDetails(
-              themeMainArticle, 'Il y a ${daysUntilArticle()}', size.width / 6),
+              themeMainArticle, 'Il y a ${daysUntilArticle()}', size.width / 12),
         ),
         Divider(
           thickness: 2,
