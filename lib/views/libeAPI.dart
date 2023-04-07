@@ -388,7 +388,7 @@ class _ArticleDetailsPageState extends State<ArticleDetailsPage> {
 
   @override
   Widget build(BuildContext context) {
-    String? imageUrl = 'https://cloudfront-eu-central-1.images.arcpublishing.com/liberation/ZHTZTFYKNRGTRGL6RS4POBYCCM.jpg';
+    String? imageUrl = widget.article.imageUrl;
 
  /*   void imageURL() {
       if (widget.article.imageUrl?.isNotEmpty ?? false) {
