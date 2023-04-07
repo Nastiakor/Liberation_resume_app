@@ -13,7 +13,7 @@ TextSpan redTitle(String title) {
     text: "$title",
     style: GoogleFonts.encodeSansCondensed(
         textStyle: TextStyle(
-            fontWeight: FontWeight.w800,
+            fontWeight: FontWeight.w600,
             color: titleColor,
             fontSize: 20,
             letterSpacing: 0.6)),
@@ -25,7 +25,7 @@ TextSpan orangeTitle(String title) {
     text: "$title",
     style: GoogleFonts.encodeSansCondensed(
         textStyle: TextStyle(
-            fontWeight: FontWeight.w800,
+            fontWeight: FontWeight.w600,
             color: Colors.purple,
             fontSize: 20,
             letterSpacing: 0.6)),
@@ -38,7 +38,7 @@ TextSpan greenTitle(String title) {
     text: "$title",
     style: GoogleFonts.encodeSansCondensed(
         textStyle: TextStyle(
-            fontWeight: FontWeight.w800,
+            fontWeight: FontWeight.w600,
             color: colorGreen,
             fontSize: 20,
             letterSpacing: 0.6)),
@@ -50,7 +50,7 @@ TextSpan blackTitle(String title) {
       text: "$title",
       style: GoogleFonts.encodeSansCondensed(
           textStyle: TextStyle(
-              fontWeight: FontWeight.w800,
+              fontWeight: FontWeight.w600,
               color: Colors.black,
               fontSize: 20,
               letterSpacing: 0.5)));

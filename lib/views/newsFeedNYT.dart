@@ -119,7 +119,7 @@ class _NYTAPIState extends State<NYTAPI> {
                                 Text(_articles[index]['title'],
                                     style: GoogleFonts.encodeSansCondensed(
                                         textStyle: TextStyle(
-                                            fontWeight: FontWeight.w800,
+                                            fontWeight: FontWeight.w600,
                                             color: Colors.black,
                                             fontSize: 20,
                                             letterSpacing: 0.5))),
@@ -176,7 +176,7 @@ class ArticlePage extends StatelessWidget {
               child: Text(article['section'] ?? '',
                   style: GoogleFonts.encodeSansCondensed(
                       textStyle: TextStyle(
-                          fontWeight: FontWeight.w800,
+                          fontWeight: FontWeight.w600,
                           color: titleColor,
                           fontSize: 20,
                           letterSpacing: 0.6))),
@@ -186,7 +186,7 @@ class ArticlePage extends StatelessWidget {
               child: Text(article['title'] ?? '',
                   style: GoogleFonts.encodeSansCondensed(
                       textStyle: TextStyle(
-                          fontWeight: FontWeight.w800,
+                          fontWeight: FontWeight.w600,
                           color: Colors.black,
                           fontSize: 20,
                           letterSpacing: 0.5))),

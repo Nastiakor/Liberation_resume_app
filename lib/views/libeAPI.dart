@@ -177,7 +177,7 @@ class _LiberationAPIState extends State<LiberationAPI> {
                                                     .encodeSansCondensed(
                                                         textStyle: TextStyle(
                                                             fontWeight:
-                                                                FontWeight.w800,
+                                                                FontWeight.w600,
                                                             color: Colors.black,
                                                             fontSize: 20,
                                                             letterSpacing:
@@ -439,7 +439,7 @@ class _ArticleDetailsPageState extends State<ArticleDetailsPage> {
             child: Text(widget.article.themeTitle,
                 style: GoogleFonts.encodeSansCondensed(
                     textStyle: TextStyle(
-                        fontWeight: FontWeight.w800,
+                        fontWeight: FontWeight.w600,
                         color: titleColor,
                         fontSize: 20,
                         letterSpacing: 0.5))),
@@ -451,7 +451,7 @@ class _ArticleDetailsPageState extends State<ArticleDetailsPage> {
                 widget.article.headlines['basic'] ?? '',
                 style: GoogleFonts.encodeSansCondensed(
                   textStyle: TextStyle(
-                      fontWeight: FontWeight.w800,
+                      fontWeight: FontWeight.w600,
                       color: Colors.black,
                       fontSize: 20,
                       letterSpacing: 0.5),
