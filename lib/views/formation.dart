@@ -14,7 +14,7 @@ class Formations extends StatelessWidget {
       child: Column(
         children: [
           MainArticle(
-            imagePath: "img/Formations/AdaTechschool2.webp",
+            imagePath: "img/Formations/AdaTechschool2.png",
             title: "2022 - 2023 : ADA TECH SCHOOL ",
             titlethen:
                 "ECOLE FEMINISTE BASEE SUR UNE PEDAGOGIE INNOVANTE ET FORMANT DES DÉVELOPPEUSES / DÉVELOPPEURS D'APPLICATIONS FULL STACK",
@@ -33,7 +33,7 @@ class Formations extends StatelessWidget {
             titlethen: "FORMATION DE MOBILISATEUR",
             paragraphMainArticle:
                 "Le saviez-vous ?\n97% des sites ne sont pas accessibles.\n\nLes organisations 'Tech for good' et Latitudes ont décidé de se mobiliser conjointement afin de proposer aux personnes concernées de se questionner sur les impacts de la Tech.\nDans ce cadre, des sensibilisations sont mises en place s’adressant aux citoyens : étudiant·es, apprenant·es, employé·es, freelances ou encore membres de communautés.",
-            themeMainArticle: "Engagement",
+            themeMainArticle: "Johan",
             writtenBy: "Johan Anquetil",
             publishDateParam: "2023-03-07 12:29:00",
             legendPicture: "Logo du tech for good tour",
@@ -47,7 +47,7 @@ class Formations extends StatelessWidget {
                 " MASTER 1 TRADUCTION ÉDITORIALE, ÉCONOMIQUE ET TECHNIQUE",
             paragraphMainArticle:
                 "ESIT (ÉCOLE SUPÉRIEURE D’INTERPRÈTES ET DE TRADUCTEURS)",
-            themeMainArticle: "Traduction",
+            themeMainArticle: "Anastasia",
             writtenBy: "Anastasia Korotkova",
             publishDateParam: "2023-03-08 11:55:00",
             legendPicture: "Logo de l'ESIT",
@@ -59,7 +59,7 @@ class Formations extends StatelessWidget {
             titlethen: "MASTER AMENAGEMENT ET DEVELOPPEMENT TERRITORIAL",
             paragraphMainArticle:
                 "Après l'obtention de ma Licence et une année de réflexion, j'ai décidé de me tourner vers ce Master qui forme des cadres territoriaux et associatifs dans le développement social local.",
-            themeMainArticle: "Social",
+            themeMainArticle: "Johan",
             writtenBy: "Johan Anquetil",
             publishDateParam: "2023-03-08 10:29:00",
             legendPicture: "",
@@ -71,7 +71,7 @@ class Formations extends StatelessWidget {
             title: "2006 - 2009 :",
             titlethen: " LICENCE 3 - MASTER 1 SCIENCES DU LANGAGE",
             paragraphMainArticle: "UNIVERSITÉ PARIS V DESCARTES",
-            themeMainArticle: "Sciences du langage",
+            themeMainArticle: "Anastasia",
             writtenBy: "Anastasia Korotkova",
             publishDateParam: "2023-03-08 11:55:00",
             legendPicture: "",
@@ -85,7 +85,7 @@ class Formations extends StatelessWidget {
             titlethen: " LICENCE STAPS MANAGEMENT DES ORGANISATIONS SPORTIVES",
             paragraphMainArticle:
                 "Suite à mon DUT, je me suis orienté sur la filière STAPS à Lyon, séduit par l'opportunité de m'installer dans une grande ville et de poursuivre mon cursus dans le domaine du sport",
-            themeMainArticle: "Management",
+            themeMainArticle: "Johan",
             writtenBy: "Johan Anquetil",
             publishDateParam: "2023-03-08 10:29:00",
             legendPicture:
@@ -99,19 +99,19 @@ class Formations extends StatelessWidget {
             titlethen: " MASTER PROFESSEURE D'ANGLAIS ET DE FRANÇAIS",
             paragraphMainArticle:
                 "INSTITUT PÉDAGOGIQUE DE IOCHKAR-OLA (RUSSIE)",
-            themeMainArticle: "Langues étrangères",
+            themeMainArticle: "Anastasia",
             writtenBy: "Anastasia Korotkova",
             publishDateParam: "2023-03-08 12:32:00",
             legendPicture: "",
             completeArticle: "Master 2 Langues Étrangères (mention Très Bien)\n\nCette formation m'a permis d'avoir une connaissance approfondie d'anglais et de français, de la culture des pays anglophones et francopones, j'ai également pu apprendre les théories de l'enseignement et de l'apprentissage, ainsi que les stratégies pédagogiques pour enseigner efficacement les langues étrangères",
           ),
           SecondaryArticle(
-            imagePath: "img/Formations/IUTIndre.webp",
+            imagePath: "img/Formations/IUTIndre.png",
             title: "2005 - 2007 :",
             titlethen: " DUT TECHNIQUES DE COMMERCIALISATION",
             paragraphMainArticle:
                 "Après avoir obtenu mon Baccalauréat Economique et Social à Bourges, j'ai passé deux ans à Issoudun et son IUT de l'Indre.",
-            themeMainArticle: "Commerce",
+            themeMainArticle: "Johan",
             writtenBy: "Johan Anquetil",
             publishDateParam: "2023-03-08 10:29:00",
             legendPicture: "Issoudun, ville située entre Bourges et Chateauroux",

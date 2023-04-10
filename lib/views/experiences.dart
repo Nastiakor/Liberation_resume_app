@@ -14,12 +14,12 @@ class Experiences extends StatelessWidget {
       child: Column(
         children: [
           MainArticle(
-            imagePath: "img/Experiences/Lobby_Fabric.webp",
+            imagePath: "img/Experiences/Lobby_Fabric.png",
             title: "2018 - 2022 RECEPTIONNISTE",
             titlethen: " HOTELS A PARIS",
             paragraphMainArticle:
                 "Pendant 5 ans, j'ai travaillé en tant que réceptionniste dans de divers hôtels à Paris.",
-            themeMainArticle: "Réception",
+            themeMainArticle: "Anastasia",
             writtenBy: "Anastasia Korotkova",
             publishDateParam: "2023-03-06 15:13:00",
             legendPicture: "",
@@ -27,13 +27,13 @@ class Experiences extends StatelessWidget {
                 "- 2021 - 2022 Hôtel Paradis\n- 2018 - 2020 Hôtel Fabric\n- 2017 - 2018 Poste tournant: Hôtel des Marronniers, Hôtel des 2 Continents, Hôtel de Seine, Welcome Hôtel \n\nMes fonctions principales consistaient à accueillir et renseigner la clientèle, j'ai également fait de la conciergerie et du travail administratif : traitement des emails, prise, traitement et vérification des réservations, réponses aux commentaires des clients sur divers sites web, rédaction et traduction en anglais des brochures de communication.",
           ),
           MainArticle(
-            imagePath: "img/Experiences/APF2.webp",
+            imagePath: "img/Experiences/APF2.png",
             title:
                 "2016 - 2022 : CHEF DE PROJET REGIONAL ACTIONS ASSOCIATIVES ",
             titlethen: "APF FRANCE HANDICAP",
             paragraphMainArticle:
                 "Durant 6 ans, j'ai oeuvré en tant que chef de projet régional en Ile-de-France pour l'association APF France handicap dont l'objet est la défense des droits des personnes en situation de handicap. J'avais pour missions principales de conseiller les élus, équipes et directions sur la stratégie de développement, d'accompagner le pouvoir d'agir des membres, d'animer des réseaux d'acteurs et de piloter des projets.",
-            themeMainArticle: "Gestion de projets",
+            themeMainArticle: "Johan",
             writtenBy: "Johan Anquetil",
             publishDateParam: "2023-03-08 15:13:00",
             legendPicture:
@@ -45,10 +45,10 @@ class Experiences extends StatelessWidget {
             imagePath: "img/Experiences/ERGONCAPITALPARTNERS.png",
             title:
                 "2010 - 2016 ASSISTANTE DE DIRECTION GÉNÉRALE / OFFICE MANAGER",
-            titlethen: " DIVERS ENTREPRISES A PARIS",
+            titlethen: " DIVERSES ENTREPRISES A PARIS",
             paragraphMainArticle:
                 "J'ai travaillé dans plusieurs entreprises en tant qu'Assistante de Direction Générale",
-            themeMainArticle: "Secrétariat",
+            themeMainArticle: "Anastasia",
             writtenBy: "Anastasia Korotkova",
             publishDateParam: "2023-03-06 10:13:00",
             legendPicture: "",
@@ -56,13 +56,13 @@ class Experiences extends StatelessWidget {
                 "- 2014 - 2016 Ergon Capital Advisors France\n- 2011 - 2014 Rietumu Bank\n- 2010 Moreno, Ruby et associés\n\nMes expérences: \n\n- accueil physique et téléphonique,\n- interprétariat, traduction de documents,\n- gestion d'agenda, organisation de réunions et de déplacements, gestion des dépenses, organisation du bureau",
           ),
           SecondaryArticle(
-            imagePath: "img/Experiences/IEMNLG.webp",
+            imagePath: "img/Experiences/IEMNLG.png",
             title: "2015 - 2016 : CHARGE DE MISSION SOCIOCULTURELLE",
             titlethen:
                 " AVEC DES ADOLESCENTS ET JEUNES ADULTES EN SITUATION DE HANDICAP ET POLYHANDICAP",
             paragraphMainArticle:
                 "Lors de cet emploi que j'ai participé à créer, l'enjeu était de développer la participation citoyenne de ces jeunes âgés de 12 à 20 ans qui ont de fortes dépendances et se retrouvent malheureusement dans des situations d'exclusions sociales (scolaire, culturelle, sportive...), peu d'espaces leur étant accessible. Pour certains, le confinement, c'est toute l'année",
-            themeMainArticle: "Inclusion",
+            themeMainArticle: "Johan",
             writtenBy: "Johan Anquetil",
             publishDateParam: "2023-03-09 10:13:00",
             legendPicture:
@@ -76,19 +76,19 @@ class Experiences extends StatelessWidget {
             titlethen: " CITÉ DE LA MUSIQUE",
             paragraphMainArticle:
                 "",
-            themeMainArticle: "Accueil",
+            themeMainArticle: "Anastasia",
             writtenBy: "Anastasia Korotkova",
             publishDateParam: "2023-03-06 10:13:00",
             legendPicture: "",
             completeArticle: "Mes fonctions principales étaient les suivantes:\n\n- Accueil et renseignement des visiteurs, en français et en anglais.\n- Préparation et organisation des évènements culturels.\n -Traduction de brochures et de documents publicitaires (français - anglais)",
           ),
           SecondaryArticle(
-            imagePath: "img/Experiences/APF93.webp",
+            imagePath: "img/Experiences/APF93.png",
             title: "2013 - 2015 : CHARGE DE MISSION ACTIONS ASSOCIATIVES",
             titlethen: " APF FRANCE HANDICAP - DELEGATION DU 93",
             paragraphMainArticle:
                 "Premier emploi après l'obtention de mon Master Aménagement et Développement Territorial, j'ai occupé durant deux ans le poste de chargé de mission au développement de la vie associative de la délégation départementale de Seine-Saint-Denis APF France handicap.",
-            themeMainArticle: "Inclusion",
+            themeMainArticle: "Johan",
             writtenBy: "Johan Anquetil",
             publishDateParam: "2023-03-09 12:10:00",
             legendPicture: "Actions d'évaluation de l'accessibilité à Bobigny",

@@ -188,7 +188,7 @@ class ArticlePage extends StatelessWidget {
                       textStyle: TextStyle(
                           fontWeight: FontWeight.w600,
                           color: Colors.black,
-                          fontSize: 20,
+                          fontSize: 18,
                           letterSpacing: 0.5))),
             ),
             SizedBox(height: 16),

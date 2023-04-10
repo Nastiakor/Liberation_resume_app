@@ -28,7 +28,7 @@ class _ContactState extends State<Contact> {
           child: Column(
             children: [
               MainArticle(
-                imagePath: "img/contact.webp",
+                imagePath: "img/contact.png",
                 title: "NOUS ",
                 titlethen: "CONTACTER",
                 paragraphMainArticle:
