@@ -51,7 +51,7 @@ class NYTAppBar extends AppBar {
                         letterSpacing: 0.2),
                   ),
                 ),
-              ),fl
+              ),
             ],
           ),
         );
