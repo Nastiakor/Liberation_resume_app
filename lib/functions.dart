@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:cv_flutter_libe/style.dart';
-import 'package:cv_flutter_libe/Controllers/BottomBarArticle.dart';
-import 'package:cv_flutter_libe/Controllers/AppBar.dart';
+import 'package:cv_flutter_libe/Controllers/bottom_bar_article.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:cv_flutter_libe/Controllers/app_bar.dart';
 
 String calculatePublishingDate(DateTime publishingDate) {
   DateTime now = DateTime.now();
@@ -180,7 +180,7 @@ class FullArticle extends MainArticle {
             Column(
               children: [
                 Padding(
-                  padding: EdgeInsets.only(top: 50, left: 15, right: 15),
+                  padding: const EdgeInsets.only(top: 50, left: 15, right: 15),
                   child: Wrap(
                     children: [
                       Container(
@@ -209,7 +209,7 @@ class FullArticle extends MainArticle {
             ),
             // Padding 2
             Padding(
-              padding: EdgeInsets.only(top: 15, left: 15, right: 15),
+              padding: const EdgeInsets.only(top: 15, left: 15, right: 15),
               child: Wrap(
                 children: [
                   Container(
@@ -229,14 +229,14 @@ class FullArticle extends MainArticle {
             Row(
               children: [
                 Padding(
-                    padding: EdgeInsets.only(top: 8, left: 15),
+                    padding: const EdgeInsets.only(top: 8, left: 15),
                     child: byArticle(super.writtenBy)),
               ],
             ),
             Row(
               children: [
                 Padding(
-                  padding: EdgeInsets.only(top: 8, left: 15, bottom: 8),
+                  padding: const EdgeInsets.only(top: 8, left: 15, bottom: 8),
                   child: RichText(
                     text: TextSpan(
                       children: [
@@ -257,17 +257,17 @@ class FullArticle extends MainArticle {
               ],
             ),
             Padding(
-              padding: EdgeInsets.only(top: 12, left: 15, right: 15),
+              padding: const EdgeInsets.only(top: 12, left: 15, right: 15),
               child: legendePictures(super.legendPicture),
             ),
             Padding(
-              padding: EdgeInsets.only(top: 12, left: 15, right: 15),
+              padding: const EdgeInsets.only(top: 12, left: 15, right: 15),
               child: Container(
                 alignment: Alignment.bottomLeft,
                 child: paragraph(super.completeArticle),
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
@@ -305,22 +305,22 @@ class FullArticle extends MainArticle {
                 () {
                   return (contactOrNot?.isEmpty ?? true)
                       ? Container()
-                      : SizedBox(height: 20);
+                      : const SizedBox(height: 20);
                 }(),
               ],
             ),
                 () {
               return (contactOrNot?.isEmpty ?? true)
                   ? Container()
-                  : SizedBox(height: 10);
+                  : const SizedBox(height: 10);
             }(),
                 () {
               return (contactOrNot?.isEmpty ?? true)
                   ? Container()
-                  : Divider(thickness: 2);
+                  : const Divider(thickness: 2);
             }(),
             Padding(
-              padding: EdgeInsets.only(top: 20, left: 15, right: 15),
+              padding: const EdgeInsets.only(top: 20, left: 15, right: 15),
               child: () {
                 return (nextCompleteArticle?.isEmpty ?? true)
                     ? Container()
@@ -330,7 +330,7 @@ class FullArticle extends MainArticle {
                       );
               }(),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             // Condition d'affichage
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -369,12 +369,12 @@ class FullArticle extends MainArticle {
                   ? Container()
                   : Column(
                       children: [
-                        Text(
+                        const Text(
                           "Visitez le site d'Ada Tech School :",
                           style: TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 18),
                         ),
-                        Padding(
+                        const Padding(
                           padding: EdgeInsets.only(bottom: 12),
                         ),
                         InkWell(
@@ -390,11 +390,11 @@ class FullArticle extends MainArticle {
                       ],
                     );
             }(),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
           ],
         ),
       ),
-      bottomNavigationBar: BottomBarObject(),
+      bottomNavigationBar: const BottomBarObject(),
     );
   }
 // other methods and widgets
@@ -437,7 +437,7 @@ class SecondaryArticle extends StatelessWidget {
     return Column(
       children: [
         Padding(
-          padding: EdgeInsets.only(),
+          padding: const EdgeInsets.only(),
           child: InkWell(
             onTap: () => Navigator.of(context).push(MaterialPageRoute(
               builder: (context) => FullArticle(
@@ -453,7 +453,7 @@ class SecondaryArticle extends StatelessWidget {
               ),
             )),
             child: Padding(
-              padding: EdgeInsets.only(left: 15, right: 10),
+              padding: const EdgeInsets.only(left: 15, right: 10),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
@@ -469,7 +469,7 @@ class SecondaryArticle extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SizedBox(width: 10),
+                  const SizedBox(width: 10),
                   Container(
                     width: maxSize * 0.3,
                     height: maxSize * 0.3 * 0.75,
@@ -487,11 +487,11 @@ class SecondaryArticle extends StatelessWidget {
           ),
         ),
         Padding(
-          padding: EdgeInsets.only(top: 10),
+          padding: const EdgeInsets.only(top: 10),
           child: articleDetails(
               themeMainArticle, 'Il y a ${daysUntilArticle()}', size.width / 6),
         ),
-        Divider(
+        const Divider(
           thickness: 2,
         ),
       ],

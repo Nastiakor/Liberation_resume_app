@@ -31,11 +31,9 @@ class _ChezPolApiState extends State<ChezPolApi> {
           _articles = data;
         });
       } else {
-        print('Request failed with status: ${response.statusCode}.');
         throw Exception('Failed to fetch data.');
       }
     } catch (error) {
-      print('Error occurred: $error');
       throw Exception('Failed to fetch data.');
     }
   }
@@ -50,7 +48,7 @@ class _ChezPolApiState extends State<ChezPolApi> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(title: Text('ChezPol API')),
+        appBar: AppBar(title: const Text('ChezPol API')),
         body: ListView.builder(
           itemCount: _articles.length,
           itemBuilder: (BuildContext context, int index) {
@@ -66,7 +64,7 @@ class _ChezPolApiState extends State<ChezPolApi> {
               leading: imageUrl.isNotEmpty
                   ? Image.network(imageUrl,
                       width: 50, height: 50, fit: BoxFit.cover)
-                  : SizedBox(width: 50, height: 50),
+                  : const SizedBox(width: 50, height: 50),
             );
           },
         ),

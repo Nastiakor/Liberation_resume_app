@@ -3,18 +3,18 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:cv_flutter_libe/Controllers/AppBar.dart';
-import 'package:cv_flutter_libe/Controllers/bottomNavigationBar.dart';
+import 'package:cv_flutter_libe/Controllers/app_bar.dart';
+import 'package:cv_flutter_libe/Controllers/bottom_navigation_bar.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:html_unescape/html_unescape.dart';
-import 'package:cv_flutter_libe/Controllers/BottomBarArticle.dart';
+import 'package:cv_flutter_libe/Controllers/bottom_bar_article.dart';
 import 'package:html/parser.dart' as html_parser;
 import 'package:html/dom.dart' as html_dom;
 
 const titleColor = Color(0XFFE60004);
 final unescape = HtmlUnescape();
 
-void main() => runApp(LiberationAPI());
+void main() => runApp(const LiberationAPI());
 
 class LiberationAPI extends StatefulWidget {
   const LiberationAPI({Key? key}) : super(key: key);
@@ -31,7 +31,6 @@ class _LiberationAPIState extends State<LiberationAPI> {
 
   Future<void> _fetchArticles() async {
     try {
-      print("Fetching articles...");
       final headers = {"x-api-key": apiKey};
       final params = {
         "website": "liberation",
@@ -57,12 +56,9 @@ class _LiberationAPIState extends State<LiberationAPI> {
           });
         }
       } else {
-        print(
-            "Failed to fetch articles with status code: ${response.statusCode}");
         throw Exception('Failed to fetch articles');
       }
     } catch (error) {
-      print("Error while fetching articles: $error");
       setState(() {
         _contentElements = [];
       });
@@ -82,7 +78,7 @@ class _LiberationAPIState extends State<LiberationAPI> {
       home: Scaffold(
         appBar: MyAppBarFeed(),
         body: _contentElements.isEmpty
-            ? Center(child: CircularProgressIndicator())
+            ? const Center(child: CircularProgressIndicator())
             : Row(
                 children: [
                   _contentElements.isNotEmpty
@@ -105,7 +101,7 @@ class _LiberationAPIState extends State<LiberationAPI> {
                                 final displayDate =
                                     contentElement['display_date'] ?? '';
                                 final dateTime = DateTime.parse(displayDate)
-                                    .add(Duration(hours: 2));
+                                    .add(const Duration(hours: 2));
                                 final hourFormat = DateFormat('HH:mm');
                                 final formattedHour =
                                     hourFormat.format(dateTime);
@@ -140,20 +136,20 @@ class _LiberationAPIState extends State<LiberationAPI> {
                                           CrossAxisAlignment.start,
                                       children: [
                                         Padding(
-                                          padding: EdgeInsets.only(top: 5),
+                                          padding: const EdgeInsets.only(top: 5),
                                           child: Column(
                                             children: [
                                               Text(
                                                 formattedHour,
-                                                style: TextStyle(
+                                                style: const TextStyle(
                                                   fontSize: 14,
                                                   fontWeight: FontWeight.bold,
                                                 ),
                                               ),
-                                              SizedBox(height: 5),
+                                              const SizedBox(height: 5),
                                               Container(
                                                 height: 40,
-                                                child: VerticalDivider(
+                                                child: const VerticalDivider(
                                                   thickness: 2,
                                                   color: Colors.grey,
                                                 ),
@@ -161,7 +157,7 @@ class _LiberationAPIState extends State<LiberationAPI> {
                                             ],
                                           ),
                                         ),
-                                        SizedBox(width: 10),
+                                        const SizedBox(width: 10),
                                         Expanded(
                                           child: Column(
                                             crossAxisAlignment:
@@ -171,7 +167,7 @@ class _LiberationAPIState extends State<LiberationAPI> {
                                                 headlines['basic'] ?? '',
                                                 style: GoogleFonts
                                                     .encodeSansCondensed(
-                                                        textStyle: TextStyle(
+                                                        textStyle: const TextStyle(
                                                             fontWeight:
                                                                 FontWeight.w600,
                                                             color: Colors.black,
@@ -179,16 +175,16 @@ class _LiberationAPIState extends State<LiberationAPI> {
                                                             letterSpacing:
                                                                 0.5)),
                                               ),
-                                              SizedBox(height: 5),
+                                              const SizedBox(height: 5),
                                               Text(
                                                 primarySectionName ?? '',
-                                                style: TextStyle(
+                                                style: const TextStyle(
                                                     fontWeight: FontWeight.bold,
                                                     color: Colors.black45,
                                                     fontSize: 13),
                                               ),
-                                              SizedBox(height: 10),
-                                              Divider(
+                                              const SizedBox(height: 10),
+                                              const Divider(
                                                 thickness: 0.5,
                                                 color: Colors.grey,
                                               )
@@ -201,7 +197,7 @@ class _LiberationAPIState extends State<LiberationAPI> {
                                 );
                               }),
                         )
-                      : Row(
+                      : const Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Center(child: CircularProgressIndicator())
@@ -371,7 +367,7 @@ class _ArticleDetailsPageState extends State<ArticleDetailsPage> {
             padding: const EdgeInsets.all(8.0),
             child: Text(
               element.content?['content'] ?? '',
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 18,
               ),
             ),
@@ -410,7 +406,7 @@ class _ArticleDetailsPageState extends State<ArticleDetailsPage> {
               }
             }).join(),
             style: GoogleFonts.tinos(
-                textStyle: TextStyle(
+                textStyle: const TextStyle(
                     color: Colors.black, fontSize: 18, letterSpacing: 0.6)),
           ),
         ),
@@ -425,7 +421,7 @@ class _ArticleDetailsPageState extends State<ArticleDetailsPage> {
             child: Text(
               widget.article.primarySectionName,
               style: GoogleFonts.sourceSansPro(
-                  textStyle: TextStyle(
+                  textStyle: const TextStyle(
                       color: Colors.black45, fontSize: 18, letterSpacing: 0.5)),
             ),
           ),
@@ -434,7 +430,7 @@ class _ArticleDetailsPageState extends State<ArticleDetailsPage> {
             // Titre rouge
             child: Text(widget.article.themeTitle,
                 style: GoogleFonts.encodeSansCondensed(
-                    textStyle: TextStyle(
+                    textStyle: const TextStyle(
                         fontWeight: FontWeight.w600,
                         color: titleColor,
                         fontSize: 20,
@@ -446,7 +442,7 @@ class _ArticleDetailsPageState extends State<ArticleDetailsPage> {
               child: Text(
                 widget.article.headlines['basic'] ?? '',
                 style: GoogleFonts.encodeSansCondensed(
-                  textStyle: TextStyle(
+                  textStyle: const TextStyle(
                       fontWeight: FontWeight.w600,
                       color: Colors.black,
                       fontSize: 20,
@@ -458,7 +454,7 @@ class _ArticleDetailsPageState extends State<ArticleDetailsPage> {
               child: Text(
                 widget.article.subheadlines?['basic'] ?? '',
                 style: GoogleFonts.tinos(
-                  textStyle: TextStyle(
+                  textStyle: const TextStyle(
                       color: Colors.black, fontSize: 18, letterSpacing: 0.6),
                 ),
               )),
@@ -469,14 +465,14 @@ class _ArticleDetailsPageState extends State<ArticleDetailsPage> {
                 TextSpan(
                     text: "par ",
                     style: GoogleFonts.sourceSansPro(
-                        textStyle: TextStyle(
+                        textStyle: const TextStyle(
                             color: Colors.black,
                             fontSize: 15,
                             letterSpacing: 0.5))),
                 TextSpan(
                     text: widget.article.credit1,
                     style: GoogleFonts.sourceSansPro(
-                        textStyle: TextStyle(
+                        textStyle: const TextStyle(
                             color: Color(0XFFE60004),
                             fontSize: 15,
                             letterSpacing: 0.5))),
@@ -484,7 +480,7 @@ class _ArticleDetailsPageState extends State<ArticleDetailsPage> {
                   TextSpan(
                     text: " et ",
                     style: GoogleFonts.sourceSansPro(
-                      textStyle: TextStyle(
+                      textStyle: const TextStyle(
                         color: Colors.black,
                         fontSize: 15,
                         letterSpacing: 0.5,
@@ -494,7 +490,7 @@ class _ArticleDetailsPageState extends State<ArticleDetailsPage> {
                 TextSpan(
                   text: widget.article.credit2 ?? '',
                   style: GoogleFonts.sourceSansPro(
-                    textStyle: TextStyle(
+                    textStyle: const TextStyle(
                       color: Color(0XFFE60004),
                       fontSize: 15,
                       letterSpacing: 0.5,
@@ -508,9 +504,9 @@ class _ArticleDetailsPageState extends State<ArticleDetailsPage> {
             padding: const EdgeInsets.only(left: 15.0),
             child: Text(
               CustomDateFormat("dd MMMM yyyy 'à' HH'h'mm", locale: 'fr').format(
-                  widget.article.first_publish_date.add(Duration(hours: 2))),
+                  widget.article.first_publish_date.add(const Duration(hours: 2))),
               style: GoogleFonts.sourceSansPro(
-                  textStyle: TextStyle(
+                  textStyle: const TextStyle(
                       color: Colors.black45, fontSize: 13, letterSpacing: 0.5)),
             ),
           ),
@@ -532,7 +528,7 @@ class _ArticleDetailsPageState extends State<ArticleDetailsPage> {
                 const EdgeInsets.only(left: 15, top: 8, bottom: 8, right: 15),
             child: Text(widget.article.caption ?? '',
                 style: GoogleFonts.sourceSansPro(
-                    textStyle: TextStyle(
+                    textStyle: const TextStyle(
                         color: Colors.black,
                         fontSize: 15,
                         letterSpacing: 0.5))),
@@ -543,7 +539,7 @@ class _ArticleDetailsPageState extends State<ArticleDetailsPage> {
           ),
         ],
       ),
-      bottomNavigationBar: BottomBarObject(),
+      bottomNavigationBar: const BottomBarObject(),
     );
   }
 }

@@ -113,6 +113,7 @@ flutter:
     - img/Projets/Norton_Kong.png
     - img/Projets/Réseau_PHP_2.jpg
     - img/Projets/PHP-logo.png
+    - img/Projets/retrovibes.png
 
   fonts:
     - family: MyFlutterApp

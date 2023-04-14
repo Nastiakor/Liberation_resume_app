@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:cv_flutter_libe/functions.dart';
 
 
-void main() => runApp(Contact());
+void main() => runApp(const Contact());
 
 class Contact extends StatefulWidget {
   const Contact({Key? key}) : super(key: key);

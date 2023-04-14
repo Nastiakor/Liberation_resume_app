@@ -1,17 +1,17 @@
 import 'dart:convert';
-import 'package:cv_flutter_libe/Controllers/AppBarNYT.dart';
+import 'package:cv_flutter_libe/Controllers/app_bar_nyt.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:url_launcher/url_launcher.dart';
-import 'package:cv_flutter_libe/Controllers/bottomNavigationBar.dart';
-import 'package:cv_flutter_libe/Controllers/BottomBarArticle.dart';
+import 'package:cv_flutter_libe/Controllers/bottom_navigation_bar.dart';
+import 'package:cv_flutter_libe/Controllers/bottom_bar_article.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 
 const titleColor = Color(0XFFE60004);
 
-void main() => runApp(NYTAPI());
+void main() => runApp(const NYTAPI());
 
 class NYTAPI extends StatefulWidget {
   const NYTAPI({Key? key}) : super(key: key);
@@ -91,16 +91,16 @@ class _NYTAPIState extends State<NYTAPI> {
                               children: [
                                 Text(
                                   updated,
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                     fontSize: 14, // l'heure
                                     fontWeight: FontWeight.bold,
                                   ),
                                   textAlign: TextAlign.center,
                                 ),
-                                SizedBox(height: 5),
+                                const SizedBox(height: 5),
                                 Container(
                                   height: 40,
-                                  child: VerticalDivider(
+                                  child: const VerticalDivider(
                                     thickness: 2,
                                     color: Colors.grey,
                                   ),
@@ -108,28 +108,28 @@ class _NYTAPIState extends State<NYTAPI> {
                               ],
                             ),
                           ),
-                          SizedBox(width: 10),
+                          const SizedBox(width: 10),
                           Expanded(
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(_articles[index]['title'],
                                     style: GoogleFonts.encodeSansCondensed(
-                                        textStyle: TextStyle(
+                                        textStyle: const TextStyle(
                                             fontWeight: FontWeight.w600,
                                             color: Colors.black,
                                             fontSize: 20,
                                             letterSpacing: 0.5))),
-                                SizedBox(height: 5),
+                                const SizedBox(height: 5),
                                 Text(
                                   _articles[index]['nytdsection'],
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                       fontWeight: FontWeight.bold,
                                       color: Colors.black45,
                                       fontSize: 13),
                                 ),
-                                SizedBox(height: 10),
-                                Divider(
+                                const SizedBox(height: 10),
+                                const Divider(
                                   color: Colors.grey,
                                   thickness: 0.5,
                                 ),
@@ -142,7 +142,7 @@ class _NYTAPIState extends State<NYTAPI> {
                   );
                 },
               )
-            : Center(child: CircularProgressIndicator()),
+            : const Center(child: CircularProgressIndicator()),
         bottomNavigationBar: MyBottomHomeNavigationBar(currentIndex: 2),
       ),
     );
@@ -249,9 +249,9 @@ class ArticlePage extends StatelessWidget {
                     modalPresentationCapturesStatusBarAppearance: true,
                   ),*/
               },
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: const Align(
+              child: const Padding(
+                padding: EdgeInsets.all(8.0),
+                child: Align(
                   alignment: Alignment.centerRight,
                   child: Text(
                     'Read the full article on New York Times',
@@ -266,7 +266,7 @@ class ArticlePage extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: BottomBarObject(),
+      bottomNavigationBar: const BottomBarObject(),
     );
   }
   _launchURL() async {

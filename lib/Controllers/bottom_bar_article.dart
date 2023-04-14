@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class BottomBarObject extends StatefulWidget {
-  BottomBarObject({Key? key}) : super(key: key);
+  const BottomBarObject({Key? key}) : super(key: key);
 
   @override
   State<BottomBarObject> createState() => _BottomBarObjectState();
