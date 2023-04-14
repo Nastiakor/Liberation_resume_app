@@ -54,7 +54,7 @@ class MyBottomHomeNavigationBarState extends State<MyBottomHomeNavigationBar> {
           label: 'Fil info',
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.monitor_heart, size: 29),
+          icon: Icon(Icons.location_city_sharp, size: 29),
           label: 'Best of the NYT',
         ),
       ],

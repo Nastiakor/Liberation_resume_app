@@ -304,14 +304,27 @@ class FullArticle extends MainArticle {
                 }(),
               ],
             ),
-            Padding(
-              padding: EdgeInsets.only(bottom: 12),
+            Row(
+              children: [
+                () {
+                  return (contactOrNot?.isEmpty ?? true)
+                      ? Container()
+                      : SizedBox(height: 20);
+                }(),
+              ],
             ),
-            Divider(
-              thickness: 2,
-            ),
+                () {
+              return (contactOrNot?.isEmpty ?? true)
+                  ? Container()
+                  : SizedBox(height: 10);
+            }(),
+                () {
+              return (contactOrNot?.isEmpty ?? true)
+                  ? Container()
+                  : Divider(thickness: 2);
+            }(),
             Padding(
-              padding: EdgeInsets.only(top: 12, left: 15, right: 15),
+              padding: EdgeInsets.only(top: 20, left: 15, right: 15),
               child: () {
                 return (nextCompleteArticle?.isEmpty ?? true)
                     ? Container()
@@ -360,7 +373,11 @@ class FullArticle extends MainArticle {
                   ? Container()
                   : Column(
                       children: [
-                        Text("Visitez le site d'Ada Tech School :", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),),
+                        Text(
+                          "Visitez le site d'Ada Tech School :",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 18),
+                        ),
                         Padding(
                           padding: EdgeInsets.only(bottom: 12),
                         ),
