@@ -40,7 +40,7 @@ class homePage extends StatelessWidget {
             writtenBy: "Anastasia Korotkova",
             publishDateParam: "2023-03-06 10:13:00",
             legendPicture:
-                "",
+                "Représentation théâtrale au Cours Florent",
             completeArticle:
                 "Je suis particulièrement intéressée par le mobile, et notamment, par Flutter. Au sein de mon école, j'ai travaillé sur plusieurs projets intéressants, notamment une application mobile en Flutter, un jeu vidéo sur Pico-8 en Lua, un site Internet basé sur l'API 'Que faire à Paris ?' en JavaScript, ainsi qu'une extension de navigateur Chrome en Javascript et avec MongoDB.\nAvant de me lancer dans le développement d'applications, j'ai travaillé dans le domaine de l'hôtellerie en tant que réceptionniste et en tant qu’assistante de direction générale dans de différentes entreprises. J'ai également une formation en langues étrangères et en sciences du langage, ainsi qu'en traduction. Je suis passionnée de nouvelles technologies, de science, de musique, de théâtre, de cinéma et de littérature. J'aime aussi voyager et découvrir de nouvelles cultures.\n\nJe suis très motivée pour continuer à apprendre et à évoluer dans le domaine du développement d'applications, et je suis convaincue que mes compétences et mon expérience précédente seront des atouts pour réussir dans ce domaine.",
           ),
