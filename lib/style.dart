@@ -152,14 +152,14 @@ Row articleDetails(String theme, String time, double size) {
                         fontSize: 13,
                         letterSpacing: 0.5)),
               ),
-              WidgetSpan(child: SizedBox(width: size)),
-              TextSpan(
+              // WidgetSpan(child: SizedBox(width: size)),
+              /*TextSpan(
                 text: "Abonnés",
                 style: GoogleFonts.sourceSansPro(
                   textStyle: TextStyle(
                       color: Colors.amber, fontSize: 13, letterSpacing: 0.5),
                 ),
-              ),
+              ),*/
             ],
           ),
         ),

@@ -75,18 +75,21 @@ flutter:
   assets:
     - img/1200px-Libération.svg.png
     - img/85808-cherche-ancien-affiche-vectoriel.jpg
-    - img/NASTIA.webp
+    - img/NASTIA.png
     - img/JOHAN.JPG
     - img/PhotoshopWanted.jpg
     - img/libelogo.svg
-    - img/image_0.webp
+    - img/image_0.png
     - img/logos/contact.png
     - img/Wanted_photoshop.jpg
-    - img/contact.webp
+    - img/contact.png
     - img/logos/GitHub_logo.png
+    - img/j&a.png
+    - img/logos/LinkedIn.png
+    - img/logos/logo_ada.png
 
-    - img/Formations/AdaTechschool2.webp
-    - img/Formations/IUTIndre.webp
+    - img/Formations/AdaTechschool2.png
+    - img/Formations/IUTIndre.png
     - img/Formations/Logo_Paris_Descartes.png
     - img/Formations/logoESIT.png
     - img/Formations/pedInstitut.jpg
@@ -94,20 +97,20 @@ flutter:
     - img/Formations/UnivEvry.png
     - img/Formations/techforgood.png
 
-    - img/Experiences/Lobby_Fabric.webp
-    - img/Experiences/APF2.webp
-    - img/Experiences/IEMNLG.webp
-    - img/Experiences/APF93.webp
+    - img/Experiences/Lobby_Fabric.png
+    - img/Experiences/APF2.png
+    - img/Experiences/IEMNLG.png
+    - img/Experiences/APF93.png
     - img/Experiences/ERGONCAPITALPARTNERS.png
     - img/Experiences/CiteDeLaMusique.png
 
-    - img/Projets/Chrome2.webp
-    - img/Projets/Pico8_2.webp
+    - img/Projets/Chrome2.png
+    - img/Projets/Pico8_2.png
     - img/Projets/Studio_Ghibli_2.jpg
     - img/Projets/Unity2.png
-    - img/Projets/Dataviz.webp
-    - img/Projets/My_mood_2.webp
-    - img/Projets/Norton_Kong.webp
+    - img/Projets/Dataviz.png
+    - img/Projets/My_mood_2.png
+    - img/Projets/Norton_Kong.png
     - img/Projets/Réseau_PHP_2.jpg
     - img/Projets/PHP-logo.png
 

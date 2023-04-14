@@ -43,22 +43,22 @@ class MyBottomHomeNavigationBarState extends State<MyBottomHomeNavigationBar> {
       showSelectedLabels: true,
       showUnselectedLabels: false,
       type: BottomNavigationBarType.fixed,
-      unselectedItemColor: Colors.black,
+      unselectedItemColor: Colors.black38,
       items: const <BottomNavigationBarItem>[
         BottomNavigationBarItem(
-          icon: Icon(MyFlutterApp.libelogo, size: 12),
-          label: '     A la une',
+          icon: Icon(Icons.supervisor_account_rounded, size: 24),
+          label: 'A la une',
         ),
         BottomNavigationBarItem(
           icon: Icon(MyFlutterApp.passage_du_temps, size: 24),
           label: 'Fil info',
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.ads_click, size: 28),
+          icon: Icon(Icons.location_city_sharp, size: 29),
           label: 'Best of the NYT',
         ),
       ],
-      selectedItemColor: Colors.red,
+      selectedItemColor: Colors.black,
       onTap: (index) {
         setState(() {
           widget.currentIndex = index;

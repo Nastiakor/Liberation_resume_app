@@ -91,8 +91,8 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> with SingleTickerPro
         children: <Widget>[
           Container(
             child: Image.asset(
-              'img/1200px-Libération.svg.png',
-              width: 100,
+              'img/j&a.png',
+              width: 50,
             ),
           ),
         ],
@@ -105,7 +105,7 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> with SingleTickerPro
         labelStyle: TextStyle(fontWeight: FontWeight.w700),
         unselectedLabelStyle: TextStyle(),
         tabs: [
-          Tab(child: appBarMenu('A la une')),
+          Tab(child: appBarMenu('Présentation')),
           Tab(child: appBarMenu('Nos projets')),
           Tab(child: appBarMenu('Nos formations')),
           Tab(child: appBarMenu('Nos expériences')),

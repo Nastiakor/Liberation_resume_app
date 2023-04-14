@@ -14,7 +14,7 @@ class Formations extends StatelessWidget {
       child: Column(
         children: [
           MainArticle(
-            imagePath: "img/Formations/AdaTechschool2.webp",
+            imagePath: "img/Formations/AdaTechschool2.png",
             title: "2022 - 2023 : ADA TECH SCHOOL ",
             titlethen:
                 "ECOLE FEMINISTE BASEE SUR UNE PEDAGOGIE INNOVANTE ET FORMANT DES DÉVELOPPEUSES / DÉVELOPPEURS D'APPLICATIONS FULL STACK",
@@ -26,6 +26,7 @@ class Formations extends StatelessWidget {
             legendPicture: "Promotion Dorothy Vaughan - Paris 10e",
             completeArticle:
             "Ada Tech School, jeune école créée en 2019 lancée à Paris puis à Nantes, est singulière. Elle ne forme pas seulement des développeuses et des développeurs par la transmission de savoirs techniques. Son projet pédagogique porte des valeurs fortes : défense de la place des femmes dans les métiers de la tech, valorisation des soft-skills et du travail en équipe dans des logiques de pair-learning.\n\nSelon le rapport DESI 2020, seulement 18 % des spécialistes des TIC en Europe sont des femmes. Pour contrer cette situation, alors que les métiers de la Tech conditionnent nos vies de plus en plus, il n'est pas envisageable que les outils du quotidien soient pensés et conçus par des hommes. De plus, les métiers de la Tech favorisent l'émancipation ! Ada Tech School se donne les moyens de ses ambitions : une majorité d'apprenants sont des apprenantes, des sensibilisations sur cet enjeu sont organisées au sein de l'école, d'universités, de salons et d'entreprises afin de faire bouger les lignes.  \n\nLa méthode a été inspirée par la célèbre pédagogue italienne Maria Montessori. Pas de cours magistraux, pas d'examens. Pour ce faire, l'apprentissage se réalise soit grâce à des projets concrets et variés de groupe de 3-4 personnes sur des périodes de deux semaines, soit lors des semaines dites 'arbres', où, en binôme, nous explorons des concepts théoriques. Le rythme est basé sur des itérations de quinze jours, 2 semaines de projets collectifs, 2 semaines d'apprentissages théoriques. \nLe travail en équipe permanent facilite le développement de 'soft-skills', permet de mettre en place des daily et des reviews, d'organiser la coopération, de savoir découper des tâches ou d'oeuvrer en pair-programming, de pouvoir adapter son rythme à ses collègues et à être à l'écoute des attentes, besoins et rythmes de chacun pour mieux s'entraider. \n\nDeux encadrants professionnels se relaient quotidiennement pour nous accompagner, nous soutenir, et faire part de leurs expériences dans un cadre positif et bienveillant. \n\nChez Ada, nous n'apprenons pas des langages en particulier, nous apprenons la programmation en général, ses paradigmes, pour nous rendre adaptables à différentes technologies. Nous passons d'un langage à un autre régulièrement. \n\nVous pourrez retrouver nos projets dans l'onglet dédié qui ont été réalisés en : \n\n - PHP \n - JavaScript avec ses Frameworks \n - LUA \n - Dart (Flutter) \n - MySQL   ",
+            linkOrNot: "Le site D'Ada Tech School",
           ),
           SecondaryArticle(
             imagePath: "img/Formations/techforgood.png",
@@ -33,7 +34,7 @@ class Formations extends StatelessWidget {
             titlethen: "FORMATION DE MOBILISATEUR",
             paragraphMainArticle:
                 "Le saviez-vous ?\n97% des sites ne sont pas accessibles.\n\nLes organisations 'Tech for good' et Latitudes ont décidé de se mobiliser conjointement afin de proposer aux personnes concernées de se questionner sur les impacts de la Tech.\nDans ce cadre, des sensibilisations sont mises en place s’adressant aux citoyens : étudiant·es, apprenant·es, employé·es, freelances ou encore membres de communautés.",
-            themeMainArticle: "Engagement",
+            themeMainArticle: "Johan",
             writtenBy: "Johan Anquetil",
             publishDateParam: "2023-03-07 12:29:00",
             legendPicture: "Logo du tech for good tour",
@@ -47,7 +48,7 @@ class Formations extends StatelessWidget {
                 " MASTER 1 TRADUCTION ÉDITORIALE, ÉCONOMIQUE ET TECHNIQUE",
             paragraphMainArticle:
                 "ESIT (ÉCOLE SUPÉRIEURE D’INTERPRÈTES ET DE TRADUCTEURS)",
-            themeMainArticle: "Traduction",
+            themeMainArticle: "Anastasia",
             writtenBy: "Anastasia Korotkova",
             publishDateParam: "2023-03-08 11:55:00",
             legendPicture: "Logo de l'ESIT",
@@ -59,7 +60,7 @@ class Formations extends StatelessWidget {
             titlethen: "MASTER AMENAGEMENT ET DEVELOPPEMENT TERRITORIAL",
             paragraphMainArticle:
                 "Après l'obtention de ma Licence et une année de réflexion, j'ai décidé de me tourner vers ce Master qui forme des cadres territoriaux et associatifs dans le développement social local.",
-            themeMainArticle: "Social",
+            themeMainArticle: "Johan",
             writtenBy: "Johan Anquetil",
             publishDateParam: "2023-03-08 10:29:00",
             legendPicture: "",
@@ -71,7 +72,7 @@ class Formations extends StatelessWidget {
             title: "2006 - 2009 :",
             titlethen: " LICENCE 3 - MASTER 1 SCIENCES DU LANGAGE",
             paragraphMainArticle: "UNIVERSITÉ PARIS V DESCARTES",
-            themeMainArticle: "Sciences du langage",
+            themeMainArticle: "Anastasia",
             writtenBy: "Anastasia Korotkova",
             publishDateParam: "2023-03-08 11:55:00",
             legendPicture: "",
@@ -85,7 +86,7 @@ class Formations extends StatelessWidget {
             titlethen: " LICENCE STAPS MANAGEMENT DES ORGANISATIONS SPORTIVES",
             paragraphMainArticle:
                 "Suite à mon DUT, je me suis orienté sur la filière STAPS à Lyon, séduit par l'opportunité de m'installer dans une grande ville et de poursuivre mon cursus dans le domaine du sport",
-            themeMainArticle: "Management",
+            themeMainArticle: "Johan",
             writtenBy: "Johan Anquetil",
             publishDateParam: "2023-03-08 10:29:00",
             legendPicture:
@@ -99,19 +100,19 @@ class Formations extends StatelessWidget {
             titlethen: " MASTER PROFESSEURE D'ANGLAIS ET DE FRANÇAIS",
             paragraphMainArticle:
                 "INSTITUT PÉDAGOGIQUE DE IOCHKAR-OLA (RUSSIE)",
-            themeMainArticle: "Langues étrangères",
+            themeMainArticle: "Anastasia",
             writtenBy: "Anastasia Korotkova",
             publishDateParam: "2023-03-08 12:32:00",
             legendPicture: "",
             completeArticle: "Master 2 Langues Étrangères (mention Très Bien)\n\nCette formation m'a permis d'avoir une connaissance approfondie d'anglais et de français, de la culture des pays anglophones et francopones, j'ai également pu apprendre les théories de l'enseignement et de l'apprentissage, ainsi que les stratégies pédagogiques pour enseigner efficacement les langues étrangères",
           ),
           SecondaryArticle(
-            imagePath: "img/Formations/IUTIndre.webp",
+            imagePath: "img/Formations/IUTIndre.png",
             title: "2005 - 2007 :",
             titlethen: " DUT TECHNIQUES DE COMMERCIALISATION",
             paragraphMainArticle:
                 "Après avoir obtenu mon Baccalauréat Economique et Social à Bourges, j'ai passé deux ans à Issoudun et son IUT de l'Indre.",
-            themeMainArticle: "Commerce",
+            themeMainArticle: "Johan",
             writtenBy: "Johan Anquetil",
             publishDateParam: "2023-03-08 10:29:00",
             legendPicture: "Issoudun, ville située entre Bourges et Chateauroux",

@@ -16,8 +16,8 @@ class MyAppBar extends AppBar {
             children: <Widget>[
               Container(
                 child: Image.asset(
-                  'img/1200px-Libération.svg.png',
-                  width: 100,
+                  'img/j&a.png',
+                  width: 50,
                 ),
               ),
             ],

@@ -47,7 +47,7 @@ class NYTAppBar extends AppBar {
                     textStyle: TextStyle(
                         fontWeight: FontWeight.w700,
                         color: titleColor,
-                        fontSize: 25,
+                        fontSize: 20,
                         letterSpacing: 0.2),
                   ),
                 ),
