@@ -1,7 +1,4 @@
-import 'package:cv_flutter_libe/views/newsFeedNYT.dart';
 import 'package:flutter/material.dart';
-import 'package:cv_flutter_libe/views/contact.dart';
-import 'package:cv_flutter_libe/views/newsFeedNYT.dart';
 
 class BottomBarObject extends StatefulWidget {
   BottomBarObject({Key? key}) : super(key: key);
@@ -59,7 +56,7 @@ void _showModal(BuildContext context) {
   showDialog(
     context: context,
     builder: (BuildContext context) => AlertDialog(
-      content: const Text('A&J @2023'),
+      content: const Text('J&A @2023'),
       actions: <TextButton>[
         TextButton(
           onPressed: () {

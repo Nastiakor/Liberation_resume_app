@@ -6,11 +6,8 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:cv_flutter_libe/Controllers/bottomNavigationBar.dart';
 import 'package:cv_flutter_libe/Controllers/BottomBarArticle.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_web_browser/flutter_web_browser.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
-import 'package:cv_flutter_libe/Controllers/BottomBarArticle.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 const titleColor = Color(0XFFE60004);
 
@@ -163,19 +160,19 @@ class ArticlePage extends StatelessWidget {
     if (article['media'] != null && article['media'].isNotEmpty) {
       imageUrl = article['media'][0]['media-metadata'][2]['url'];
     }
-    print(imageUrl);
+
     return Scaffold(
       appBar: NYTAppBar(),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Text(article['section'] ?? '',
                   style: GoogleFonts.encodeSansCondensed(
-                      textStyle: TextStyle(
+                      textStyle: const TextStyle(
                           fontWeight: FontWeight.w600,
                           color: titleColor,
                           fontSize: 20,
@@ -185,13 +182,13 @@ class ArticlePage extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Text(article['title'] ?? '',
                   style: GoogleFonts.encodeSansCondensed(
-                      textStyle: TextStyle(
+                      textStyle: const TextStyle(
                           fontWeight: FontWeight.w600,
                           color: Colors.black,
                           fontSize: 18,
                           letterSpacing: 0.5))),
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Text(
@@ -206,7 +203,7 @@ class ArticlePage extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Text(article['abstract'] ?? '',
                   style: GoogleFonts.tinos(
-                      textStyle: TextStyle(
+                      textStyle: const TextStyle(
                           color: Colors.black,
                           fontSize: 18,
                           letterSpacing: 0.6))),
@@ -215,7 +212,7 @@ class ArticlePage extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: Text(
                 article['body'] ?? '',
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 18,
                 ),
               ),
@@ -254,7 +251,7 @@ class ArticlePage extends StatelessWidget {
               },
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Align(
+                child: const Align(
                   alignment: Alignment.centerRight,
                   child: Text(
                     'Read the full article on New York Times',

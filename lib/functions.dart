@@ -1,7 +1,5 @@
-import 'package:cv_flutter_libe/icons.dart';
 import 'package:flutter/material.dart';
 import 'package:cv_flutter_libe/style.dart';
-import 'package:cv_flutter_libe/views/homePage.dart';
 import 'package:cv_flutter_libe/Controllers/BottomBarArticle.dart';
 import 'package:cv_flutter_libe/Controllers/AppBar.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -133,7 +131,6 @@ class MainArticle extends StatelessWidget {
 }
 
 class FullArticle extends MainArticle {
-  int _currentIndex = 0;
   String? boolContact;
   String? boolLink;
 
@@ -174,8 +171,7 @@ class FullArticle extends MainArticle {
         : boolContact == false;
     super.linkOrNot?.isEmpty == false ? boolLink == true : boolLink == false;
     var size = MediaQuery.of(context).size;
-    var widthMax = size.width;
-    var platform = Theme.of(context).platform;
+
     return Scaffold(
       appBar: MyAppBar(),
       body: SingleChildScrollView(
@@ -384,7 +380,7 @@ class FullArticle extends MainArticle {
                         InkWell(
                           onTap: () {
                             _launchURL(
-                                'https://adatechschool.fr/candidater-ecole-dinformatique/?utm_source=google&utm_medium=paid&utm_campaign=generique&utm_term=formation%20d%C3%A9veloppeur&utm_campaign=FR_Paris_G%C3%A9n%C3%A9rique_Ecole/Formation&utm_source=adwords&utm_medium=ppc&hsa_acc=2021439149&hsa_cam=19930091648&hsa_grp=146193322525&hsa_ad=653762257398&hsa_src=g&hsa_tgt=kwd-298137969501&hsa_kw=formation%20d%C3%A9veloppeur&hsa_mt=b&hsa_net=adwords&hsa_ver=3&gclid=CjwKCAjw8-OhBhB5EiwADyoY1Qqi-tYGPEb1b6albpKBebYjizwcm8rUxxgwdamLupz5mrBJk5cG6hoC7mQQAvD_BwE');
+                                'https://adatechschool.fr/');
                           },
                           child: Image.asset(
                             'img/logos/logo_ada.png',

@@ -1,8 +1,5 @@
 import 'package:cv_flutter_libe/Controllers/AppBar.dart';
 import 'package:flutter/material.dart';
-import 'package:cv_flutter_libe/main.dart';
-import 'package:cv_flutter_libe/functions.dart';
-import 'package:flutter_launcher_icons/xml_templates.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 double _fontSize = 16.0;

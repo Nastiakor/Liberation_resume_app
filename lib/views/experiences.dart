@@ -7,8 +7,6 @@ class Experiences extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var size = MediaQuery.of(context).size;
-    var width = size.width;
 
     return SingleChildScrollView(
       child: Column(

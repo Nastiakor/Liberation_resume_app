@@ -8,10 +8,6 @@ import 'package:cv_flutter_libe/Controllers/bottomNavigationBar.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:html_unescape/html_unescape.dart';
 import 'package:cv_flutter_libe/Controllers/BottomBarArticle.dart';
-import 'package:html/parser.dart' show parse;
-import 'package:web_browser/web_browser.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:web_browser/web_browser.dart';
 import 'package:html/parser.dart' as html_parser;
 import 'package:html/dom.dart' as html_dom;
 
@@ -104,8 +100,8 @@ class _LiberationAPIState extends State<LiberationAPI> {
                                         : '';
                                 final headlines =
                                     contentElement['headlines'] ?? {};
-                                final canonicalUrl =
-                                    contentElement['canonical_url'] ?? '';
+                                //final canonicalUrl =
+                                  //  contentElement['canonical_url'] ?? '';
                                 final displayDate =
                                     contentElement['display_date'] ?? '';
                                 final dateTime = DateTime.parse(displayDate)

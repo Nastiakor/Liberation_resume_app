@@ -7,8 +7,6 @@ class Projects extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var size = MediaQuery.of(context).size;
-    var width = size.width;
 
     return SingleChildScrollView(
       child: Column(
@@ -124,6 +122,19 @@ class Projects extends StatelessWidget {
             legendPicture: "Illustration du site designé en CSS natif",
             completeArticle:
                 "Ce réseau social, réalisé en 7 jours, fut une étape importante dans notre formation car nous avons été confrontés pour la première fois à une base de données SQL (avec MySQL). Nous avons créé une page d'inscription et de connection, les fonctionnalités d'abonnements à des ami.e.s, la possibilité de laisser des messages sur son mur, aimer un message ou annuler son 'j'aime', rechercher des mots-clés.",
+          ),
+          SecondaryArticle(
+            imagePath: "img/Projets/Studio_Ghibli_2.jpg",
+            title: "APPREHENDER L'APPEL D'UNE API : ",
+            titlethen: "PUBLICATION D'UN STUDIO GHIBLI",
+            paragraphMainArticle:
+            "Ce projet avait pour objectif de développer une application web qui permet de visualiser des données de façon dynamique.",
+            themeMainArticle: "Johan",
+            writtenBy: "Johan Anquetil",
+            publishDateParam: "2023-03-06 10:13:00",
+            legendPicture: "Une page du site sur",
+            completeArticle:
+            "Ce projet a été réalisé avec deux camarades de l'école 'Ada Tech School' dans le cadre des projets collectifs. Ce fut le deuxième projet, lors de notre deuxième mois de formation. Nous avons proposé aux fans du studio Ghibli d'avoir accès à la filmographie et à différents détails et informations. L'objectif pédagogique était de nous familiariser avec les API.\n\nCe projet nous a permis de développer notre connaissance de JavaScript, de découvrir AnimeJS, d'appeler une librairie, de créer du CSS et HTML. Très peu de données sont écrites en dur dans le code, la plupart des éléments proviennent de l'API.",
           ),
         ],
       ),

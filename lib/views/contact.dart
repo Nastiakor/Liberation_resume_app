@@ -20,8 +20,6 @@ class _ContactState extends State<Contact> {
 
   @override
   Widget build(BuildContext context) {
-    var size = MediaQuery.of(context).size;
-    var width = size.width;
 
     return Scaffold(
         body: SingleChildScrollView(

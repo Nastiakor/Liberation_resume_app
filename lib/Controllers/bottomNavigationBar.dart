@@ -1,11 +1,8 @@
 import 'package:cv_flutter_libe/icons.dart';
 import 'package:cv_flutter_libe/views/newsFeedNYT.dart';
-import 'package:cv_flutter_libe/views/sncfConnectAPI.dart';
 import 'package:flutter/material.dart';
 import 'package:cv_flutter_libe/main.dart';
 import 'package:cv_flutter_libe/views/libeAPI.dart';
-import 'package:cv_flutter_libe/views/chezpol.dart';
-import 'package:cv_flutter_libe/views/homePage.dart';
 
 void showModal(BuildContext context) {
   showDialog(

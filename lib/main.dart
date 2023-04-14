@@ -36,7 +36,6 @@ class MyStatefulWidget extends StatefulWidget {
 }
 
 class MyStatefulWidgetState extends State<MyStatefulWidget> with SingleTickerProviderStateMixin {
-  int _selectedIndex = 0;
   late TabController _tabController;
 
   @override
@@ -53,12 +52,10 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> with SingleTickerPro
 
   @override
   Widget build(BuildContext context) {
-    var size = MediaQuery.of(context).size;
     var platform = Theme.of(context).platform;
     var contextest = context;
     print("context: $contextest");
     print("platform: $platform");
-    double width = MediaQuery.of(context).size.width;
 
     bool _isTabSwiped = false;
 

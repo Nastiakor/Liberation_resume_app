@@ -37,7 +37,7 @@ class MyAppBarFeed extends AppBar {
             children: <Widget>[
               Animate(
                 onPlay: (controller) => controller.repeat(), // the loop
-                child: Icon(Icons.brightness_1, color: Colors.red, size: 15).animate()
+                child: const Icon(Icons.brightness_1, color: Colors.red, size: 15).animate()
               ).fadeIn(delay: 1500.ms),
               Container(
                 margin: const EdgeInsets.only(left: 15),
