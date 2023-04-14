@@ -42,6 +42,8 @@ class MainArticle extends StatelessWidget {
   final String completeArticle;
   final String? nextCompleteArticle;
   final String? contactOrNot;
+  final String? linkOrNot;
+  final String? linkRetroVibes;
 
   MainArticle(
       {required this.imagePath,
@@ -54,7 +56,9 @@ class MainArticle extends StatelessWidget {
       required this.legendPicture,
       required this.completeArticle,
       this.nextCompleteArticle,
-      this.contactOrNot});
+      this.contactOrNot,
+      this.linkOrNot,
+      this.linkRetroVibes});
 
   // Define the function to calculate the days until the birthday
   String daysUntilArticle() {
@@ -81,6 +85,8 @@ class MainArticle extends StatelessWidget {
             completeArticle: completeArticle,
             nextCompleteArticle: nextCompleteArticle,
             contactOrNot: contactOrNot,
+            linkOrNot: linkOrNot,
+            linkRetroVibes: linkRetroVibes,
           ),
         ),
       ),
@@ -117,7 +123,7 @@ class MainArticle extends StatelessWidget {
               ),
             ),
             articleDetails(themeMainArticle, 'Il y a ${daysUntilArticle()}',
-                size.width / 12),
+                size.width / 6),
             const Divider(thickness: 2),
           ],
         ),
@@ -129,6 +135,7 @@ class MainArticle extends StatelessWidget {
 class FullArticle extends MainArticle {
   int _currentIndex = 0;
   String? boolContact;
+  String? boolLink;
 
   FullArticle({
     required String imagePath,
@@ -142,6 +149,8 @@ class FullArticle extends MainArticle {
     required String completeArticle,
     String? nextCompleteArticle,
     String? contactOrNot,
+    String? linkOrNot,
+    String? linkRetroVibes,
   }) : super(
           imagePath: imagePath,
           title: title,
@@ -154,6 +163,8 @@ class FullArticle extends MainArticle {
           completeArticle: completeArticle,
           nextCompleteArticle: nextCompleteArticle,
           contactOrNot: contactOrNot,
+          linkOrNot: linkOrNot,
+          linkRetroVibes: linkRetroVibes,
         );
 
   @override
@@ -161,8 +172,9 @@ class FullArticle extends MainArticle {
     super.contactOrNot?.isEmpty == false
         ? boolContact == true
         : boolContact == false;
-    print(contactOrNot);
-    print(contactOrNot?.isEmpty);
+    super.linkOrNot?.isEmpty == false
+        ? boolLink == true
+        : boolLink == false;
     var size = MediaQuery.of(context).size;
     var widthMax = size.width;
     var platform = Theme.of(context).platform;
@@ -262,19 +274,43 @@ class FullArticle extends MainArticle {
               ),
             ),
             SizedBox(height: 20),
-            () {
-              return (contactOrNot?.isEmpty ?? true)
-                  ? Container()
-                  : InkWell(
-                      onTap: () {
-                        _launchURL();
-                      },
-                      child: Image.asset(
-                        'img/logos/GitHub_logo.png',
-                        width: 120,
-                      ),
-                    );
-            }(),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                    () {
+                  return (contactOrNot?.isEmpty ?? true)
+                      ? Container()
+                      : InkWell(
+                    onTap: () {
+                      _launchURL('https://github.com/Nastiakor');
+                    },
+                    child: Image.asset(
+                      'img/logos/GitHub_logo.png',
+                      width: 100,
+                    ),
+                  );
+                }(),
+                    () {
+                  return (contactOrNot?.isEmpty ?? true)
+                      ? Container()
+                      : InkWell(
+                    onTap: () {
+                      _launchURL('https://www.linkedin.com/in/anastasia-korotkova-682470244/');
+                    },
+                    child: Image.asset(
+                      'img/logos/LinkedIn.png',
+                      width: 65,
+                    ),
+                  );
+                }(),
+              ],
+            ),
+            Padding(
+              padding: EdgeInsets.only(bottom: 12),
+            ),
+            Divider(
+              thickness: 2,
+            ),
             Padding(
               padding: EdgeInsets.only(top: 12, left: 15, right: 15),
               child: () {
@@ -288,19 +324,51 @@ class FullArticle extends MainArticle {
             ),
             SizedBox(height: 20),
             // Condition d'affichage
-            () {
-              return (contactOrNot?.isEmpty ?? true)
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                    () {
+                  return (contactOrNot?.isEmpty ?? true)
+                      ? Container()
+                      : InkWell(
+                    onTap: () {
+                      _launchURL('https://github.com/JohanAnquetil');
+                    },
+                    child: Image.asset(
+                      'img/logos/GitHub_logo.png',
+                      width: 100,
+                    ),
+                  );
+                }(),
+                () {
+                  return (contactOrNot?.isEmpty ?? true)
+                      ? Container()
+                      : InkWell(
+                          onTap: () {
+                            _launchURL('https://www.linkedin.com/in/johan-anquetil-b3038027/?originalSubdomain=fr');
+                          },
+                          child: Image.asset(
+                            'img/logos/LinkedIn.png',
+                            width: 65,
+                          ),
+                        );
+                }(),
+              ],
+            ),
+                () {
+              return (linkOrNot?.isEmpty ?? true)
                   ? Container()
                   : InkWell(
-                      onTap: () {
-                        _launchURL2();
-                      },
-                      child: Image.asset(
-                        'img/logos/GitHub_logo.png',
-                        width: 120,
-                      ),
-                    );
+                onTap: () {
+                  _launchURL('https://adatechschool.fr/candidater-ecole-dinformatique/?utm_source=google&utm_medium=paid&utm_campaign=generique&utm_term=formation%20d%C3%A9veloppeur&utm_campaign=FR_Paris_G%C3%A9n%C3%A9rique_Ecole/Formation&utm_source=adwords&utm_medium=ppc&hsa_acc=2021439149&hsa_cam=19930091648&hsa_grp=146193322525&hsa_ad=653762257398&hsa_src=g&hsa_tgt=kwd-298137969501&hsa_kw=formation%20d%C3%A9veloppeur&hsa_mt=b&hsa_net=adwords&hsa_ver=3&gclid=CjwKCAjw8-OhBhB5EiwADyoY1Qqi-tYGPEb1b6albpKBebYjizwcm8rUxxgwdamLupz5mrBJk5cG6hoC7mQQAvD_BwE');
+                },
+                child: Image.asset(
+                  'img/logos/logo_ada.png',
+                  width: 150,
+                ),
+              );
             }(),
+            SizedBox(height: 20),
           ],
         ),
       ),
@@ -398,8 +466,8 @@ class SecondaryArticle extends StatelessWidget {
         ),
         Padding(
           padding: EdgeInsets.only(top: 10),
-          child: articleDetails(
-              themeMainArticle, 'Il y a ${daysUntilArticle()}', size.width / 12),
+          child: articleDetails(themeMainArticle,
+              'Il y a ${daysUntilArticle()}', size.width / 6),
         ),
         Divider(
           thickness: 2,
@@ -409,18 +477,8 @@ class SecondaryArticle extends StatelessWidget {
   }
 }
 
-_launchURL() async {
-  const url = 'https://github.com/Nastiakor';
-  final uri = Uri.parse(url);
-  if (await canLaunchUrl(uri)) {
-    await launchUrl(uri);
-  } else {
-    throw 'Could not launch $url';
-  }
-}
-
-_launchURL2() async {
-  const url = 'https://github.com/JohanAnquetil';
+_launchURL(String link) async {
+  String url = "$link";
   final uri = Uri.parse(url);
   if (await canLaunchUrl(uri)) {
     await launchUrl(uri);

@@ -17,7 +17,7 @@ class MyAppBar extends AppBar {
               Container(
                 child: Image.asset(
                   'img/j&a.png',
-                  width: 100,
+                  width: 50,
                 ),
               ),
             ],
