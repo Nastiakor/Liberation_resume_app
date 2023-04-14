@@ -172,9 +172,7 @@ class FullArticle extends MainArticle {
     super.contactOrNot?.isEmpty == false
         ? boolContact == true
         : boolContact == false;
-    super.linkOrNot?.isEmpty == false
-        ? boolLink == true
-        : boolLink == false;
+    super.linkOrNot?.isEmpty == false ? boolLink == true : boolLink == false;
     var size = MediaQuery.of(context).size;
     var widthMax = size.width;
     var platform = Theme.of(context).platform;
@@ -277,31 +275,32 @@ class FullArticle extends MainArticle {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                    () {
+                () {
                   return (contactOrNot?.isEmpty ?? true)
                       ? Container()
                       : InkWell(
-                    onTap: () {
-                      _launchURL('https://github.com/Nastiakor');
-                    },
-                    child: Image.asset(
-                      'img/logos/GitHub_logo.png',
-                      width: 100,
-                    ),
-                  );
+                          onTap: () {
+                            _launchURL('https://github.com/Nastiakor');
+                          },
+                          child: Image.asset(
+                            'img/logos/GitHub_logo.png',
+                            width: 100,
+                          ),
+                        );
                 }(),
-                    () {
+                () {
                   return (contactOrNot?.isEmpty ?? true)
                       ? Container()
                       : InkWell(
-                    onTap: () {
-                      _launchURL('https://www.linkedin.com/in/anastasia-korotkova-682470244/');
-                    },
-                    child: Image.asset(
-                      'img/logos/LinkedIn.png',
-                      width: 65,
-                    ),
-                  );
+                          onTap: () {
+                            _launchURL(
+                                'https://www.linkedin.com/in/anastasia-korotkova-682470244/');
+                          },
+                          child: Image.asset(
+                            'img/logos/LinkedIn.png',
+                            width: 65,
+                          ),
+                        );
                 }(),
               ],
             ),
@@ -327,25 +326,26 @@ class FullArticle extends MainArticle {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                    () {
+                () {
                   return (contactOrNot?.isEmpty ?? true)
                       ? Container()
                       : InkWell(
-                    onTap: () {
-                      _launchURL('https://github.com/JohanAnquetil');
-                    },
-                    child: Image.asset(
-                      'img/logos/GitHub_logo.png',
-                      width: 100,
-                    ),
-                  );
+                          onTap: () {
+                            _launchURL('https://github.com/JohanAnquetil');
+                          },
+                          child: Image.asset(
+                            'img/logos/GitHub_logo.png',
+                            width: 100,
+                          ),
+                        );
                 }(),
                 () {
                   return (contactOrNot?.isEmpty ?? true)
                       ? Container()
                       : InkWell(
                           onTap: () {
-                            _launchURL('https://www.linkedin.com/in/johan-anquetil-b3038027/?originalSubdomain=fr');
+                            _launchURL(
+                                'https://www.linkedin.com/in/johan-anquetil-b3038027/?originalSubdomain=fr');
                           },
                           child: Image.asset(
                             'img/logos/LinkedIn.png',
@@ -355,18 +355,27 @@ class FullArticle extends MainArticle {
                 }(),
               ],
             ),
-                () {
+            () {
               return (linkOrNot?.isEmpty ?? true)
                   ? Container()
-                  : InkWell(
-                onTap: () {
-                  _launchURL('https://adatechschool.fr/candidater-ecole-dinformatique/?utm_source=google&utm_medium=paid&utm_campaign=generique&utm_term=formation%20d%C3%A9veloppeur&utm_campaign=FR_Paris_G%C3%A9n%C3%A9rique_Ecole/Formation&utm_source=adwords&utm_medium=ppc&hsa_acc=2021439149&hsa_cam=19930091648&hsa_grp=146193322525&hsa_ad=653762257398&hsa_src=g&hsa_tgt=kwd-298137969501&hsa_kw=formation%20d%C3%A9veloppeur&hsa_mt=b&hsa_net=adwords&hsa_ver=3&gclid=CjwKCAjw8-OhBhB5EiwADyoY1Qqi-tYGPEb1b6albpKBebYjizwcm8rUxxgwdamLupz5mrBJk5cG6hoC7mQQAvD_BwE');
-                },
-                child: Image.asset(
-                  'img/logos/logo_ada.png',
-                  width: 150,
-                ),
-              );
+                  : Column(
+                      children: [
+                        Text("Visitez le site d'Ada Tech School :", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),),
+                        Padding(
+                          padding: EdgeInsets.only(bottom: 12),
+                        ),
+                        InkWell(
+                          onTap: () {
+                            _launchURL(
+                                'https://adatechschool.fr/candidater-ecole-dinformatique/?utm_source=google&utm_medium=paid&utm_campaign=generique&utm_term=formation%20d%C3%A9veloppeur&utm_campaign=FR_Paris_G%C3%A9n%C3%A9rique_Ecole/Formation&utm_source=adwords&utm_medium=ppc&hsa_acc=2021439149&hsa_cam=19930091648&hsa_grp=146193322525&hsa_ad=653762257398&hsa_src=g&hsa_tgt=kwd-298137969501&hsa_kw=formation%20d%C3%A9veloppeur&hsa_mt=b&hsa_net=adwords&hsa_ver=3&gclid=CjwKCAjw8-OhBhB5EiwADyoY1Qqi-tYGPEb1b6albpKBebYjizwcm8rUxxgwdamLupz5mrBJk5cG6hoC7mQQAvD_BwE');
+                          },
+                          child: Image.asset(
+                            'img/logos/logo_ada.png',
+                            width: 150,
+                          ),
+                        ),
+                      ],
+                    );
             }(),
             SizedBox(height: 20),
           ],
@@ -466,8 +475,8 @@ class SecondaryArticle extends StatelessWidget {
         ),
         Padding(
           padding: EdgeInsets.only(top: 10),
-          child: articleDetails(themeMainArticle,
-              'Il y a ${daysUntilArticle()}', size.width / 6),
+          child: articleDetails(
+              themeMainArticle, 'Il y a ${daysUntilArticle()}', size.width / 6),
         ),
         Divider(
           thickness: 2,
