@@ -42,6 +42,7 @@ class MainArticle extends StatelessWidget {
   final String? contactOrNot;
   final String? linkOrNot;
   final String? linkRetroVibes;
+  final String? linkGhibli;
 
   MainArticle(
       {required this.imagePath,
@@ -56,7 +57,8 @@ class MainArticle extends StatelessWidget {
       this.nextCompleteArticle,
       this.contactOrNot,
       this.linkOrNot,
-      this.linkRetroVibes});
+      this.linkRetroVibes,
+      this.linkGhibli});
 
   // Define the function to calculate the days until the birthday
   String daysUntilArticle() {
@@ -85,6 +87,7 @@ class MainArticle extends StatelessWidget {
             contactOrNot: contactOrNot,
             linkOrNot: linkOrNot,
             linkRetroVibes: linkRetroVibes,
+            linkGhibli: linkGhibli,
           ),
         ),
       ),
@@ -148,6 +151,7 @@ class FullArticle extends MainArticle {
     String? contactOrNot,
     String? linkOrNot,
     String? linkRetroVibes,
+    String? linkGhibli,
   }) : super(
           imagePath: imagePath,
           title: title,
@@ -162,6 +166,7 @@ class FullArticle extends MainArticle {
           contactOrNot: contactOrNot,
           linkOrNot: linkOrNot,
           linkRetroVibes: linkRetroVibes,
+          linkGhibli: linkGhibli,
         );
 
   @override
@@ -173,7 +178,21 @@ class FullArticle extends MainArticle {
     var size = MediaQuery.of(context).size;
 
     return Scaffold(
-      appBar: MyAppBar(),
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        backgroundColor: Colors.white,
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Container(
+              child: Image.asset(
+                'img/j&a.png',
+                width: 50,
+              ),
+            ),
+          ],
+        ),
+      ),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -390,6 +409,78 @@ class FullArticle extends MainArticle {
                       ],
                     );
             }(),
+                () {
+              return (linkRetroVibes?.isEmpty ?? true)
+                  ? Container()
+                  : InkWell(
+                    onTap: () {
+                      _launchURL(
+                          'http://retrovibes.herokuapp.com/home/');
+                    },
+                    child: Align(
+                      alignment: Alignment.topRight,
+                      child: Container(
+                        margin: EdgeInsets.only(right: 20.0),
+                        child: Text(
+                          'Visitez le site en cliquant ici',
+                          style: TextStyle(
+                            color: Colors.blue,
+                            decoration: TextDecoration.underline,
+                          ),
+                        ),
+                      ),
+                    )
+                  );
+            }(),
+                () {
+              return (linkOrNot?.isEmpty ?? true)
+                  ? Container()
+                  : Column(
+                children: [
+                  const Text(
+                    "Visitez le site d'Ada Tech School :",
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold, fontSize: 18),
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.only(bottom: 12),
+                  ),
+                  InkWell(
+                    onTap: () {
+                      _launchURL(
+                          'https://adatechschool.fr/');
+                    },
+                    child: Image.asset(
+                      'img/logos/logo_ada.png',
+                      width: 150,
+                    ),
+                  ),
+                ],
+              );
+            }(),
+                () {
+              return (linkGhibli?.isEmpty ?? true)
+                  ? Container()
+                  : InkWell(
+                  onTap: () {
+                    _launchURL(
+                        'http://johananquetil.fr/Ghibliproject/');
+                  },
+                  child: Align(
+                    alignment: Alignment.topRight,
+                    child: Container(
+                      margin: EdgeInsets.only(right: 20.0),
+                      child: Text(
+                        'Visitez le site en cliquant ici',
+                        style: TextStyle(
+                          color: Colors.blue,
+                          decoration: TextDecoration.underline,
+                        ),
+                      ),
+                    ),
+                  )
+              );
+            }(),
             const SizedBox(height: 20),
           ],
         ),
@@ -417,6 +508,7 @@ class SecondaryArticle extends StatelessWidget {
   String legendPicture;
   String completeArticle;
   String? nextCompleteArticle;
+  String? linkGhibli;
 
   SecondaryArticle(
       {required this.imagePath,
@@ -428,7 +520,8 @@ class SecondaryArticle extends StatelessWidget {
       required this.publishDateParam,
       required this.legendPicture,
       required this.completeArticle,
-      this.nextCompleteArticle});
+      this.nextCompleteArticle,
+      this.linkGhibli});
 
   @override
   Widget build(BuildContext context) {
@@ -450,6 +543,7 @@ class SecondaryArticle extends StatelessWidget {
                 writtenBy: writtenBy,
                 legendPicture: legendPicture,
                 completeArticle: completeArticle,
+                linkGhibli:linkGhibli,
               ),
             )),
             child: Padding(

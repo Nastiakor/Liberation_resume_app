@@ -4,8 +4,8 @@ import 'package:google_fonts/google_fonts.dart';
 
 const titleColor = Color(0XFFE60004);
 
-class MyAppBar extends AppBar {
-  MyAppBar({Key? key}) : super(key: key);
+class MyAppBar2 extends AppBar {
+  MyAppBar2({Key? key}) : super(key: key);
 
   Widget build(BuildContext context) {
     return AppBar(
