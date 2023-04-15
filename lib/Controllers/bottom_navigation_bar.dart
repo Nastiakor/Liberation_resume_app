@@ -38,7 +38,7 @@ class MyBottomHomeNavigationBarState extends State<MyBottomHomeNavigationBar> {
     return BottomNavigationBar(
       currentIndex: widget.currentIndex,
       showSelectedLabels: true,
-      showUnselectedLabels: false,
+      showUnselectedLabels: true,
       type: BottomNavigationBarType.fixed,
       unselectedItemColor: Colors.black38,
       items: const <BottomNavigationBarItem>[

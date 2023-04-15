@@ -383,32 +383,6 @@ class FullArticle extends MainArticle {
                 }(),
               ],
             ),
-            () {
-              return (linkOrNot?.isEmpty ?? true)
-                  ? Container()
-                  : Column(
-                      children: [
-                        const Text(
-                          "Visitez le site d'Ada Tech School :",
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 18),
-                        ),
-                        const Padding(
-                          padding: EdgeInsets.only(bottom: 12),
-                        ),
-                        InkWell(
-                          onTap: () {
-                            _launchURL(
-                                'https://adatechschool.fr/');
-                          },
-                          child: Image.asset(
-                            'img/logos/logo_ada.png',
-                            width: 150,
-                          ),
-                        ),
-                      ],
-                    );
-            }(),
                 () {
               return (linkRetroVibes?.isEmpty ?? true)
                   ? Container()
