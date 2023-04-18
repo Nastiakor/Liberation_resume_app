@@ -394,8 +394,8 @@ class FullArticle extends MainArticle {
                     child: Align(
                       alignment: Alignment.topRight,
                       child: Container(
-                        margin: EdgeInsets.only(right: 20.0),
-                        child: Text(
+                        margin: const EdgeInsets.only(right: 20.0),
+                        child: const Text(
                           'Visitez le site en cliquant ici',
                           style: TextStyle(
                             color: Colors.blue,
@@ -443,8 +443,8 @@ class FullArticle extends MainArticle {
                   child: Align(
                     alignment: Alignment.topRight,
                     child: Container(
-                      margin: EdgeInsets.only(right: 20.0),
-                      child: Text(
+                      margin: const EdgeInsets.only(right: 20.0),
+                      child: const Text(
                         'Visitez le site en cliquant ici',
                         style: TextStyle(
                           color: Colors.blue,
