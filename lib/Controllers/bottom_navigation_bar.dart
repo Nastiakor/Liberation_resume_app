@@ -1,5 +1,5 @@
 import 'package:cv_flutter_libe/icons.dart';
-import 'package:cv_flutter_libe/views/newsFeedNYT.dart';
+import 'package:cv_flutter_libe/views/news_feed_nyt.dart';
 import 'package:flutter/material.dart';
 import 'package:cv_flutter_libe/main.dart';
 import 'package:cv_flutter_libe/views/libeAPI.dart';
@@ -38,7 +38,7 @@ class MyBottomHomeNavigationBarState extends State<MyBottomHomeNavigationBar> {
     return BottomNavigationBar(
       currentIndex: widget.currentIndex,
       showSelectedLabels: true,
-      showUnselectedLabels: false,
+      showUnselectedLabels: true,
       type: BottomNavigationBarType.fixed,
       unselectedItemColor: Colors.black38,
       items: const <BottomNavigationBarItem>[
@@ -61,7 +61,7 @@ class MyBottomHomeNavigationBarState extends State<MyBottomHomeNavigationBar> {
           widget.currentIndex = index;
           if (widget.currentIndex == 1) {
             Navigator.push(context,
-                MaterialPageRoute(builder: (context) => LiberationAPI()));
+                MaterialPageRoute(builder: (context) => const LiberationAPI()));
           } else if (widget.currentIndex == 0) {
             Navigator.push(context,
                 MaterialPageRoute(builder: (context) => const MyApp()));

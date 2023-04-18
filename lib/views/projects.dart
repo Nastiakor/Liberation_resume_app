@@ -12,17 +12,18 @@ class Projects extends StatelessWidget {
       child: Column(
         children: [
           MainArticle(
-            imagePath: "img/Projets/Studio_Ghibli_2.jpg",
-            title: "APPREHENDER L'APPEL D'UNE API : ",
-            titlethen: "PUBLICATION D'UN STUDIO GHIBLI",
+            imagePath: "img/Projets/retrovibes.png",
+            title: "SITE DE E-COMMERCE DE MEUBLES : ",
+            titlethen: "RETROVIBES",
             paragraphMainArticle:
-                "Ce projet avait pour objectif de développer une application web qui permet de visualiser des données de façon dynamique.",
+                "En collaboration avec un groupe de 10 personnes, nous avons créé un site de vente de meubles avec un back-end créé en Laravel et un front en React.",
             themeMainArticle: "Johan",
             writtenBy: "Johan Anquetil",
             publishDateParam: "2023-03-06 10:13:00",
-            legendPicture: "Une page du site sur",
+            legendPicture: "Validation du panier",
             completeArticle:
-                "Ce projet a été réalisé avec deux camarades de l'école 'Ada Tech School' dans le cadre des projets collectifs. Ce fut le deuxième projet, lors de notre deuxième mois de formation. Nous avons proposé aux fans du studio Ghibli d'avoir accès à la filmographie et à différents détails et informations. L'objectif pédagogique était de nous familiariser avec les API.\n\nCe projet nous a permis de développer notre connaissance de JavaScript, de découvrir AnimeJS, d'appeler une librairie, de créer du CSS et HTML. Très peu de données sont écrites en dur dans le code, la plupart des éléments proviennent de l'API.",
+                "Voici le pitch qui fixe le cadre de ce projet sur lequel notre groupe s'est accordé : Lauréline Fleury a lancé son entreprise “Anciens meubles pour une nouvelle vie”, de vente de meubles de seconde main. Pour gagner en visibilité, elle a besoin d’avoir un site internet pour afficher ses produits. En plus, cela lui permettra de gérer son stock. Son besoin est donc le suivant : J’ai besoin d’avoir une page principale qui regroupera les meubles en vente en ce moment. Pour l’affichage de chaque meuble, je souhaite un encart dans lequel on pourra retrouver une photo, le type de meuble, le prix et un bouton pour l’acheter. Chaque encart sera cliquable pour permettre d’accéder au détail du produit. Sur cette nouvelle page, on retrouvera une série de photos du meuble et toutes les informations nécessaires, c’est-à-dire, le type, le prix, les dimensions, les couleurs, les matières et bien sûr un bouton pour acheter. Pour ce qui est de l’administration, je souhaite une page de connexion. Lorsque je suis connectée je dois pouvoir accéder à une page de gestion des produits. Sur celle-ci je veux pouvoir avoir la liste de mes meubles. Je souhaite pouvoir modifier les informations de mes produits en ayant un bouton depuis ma liste. Je dois pouvoir également les supprimer s’ils ont été vendus en magasin.",
+              linkRetroVibes:"retrovibes.herokuapp.com/home",
           ),
           MainArticle(
             imagePath: "img/Projets/Pico8_2.png",
@@ -135,6 +136,7 @@ class Projects extends StatelessWidget {
             legendPicture: "Une page du site sur",
             completeArticle:
             "Ce projet a été réalisé avec deux camarades de l'école 'Ada Tech School' dans le cadre des projets collectifs. Ce fut le deuxième projet, lors de notre deuxième mois de formation. Nous avons proposé aux fans du studio Ghibli d'avoir accès à la filmographie et à différents détails et informations. L'objectif pédagogique était de nous familiariser avec les API.\n\nCe projet nous a permis de développer notre connaissance de JavaScript, de découvrir AnimeJS, d'appeler une librairie, de créer du CSS et HTML. Très peu de données sont écrites en dur dans le code, la plupart des éléments proviennent de l'API.",
+              linkGhibli: "test",
           ),
         ],
       ),

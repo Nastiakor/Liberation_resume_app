@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:cv_flutter_libe/Controllers/bottomNavigationBar.dart';
-import 'package:cv_flutter_libe/views/homePage.dart';
+import 'package:cv_flutter_libe/Controllers/bottom_navigation_bar.dart';
+import 'package:cv_flutter_libe/views/home_page.dart';
 import 'package:cv_flutter_libe/views/projects.dart';
 import 'package:cv_flutter_libe/views/experiences.dart';
 import 'package:cv_flutter_libe/views/contact.dart';
@@ -11,7 +11,7 @@ import 'package:intl/date_symbol_data_local.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await initializeDateFormatting('fr');
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       title: _title,
       home: MyStatefulWidget(),
     );
@@ -54,8 +54,6 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> with SingleTickerPro
   Widget build(BuildContext context) {
     var platform = Theme.of(context).platform;
     var contextest = context;
-    print("context: $contextest");
-    print("platform: $platform");
 
     bool _isTabSwiped = false;
 
@@ -96,8 +94,8 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> with SingleTickerPro
         indicatorSize: TabBarIndicatorSize.label,
         indicatorColor: Colors.black,
         isScrollable: true,
-        labelStyle: TextStyle(fontWeight: FontWeight.w700),
-        unselectedLabelStyle: TextStyle(),
+        labelStyle: const TextStyle(fontWeight: FontWeight.w700),
+        unselectedLabelStyle: const TextStyle(),
         tabs: [
           Tab(child: appBarMenu('Présentation')),
           Tab(child: appBarMenu('Nos projets')),
@@ -110,11 +108,11 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> with SingleTickerPro
         body: TabBarView(
           controller: _tabController,
           children: [
-            homePage(),
-            Projects(),
-            Formations(),
-            Experiences(),
-            Contact(),
+            const homePage(),
+            const Projects(),
+            const Formations(),
+            const Experiences(),
+            const Contact(),
           ],
         ),
         resizeToAvoidBottomInset: false,

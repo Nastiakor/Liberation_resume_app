@@ -37,14 +37,14 @@ class NYTAppBar extends AppBar {
             children: <Widget>[
               Animate(
                   onPlay: (controller) => controller.repeat(), // the loop
-                  child: Icon(Icons.brightness_1, color: Colors.red, size: 15).animate()
+                  child: const Icon(Icons.brightness_1, color: Colors.red, size: 15).animate()
               ).fadeIn(delay: 1500.ms),
               Container(
                 margin: const EdgeInsets.only(left: 15),
                 child: Text(
                   'Best of The New York Times',
                   style: GoogleFonts.encodeSansCondensed(
-                    textStyle: TextStyle(
+                    textStyle: const TextStyle(
                         fontWeight: FontWeight.w700,
                         color: titleColor,
                         fontSize: 20,

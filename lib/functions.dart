@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:cv_flutter_libe/style.dart';
-import 'package:cv_flutter_libe/Controllers/BottomBarArticle.dart';
-import 'package:cv_flutter_libe/Controllers/AppBar.dart';
+import 'package:cv_flutter_libe/Controllers/bottom_bar_article.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:cv_flutter_libe/Controllers/app_bar.dart';
 
 String calculatePublishingDate(DateTime publishingDate) {
   DateTime now = DateTime.now();
@@ -42,6 +42,7 @@ class MainArticle extends StatelessWidget {
   final String? contactOrNot;
   final String? linkOrNot;
   final String? linkRetroVibes;
+  final String? linkGhibli;
 
   MainArticle(
       {required this.imagePath,
@@ -56,7 +57,8 @@ class MainArticle extends StatelessWidget {
       this.nextCompleteArticle,
       this.contactOrNot,
       this.linkOrNot,
-      this.linkRetroVibes});
+      this.linkRetroVibes,
+      this.linkGhibli});
 
   // Define the function to calculate the days until the birthday
   String daysUntilArticle() {
@@ -85,6 +87,7 @@ class MainArticle extends StatelessWidget {
             contactOrNot: contactOrNot,
             linkOrNot: linkOrNot,
             linkRetroVibes: linkRetroVibes,
+            linkGhibli: linkGhibli,
           ),
         ),
       ),
@@ -148,6 +151,7 @@ class FullArticle extends MainArticle {
     String? contactOrNot,
     String? linkOrNot,
     String? linkRetroVibes,
+    String? linkGhibli,
   }) : super(
           imagePath: imagePath,
           title: title,
@@ -162,6 +166,7 @@ class FullArticle extends MainArticle {
           contactOrNot: contactOrNot,
           linkOrNot: linkOrNot,
           linkRetroVibes: linkRetroVibes,
+          linkGhibli: linkGhibli,
         );
 
   @override
@@ -173,14 +178,28 @@ class FullArticle extends MainArticle {
     var size = MediaQuery.of(context).size;
 
     return Scaffold(
-      appBar: MyAppBar(),
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        backgroundColor: Colors.white,
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Container(
+              child: Image.asset(
+                'img/j&a.png',
+                width: 50,
+              ),
+            ),
+          ],
+        ),
+      ),
       body: SingleChildScrollView(
         child: Column(
           children: [
             Column(
               children: [
                 Padding(
-                  padding: EdgeInsets.only(top: 50, left: 15, right: 15),
+                  padding: const EdgeInsets.only(top: 50, left: 15, right: 15),
                   child: Wrap(
                     children: [
                       Container(
@@ -209,7 +228,7 @@ class FullArticle extends MainArticle {
             ),
             // Padding 2
             Padding(
-              padding: EdgeInsets.only(top: 15, left: 15, right: 15),
+              padding: const EdgeInsets.only(top: 15, left: 15, right: 15),
               child: Wrap(
                 children: [
                   Container(
@@ -229,14 +248,14 @@ class FullArticle extends MainArticle {
             Row(
               children: [
                 Padding(
-                    padding: EdgeInsets.only(top: 8, left: 15),
+                    padding: const EdgeInsets.only(top: 8, left: 15),
                     child: byArticle(super.writtenBy)),
               ],
             ),
             Row(
               children: [
                 Padding(
-                  padding: EdgeInsets.only(top: 8, left: 15, bottom: 8),
+                  padding: const EdgeInsets.only(top: 8, left: 15, bottom: 8),
                   child: RichText(
                     text: TextSpan(
                       children: [
@@ -257,17 +276,17 @@ class FullArticle extends MainArticle {
               ],
             ),
             Padding(
-              padding: EdgeInsets.only(top: 12, left: 15, right: 15),
+              padding: const EdgeInsets.only(top: 12, left: 15, right: 15),
               child: legendePictures(super.legendPicture),
             ),
             Padding(
-              padding: EdgeInsets.only(top: 12, left: 15, right: 15),
+              padding: const EdgeInsets.only(top: 12, left: 15, right: 15),
               child: Container(
                 alignment: Alignment.bottomLeft,
                 child: paragraph(super.completeArticle),
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
@@ -305,22 +324,22 @@ class FullArticle extends MainArticle {
                 () {
                   return (contactOrNot?.isEmpty ?? true)
                       ? Container()
-                      : SizedBox(height: 20);
+                      : const SizedBox(height: 20);
                 }(),
               ],
             ),
                 () {
               return (contactOrNot?.isEmpty ?? true)
                   ? Container()
-                  : SizedBox(height: 10);
+                  : const SizedBox(height: 10);
             }(),
                 () {
               return (contactOrNot?.isEmpty ?? true)
                   ? Container()
-                  : Divider(thickness: 2);
+                  : const Divider(thickness: 2);
             }(),
             Padding(
-              padding: EdgeInsets.only(top: 20, left: 15, right: 15),
+              padding: const EdgeInsets.only(top: 20, left: 15, right: 15),
               child: () {
                 return (nextCompleteArticle?.isEmpty ?? true)
                     ? Container()
@@ -330,7 +349,7 @@ class FullArticle extends MainArticle {
                       );
               }(),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             // Condition d'affichage
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -364,37 +383,83 @@ class FullArticle extends MainArticle {
                 }(),
               ],
             ),
-            () {
+                () {
+              return (linkRetroVibes?.isEmpty ?? true)
+                  ? Container()
+                  : InkWell(
+                    onTap: () {
+                      _launchURL(
+                          'http://retrovibes.herokuapp.com/home/');
+                    },
+                    child: Align(
+                      alignment: Alignment.topRight,
+                      child: Container(
+                        margin: const EdgeInsets.only(right: 20.0),
+                        child: const Text(
+                          'Visitez le site en cliquant ici',
+                          style: TextStyle(
+                            color: Colors.blue,
+                            decoration: TextDecoration.underline,
+                          ),
+                        ),
+                      ),
+                    )
+                  );
+            }(),
+                () {
               return (linkOrNot?.isEmpty ?? true)
                   ? Container()
                   : Column(
-                      children: [
-                        Text(
-                          "Visitez le site d'Ada Tech School :",
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 18),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.only(bottom: 12),
-                        ),
-                        InkWell(
-                          onTap: () {
-                            _launchURL(
-                                'https://adatechschool.fr/');
-                          },
-                          child: Image.asset(
-                            'img/logos/logo_ada.png',
-                            width: 150,
-                          ),
-                        ),
-                      ],
-                    );
+                children: [
+                  const Text(
+                    "Visitez le site d'Ada Tech School :",
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold, fontSize: 18),
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.only(bottom: 12),
+                  ),
+                  InkWell(
+                    onTap: () {
+                      _launchURL(
+                          'https://adatechschool.fr/');
+                    },
+                    child: Image.asset(
+                      'img/logos/logo_ada.png',
+                      width: 150,
+                    ),
+                  ),
+                ],
+              );
             }(),
-            SizedBox(height: 20),
+                () {
+              return (linkGhibli?.isEmpty ?? true)
+                  ? Container()
+                  : InkWell(
+                  onTap: () {
+                    _launchURL(
+                        'http://johananquetil.fr/Ghibliproject/');
+                  },
+                  child: Align(
+                    alignment: Alignment.topRight,
+                    child: Container(
+                      margin: const EdgeInsets.only(right: 20.0),
+                      child: const Text(
+                        'Visitez le site en cliquant ici',
+                        style: TextStyle(
+                          color: Colors.blue,
+                          decoration: TextDecoration.underline,
+                        ),
+                      ),
+                    ),
+                  )
+              );
+            }(),
+            const SizedBox(height: 20),
           ],
         ),
       ),
-      bottomNavigationBar: BottomBarObject(),
+      bottomNavigationBar: const BottomBarObject(),
     );
   }
 // other methods and widgets
@@ -417,6 +482,7 @@ class SecondaryArticle extends StatelessWidget {
   String legendPicture;
   String completeArticle;
   String? nextCompleteArticle;
+  String? linkGhibli;
 
   SecondaryArticle(
       {required this.imagePath,
@@ -428,7 +494,8 @@ class SecondaryArticle extends StatelessWidget {
       required this.publishDateParam,
       required this.legendPicture,
       required this.completeArticle,
-      this.nextCompleteArticle});
+      this.nextCompleteArticle,
+      this.linkGhibli});
 
   @override
   Widget build(BuildContext context) {
@@ -437,7 +504,7 @@ class SecondaryArticle extends StatelessWidget {
     return Column(
       children: [
         Padding(
-          padding: EdgeInsets.only(),
+          padding: const EdgeInsets.only(),
           child: InkWell(
             onTap: () => Navigator.of(context).push(MaterialPageRoute(
               builder: (context) => FullArticle(
@@ -450,10 +517,11 @@ class SecondaryArticle extends StatelessWidget {
                 writtenBy: writtenBy,
                 legendPicture: legendPicture,
                 completeArticle: completeArticle,
+                linkGhibli:linkGhibli,
               ),
             )),
             child: Padding(
-              padding: EdgeInsets.only(left: 15, right: 10),
+              padding: const EdgeInsets.only(left: 15, right: 10),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
@@ -469,7 +537,7 @@ class SecondaryArticle extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SizedBox(width: 10),
+                  const SizedBox(width: 10),
                   Container(
                     width: maxSize * 0.3,
                     height: maxSize * 0.3 * 0.75,
@@ -487,11 +555,11 @@ class SecondaryArticle extends StatelessWidget {
           ),
         ),
         Padding(
-          padding: EdgeInsets.only(top: 10),
+          padding: const EdgeInsets.only(top: 10),
           child: articleDetails(
               themeMainArticle, 'Il y a ${daysUntilArticle()}', size.width / 6),
         ),
-        Divider(
+        const Divider(
           thickness: 2,
         ),
       ],

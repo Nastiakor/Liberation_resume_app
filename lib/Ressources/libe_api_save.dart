@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
-void main() => runApp(LiberationAPI());
+void main() => runApp(const LiberationAPI());
 
 class LiberationAPI extends StatefulWidget {
   const LiberationAPI({Key? key}) : super(key: key);
@@ -20,7 +20,6 @@ class _LiberationAPIState extends State<LiberationAPI> {
 
   Future<void> _fetchArticles() async {
     try {
-      print("Fetching articles...");
       final headers = {"x-api-key": apiKey};
       final params = {
         "website": "liberation",
@@ -40,17 +39,12 @@ class _LiberationAPIState extends State<LiberationAPI> {
           setState(() {
             _contentElements =
                 List<Map<String, dynamic>>.from(data['content_elements']);
-            print(
-                "Content elements retrieved, count: ${_contentElements.length}");
           });
         }
       } else {
-        print(
-            "Failed to fetch articles with status code: ${response.statusCode}");
         throw Exception('Failed to fetch articles');
       }
     } catch (error) {
-      print("Error while fetching articles: $error");
       setState(() {
         _contentElements = [];
       });
@@ -69,7 +63,7 @@ class _LiberationAPIState extends State<LiberationAPI> {
       title: 'Liberation API',
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Liberation API'),
+          title: const Text('Liberation API'),
         ),
         body: _contentElements.isNotEmpty
             ? ListView.builder(
@@ -86,7 +80,7 @@ class _LiberationAPIState extends State<LiberationAPI> {
                   );
                 },
               )
-            : Center(child: CircularProgressIndicator()),
+            : const Center(child: CircularProgressIndicator()),
       ),
     );
   }
