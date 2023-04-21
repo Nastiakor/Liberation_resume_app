@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:cv_flutter_libe/functions.dart';
+import 'package:cv_flutter_libe/view_articles_main_full_secondary.dart';
 
 class Formations extends StatelessWidget {
   const Formations({Key? key}) : super(key: key);

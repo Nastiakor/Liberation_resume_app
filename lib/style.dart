@@ -1,4 +1,4 @@
-import 'package:cv_flutter_libe/Controllers/app_bar.dart';
+import 'package:cv_flutter_libe/app_bottom_bar/app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -15,7 +15,7 @@ TextSpan redTitle(String title) {
   );
 }
 
-TextSpan orangeTitle(String title) {
+TextSpan purpleTitle(String title) {
   return TextSpan(
     text: "$title",
     style: GoogleFonts.encodeSansCondensed(
@@ -51,7 +51,7 @@ TextSpan blackTitle(String title) {
               letterSpacing: 0.5)));
 }
 
-TextSpan sousTitre(String title, double fontSize) {
+TextSpan subTitle(String title, double fontSize) {
   return TextSpan(
       text: "$title",
       style: GoogleFonts.tinos(
@@ -77,7 +77,7 @@ Padding legendePictures(String legende) {
   );
 }
 
-TextSpan redTitle2(String title) {
+/*TextSpan redTitle2(String title) {
   return TextSpan(
       text: "$title",
       style: const TextStyle(
@@ -89,7 +89,7 @@ TextSpan blackTitle2(String title) {
       text: "$title",
       style: const TextStyle(
           fontWeight: FontWeight.bold, color: Colors.black, fontSize: 15));
-}
+}*/
 
 TextSpan publishDate(String title) {
   return TextSpan(
@@ -99,12 +99,12 @@ TextSpan publishDate(String title) {
               color: Colors.black, fontSize: 15, letterSpacing: 0.5)));
 }
 
-Text paragraph2(String paragraph) {
+/*Text paragraph2(String paragraph) {
   return Text("$paragraph",
       style: const TextStyle(color: Colors.black87, fontSize: 8));
-}
+}*/
 
-RichText byArticle(String name) {
+RichText author(String name) {
   return RichText(
     text: TextSpan(
       children: [
@@ -163,58 +163,11 @@ Row articleDetails(String theme, String time, double size) {
   );
 }
 
-/*Expanded time(String time) {
-  return Expanded(
-    child: Padding(
-      padding: EdgeInsets.only(right: 0),
-      child: Container(
-        child: RichText(
-          text: TextSpan(
-
-          ),
-        ),
-      ),
-    ),
-  );
-}
-
-Expanded abonne() {
-  return Expanded(
-    child: Padding(
-      padding: EdgeInsets.only(left: 10),
-      child: Container(
-        child: RichText(
-          text: TextSpan(
-            text: "Abonnés",
-            style: GoogleFonts.sourceSansPro(
-              textStyle: TextStyle(
-                  color: Colors.amber, fontSize: 13, letterSpacing: 0.5),
-            ),
-          ),
-        ),
-      ),
-    ),
-  );
-}
-
-Expanded bookmark() {
-  return Expanded(
-    flex: 1,
-    child: Padding(
-      padding: EdgeInsets.only(right: 10),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [Icon(Icons.bookmark_border)],
-      ),
-    ),
-  );
-}*/
-
 Text appBarMenu(item) {
   return Text(
     "$item",
     style: GoogleFonts.sourceSansPro(
-        textStyle:
-            const TextStyle(color: Colors.black, fontSize: 18, letterSpacing: 0.5)),
+        textStyle: const TextStyle(
+            color: Colors.black, fontSize: 18, letterSpacing: 0.5)),
   );
 }

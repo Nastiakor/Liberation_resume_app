@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cv_flutter_libe/style.dart';
-import 'package:cv_flutter_libe/Controllers/bottom_bar_article.dart';
+import 'package:cv_flutter_libe/app_bottom_bar/bottom_bar_article.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:cv_flutter_libe/Controllers/app_bar.dart';
 
 String calculatePublishingDate(DateTime publishingDate) {
   DateTime now = DateTime.now();
@@ -10,16 +9,16 @@ String calculatePublishingDate(DateTime publishingDate) {
       publishingDate.day, publishingDate.hour, publishingDate.minute);
   Duration duration = now.difference(howLongFromNow);
   int durationInDays = duration.inDays;
-  int durationinMinute = duration.inMinutes;
+  int durationinMinutes = duration.inMinutes;
   int durationinHours = duration.inHours;
   if (durationInDays == 1) {
     return "$durationInDays jour";
   } else if (durationInDays > 1) {
     return "$durationInDays jours";
-  } else if (durationinHours < 1 && durationinMinute > 1) {
-    return "$durationinMinute minutes";
-  } else if (durationinMinute <= 1) {
-    return "$durationinMinute minute";
+  } else if (durationinHours < 1 && durationinMinutes > 1) {
+    return "$durationinMinutes minutes";
+  } else if (durationinMinutes <= 1) {
+    return "$durationinMinutes minute";
   } else if (durationinHours > 1 && durationinHours < 24) {
     return "$durationinHours heures";
   } else if (durationinHours == 1) {
@@ -114,7 +113,7 @@ class MainArticle extends StatelessWidget {
                           ? [redTitle(title), blackTitle(titlethen)]
                           : writtenBy == "Anastasia Korotkova"
                               ? [greenTitle(title), blackTitle(titlethen)]
-                              : [orangeTitle(title), blackTitle(titlethen)],
+                              : [purpleTitle(title), blackTitle(titlethen)],
                     ),
                   ),
                   const SizedBox(height: 10),
@@ -217,7 +216,7 @@ class FullArticle extends MainArticle {
                                             blackTitle(super.titlethen)
                                           ]
                                         : [
-                                            orangeTitle(super.title),
+                                            purpleTitle(super.title),
                                             blackTitle(super.titlethen)
                                           ])),
                       ),
@@ -236,7 +235,7 @@ class FullArticle extends MainArticle {
                     child: RichText(
                       text: TextSpan(
                         children: [
-                          sousTitre(super.paragraphMainArticle, 14.0),
+                          subTitle(super.paragraphMainArticle, 14.0),
                         ],
                       ),
                     ),
@@ -249,7 +248,7 @@ class FullArticle extends MainArticle {
               children: [
                 Padding(
                     padding: const EdgeInsets.only(top: 8, left: 15),
-                    child: byArticle(super.writtenBy)),
+                    child: author(super.writtenBy)),
               ],
             ),
             Row(
@@ -459,7 +458,7 @@ class FullArticle extends MainArticle {
           ],
         ),
       ),
-      bottomNavigationBar: const BottomBarObject(),
+      bottomNavigationBar: const BottomBarArticle(),
     );
   }
 // other methods and widgets
@@ -533,7 +532,7 @@ class SecondaryArticle extends StatelessWidget {
                             ? [redTitle(title), blackTitle(titlethen)]
                             : writtenBy == "Anastasia Korotkova"
                                 ? [greenTitle(title), blackTitle(titlethen)]
-                                : [orangeTitle(title), blackTitle(titlethen)],
+                                : [purpleTitle(title), blackTitle(titlethen)],
                       ),
                     ),
                   ),

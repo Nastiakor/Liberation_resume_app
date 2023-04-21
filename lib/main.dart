@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:cv_flutter_libe/Controllers/bottom_navigation_bar.dart';
+import 'package:cv_flutter_libe/app_bottom_bar/bottom_navigation_bar.dart';
 import 'package:cv_flutter_libe/views/home_page.dart';
 import 'package:cv_flutter_libe/views/projects.dart';
 import 'package:cv_flutter_libe/views/experiences.dart';
 import 'package:cv_flutter_libe/views/contact.dart';
-import 'package:cv_flutter_libe/views/formation.dart';
+import 'package:cv_flutter_libe/views/formations.dart';
 import 'package:cv_flutter_libe/style.dart';
 import 'package:intl/date_symbol_data_local.dart';
 
@@ -52,15 +52,13 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> with SingleTickerPro
 
   @override
   Widget build(BuildContext context) {
-    var platform = Theme.of(context).platform;
-    var contextest = context;
 
-    bool _isTabSwiped = false;
+    bool isTabSwiped = false;
 
     return GestureDetector(
       onPanUpdate: (DragUpdateDetails details) {
-        if (!_isTabSwiped && details.delta.dx.abs() > 10) { // swipe threshold
-          _isTabSwiped = true;
+        if (!isTabSwiped && details.delta.dx.abs() > 10) { // swipe threshold
+          isTabSwiped = true;
           if (details.delta.dx.isNegative) {
             if (_tabController.index < _tabController.length - 1) {
               _tabController.animateTo(_tabController.index + 1);
@@ -73,7 +71,7 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> with SingleTickerPro
         }
       },
       onPanEnd: (DragEndDetails details) {
-        _isTabSwiped = false;
+        isTabSwiped = false;
       },
       child: Scaffold(
       appBar: AppBar(
@@ -81,12 +79,10 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> with SingleTickerPro
       title: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          Container(
-            child: Image.asset(
+          Image.asset(
               'img/j&a.png',
               width: 50,
             ),
-          ),
         ],
       ),
       bottom: TabBar(
@@ -107,12 +103,12 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> with SingleTickerPro
     ),
         body: TabBarView(
           controller: _tabController,
-          children: [
-            const homePage(),
-            const Projects(),
-            const Formations(),
-            const Experiences(),
-            const Contact(),
+          children: const [
+            HomePage(),
+            Projects(),
+            Formations(),
+            Experiences(),
+            Contact(),
           ],
         ),
         resizeToAvoidBottomInset: false,

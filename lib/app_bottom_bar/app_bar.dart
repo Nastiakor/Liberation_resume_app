@@ -4,8 +4,8 @@ import 'package:google_fonts/google_fonts.dart';
 
 const titleColor = Color(0XFFE60004);
 
-class MyAppBar2 extends AppBar {
-  MyAppBar2({Key? key}) : super(key: key);
+class AppBarMain extends AppBar {
+  AppBarMain({Key? key}) : super(key: key);
 
   Widget build(BuildContext context) {
     return AppBar(
@@ -14,20 +14,18 @@ class MyAppBar2 extends AppBar {
       title: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          Container(
-            child: Image.asset(
+          Image.asset(
               'img/j&a.png',
               width: 50,
             ),
-          ),
         ],
       ),
     );
   }
 }
 
-class MyAppBarFeed extends AppBar {
-  MyAppBarFeed({Key? key})
+class AppBarFeed extends AppBar {
+  AppBarFeed({Key? key})
       : super(
 // Here we take the value from the MyHomePage object that was created by
 // the App.build method, and use it to set our appbar title.

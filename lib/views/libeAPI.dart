@@ -1,13 +1,14 @@
 import 'dart:convert';
+import 'package:cv_flutter_libe/views/tokens.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:cv_flutter_libe/Controllers/app_bar.dart';
-import 'package:cv_flutter_libe/Controllers/bottom_navigation_bar.dart';
+import 'package:cv_flutter_libe/app_bottom_bar/app_bar.dart';
+import 'package:cv_flutter_libe/app_bottom_bar/bottom_navigation_bar.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:html_unescape/html_unescape.dart';
-import 'package:cv_flutter_libe/Controllers/bottom_bar_article.dart';
+import 'package:cv_flutter_libe/app_bottom_bar/bottom_bar_article.dart';
 import 'package:html/parser.dart' as html_parser;
 import 'package:html/dom.dart' as html_dom;
 
@@ -24,7 +25,7 @@ class LiberationAPI extends StatefulWidget {
 }
 
 class _LiberationAPIState extends State<LiberationAPI> {
-  final String apiKey = "Vahholu0aiSojahRaish6OaDeihewo";
+  String apiKey = tokenLibe;
   final String apiUrl = "https://arc.api.liberation.fr/content/v4/search/published";
 
   List<Map<String, dynamic>> _contentElements = [];
@@ -76,7 +77,7 @@ class _LiberationAPIState extends State<LiberationAPI> {
     return MaterialApp(
       title: 'Liberation API',
       home: Scaffold(
-        appBar: MyAppBarFeed(),
+        appBar: AppBarFeed(),
         body: _contentElements.isEmpty
             ? const Center(child: CircularProgressIndicator())
             : Row(
@@ -197,7 +198,7 @@ class _LiberationAPIState extends State<LiberationAPI> {
                                 );
                               }),
                         )
-                      : const Row(
+                      : Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Center(child: CircularProgressIndicator())
@@ -413,7 +414,7 @@ class _ArticleDetailsPageState extends State<ArticleDetailsPage> {
       );
     }
     return Scaffold(
-      appBar: MyAppBarFeed(),
+      appBar: AppBarFeed(),
       body: ListView(
         children: [
           Padding(
@@ -539,7 +540,7 @@ class _ArticleDetailsPageState extends State<ArticleDetailsPage> {
           ),
         ],
       ),
-      bottomNavigationBar: const BottomBarObject(),
+      bottomNavigationBar: const BottomBarArticle(),
     );
   }
 }

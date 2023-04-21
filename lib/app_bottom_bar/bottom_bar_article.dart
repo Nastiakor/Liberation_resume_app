@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class BottomBarObject extends StatefulWidget {
-  const BottomBarObject({Key? key}) : super(key: key);
+class BottomBarArticle extends StatefulWidget {
+  const BottomBarArticle({Key? key}) : super(key: key);
 
   @override
-  State<BottomBarObject> createState() => _BottomBarObjectState();
+  State<BottomBarArticle> createState() => _BottomBarArticleState();
 }
 
-class _BottomBarObjectState extends State<BottomBarObject> {
+class _BottomBarArticleState extends State<BottomBarArticle> {
   int _currentIndex = 0;
 
   @override
@@ -27,14 +27,6 @@ class _BottomBarObjectState extends State<BottomBarObject> {
           icon: Icon(Icons.contact_page, size: 25),
           label: '',
         ),
-        //BottomNavigationBarItem(
-          //icon: Icon(Icons.text_fields),
-          //label: 'Font Size',
-       // ),
-        //BottomNavigationBarItem(
-          //icon: Icon(Icons.bookmark_border, size: 25),
-          //label: '',
-        //),
       ],
       onTap: (index) {
         setState(() {

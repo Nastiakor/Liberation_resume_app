@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:cv_flutter_libe/functions.dart';
+import 'package:cv_flutter_libe/view_articles_main_full_secondary.dart';
 
-class homePage extends StatelessWidget {
-  const homePage({Key? key}) : super(key: key);
+class HomePage extends StatelessWidget {
+  const HomePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

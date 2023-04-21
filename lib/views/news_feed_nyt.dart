@@ -1,10 +1,11 @@
 import 'dart:convert';
-import 'package:cv_flutter_libe/Controllers/app_bar_nyt.dart';
+import 'package:cv_flutter_libe/app_bottom_bar/app_bar_nyt.dart';
+import 'package:cv_flutter_libe/views/tokens.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:url_launcher/url_launcher.dart';
-import 'package:cv_flutter_libe/Controllers/bottom_navigation_bar.dart';
-import 'package:cv_flutter_libe/Controllers/bottom_bar_article.dart';
+import 'package:cv_flutter_libe/app_bottom_bar/bottom_navigation_bar.dart';
+import 'package:cv_flutter_libe/app_bottom_bar/bottom_bar_article.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
@@ -17,11 +18,11 @@ class NYTAPI extends StatefulWidget {
   const NYTAPI({Key? key}) : super(key: key);
 
   @override
-  _NYTAPIState createState() => _NYTAPIState();
+  NYTAPIState createState() => NYTAPIState();
 }
 
-class _NYTAPIState extends State<NYTAPI> {
-  final String apiKey = "0oUTF3Ux70XLMAopiLaFV6fzRa1XtgZ2";
+class NYTAPIState extends State<NYTAPI> {
+  final String apiKey = tokenNYT;
   final String apiUrl = "https://api.nytimes.com/svc/mostpopular/v2/emailed/7.json";
 
   List<dynamic> _articles = [];
@@ -54,7 +55,7 @@ class _NYTAPIState extends State<NYTAPI> {
     return MaterialApp(
       title: 'NYT Most Popular',
       home: Scaffold(
-        appBar: NYTAppBar(),
+        appBar: AppBarNYT(),
         body: _articles.isNotEmpty
             ? ListView.builder(
                 itemCount: _articles.length,
@@ -85,7 +86,7 @@ class _NYTAPIState extends State<NYTAPI> {
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Container(
+                          SizedBox(
                             width: 50,
                             child: Column(
                               children: [
@@ -98,9 +99,9 @@ class _NYTAPIState extends State<NYTAPI> {
                                   textAlign: TextAlign.center,
                                 ),
                                 const SizedBox(height: 5),
-                                Container(
+                                const SizedBox(
                                   height: 40,
-                                  child: const VerticalDivider(
+                                  child: VerticalDivider(
                                     thickness: 2,
                                     color: Colors.grey,
                                   ),
@@ -162,7 +163,7 @@ class ArticlePage extends StatelessWidget {
     }
 
     return Scaffold(
-      appBar: NYTAppBar(),
+      appBar: AppBarNYT(),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -227,27 +228,6 @@ class ArticlePage extends StatelessWidget {
             TextButton(
               onPressed: () {
                 _launchURL();
-                /*String articleUrl = article['url'];
-                FlutterWebBrowser.openWebPage(
-                  url: articleUrl,
-                  customTabsOptions: CustomTabsOptions(
-                    colorScheme: CustomTabsColorScheme.dark,
-                    toolbarColor: Theme.of(context).primaryColor,
-                    secondaryToolbarColor: Theme.of(context).accentColor,
-                    navigationBarColor: Theme.of(context).backgroundColor,
-                    addDefaultShareMenuItem: true,
-                    instantAppsEnabled: true,
-                    showTitle: true,
-                    urlBarHidingEnabled: true,
-                  ),
-                  safariVCOptions: SafariViewControllerOptions(
-                    barCollapsingEnabled: true,
-                    preferredBarTintColor: Theme.of(context).primaryColor,
-                    preferredControlTintColor: Theme.of(context).accentColor,
-                    dismissButtonStyle:
-                        SafariViewControllerDismissButtonStyle.close,
-                    modalPresentationCapturesStatusBarAppearance: true,
-                  ),*/
               },
               child: const Padding(
                 padding: EdgeInsets.all(8.0),
@@ -266,7 +246,7 @@ class ArticlePage extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: const BottomBarObject(),
+      bottomNavigationBar: const BottomBarArticle(),
     );
   }
   _launchURL() async {
