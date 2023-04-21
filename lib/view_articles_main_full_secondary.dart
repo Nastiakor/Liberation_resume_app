@@ -183,12 +183,10 @@ class FullArticle extends MainArticle {
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Container(
-              child: Image.asset(
+            Image.asset(
                 'img/j&a.png',
                 width: 50,
               ),
-            ),
           ],
         ),
       ),

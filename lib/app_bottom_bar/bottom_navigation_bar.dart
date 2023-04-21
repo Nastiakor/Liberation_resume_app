@@ -2,7 +2,7 @@ import 'package:cv_flutter_libe/icons.dart';
 import 'package:cv_flutter_libe/views/news_feed_nyt.dart';
 import 'package:flutter/material.dart';
 import 'package:cv_flutter_libe/main.dart';
-import 'package:cv_flutter_libe/views/libeAPI.dart';
+import 'package:cv_flutter_libe/views/libe_api.dart';
 
 void showModal(BuildContext context) {
   showDialog(

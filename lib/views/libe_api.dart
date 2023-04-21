@@ -21,10 +21,10 @@ class LiberationAPI extends StatefulWidget {
   const LiberationAPI({Key? key}) : super(key: key);
 
   @override
-  _LiberationAPIState createState() => _LiberationAPIState();
+  LiberationAPIState createState() => LiberationAPIState();
 }
 
-class _LiberationAPIState extends State<LiberationAPI> {
+class LiberationAPIState extends State<LiberationAPI> {
   String apiKey = tokenLibe;
   final String apiUrl = "https://arc.api.liberation.fr/content/v4/search/published";
 
@@ -148,9 +148,9 @@ class _LiberationAPIState extends State<LiberationAPI> {
                                                 ),
                                               ),
                                               const SizedBox(height: 5),
-                                              Container(
+                                              const SizedBox(
                                                 height: 40,
-                                                child: const VerticalDivider(
+                                                child: VerticalDivider(
                                                   thickness: 2,
                                                   color: Colors.grey,
                                                 ),
@@ -200,7 +200,7 @@ class _LiberationAPIState extends State<LiberationAPI> {
                         )
                       : Row(
                           mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
+                          children: const [
                             Center(child: CircularProgressIndicator())
                           ],
                         )
@@ -222,7 +222,7 @@ class Article {
   Map<String, dynamic>? subheadlines;
   final String credit1;
   final credit2;
-  final DateTime first_publish_date;
+  final DateTime firstPublishDate;
   final String themeTitle;
   final String? caption;
   final List<dynamic>? articlesContenus;
@@ -237,7 +237,7 @@ class Article {
     this.subheadlines,
     required this.credit1,
     this.credit2,
-    required this.first_publish_date,
+    required this.firstPublishDate,
     required this.themeTitle,
     this.caption,
     this.articlesContenus,
@@ -289,7 +289,7 @@ class Article {
     final credit2 = json['credits']['by'].length >= 2
         ? json['credits']['by'][1]['name']
         : null;
-    final first_publish_date = DateTime.parse(json['first_publish_date']);
+    final firstPublishDate = DateTime.parse(json['first_publish_date']);
     final themeTitle = json['label']['basic']['text'];
     final caption = json['promo_items']['basic']['caption'];
     final articlesContenus = json['content_elements'];
@@ -304,7 +304,7 @@ class Article {
       subheadlines: json['subheadlines'] as Map<String, dynamic>,
       credit1: credit1,
       credit2: credit2,
-      first_publish_date: first_publish_date,
+      firstPublishDate: firstPublishDate,
       themeTitle: themeTitle,
       caption: caption,
       articlesContenus: articlesContenus,
@@ -353,11 +353,11 @@ class ArticleDetailsPage extends StatefulWidget {
   }
 
   @override
-  _ArticleDetailsPageState createState() => _ArticleDetailsPageState();
+  ArticleDetailsPageState createState() => ArticleDetailsPageState();
 }
 
-class _ArticleDetailsPageState extends State<ArticleDetailsPage> {
-  Widget MyJsonContentWidget(List<ContentElement> contentElements) {
+class ArticleDetailsPageState extends State<ArticleDetailsPage> {
+  Widget myJsonContentWidget(List<ContentElement> contentElements) {
     // print('contentElements length: ${contentElements.length}');
 
     return Column(
@@ -505,7 +505,7 @@ class _ArticleDetailsPageState extends State<ArticleDetailsPage> {
             padding: const EdgeInsets.only(left: 15.0),
             child: Text(
               CustomDateFormat("dd MMMM yyyy 'à' HH'h'mm", locale: 'fr').format(
-                  widget.article.first_publish_date.add(const Duration(hours: 2))),
+                  widget.article.firstPublishDate.add(const Duration(hours: 2))),
               style: GoogleFonts.sourceSansPro(
                   textStyle: const TextStyle(
                       color: Colors.black45, fontSize: 13, letterSpacing: 0.5)),

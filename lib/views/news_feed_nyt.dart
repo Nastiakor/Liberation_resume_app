@@ -6,7 +6,6 @@ import 'package:http/http.dart' as http;
 import 'package:url_launcher/url_launcher.dart';
 import 'package:cv_flutter_libe/app_bottom_bar/bottom_navigation_bar.dart';
 import 'package:cv_flutter_libe/app_bottom_bar/bottom_bar_article.dart';
-import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 

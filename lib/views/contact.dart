@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:cv_flutter_libe/view_articles_main_full_secondary.dart';
 
 
@@ -9,10 +8,10 @@ class Contact extends StatefulWidget {
   const Contact({Key? key}) : super(key: key);
 
   @override
-  _ContactState createState() => _ContactState();
+  ContactState createState() => ContactState();
 }
 
-class _ContactState extends State<Contact> {
+class ContactState extends State<Contact> {
   @override
   void initState() {
     super.initState();
