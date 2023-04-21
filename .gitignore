@@ -31,7 +31,7 @@ migrate_working_dir/
 .pub-cache/
 .pub/
 /build/
-lib/views/tokens.dart
+/lib/views/tokens.dart
 
 # Symbolication related
 app.*.symbols
