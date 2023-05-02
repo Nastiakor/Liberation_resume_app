@@ -26,8 +26,8 @@ class ContactState extends State<Contact> {
             children: [
               MainArticle(
                 imagePath: "img/contact.png",
-                title: "NOUS ",
-                titlethen: "CONTACTER",
+                titleHeadline: "NOUS ",
+                titleOverline: "CONTACTER",
                 paragraphMainArticle:
                     "Vous êtes intéressé par nos profils pour renforcer vos équipes dans le cadre d'une alternance d'un an ?",
                 themeMainArticle: "Contact",

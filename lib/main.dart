@@ -7,10 +7,12 @@ import 'package:cv_flutter_libe/views/contact.dart';
 import 'package:cv_flutter_libe/views/formations.dart';
 import 'package:cv_flutter_libe/style.dart';
 import 'package:intl/date_symbol_data_local.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await initializeDateFormatting('fr');
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 

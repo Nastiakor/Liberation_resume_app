@@ -29,8 +29,8 @@ String calculatePublishingDate(DateTime publishingDate) {
 
 class MainArticle extends StatelessWidget {
   final String imagePath;
-  final String title;
-  final String titlethen;
+  final String titleOverline;
+  final String titleHeadline;
   final String paragraphMainArticle;
   final String themeMainArticle;
   final String writtenBy;
@@ -45,8 +45,8 @@ class MainArticle extends StatelessWidget {
 
   MainArticle(
       {required this.imagePath,
-      required this.title,
-      required this.titlethen,
+      required this.titleOverline,
+      required this.titleHeadline,
       required this.paragraphMainArticle,
       required this.themeMainArticle,
       required this.writtenBy,
@@ -74,8 +74,8 @@ class MainArticle extends StatelessWidget {
         MaterialPageRoute(
           builder: (context) => FullArticle(
             imagePath: imagePath,
-            title: title,
-            titlethen: titlethen,
+            titleHeadline: titleHeadline,
+            titleOverline: titleOverline,
             paragraphMainArticle: paragraphMainArticle,
             themeMainArticle: themeMainArticle,
             publishDateParam: publishDateParam,
@@ -110,10 +110,10 @@ class MainArticle extends StatelessWidget {
                   RichText(
                     text: TextSpan(
                       children: writtenBy == "Johan Anquetil"
-                          ? [redTitle(title), blackTitle(titlethen)]
+                          ? [redTitle(titleHeadline), blackTitle(titleOverline)]
                           : writtenBy == "Anastasia Korotkova"
-                              ? [greenTitle(title), blackTitle(titlethen)]
-                              : [purpleTitle(title), blackTitle(titlethen)],
+                              ? [greenTitle(titleHeadline), blackTitle(titleOverline)]
+                              : [purpleTitle(titleHeadline), blackTitle(titleOverline)],
                     ),
                   ),
                   const SizedBox(height: 10),
@@ -138,8 +138,8 @@ class FullArticle extends MainArticle {
 
   FullArticle({
     required String imagePath,
-    required String title,
-    required String titlethen,
+    required String titleHeadline,
+    required String titleOverline,
     required String paragraphMainArticle,
     required String themeMainArticle,
     required String writtenBy,
@@ -153,8 +153,8 @@ class FullArticle extends MainArticle {
     String? linkGhibli,
   }) : super(
           imagePath: imagePath,
-          title: title,
-          titlethen: titlethen,
+          titleOverline: titleOverline,
+          titleHeadline: titleHeadline,
           paragraphMainArticle: paragraphMainArticle,
           themeMainArticle: themeMainArticle,
           writtenBy: writtenBy,
@@ -205,17 +205,17 @@ class FullArticle extends MainArticle {
                             text: TextSpan(
                                 children: writtenBy == "Johan Anquetil"
                                     ? [
-                                        redTitle(super.title),
-                                        blackTitle(super.titlethen)
+                                        redTitle(super.titleHeadline),
+                                        blackTitle(super.titleOverline)
                                       ]
                                     : writtenBy == "Anastasia Korotkova"
                                         ? [
-                                            greenTitle(super.title),
-                                            blackTitle(super.titlethen)
+                                            greenTitle(super.titleHeadline),
+                                            blackTitle(super.titleOverline)
                                           ]
                                         : [
-                                            purpleTitle(super.title),
-                                            blackTitle(super.titlethen)
+                                            purpleTitle(super.titleHeadline),
+                                            blackTitle(super.titleOverline)
                                           ])),
                       ),
                     ],
@@ -470,8 +470,8 @@ class SecondaryArticle extends StatelessWidget {
   }
 
   String imagePath;
-  String title;
-  String titlethen;
+  String titleHeadline;
+  String titleOverline;
   String paragraphMainArticle;
   String themeMainArticle;
   String writtenBy;
@@ -483,8 +483,8 @@ class SecondaryArticle extends StatelessWidget {
 
   SecondaryArticle(
       {required this.imagePath,
-      required this.title,
-      required this.titlethen,
+      required this.titleHeadline,
+      required this.titleOverline,
       required this.paragraphMainArticle,
       required this.themeMainArticle,
       required this.writtenBy,
@@ -506,8 +506,8 @@ class SecondaryArticle extends StatelessWidget {
             onTap: () => Navigator.of(context).push(MaterialPageRoute(
               builder: (context) => FullArticle(
                 imagePath: imagePath,
-                title: title,
-                titlethen: titlethen,
+                titleHeadline: titleHeadline,
+                titleOverline: titleOverline,
                 paragraphMainArticle: paragraphMainArticle,
                 themeMainArticle: themeMainArticle,
                 publishDateParam: publishDateParam,
@@ -527,10 +527,10 @@ class SecondaryArticle extends StatelessWidget {
                     child: RichText(
                       text: TextSpan(
                         children: writtenBy == "Johan Anquetil"
-                            ? [redTitle(title), blackTitle(titlethen)]
+                            ? [redTitle(titleHeadline), blackTitle(titleOverline)]
                             : writtenBy == "Anastasia Korotkova"
-                                ? [greenTitle(title), blackTitle(titlethen)]
-                                : [purpleTitle(title), blackTitle(titlethen)],
+                                ? [greenTitle(titleHeadline), blackTitle(titleOverline)]
+                                : [purpleTitle(titleHeadline), blackTitle(titleOverline)],
                       ),
                     ),
                   ),

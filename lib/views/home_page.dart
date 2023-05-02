@@ -13,8 +13,8 @@ class HomePage extends StatelessWidget {
         children: [
           MainArticle(
             imagePath: "img/Wanted_photoshop.jpg",
-            title: "WANTED ",
-            titlethen:
+            titleHeadline: "WANTED ",
+            titleOverline:
                 "DEUX ÉTUDIANTS EN DEVELOPPEMENT MOBILE. RÉCOMPENSE : ALTERNANCE",
             paragraphMainArticle:
                 "En formation de développeuse et développeur d'applications au sein d'Ada Tech School depuis le mois d'octobre 2022, nous sommes à la recherche d'une alternance dans le développement mobile à partir du mois de juillet 2023 pour une durée d'un an.",
@@ -28,8 +28,8 @@ class HomePage extends StatelessWidget {
           ),
           SecondaryArticle(
             imagePath: "img/NASTIA.png",
-            title: "ANASTASIA KOROTKOVA ",
-            titlethen: "DES LANGUES AUX LANGAGES",
+            titleHeadline: "ANASTASIA KOROTKOVA ",
+            titleOverline: "DES LANGUES AUX LANGAGES",
             paragraphMainArticle:
                 "Actuellement en reconversion professionnelle dans le domaine du développement d'applications, je suis, depuis octobre 2022, une formation à Ada Tech School qui me permet d'acquérir les compétences nécessaires pour créer des applications performantes et intuitives.",
             themeMainArticle: "Présentation",
@@ -42,8 +42,8 @@ class HomePage extends StatelessWidget {
           ),
           SecondaryArticle(
             imagePath: "img/JOHAN.JPG",
-            title: "JOHAN ANQUETIL ",
-            titlethen: "DE LA GESTION DE PROJET AU CODE",
+            titleHeadline: "JOHAN ANQUETIL ",
+            titleOverline: "DE LA GESTION DE PROJET AU CODE",
             paragraphMainArticle:
             "Créatif et curieux, je suis actuellement en reconversion professionnelle dans le domaine du développement mobile, convaincu de sa capacité à transformer nos sociétés.",
             themeMainArticle: "Présentation",

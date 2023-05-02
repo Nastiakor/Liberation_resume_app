@@ -13,8 +13,8 @@ class Projects extends StatelessWidget {
         children: [
           MainArticle(
             imagePath: "img/Projets/retrovibes.png",
-            title: "SITE DE E-COMMERCE DE MEUBLES : ",
-            titlethen: "RETROVIBES",
+            titleHeadline: "SITE DE E-COMMERCE DE MEUBLES : ",
+            titleOverline: "RETROVIBES",
             paragraphMainArticle:
                 "En collaboration avec un groupe de 10 personnes, nous avons créé un site de vente de meubles avec un back-end créé en Laravel et un front en React.",
             themeMainArticle: "Johan",
@@ -27,8 +27,8 @@ class Projects extends StatelessWidget {
           ),
           MainArticle(
             imagePath: "img/Projets/Pico8_2.png",
-            title: "CREATION D'UN JEU RETRO L'ILE AUX TRESORS",
-            titlethen: " EN LUA GRACE A LA PLATEFORME PICO-8",
+            titleHeadline: "CREATION D'UN JEU RETRO L'ILE AUX TRESORS",
+            titleOverline: " EN LUA GRACE A LA PLATEFORME PICO-8",
             paragraphMainArticle: "Pico-8 est une console imaginaire qui permet de créer, partager, et jouer à des jeux miniatures qui évoquent avec nostalgie les débuts du jeu vidéo grand public.",
             themeMainArticle: "Anastasia",
             writtenBy: "Anastasia Korotkova",
@@ -39,8 +39,8 @@ class Projects extends StatelessWidget {
           ),
           SecondaryArticle(
             imagePath: "img/Projets/Unity2.png",
-            title: "DEVELOPPEMENT D'UN MINI JEU-VIDEO EN 2D ",
-            titlethen: "SUR UNITY EN C#",
+            titleHeadline: "DEVELOPPEMENT D'UN MINI JEU-VIDEO EN 2D ",
+            titleOverline: "SUR UNITY EN C#",
             paragraphMainArticle:
                 "Incarnez un célèbre entrepreneur qui a décidé de partir à la conquête de Mars afin de fuir l'inhospitalière planète terre polluée et devenue irrespirable. Seul problème, en contruisant votre fusée, vous participez à la destuction de la planète et vos salariés ne sont pas toujours très dociles.",
             themeMainArticle: "Johan",
@@ -52,8 +52,8 @@ class Projects extends StatelessWidget {
           ),
           SecondaryArticle(
             imagePath: "img/Projets/Dataviz.png",
-            title: "DATAVIZ & API",
-            titlethen: " CREATION D'UNE PAGE WEB SPECTACLES A PARIS",
+            titleHeadline: "DATAVIZ & API",
+            titleOverline: " CREATION D'UNE PAGE WEB SPECTACLES A PARIS",
             paragraphMainArticle: "APPEL D'UNE API",
             themeMainArticle: "Anastasia",
             writtenBy: "Anastasia Korotkova",
@@ -63,8 +63,8 @@ class Projects extends StatelessWidget {
           ),
           SecondaryArticle(
             imagePath: "img/Projets/Chrome2.png",
-            title: "EXTENSION DE NAVIGATEUR GOOGLE CHROME : ",
-            titlethen: "EN JAVASCRIPT ET EN FAISANT APPEL A UNE API",
+            titleHeadline: "EXTENSION DE NAVIGATEUR GOOGLE CHROME : ",
+            titleOverline: "EN JAVASCRIPT ET EN FAISANT APPEL A UNE API",
             paragraphMainArticle:
                 "Troisième projet de groupe, conçu avec deux camarades en 7 jours également, cette extension Google Chrome vous donne le temps passé par nom de domaine.",
             themeMainArticle: "Johan",
@@ -76,8 +76,8 @@ class Projects extends StatelessWidget {
           ),
           SecondaryArticle(
             imagePath: "img/Projets/My_mood_2.png",
-            title: "EXTENSION DE NAVIGATEUR",
-            titlethen: " JAVASCRIPT ET MONGO DB",
+            titleHeadline: "EXTENSION DE NAVIGATEUR",
+            titleOverline: " JAVASCRIPT ET MONGO DB",
             paragraphMainArticle: "",
             themeMainArticle: "Anastasia",
             writtenBy: "Anastasia Korotkova",
@@ -88,8 +88,8 @@ class Projects extends StatelessWidget {
           ),
           SecondaryArticle(
             imagePath: "img/Projets/Norton_Kong.png",
-            title: "CREATION D'UN NIVEAU D'UN JEU-VIDEO ",
-            titlethen: "EN LUA GRACE A LA PLATEFORME PICO-8",
+            titleHeadline: "CREATION D'UN NIVEAU D'UN JEU-VIDEO ",
+            titleOverline: "EN LUA GRACE A LA PLATEFORME PICO-8",
             paragraphMainArticle:
                 "Premier projet réalisé quelques semaines après notre arrivée avec deux autres camarades, il est inspiré de Donkey Kong, un héros qui part du bas de l'écran pour réussir à atteindre un objectif situé... à l'opposé.",
             themeMainArticle: "Johan",
@@ -101,8 +101,8 @@ class Projects extends StatelessWidget {
           ),
           SecondaryArticle(
             imagePath: "img/Projets/PHP-logo.png",
-            title: "RESEAU SOCIAL",
-            titlethen: " SQL ET PHPMYADMIN",
+            titleHeadline: "RESEAU SOCIAL",
+            titleOverline: " SQL ET PHPMYADMIN",
             paragraphMainArticle: "",
             themeMainArticle: "Anastasia",
             writtenBy: "Anastasia Korotkova",
@@ -113,8 +113,8 @@ class Projects extends StatelessWidget {
           ),
           SecondaryArticle(
             imagePath: "img/Projets/Réseau_PHP_2.jpg",
-            title: "RESEAU SOCIAL EN SQL ",
-            titlethen: "AVEC PHPMYADMIN",
+            titleHeadline: "RESEAU SOCIAL EN SQL ",
+            titleOverline: "AVEC PHPMYADMIN",
             paragraphMainArticle:
                 "Quatrième projet à Ada Tech School, avec un groupe de quatre personnes, nous avons pu nous entraîner à créer et faire communiquer une base de données ainsi que découvrir le PHP",
             themeMainArticle: "Johan",
@@ -126,8 +126,8 @@ class Projects extends StatelessWidget {
           ),
           SecondaryArticle(
             imagePath: "img/Projets/Studio_Ghibli_2.jpg",
-            title: "APPREHENDER L'APPEL D'UNE API : ",
-            titlethen: "PUBLICATION D'UN STUDIO GHIBLI",
+            titleHeadline: "APPREHENDER L'APPEL D'UNE API : ",
+            titleOverline: "PUBLICATION D'UN STUDIO GHIBLI",
             paragraphMainArticle:
             "Ce projet avait pour objectif de développer une application web qui permet de visualiser des données de façon dynamique.",
             themeMainArticle: "Johan",

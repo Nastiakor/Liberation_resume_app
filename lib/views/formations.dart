@@ -13,8 +13,8 @@ class Formations extends StatelessWidget {
         children: [
           MainArticle(
             imagePath: "img/Formations/AdaTechschool2.png",
-            title: "2022 - 2023 : ADA TECH SCHOOL ",
-            titlethen:
+            titleHeadline: "2022 - 2023 : ADA TECH SCHOOL ",
+            titleOverline:
                 "ECOLE FEMINISTE BASEE SUR UNE PEDAGOGIE INNOVANTE ET FORMANT DES DÉVELOPPEUSES / DÉVELOPPEURS D'APPLICATIONS FULL STACK",
             paragraphMainArticle:
                 "Tous les deux étudiants au sein de la promotion Dorothy Vauhan d'Ada Tech School, cette formation nous prépare en deux ans aux métiers du développement informatique (Mobile, back-end et front-end) grâce à la pédagogie Montessori et à des projets collectifs.",
@@ -28,8 +28,8 @@ class Formations extends StatelessWidget {
           ),
           SecondaryArticle(
             imagePath: "img/Formations/techforgood.png",
-            title: "2023 : TECH FOR GOOD TOUR ",
-            titlethen: "FORMATION DE MOBILISATEUR",
+            titleHeadline: "2023 : TECH FOR GOOD TOUR ",
+            titleOverline: "FORMATION DE MOBILISATEUR",
             paragraphMainArticle:
                 "Le saviez-vous ?\n97% des sites ne sont pas accessibles.\n\nLes organisations 'Tech for good' et Latitudes ont décidé de se mobiliser conjointement afin de proposer aux personnes concernées de se questionner sur les impacts de la Tech.\nDans ce cadre, des sensibilisations sont mises en place s’adressant aux citoyens : étudiant·es, apprenant·es, employé·es, freelances ou encore membres de communautés.",
             themeMainArticle: "Johan",
@@ -41,8 +41,8 @@ class Formations extends StatelessWidget {
           ),
           SecondaryArticle(
             imagePath: "img/Formations/logoESIT.png",
-            title: "2020 - 2021 :",
-            titlethen:
+            titleHeadline: "2020 - 2021 :",
+            titleOverline:
                 " MASTER 1 TRADUCTION ÉDITORIALE, ÉCONOMIQUE ET TECHNIQUE",
             paragraphMainArticle:
                 "ESIT (ÉCOLE SUPÉRIEURE D’INTERPRÈTES ET DE TRADUCTEURS)",
@@ -54,8 +54,8 @@ class Formations extends StatelessWidget {
           ),
           SecondaryArticle(
             imagePath: "img/Formations/UnivEvry.png",
-            title: "2009 - 2011 : ",
-            titlethen: "MASTER AMENAGEMENT ET DEVELOPPEMENT TERRITORIAL",
+            titleHeadline: "2009 - 2011 : ",
+            titleOverline: "MASTER AMENAGEMENT ET DEVELOPPEMENT TERRITORIAL",
             paragraphMainArticle:
                 "Après l'obtention de ma Licence et une année de réflexion, j'ai décidé de me tourner vers ce Master qui forme des cadres territoriaux et associatifs dans le développement social local.",
             themeMainArticle: "Johan",
@@ -67,8 +67,8 @@ class Formations extends StatelessWidget {
           ),
           SecondaryArticle(
             imagePath: "img/Formations/Logo_Paris_Descartes.png",
-            title: "2006 - 2009 :",
-            titlethen: " LICENCE 3 - MASTER 1 SCIENCES DU LANGAGE",
+            titleHeadline: "2006 - 2009 :",
+            titleOverline: " LICENCE 3 - MASTER 1 SCIENCES DU LANGAGE",
             paragraphMainArticle: "UNIVERSITÉ PARIS V DESCARTES",
             themeMainArticle: "Anastasia",
             writtenBy: "Anastasia Korotkova",
@@ -80,8 +80,8 @@ class Formations extends StatelessWidget {
           ),
           SecondaryArticle(
             imagePath: "img/Formations/STAPSLYON1.png",
-            title: "2007 - 2008 :",
-            titlethen: " LICENCE STAPS MANAGEMENT DES ORGANISATIONS SPORTIVES",
+            titleHeadline: "2007 - 2008 :",
+            titleOverline: " LICENCE STAPS MANAGEMENT DES ORGANISATIONS SPORTIVES",
             paragraphMainArticle:
                 "Suite à mon DUT, je me suis orienté sur la filière STAPS à Lyon, séduit par l'opportunité de m'installer dans une grande ville et de poursuivre mon cursus dans le domaine du sport",
             themeMainArticle: "Johan",
@@ -94,8 +94,8 @@ class Formations extends StatelessWidget {
           ),
           SecondaryArticle(
             imagePath: "img/Formations/pedInstitut.jpg",
-            title: "2000 - 2005 :",
-            titlethen: " MASTER PROFESSEURE D'ANGLAIS ET DE FRANÇAIS",
+            titleHeadline: "2000 - 2005 :",
+            titleOverline: " MASTER PROFESSEURE D'ANGLAIS ET DE FRANÇAIS",
             paragraphMainArticle:
                 "INSTITUT PÉDAGOGIQUE DE IOCHKAR-OLA (RUSSIE)",
             themeMainArticle: "Anastasia",
@@ -106,8 +106,8 @@ class Formations extends StatelessWidget {
           ),
           SecondaryArticle(
             imagePath: "img/Formations/IUTIndre.png",
-            title: "2005 - 2007 :",
-            titlethen: " DUT TECHNIQUES DE COMMERCIALISATION",
+            titleHeadline: "2005 - 2007 :",
+            titleOverline: " DUT TECHNIQUES DE COMMERCIALISATION",
             paragraphMainArticle:
                 "Après avoir obtenu mon Baccalauréat Economique et Social à Bourges, j'ai passé deux ans à Issoudun et son IUT de l'Indre.",
             themeMainArticle: "Johan",
