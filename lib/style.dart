@@ -59,12 +59,26 @@ TextSpan subTitle(String title, double fontSize) {
               color: Colors.black, fontSize: 18, letterSpacing: 0.6)));
 }
 
-Text paragraph(String? paragraph) {
-  return Text("$paragraph",
+Widget paragraph(String? paragraph) {
+  final textSpans = paragraph!
+      .split('\\n')
+      .map<InlineSpan>((line) => TextSpan(text: '$line\n'))
+      .toList();
+
+  return Text.rich(
+    TextSpan(
+      children: textSpans,
       style: GoogleFonts.tinos(
-          textStyle: const TextStyle(
-              color: Colors.black, fontSize: 18, letterSpacing: 0.6)));
+        textStyle: const TextStyle(
+          color: Colors.black,
+          fontSize: 18,
+          letterSpacing: 0.6,
+        ),
+      ),
+    ),
+  );
 }
+
 
 Padding legendePictures(String legende) {
   return Padding(

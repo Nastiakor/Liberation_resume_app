@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cv_flutter_libe/view_articles_main_full_secondary.dart';
+import 'package:cv_flutter_libe/style.dart';
 
 class ArticlesFirebase extends StatefulWidget {
   @override
@@ -57,7 +58,7 @@ class _ArticlesFirebaseState extends State<ArticlesFirebase> {
                   imagePath: "${data['imagePath']}",
                   titleHeadline: "${data['titleHeadline']} ",
                   titleOverline:"${data['titleOverline']}",
-                  paragraphMainArticle: "${data['paragraphMainArticle']}",
+                  paragraphMainArticle: data['paragraphMainArticle'],
                   themeMainArticle: "${data['themeMainArticle']}",
                   writtenBy: "${data['writtenBy']}",
                   publishDateParam: "2023-03-06 10:13:00",
