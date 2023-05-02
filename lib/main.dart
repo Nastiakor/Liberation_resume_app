@@ -8,6 +8,8 @@ import 'package:cv_flutter_libe/views/formations.dart';
 import 'package:cv_flutter_libe/style.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cv_flutter_libe/articles_firebase.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -106,7 +108,7 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> with SingleTickerPro
         body: TabBarView(
           controller: _tabController,
           children: const [
-            HomePage(),
+            ArticlesFirebase(),
             Projects(),
             Formations(),
             Experiences(),
