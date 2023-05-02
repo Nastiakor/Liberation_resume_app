@@ -107,7 +107,7 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> with SingleTickerPro
     ),
         body: TabBarView(
           controller: _tabController,
-          children: const [
+          children: [
             ArticlesFirebase(),
             Projects(),
             Formations(),
