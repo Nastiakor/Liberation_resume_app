@@ -9,11 +9,13 @@ class ArticlesFirebase extends StatefulWidget {
 }
 
 class _ArticlesFirebaseState extends State<ArticlesFirebase> {
-  Future<List<DocumentSnapshot>> getMainDocumentByCondition(String collectionName, String field, dynamic value) async {
+  Future<List<DocumentSnapshot>> getMainDocumentByCondition(
+      String collectionName, String field, dynamic value, String categories, String category) async {
     final querySnapshot = await FirebaseFirestore.instance
         .collection(collectionName)
         .where(field, isEqualTo: value)
-        .limit(2)
+        .where(categories, isEqualTo: category)
+        // .limit(7)
         .get();
 
     if (querySnapshot.docs.isNotEmpty) {
@@ -23,57 +25,29 @@ class _ArticlesFirebaseState extends State<ArticlesFirebase> {
     }
   }
 
-  Future<List<DocumentSnapshot>> getSecondaryDocumentByCondition(String collectionName, String field, dynamic value) async {
+  Future<List<DocumentSnapshot>> getSecondaryDocumentByCondition(
+      String collectionName, String field, dynamic value, String categories, String category) async {
     final querySnapshot = await FirebaseFirestore.instance
         .collection(collectionName)
         .where(field, isEqualTo: value)
+        .where(categories, isEqualTo: category)
         .get();
-    
+
     if (querySnapshot.docs.isNotEmpty) {
       return querySnapshot.docs;
     } else {
       throw Exception('Aucun document ne correspond à la condition spécifiée.');
     }
-        
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: ListView(
-        children:[
+        children: [
           FutureBuilder<List<DocumentSnapshot>>(
-        future: getMainDocumentByCondition('Articles', 'typeOfArticle', 'main'),
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: CircularProgressIndicator());
-          } else if (snapshot.hasError) {
-            return Center(child: Text('Erreur: ${snapshot.error}'));
-          } else {
-            final documents = snapshot.data!;
-            return Column(
-              children: documents.map((doc) {
-                final data = doc.data() as Map<String, dynamic>;
-                final date = data['publishDateParam'].toDate();
-                final formattedDate = '${date.year}-${date.month.toString().padLeft(2, '0')}-${date.day.toString().padLeft(2, '0')} ${date.hour.toString().padLeft(2, '0')}:${date.minute.toString().padLeft(2, '0')}:${date.second.toString().padLeft(2, '0')}';
-                return MainArticle(
-                  imagePath: "${data['imagePath']}",
-                  titleHeadline: "${data['titleHeadline']} ",
-                  titleOverline:"${data['titleOverline']}",
-                  paragraphMainArticle: data['paragraphMainArticle'],
-                  themeMainArticle: "${data['themeMainArticle']}",
-                  writtenBy: "${data['writtenBy']}",
-                  publishDateParam: formattedDate,
-                  legendPicture: "${data['legendPicture']}",
-                  completeArticle: "${data['completeArticle']}",
-                );
-              }).toList(),
-            );
-          }
-        },
-      ),
-          FutureBuilder<List<DocumentSnapshot>>(
-            future: getSecondaryDocumentByCondition('Articles', 'typeOfArticle', 'secondary'),
+            future:
+                getMainDocumentByCondition('Articles', 'typeOfArticle', 'main', 'category', 'homePage'),
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
                 return Center(child: CircularProgressIndicator());
@@ -85,11 +59,45 @@ class _ArticlesFirebaseState extends State<ArticlesFirebase> {
                   children: documents.map((doc) {
                     final data = doc.data() as Map<String, dynamic>;
                     final date = data['publishDateParam'].toDate();
-                    final formattedDate = '${date.year}-${date.month.toString().padLeft(2, '0')}-${date.day.toString().padLeft(2, '0')} ${date.hour.toString().padLeft(2, '0')}:${date.minute.toString().padLeft(2, '0')}:${date.second.toString().padLeft(2, '0')}';
+                    final formattedDate =
+                        '${date.year}-${date.month.toString().padLeft(2, '0')}-${date.day.toString().padLeft(2, '0')} ${date.hour.toString().padLeft(2, '0')}:${date.minute.toString().padLeft(2, '0')}:${date.second.toString().padLeft(2, '0')}';
+                    return MainArticle(
+                      imagePath: "${data['imagePath']}",
+                      titleHeadline: "${data['titleHeadline']} ",
+                      titleOverline: "${data['titleOverline']}",
+                      paragraphMainArticle: data['paragraphMainArticle'],
+                      themeMainArticle: "${data['themeMainArticle']}",
+                      writtenBy: "${data['writtenBy']}",
+                      publishDateParam: formattedDate,
+                      legendPicture: "${data['legendPicture']}",
+                      completeArticle: "${data['completeArticle']}",
+                      linkOrNot: "${data['linkOrNOt']}",
+                    );
+                  }).toList(),
+                );
+              }
+            },
+          ),
+          FutureBuilder<List<DocumentSnapshot>>(
+            future: getSecondaryDocumentByCondition(
+                'Articles', 'typeOfArticle', 'secondary', 'category', 'homePage'),
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return Center(child: CircularProgressIndicator());
+              } else if (snapshot.hasError) {
+                return Center(child: Text('Erreur: ${snapshot.error}'));
+              } else {
+                final documents = snapshot.data!;
+                return Column(
+                  children: documents.map((doc) {
+                    final data = doc.data() as Map<String, dynamic>;
+                    final date = data['publishDateParam'].toDate();
+                    final formattedDate =
+                        '${date.year}-${date.month.toString().padLeft(2, '0')}-${date.day.toString().padLeft(2, '0')} ${date.hour.toString().padLeft(2, '0')}:${date.minute.toString().padLeft(2, '0')}:${date.second.toString().padLeft(2, '0')}';
                     return SecondaryArticle(
                       imagePath: "${data['imagePath']}",
                       titleHeadline: "${data['titleHeadline']} ",
-                      titleOverline:"${data['titleOverline']}",
+                      titleOverline: "${data['titleOverline']}",
                       paragraphMainArticle: data['paragraphMainArticle'],
                       themeMainArticle: "${data['themeMainArticle']}",
                       writtenBy: "${data['writtenBy']}",
@@ -103,7 +111,7 @@ class _ArticlesFirebaseState extends State<ArticlesFirebase> {
             },
           ),
         ],
-    ),
+      ),
     );
   }
 }
