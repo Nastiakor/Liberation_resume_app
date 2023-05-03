@@ -3,12 +3,12 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cv_flutter_libe/view_articles_main_full_secondary.dart';
 import 'package:cv_flutter_libe/style.dart';
 
-class ArticlesFirebase extends StatefulWidget {
+class ArticlesHomePage extends StatefulWidget {
   @override
-  _ArticlesFirebaseState createState() => _ArticlesFirebaseState();
+  _ArticlesHomePageState createState() => _ArticlesHomePageState();
 }
 
-class _ArticlesFirebaseState extends State<ArticlesFirebase> {
+class _ArticlesHomePageState extends State<ArticlesHomePage> {
   Future<List<DocumentSnapshot>> getMainDocumentByCondition(
       String collectionName, String field, dynamic value, String categories, String category) async {
     final querySnapshot = await FirebaseFirestore.instance
