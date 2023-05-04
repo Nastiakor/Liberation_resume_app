@@ -7,7 +7,6 @@ class Projects extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return SingleChildScrollView(
       child: Column(
         children: [
@@ -23,13 +22,14 @@ class Projects extends StatelessWidget {
             legendPicture: "Validation du panier",
             completeArticle:
                 "Voici le pitch qui fixe le cadre de ce projet sur lequel notre groupe s'est accordé : Lauréline Fleury a lancé son entreprise “Anciens meubles pour une nouvelle vie”, de vente de meubles de seconde main. Pour gagner en visibilité, elle a besoin d’avoir un site internet pour afficher ses produits. En plus, cela lui permettra de gérer son stock. Son besoin est donc le suivant : J’ai besoin d’avoir une page principale qui regroupera les meubles en vente en ce moment. Pour l’affichage de chaque meuble, je souhaite un encart dans lequel on pourra retrouver une photo, le type de meuble, le prix et un bouton pour l’acheter. Chaque encart sera cliquable pour permettre d’accéder au détail du produit. Sur cette nouvelle page, on retrouvera une série de photos du meuble et toutes les informations nécessaires, c’est-à-dire, le type, le prix, les dimensions, les couleurs, les matières et bien sûr un bouton pour acheter. Pour ce qui est de l’administration, je souhaite une page de connexion. Lorsque je suis connectée je dois pouvoir accéder à une page de gestion des produits. Sur celle-ci je veux pouvoir avoir la liste de mes meubles. Je souhaite pouvoir modifier les informations de mes produits en ayant un bouton depuis ma liste. Je dois pouvoir également les supprimer s’ils ont été vendus en magasin.",
-              linkRetroVibes:"retrovibes.herokuapp.com/home",
+            linkRetroVibes: "retrovibes.herokuapp.com/home",
           ),
           MainArticle(
             imagePath: "img/Projets/Pico8_2.png",
             titleHeadline: "CREATION D'UN JEU RETRO L'ILE AUX TRESORS",
             titleOverline: " EN LUA GRACE A LA PLATEFORME PICO-8",
-            paragraphMainArticle: "Pico-8 est une console imaginaire qui permet de créer, partager, et jouer à des jeux miniatures qui évoquent avec nostalgie les débuts du jeu vidéo grand public.",
+            paragraphMainArticle:
+                "Pico-8 est une console imaginaire qui permet de créer, partager, et jouer à des jeux miniatures qui évoquent avec nostalgie les débuts du jeu vidéo grand public.",
             themeMainArticle: "Anastasia",
             writtenBy: "Anastasia Korotkova",
             publishDateParam: "2023-03-08 16:10:00",
@@ -59,7 +59,8 @@ class Projects extends StatelessWidget {
             writtenBy: "Anastasia Korotkova",
             publishDateParam: "2023-03-08 16:40:00",
             legendPicture: "",
-            completeArticle: "- Durée: 2 semaines\n- Langages : JavaScript, HTML, CSS\n\nCe projet réalisé avec 2 autres camarades de l'école, nous a permis de découvrir comment effectuer des appels d'API, d'appliquer l'asynchrone, nous familiariser avec des bibliothèques de JavaScript, e.g. jQuery, de créer un repo commun sur Github ",
+            completeArticle:
+                "- Durée: 2 semaines\n- Langages : JavaScript, HTML, CSS\n\nCe projet réalisé avec 2 autres camarades de l'école, nous a permis de découvrir comment effectuer des appels d'API, d'appliquer l'asynchrone, nous familiariser avec des bibliothèques de JavaScript, e.g. jQuery, de créer un repo commun sur Github ",
           ),
           SecondaryArticle(
             imagePath: "img/Projets/Chrome2.png",
@@ -129,14 +130,14 @@ class Projects extends StatelessWidget {
             titleHeadline: "APPREHENDER L'APPEL D'UNE API : ",
             titleOverline: "PUBLICATION D'UN STUDIO GHIBLI",
             paragraphMainArticle:
-            "Ce projet avait pour objectif de développer une application web qui permet de visualiser des données de façon dynamique.",
+                "Ce projet avait pour objectif de développer une application web qui permet de visualiser des données de façon dynamique.",
             themeMainArticle: "Johan",
             writtenBy: "Johan Anquetil",
             publishDateParam: "2023-03-06 10:13:00",
             legendPicture: "Une page du site sur",
             completeArticle:
-            "Ce projet a été réalisé avec deux camarades de l'école 'Ada Tech School' dans le cadre des projets collectifs. Ce fut le deuxième projet, lors de notre deuxième mois de formation. Nous avons proposé aux fans du studio Ghibli d'avoir accès à la filmographie et à différents détails et informations. L'objectif pédagogique était de nous familiariser avec les API.\n\nCe projet nous a permis de développer notre connaissance de JavaScript, de découvrir AnimeJS, d'appeler une librairie, de créer du CSS et HTML. Très peu de données sont écrites en dur dans le code, la plupart des éléments proviennent de l'API.",
-              linkGhibli: "test",
+                "Ce projet a été réalisé avec deux camarades de l'école 'Ada Tech School' dans le cadre des projets collectifs. Ce fut le deuxième projet, lors de notre deuxième mois de formation. Nous avons proposé aux fans du studio Ghibli d'avoir accès à la filmographie et à différents détails et informations. L'objectif pédagogique était de nous familiariser avec les API.\n\nCe projet nous a permis de développer notre connaissance de JavaScript, de découvrir AnimeJS, d'appeler une librairie, de créer du CSS et HTML. Très peu de données sont écrites en dur dans le code, la plupart des éléments proviennent de l'API.",
+            linkGhibli: "test",
           ),
         ],
       ),
