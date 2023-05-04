@@ -567,12 +567,10 @@ class SecondaryArticle extends StatelessWidget {
   }
 }
 
-_launchURL(String link) async {
-  String url = "$link";
-  final uri = Uri.parse(url);
-  if (await canLaunchUrl(uri)) {
-    await launchUrl(uri);
-  } else {
-    throw 'Could not launch $url';
+Future<void> _launchURL(String link) async {
+  final Uri _url = Uri.parse(link);
+  if (!await launchUrl(_url)) {
+    throw Exception('Could not launch $_url');
   }
 }
+
