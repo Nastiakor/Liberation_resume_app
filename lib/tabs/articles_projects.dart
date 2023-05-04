@@ -78,6 +78,7 @@ class _ArticlesProjectsState extends State<ArticlesProjects> {
                       publishDateParam: formattedDate,
                       legendPicture: "${data['legendPicture']}",
                       completeArticle: "${data['completeArticle']}",
+                      linkRetroVibes: "${data['linkRetroVibes']}"
                     );
                   }).toList(),
                 );

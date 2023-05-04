@@ -386,7 +386,8 @@ class FullArticle extends MainArticle {
                   : InkWell(
                     onTap: () {
                       _launchURL(
-                          'http://retrovibes.herokuapp.com/home/');
+                          "${linkRetroVibes}");
+                      print("${linkRetroVibes}");
                     },
                     child: Align(
                       alignment: Alignment.topRight,
