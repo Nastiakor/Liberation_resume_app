@@ -42,21 +42,21 @@ class MainArticle extends StatelessWidget {
   final String? linkOrNot;
   final String? link;
 
-  MainArticle(
-      {required this.imagePath,
-      required this.titleOverline,
-      required this.titleHeadline,
-      required this.paragraphMainArticle,
-      required this.themeMainArticle,
-      required this.writtenBy,
-      required this.publishDateParam,
-      required this.legendPicture,
-      required this.completeArticle,
-      this.nextCompleteArticle,
-      this.contactOrNot,
-      this.linkOrNot,
-      this.link,
-      });
+  MainArticle({
+    required this.imagePath,
+    required this.titleOverline,
+    required this.titleHeadline,
+    required this.paragraphMainArticle,
+    required this.themeMainArticle,
+    required this.writtenBy,
+    required this.publishDateParam,
+    required this.legendPicture,
+    required this.completeArticle,
+    this.nextCompleteArticle,
+    this.contactOrNot,
+    this.linkOrNot,
+    this.link,
+  });
 
   // Define the function to calculate the days until the birthday
   String daysUntilArticle() {
@@ -85,7 +85,7 @@ class MainArticle extends StatelessWidget {
             contactOrNot: contactOrNot,
             linkOrNot: linkOrNot,
             link: link,
-            ),
+          ),
         ),
       ),
       child: Container(
@@ -110,8 +110,14 @@ class MainArticle extends StatelessWidget {
                       children: writtenBy == "Johan Anquetil"
                           ? [redTitle(titleHeadline), blackTitle(titleOverline)]
                           : writtenBy == "Anastasia Korotkova"
-                              ? [greenTitle(titleHeadline), blackTitle(titleOverline)]
-                              : [purpleTitle(titleHeadline), blackTitle(titleOverline)],
+                              ? [
+                                  greenTitle(titleHeadline),
+                                  blackTitle(titleOverline)
+                                ]
+                              : [
+                                  purpleTitle(titleHeadline),
+                                  blackTitle(titleOverline)
+                                ],
                     ),
                   ),
                   const SizedBox(height: 10),
@@ -162,7 +168,7 @@ class FullArticle extends MainArticle {
           contactOrNot: contactOrNot,
           linkOrNot: linkOrNot,
           link: link,
-          );
+        );
 
   @override
   Widget build(BuildContext context) {
@@ -182,9 +188,9 @@ class FullArticle extends MainArticle {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Image.asset(
-                'img/j&a.png',
-                width: 50,
-              ),
+              'img/j&a.png',
+              width: 50,
+            ),
           ],
         ),
       ),
@@ -323,12 +329,12 @@ class FullArticle extends MainArticle {
                 }(),
               ],
             ),
-                () {
+            () {
               return (contactOrNot?.isEmpty ?? true)
                   ? Container()
                   : const SizedBox(height: 10);
             }(),
-                () {
+            () {
               return (contactOrNot?.isEmpty ?? true)
                   ? Container()
                   : const Divider(thickness: 2);
@@ -378,29 +384,27 @@ class FullArticle extends MainArticle {
                 }(),
               ],
             ),
-                () {
+            () {
               return (link?.isEmpty ?? true)
                   ? Container()
                   : InkWell(
-                    onTap: () {
-                      _launchURL(
-                          "${link}");
-                      print("linkOrNot${link}");
-                    },
-                    child: Align(
-                      alignment: Alignment.topRight,
-                      child: Container(
-                        margin: const EdgeInsets.only(right: 20.0),
-                        child: const Text(
-                          'Visitez le site en cliquant ici',
-                          style: TextStyle(
-                            color: Colors.blue,
-                            decoration: TextDecoration.underline,
+                      onTap: () {
+                        _launchURL("${link}");
+                        print("linkOrNot${link}");
+                      },
+                      child: Align(
+                        alignment: Alignment.topRight,
+                        child: Container(
+                          margin: const EdgeInsets.only(right: 20.0),
+                          child: const Text(
+                            'Visitez le site en cliquant ici',
+                            style: TextStyle(
+                              color: Colors.blue,
+                              decoration: TextDecoration.underline,
+                            ),
                           ),
                         ),
-                      ),
-                    )
-                  );
+                      ));
             }(),
             //     () {
             //   return (linkOrNot?.isEmpty ?? true)
@@ -481,20 +485,20 @@ class SecondaryArticle extends StatelessWidget {
   String? linkOrNot;
   String? link;
 
-  SecondaryArticle(
-      {required this.imagePath,
-      required this.titleHeadline,
-      required this.titleOverline,
-      required this.paragraphMainArticle,
-      required this.themeMainArticle,
-      required this.writtenBy,
-      required this.publishDateParam,
-      required this.legendPicture,
-      required this.completeArticle,
-      this.nextCompleteArticle,
-      this.link,
-      this.linkOrNot,
-      });
+  SecondaryArticle({
+    required this.imagePath,
+    required this.titleHeadline,
+    required this.titleOverline,
+    required this.paragraphMainArticle,
+    required this.themeMainArticle,
+    required this.writtenBy,
+    required this.publishDateParam,
+    required this.legendPicture,
+    required this.completeArticle,
+    this.nextCompleteArticle,
+    this.link,
+    this.linkOrNot,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -516,8 +520,8 @@ class SecondaryArticle extends StatelessWidget {
                 writtenBy: writtenBy,
                 legendPicture: legendPicture,
                 completeArticle: completeArticle,
-                link:link,
-                linkOrNot:linkOrNot,
+                link: link,
+                linkOrNot: linkOrNot,
               ),
             )),
             child: Padding(
@@ -530,10 +534,19 @@ class SecondaryArticle extends StatelessWidget {
                     child: RichText(
                       text: TextSpan(
                         children: writtenBy == "Johan Anquetil"
-                            ? [redTitle(titleHeadline), blackTitle(titleOverline)]
+                            ? [
+                                redTitle(titleHeadline),
+                                blackTitle(titleOverline)
+                              ]
                             : writtenBy == "Anastasia Korotkova"
-                                ? [greenTitle(titleHeadline), blackTitle(titleOverline)]
-                                : [purpleTitle(titleHeadline), blackTitle(titleOverline)],
+                                ? [
+                                    greenTitle(titleHeadline),
+                                    blackTitle(titleOverline)
+                                  ]
+                                : [
+                                    purpleTitle(titleHeadline),
+                                    blackTitle(titleOverline)
+                                  ],
                       ),
                     ),
                   ),
