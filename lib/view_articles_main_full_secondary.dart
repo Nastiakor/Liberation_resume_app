@@ -29,8 +29,8 @@ String calculatePublishingDate(DateTime publishingDate) {
 
 class MainArticle extends StatelessWidget {
   final String imagePath;
-  final String title;
-  final String titlethen;
+  final String titleOverline;
+  final String titleHeadline;
   final String paragraphMainArticle;
   final String themeMainArticle;
   final String writtenBy;
@@ -40,13 +40,12 @@ class MainArticle extends StatelessWidget {
   final String? nextCompleteArticle;
   final String? contactOrNot;
   final String? linkOrNot;
-  final String? linkRetroVibes;
-  final String? linkGhibli;
+  final String? link;
 
   MainArticle(
       {required this.imagePath,
-      required this.title,
-      required this.titlethen,
+      required this.titleOverline,
+      required this.titleHeadline,
       required this.paragraphMainArticle,
       required this.themeMainArticle,
       required this.writtenBy,
@@ -56,8 +55,8 @@ class MainArticle extends StatelessWidget {
       this.nextCompleteArticle,
       this.contactOrNot,
       this.linkOrNot,
-      this.linkRetroVibes,
-      this.linkGhibli});
+      this.link,
+      });
 
   // Define the function to calculate the days until the birthday
   String daysUntilArticle() {
@@ -74,8 +73,8 @@ class MainArticle extends StatelessWidget {
         MaterialPageRoute(
           builder: (context) => FullArticle(
             imagePath: imagePath,
-            title: title,
-            titlethen: titlethen,
+            titleHeadline: titleHeadline,
+            titleOverline: titleOverline,
             paragraphMainArticle: paragraphMainArticle,
             themeMainArticle: themeMainArticle,
             publishDateParam: publishDateParam,
@@ -85,9 +84,8 @@ class MainArticle extends StatelessWidget {
             nextCompleteArticle: nextCompleteArticle,
             contactOrNot: contactOrNot,
             linkOrNot: linkOrNot,
-            linkRetroVibes: linkRetroVibes,
-            linkGhibli: linkGhibli,
-          ),
+            link: link,
+            ),
         ),
       ),
       child: Container(
@@ -110,10 +108,10 @@ class MainArticle extends StatelessWidget {
                   RichText(
                     text: TextSpan(
                       children: writtenBy == "Johan Anquetil"
-                          ? [redTitle(title), blackTitle(titlethen)]
+                          ? [redTitle(titleHeadline), blackTitle(titleOverline)]
                           : writtenBy == "Anastasia Korotkova"
-                              ? [greenTitle(title), blackTitle(titlethen)]
-                              : [purpleTitle(title), blackTitle(titlethen)],
+                              ? [greenTitle(titleHeadline), blackTitle(titleOverline)]
+                              : [purpleTitle(titleHeadline), blackTitle(titleOverline)],
                     ),
                   ),
                   const SizedBox(height: 10),
@@ -138,8 +136,8 @@ class FullArticle extends MainArticle {
 
   FullArticle({
     required String imagePath,
-    required String title,
-    required String titlethen,
+    required String titleHeadline,
+    required String titleOverline,
     required String paragraphMainArticle,
     required String themeMainArticle,
     required String writtenBy,
@@ -149,12 +147,11 @@ class FullArticle extends MainArticle {
     String? nextCompleteArticle,
     String? contactOrNot,
     String? linkOrNot,
-    String? linkRetroVibes,
-    String? linkGhibli,
+    String? link,
   }) : super(
           imagePath: imagePath,
-          title: title,
-          titlethen: titlethen,
+          titleOverline: titleOverline,
+          titleHeadline: titleHeadline,
           paragraphMainArticle: paragraphMainArticle,
           themeMainArticle: themeMainArticle,
           writtenBy: writtenBy,
@@ -164,12 +161,13 @@ class FullArticle extends MainArticle {
           nextCompleteArticle: nextCompleteArticle,
           contactOrNot: contactOrNot,
           linkOrNot: linkOrNot,
-          linkRetroVibes: linkRetroVibes,
-          linkGhibli: linkGhibli,
-        );
+          link: link,
+          );
 
   @override
   Widget build(BuildContext context) {
+    print("LON ${linkOrNot}");
+    print("link ${link?.isEmpty}");
     super.contactOrNot?.isEmpty == false
         ? boolContact == true
         : boolContact == false;
@@ -205,17 +203,17 @@ class FullArticle extends MainArticle {
                             text: TextSpan(
                                 children: writtenBy == "Johan Anquetil"
                                     ? [
-                                        redTitle(super.title),
-                                        blackTitle(super.titlethen)
+                                        redTitle(super.titleHeadline),
+                                        blackTitle(super.titleOverline)
                                       ]
                                     : writtenBy == "Anastasia Korotkova"
                                         ? [
-                                            greenTitle(super.title),
-                                            blackTitle(super.titlethen)
+                                            greenTitle(super.titleHeadline),
+                                            blackTitle(super.titleOverline)
                                           ]
                                         : [
-                                            purpleTitle(super.title),
-                                            blackTitle(super.titlethen)
+                                            purpleTitle(super.titleHeadline),
+                                            blackTitle(super.titleOverline)
                                           ])),
                       ),
                     ],
@@ -381,12 +379,13 @@ class FullArticle extends MainArticle {
               ],
             ),
                 () {
-              return (linkRetroVibes?.isEmpty ?? true)
+              return (link?.isEmpty ?? true)
                   ? Container()
                   : InkWell(
                     onTap: () {
                       _launchURL(
-                          'http://retrovibes.herokuapp.com/home/');
+                          "${link}");
+                      print("linkOrNot${link}");
                     },
                     child: Align(
                       alignment: Alignment.topRight,
@@ -403,55 +402,55 @@ class FullArticle extends MainArticle {
                     )
                   );
             }(),
-                () {
-              return (linkOrNot?.isEmpty ?? true)
-                  ? Container()
-                  : Column(
-                children: [
-                  const Text(
-                    "Visitez le site d'Ada Tech School :",
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold, fontSize: 18),
-                  ),
-                  const Padding(
-                    padding: EdgeInsets.only(bottom: 12),
-                  ),
-                  InkWell(
-                    onTap: () {
-                      _launchURL(
-                          'https://adatechschool.fr/');
-                    },
-                    child: Image.asset(
-                      'img/logos/logo_ada.png',
-                      width: 150,
-                    ),
-                  ),
-                ],
-              );
-            }(),
-                () {
-              return (linkGhibli?.isEmpty ?? true)
-                  ? Container()
-                  : InkWell(
-                  onTap: () {
-                    _launchURL(
-                        'http://johananquetil.fr/Ghibliproject/');
-                  },
-                  child: Align(
-                    alignment: Alignment.topRight,
-                    child: Container(
-                      margin: const EdgeInsets.only(right: 20.0),
-                      child: const Text(
-                        'Visitez le site en cliquant ici',
-                        style: TextStyle(
-                          color: Colors.blue,
-                          decoration: TextDecoration.underline,
-                        ),
-                      ),
-                    ),
-                  )
-              );
-            }(),
+            //     () {
+            //   return (linkOrNot?.isEmpty ?? true)
+            //       ? Container()
+            //       : Column(
+            //     children: [
+            //       const Text(
+            //         "Visitez le site d'Ada Tech School :",
+            //         style: TextStyle(
+            //             fontWeight: FontWeight.bold, fontSize: 18),
+            //       ),
+            //       const Padding(
+            //         padding: EdgeInsets.only(bottom: 12),
+            //       ),
+            //       InkWell(
+            //         onTap: () {
+            //           _launchURL(
+            //               'https://adatechschool.fr/');
+            //         },
+            //         child: Image.asset(
+            //           'img/logos/logo_ada.png',
+            //           width: 150,
+            //         ),
+            //       ),
+            //     ],
+            //   );
+            // }(),
+            // //   () {
+            // //   return (linkGhibli?.isEmpty ?? true)
+            // //       ? Container()
+            // //       : InkWell(
+            // //       onTap: () {
+            // //         _launchURL(
+            // //             'http://johananquetil.fr/Ghibliproject/');
+            // //       },
+            // //       child: Align(
+            // //         alignment: Alignment.topRight,
+            // //         child: Container(
+            // //           margin: const EdgeInsets.only(right: 20.0),
+            // //           child: const Text(
+            // //             'Visitez le site en cliquant ici',
+            // //             style: TextStyle(
+            // //               color: Colors.blue,
+            // //               decoration: TextDecoration.underline,
+            // //             ),
+            // //           ),
+            // //         ),
+            // //       )
+            // //   );
+            // // }(),
             const SizedBox(height: 20),
           ],
         ),
@@ -470,8 +469,8 @@ class SecondaryArticle extends StatelessWidget {
   }
 
   String imagePath;
-  String title;
-  String titlethen;
+  String titleHeadline;
+  String titleOverline;
   String paragraphMainArticle;
   String themeMainArticle;
   String writtenBy;
@@ -479,12 +478,13 @@ class SecondaryArticle extends StatelessWidget {
   String legendPicture;
   String completeArticle;
   String? nextCompleteArticle;
-  String? linkGhibli;
+  String? linkOrNot;
+  String? link;
 
   SecondaryArticle(
       {required this.imagePath,
-      required this.title,
-      required this.titlethen,
+      required this.titleHeadline,
+      required this.titleOverline,
       required this.paragraphMainArticle,
       required this.themeMainArticle,
       required this.writtenBy,
@@ -492,7 +492,9 @@ class SecondaryArticle extends StatelessWidget {
       required this.legendPicture,
       required this.completeArticle,
       this.nextCompleteArticle,
-      this.linkGhibli});
+      this.link,
+      this.linkOrNot,
+      });
 
   @override
   Widget build(BuildContext context) {
@@ -506,15 +508,16 @@ class SecondaryArticle extends StatelessWidget {
             onTap: () => Navigator.of(context).push(MaterialPageRoute(
               builder: (context) => FullArticle(
                 imagePath: imagePath,
-                title: title,
-                titlethen: titlethen,
+                titleHeadline: titleHeadline,
+                titleOverline: titleOverline,
                 paragraphMainArticle: paragraphMainArticle,
                 themeMainArticle: themeMainArticle,
                 publishDateParam: publishDateParam,
                 writtenBy: writtenBy,
                 legendPicture: legendPicture,
                 completeArticle: completeArticle,
-                linkGhibli:linkGhibli,
+                link:link,
+                linkOrNot:linkOrNot,
               ),
             )),
             child: Padding(
@@ -527,10 +530,10 @@ class SecondaryArticle extends StatelessWidget {
                     child: RichText(
                       text: TextSpan(
                         children: writtenBy == "Johan Anquetil"
-                            ? [redTitle(title), blackTitle(titlethen)]
+                            ? [redTitle(titleHeadline), blackTitle(titleOverline)]
                             : writtenBy == "Anastasia Korotkova"
-                                ? [greenTitle(title), blackTitle(titlethen)]
-                                : [purpleTitle(title), blackTitle(titlethen)],
+                                ? [greenTitle(titleHeadline), blackTitle(titleOverline)]
+                                : [purpleTitle(titleHeadline), blackTitle(titleOverline)],
                       ),
                     ),
                   ),
@@ -564,12 +567,10 @@ class SecondaryArticle extends StatelessWidget {
   }
 }
 
-_launchURL(String link) async {
-  String url = "$link";
-  final uri = Uri.parse(url);
-  if (await canLaunchUrl(uri)) {
-    await launchUrl(uri);
-  } else {
-    throw 'Could not launch $url';
+Future<void> _launchURL(String link) async {
+  final Uri _url = Uri.parse(link);
+  if (!await launchUrl(_url)) {
+    throw Exception('Could not launch $_url');
   }
 }
+

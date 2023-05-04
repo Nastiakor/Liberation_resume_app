@@ -1,16 +1,18 @@
+import 'package:cv_flutter_libe/tabs/articles_experiences.dart';
+import 'package:cv_flutter_libe/tabs/articles_formations.dart';
 import 'package:flutter/material.dart';
 import 'package:cv_flutter_libe/app_bottom_bar/bottom_navigation_bar.dart';
-import 'package:cv_flutter_libe/views/home_page.dart';
-import 'package:cv_flutter_libe/views/projects.dart';
-import 'package:cv_flutter_libe/views/experiences.dart';
-import 'package:cv_flutter_libe/views/contact.dart';
-import 'package:cv_flutter_libe/views/formations.dart';
 import 'package:cv_flutter_libe/style.dart';
 import 'package:intl/date_symbol_data_local.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:cv_flutter_libe/tabs/articles_homePage.dart';
+import 'package:cv_flutter_libe/tabs/articles_projects.dart';
+import 'package:cv_flutter_libe/tabs/articles_contacts.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await initializeDateFormatting('fr');
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 
@@ -103,12 +105,12 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> with SingleTickerPro
     ),
         body: TabBarView(
           controller: _tabController,
-          children: const [
-            HomePage(),
-            Projects(),
-            Formations(),
-            Experiences(),
-            Contact(),
+          children: [
+            ArticlesHomePage(),
+            ArticlesProjects(),
+            ArticlesFormations(),
+            ArticlesExperiences(),
+            ArticlesContacts(),
           ],
         ),
         resizeToAvoidBottomInset: false,

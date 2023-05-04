@@ -13,8 +13,8 @@ class Experiences extends StatelessWidget {
         children: [
           MainArticle(
             imagePath: "img/Experiences/Lobby_Fabric.png",
-            title: "2018 - 2022 RECEPTIONNISTE",
-            titlethen: " HOTELS A PARIS",
+            titleHeadline: "2018 - 2022 RECEPTIONNISTE",
+            titleOverline: " HOTELS A PARIS",
             paragraphMainArticle:
                 "Pendant 5 ans, j'ai travaillé en tant que réceptionniste dans de divers hôtels à Paris.",
             themeMainArticle: "Anastasia",
@@ -26,9 +26,9 @@ class Experiences extends StatelessWidget {
           ),
           MainArticle(
             imagePath: "img/Experiences/APF2.png",
-            title:
+            titleHeadline:
                 "2016 - 2022 : CHEF DE PROJET REGIONAL ACTIONS ASSOCIATIVES ",
-            titlethen: "APF FRANCE HANDICAP",
+            titleOverline: "APF FRANCE HANDICAP",
             paragraphMainArticle:
                 "Durant 6 ans, j'ai oeuvré en tant que chef de projet régional en Ile-de-France pour l'association APF France handicap dont l'objet est la défense des droits des personnes en situation de handicap. J'avais pour missions principales de conseiller les élus, équipes et directions sur la stratégie de développement, d'accompagner le pouvoir d'agir des membres, d'animer des réseaux d'acteurs et de piloter des projets.",
             themeMainArticle: "Johan",
@@ -41,9 +41,9 @@ class Experiences extends StatelessWidget {
           ),
           SecondaryArticle(
             imagePath: "img/Experiences/ERGONCAPITALPARTNERS.png",
-            title:
+            titleHeadline:
                 "2010 - 2016 ASSISTANTE DE DIRECTION GÉNÉRALE / OFFICE MANAGER",
-            titlethen: " DIVERSES ENTREPRISES A PARIS",
+            titleOverline: " DIVERSES ENTREPRISES A PARIS",
             paragraphMainArticle:
                 "J'ai travaillé dans plusieurs entreprises en tant qu'Assistante de Direction Générale",
             themeMainArticle: "Anastasia",
@@ -55,8 +55,8 @@ class Experiences extends StatelessWidget {
           ),
           SecondaryArticle(
             imagePath: "img/Experiences/IEMNLG.png",
-            title: "2015 - 2016 : CHARGE DE MISSION SOCIOCULTURELLE",
-            titlethen:
+            titleHeadline: "2015 - 2016 : CHARGE DE MISSION SOCIOCULTURELLE",
+            titleOverline:
                 " AVEC DES ADOLESCENTS ET JEUNES ADULTES EN SITUATION DE HANDICAP ET POLYHANDICAP",
             paragraphMainArticle:
                 "Lors de cet emploi que j'ai participé à créer, l'enjeu était de développer la participation citoyenne de ces jeunes âgés de 12 à 20 ans qui ont de fortes dépendances et se retrouvent malheureusement dans des situations d'exclusions sociales (scolaire, culturelle, sportive...), peu d'espaces leur étant accessible. Pour certains, le confinement, c'est toute l'année",
@@ -70,8 +70,8 @@ class Experiences extends StatelessWidget {
           ),
           SecondaryArticle(
             imagePath: "img/Experiences/CiteDeLaMusique.png",
-            title: "2011 HOTESSE D'ACCUEIL",
-            titlethen: " CITÉ DE LA MUSIQUE",
+            titleHeadline: "2011 HOTESSE D'ACCUEIL",
+            titleOverline: " CITÉ DE LA MUSIQUE",
             paragraphMainArticle:
                 "",
             themeMainArticle: "Anastasia",
@@ -82,8 +82,8 @@ class Experiences extends StatelessWidget {
           ),
           SecondaryArticle(
             imagePath: "img/Experiences/APF93.png",
-            title: "2013 - 2015 : CHARGE DE MISSION ACTIONS ASSOCIATIVES",
-            titlethen: " APF FRANCE HANDICAP - DELEGATION DU 93",
+            titleHeadline: "2013 - 2015 : CHARGE DE MISSION ACTIONS ASSOCIATIVES",
+            titleOverline: " APF FRANCE HANDICAP - DELEGATION DU 93",
             paragraphMainArticle:
                 "Premier emploi après l'obtention de mon Master Aménagement et Développement Territorial, j'ai occupé durant deux ans le poste de chargé de mission au développement de la vie associative de la délégation départementale de Seine-Saint-Denis APF France handicap.",
             themeMainArticle: "Johan",
