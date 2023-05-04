@@ -40,8 +40,7 @@ class MainArticle extends StatelessWidget {
   final String? nextCompleteArticle;
   final String? contactOrNot;
   final String? linkOrNot;
-  final String? linkRetroVibes;
-  final String? linkGhibli;
+  final String? link;
 
   MainArticle(
       {required this.imagePath,
@@ -56,8 +55,8 @@ class MainArticle extends StatelessWidget {
       this.nextCompleteArticle,
       this.contactOrNot,
       this.linkOrNot,
-      this.linkRetroVibes,
-      this.linkGhibli});
+      this.link,
+      });
 
   // Define the function to calculate the days until the birthday
   String daysUntilArticle() {
@@ -85,9 +84,8 @@ class MainArticle extends StatelessWidget {
             nextCompleteArticle: nextCompleteArticle,
             contactOrNot: contactOrNot,
             linkOrNot: linkOrNot,
-            linkRetroVibes: linkRetroVibes,
-            linkGhibli: linkGhibli,
-          ),
+            link: link,
+            ),
         ),
       ),
       child: Container(
@@ -149,8 +147,7 @@ class FullArticle extends MainArticle {
     String? nextCompleteArticle,
     String? contactOrNot,
     String? linkOrNot,
-    String? linkRetroVibes,
-    String? linkGhibli,
+    String? link,
   }) : super(
           imagePath: imagePath,
           titleOverline: titleOverline,
@@ -164,12 +161,13 @@ class FullArticle extends MainArticle {
           nextCompleteArticle: nextCompleteArticle,
           contactOrNot: contactOrNot,
           linkOrNot: linkOrNot,
-          linkRetroVibes: linkRetroVibes,
-          linkGhibli: linkGhibli,
-        );
+          link: link,
+          );
 
   @override
   Widget build(BuildContext context) {
+    print("LON ${linkOrNot}");
+    print("link ${link?.isEmpty}");
     super.contactOrNot?.isEmpty == false
         ? boolContact == true
         : boolContact == false;
@@ -381,13 +379,13 @@ class FullArticle extends MainArticle {
               ],
             ),
                 () {
-              return (linkRetroVibes?.isEmpty ?? true)
+              return (link?.isEmpty ?? true)
                   ? Container()
                   : InkWell(
                     onTap: () {
                       _launchURL(
-                          "${linkRetroVibes}");
-                      print("${linkRetroVibes}");
+                          "${link}");
+                      print("linkOrNot${link}");
                     },
                     child: Align(
                       alignment: Alignment.topRight,
@@ -404,55 +402,55 @@ class FullArticle extends MainArticle {
                     )
                   );
             }(),
-                () {
-              return (linkOrNot?.isEmpty ?? true)
-                  ? Container()
-                  : Column(
-                children: [
-                  const Text(
-                    "Visitez le site d'Ada Tech School :",
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold, fontSize: 18),
-                  ),
-                  const Padding(
-                    padding: EdgeInsets.only(bottom: 12),
-                  ),
-                  InkWell(
-                    onTap: () {
-                      _launchURL(
-                          'https://adatechschool.fr/');
-                    },
-                    child: Image.asset(
-                      'img/logos/logo_ada.png',
-                      width: 150,
-                    ),
-                  ),
-                ],
-              );
-            }(),
-                () {
-              return (linkGhibli?.isEmpty ?? true)
-                  ? Container()
-                  : InkWell(
-                  onTap: () {
-                    _launchURL(
-                        'http://johananquetil.fr/Ghibliproject/');
-                  },
-                  child: Align(
-                    alignment: Alignment.topRight,
-                    child: Container(
-                      margin: const EdgeInsets.only(right: 20.0),
-                      child: const Text(
-                        'Visitez le site en cliquant ici',
-                        style: TextStyle(
-                          color: Colors.blue,
-                          decoration: TextDecoration.underline,
-                        ),
-                      ),
-                    ),
-                  )
-              );
-            }(),
+            //     () {
+            //   return (linkOrNot?.isEmpty ?? true)
+            //       ? Container()
+            //       : Column(
+            //     children: [
+            //       const Text(
+            //         "Visitez le site d'Ada Tech School :",
+            //         style: TextStyle(
+            //             fontWeight: FontWeight.bold, fontSize: 18),
+            //       ),
+            //       const Padding(
+            //         padding: EdgeInsets.only(bottom: 12),
+            //       ),
+            //       InkWell(
+            //         onTap: () {
+            //           _launchURL(
+            //               'https://adatechschool.fr/');
+            //         },
+            //         child: Image.asset(
+            //           'img/logos/logo_ada.png',
+            //           width: 150,
+            //         ),
+            //       ),
+            //     ],
+            //   );
+            // }(),
+            // //   () {
+            // //   return (linkGhibli?.isEmpty ?? true)
+            // //       ? Container()
+            // //       : InkWell(
+            // //       onTap: () {
+            // //         _launchURL(
+            // //             'http://johananquetil.fr/Ghibliproject/');
+            // //       },
+            // //       child: Align(
+            // //         alignment: Alignment.topRight,
+            // //         child: Container(
+            // //           margin: const EdgeInsets.only(right: 20.0),
+            // //           child: const Text(
+            // //             'Visitez le site en cliquant ici',
+            // //             style: TextStyle(
+            // //               color: Colors.blue,
+            // //               decoration: TextDecoration.underline,
+            // //             ),
+            // //           ),
+            // //         ),
+            // //       )
+            // //   );
+            // // }(),
             const SizedBox(height: 20),
           ],
         ),
@@ -480,7 +478,8 @@ class SecondaryArticle extends StatelessWidget {
   String legendPicture;
   String completeArticle;
   String? nextCompleteArticle;
-  String? linkGhibli;
+  String? linkOrNot;
+  String? link;
 
   SecondaryArticle(
       {required this.imagePath,
@@ -493,7 +492,9 @@ class SecondaryArticle extends StatelessWidget {
       required this.legendPicture,
       required this.completeArticle,
       this.nextCompleteArticle,
-      this.linkGhibli});
+      this.link,
+      this.linkOrNot,
+      });
 
   @override
   Widget build(BuildContext context) {
@@ -515,7 +516,8 @@ class SecondaryArticle extends StatelessWidget {
                 writtenBy: writtenBy,
                 legendPicture: legendPicture,
                 completeArticle: completeArticle,
-                linkGhibli:linkGhibli,
+                link:link,
+                linkOrNot:linkOrNot,
               ),
             )),
             child: Padding(

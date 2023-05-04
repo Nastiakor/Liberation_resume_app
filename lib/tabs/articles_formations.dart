@@ -71,6 +71,7 @@ class _ArticlesFormationsState extends State<ArticlesFormations> {
                       legendPicture: "${data['legendPicture']}",
                       completeArticle: "${data['completeArticle']}",
                       linkOrNot: "${data['linkOrNOt']}",
+                      link: "${data['link']}",
                     );
                   }).toList(),
                 );
@@ -103,6 +104,8 @@ class _ArticlesFormationsState extends State<ArticlesFormations> {
                       publishDateParam: formattedDate,
                       legendPicture: "${data['legendPicture']}",
                       completeArticle: "${data['completeArticle']}",
+                      linkOrNot: "${data['linkOrNOt']}",
+                      link: "${data['link']}",
                     );
                   }).toList(),
                 );
