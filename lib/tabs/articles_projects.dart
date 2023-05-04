@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cv_flutter_libe/view_articles_main_full_secondary.dart';
-import 'package:cv_flutter_libe/style.dart';
 
 class ArticlesProjects extends StatefulWidget {
   @override

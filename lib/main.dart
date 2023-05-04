@@ -5,10 +5,8 @@ import 'package:cv_flutter_libe/app_bottom_bar/bottom_navigation_bar.dart';
 import 'package:cv_flutter_libe/style.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cv_flutter_libe/tabs/articles_homePage.dart';
 import 'package:cv_flutter_libe/tabs/articles_projects.dart';
-import 'package:cv_flutter_libe/tabs/articles_formations.dart';
 import 'package:cv_flutter_libe/tabs/articles_contacts.dart';
 
 Future<void> main() async {

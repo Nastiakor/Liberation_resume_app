@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:cv_flutter_libe/style.dart';
 import 'package:cv_flutter_libe/app_bottom_bar/bottom_bar_article.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 
 String calculatePublishingDate(DateTime publishingDate) {
   DateTime now = DateTime.now();
