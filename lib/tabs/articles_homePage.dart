@@ -71,7 +71,6 @@ class _ArticlesHomePageState extends State<ArticlesHomePage> {
                       publishDateParam: formattedDate,
                       legendPicture: "${data['legendPicture']}",
                       completeArticle: "${data['completeArticle']}",
-                      linkOrNot: "${data['linkOrNOt']}",
                     );
                   }).toList(),
                 );

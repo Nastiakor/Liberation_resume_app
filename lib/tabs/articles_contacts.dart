@@ -10,7 +10,11 @@ class ArticlesContacts extends StatefulWidget {
 
 class _ArticlesContactsState extends State<ArticlesContacts> {
   Future<List<DocumentSnapshot>> getMainDocumentByCondition(
-      String collectionName, String field, dynamic value, String categories, String category) async {
+      String collectionName,
+      String field,
+      dynamic value,
+      String categories,
+      String category) async {
     final querySnapshot = await FirebaseFirestore.instance
         .collection(collectionName)
         .where(field, isEqualTo: value)
@@ -26,7 +30,11 @@ class _ArticlesContactsState extends State<ArticlesContacts> {
   }
 
   Future<List<DocumentSnapshot>> getSecondaryDocumentByCondition(
-      String collectionName, String field, dynamic value, String categories, String category) async {
+      String collectionName,
+      String field,
+      dynamic value,
+      String categories,
+      String category) async {
     final querySnapshot = await FirebaseFirestore.instance
         .collection(collectionName)
         .where(field, isEqualTo: value)
@@ -46,8 +54,8 @@ class _ArticlesContactsState extends State<ArticlesContacts> {
       body: ListView(
         children: [
           FutureBuilder<List<DocumentSnapshot>>(
-            future:
-                getMainDocumentByCondition('Articles', 'typeOfArticle', 'main', 'category', 'Contact'),
+            future: getMainDocumentByCondition(
+                'Articles', 'typeOfArticle', 'main', 'category', 'Contact'),
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
                 return Center(child: CircularProgressIndicator());
@@ -62,16 +70,17 @@ class _ArticlesContactsState extends State<ArticlesContacts> {
                     final formattedDate =
                         '${date.year}-${date.month.toString().padLeft(2, '0')}-${date.day.toString().padLeft(2, '0')} ${date.hour.toString().padLeft(2, '0')}:${date.minute.toString().padLeft(2, '0')}:${date.second.toString().padLeft(2, '0')}';
                     return MainArticle(
-                      imagePath: "${data['imagePath']}",
-                      titleHeadline: "${data['titleHeadline']} ",
-                      titleOverline: "${data['titleOverline']}",
-                      paragraphMainArticle: data['paragraphMainArticle'],
-                      themeMainArticle: "${data['themeMainArticle']}",
-                      writtenBy: "${data['writtenBy']}",
-                      publishDateParam: formattedDate,
-                      legendPicture: "${data['legendPicture']}",
-                      completeArticle: "${data['completeArticle']}",
-                      linkOrNot: "${data['linkOrNOt']}",
+                        imagePath: "${data['imagePath']}",
+                        titleHeadline: "${data['titleHeadline']} ",
+                        titleOverline: "${data['titleOverline']}",
+                        paragraphMainArticle: data['paragraphMainArticle'],
+                        themeMainArticle: "${data['themeMainArticle']}",
+                        writtenBy: "${data['writtenBy']}",
+                        publishDateParam: formattedDate,
+                        legendPicture: "${data['legendPicture']}",
+                        completeArticle: "${data['completeArticle']}",
+                        contactOrNot: "${data['contactOrNot']}",
+                        nextCompleteArticle: "${data['nextCompleteArticle']}"
                     );
                   }).toList(),
                 );

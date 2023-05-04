@@ -10,7 +10,11 @@ class ArticlesProjects extends StatefulWidget {
 
 class _ArticlesProjectsState extends State<ArticlesProjects> {
   Future<List<DocumentSnapshot>> getMainDocumentByCondition(
-      String collectionName, String field, dynamic value, String categories, String category) async {
+      String collectionName,
+      String field,
+      dynamic value,
+      String categories,
+      String category) async {
     final querySnapshot = await FirebaseFirestore.instance
         .collection(collectionName)
         .where(field, isEqualTo: value)
@@ -26,7 +30,11 @@ class _ArticlesProjectsState extends State<ArticlesProjects> {
   }
 
   Future<List<DocumentSnapshot>> getSecondaryDocumentByCondition(
-      String collectionName, String field, dynamic value, String categories, String category) async {
+      String collectionName,
+      String field,
+      dynamic value,
+      String categories,
+      String category) async {
     final querySnapshot = await FirebaseFirestore.instance
         .collection(collectionName)
         .where(field, isEqualTo: value)
@@ -46,8 +54,8 @@ class _ArticlesProjectsState extends State<ArticlesProjects> {
       body: ListView(
         children: [
           FutureBuilder<List<DocumentSnapshot>>(
-            future:
-                getMainDocumentByCondition('Articles', 'typeOfArticle', 'main', 'category', 'Nos projets'),
+            future: getMainDocumentByCondition(
+                'Articles', 'typeOfArticle', 'main', 'category', 'Nos projets'),
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
                 return Center(child: CircularProgressIndicator());
@@ -71,7 +79,6 @@ class _ArticlesProjectsState extends State<ArticlesProjects> {
                       publishDateParam: formattedDate,
                       legendPicture: "${data['legendPicture']}",
                       completeArticle: "${data['completeArticle']}",
-                      linkOrNot: "${data['linkOrNOt']}",
                     );
                   }).toList(),
                 );
@@ -79,8 +86,8 @@ class _ArticlesProjectsState extends State<ArticlesProjects> {
             },
           ),
           FutureBuilder<List<DocumentSnapshot>>(
-            future: getSecondaryDocumentByCondition(
-                'Articles', 'typeOfArticle', 'secondary', 'category', 'Nos projets'),
+            future: getSecondaryDocumentByCondition('Articles', 'typeOfArticle',
+                'secondary', 'category', 'Nos projets'),
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
                 return Center(child: CircularProgressIndicator());
@@ -95,15 +102,15 @@ class _ArticlesProjectsState extends State<ArticlesProjects> {
                     final formattedDate =
                         '${date.year}-${date.month.toString().padLeft(2, '0')}-${date.day.toString().padLeft(2, '0')} ${date.hour.toString().padLeft(2, '0')}:${date.minute.toString().padLeft(2, '0')}:${date.second.toString().padLeft(2, '0')}';
                     return SecondaryArticle(
-                      imagePath: "${data['imagePath']}",
-                      titleHeadline: "${data['titleHeadline']} ",
-                      titleOverline: "${data['titleOverline']}",
-                      paragraphMainArticle: data['paragraphMainArticle'],
-                      themeMainArticle: "${data['themeMainArticle']}",
-                      writtenBy: "${data['writtenBy']}",
-                      publishDateParam: formattedDate,
-                      legendPicture: "${data['legendPicture']}",
-                      completeArticle: "${data['completeArticle']}",
+                        imagePath: "${data['imagePath']}",
+                        titleHeadline: "${data['titleHeadline']} ",
+                        titleOverline: "${data['titleOverline']}",
+                        paragraphMainArticle: data['paragraphMainArticle'],
+                        themeMainArticle: "${data['themeMainArticle']}",
+                        writtenBy: "${data['writtenBy']}",
+                        publishDateParam: formattedDate,
+                        legendPicture: "${data['legendPicture']}",
+                        completeArticle: "${data['completeArticle']}",
                     );
                   }).toList(),
                 );

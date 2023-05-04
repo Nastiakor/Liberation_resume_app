@@ -71,7 +71,6 @@ class _ArticlesExperiencesState extends State<ArticlesExperiences> {
                       publishDateParam: formattedDate,
                       legendPicture: "${data['legendPicture']}",
                       completeArticle: "${data['completeArticle']}",
-                      linkOrNot: "${data['linkOrNOt']}",
                     );
                   }).toList(),
                 );
