@@ -9,7 +9,11 @@ class ArticlesFormations extends StatefulWidget {
 
 class _ArticlesFormationsState extends State<ArticlesFormations> {
   Future<List<DocumentSnapshot>> getMainDocumentByCondition(
-      String collectionName, String field, dynamic value, String categories, String category) async {
+      String collectionName,
+      String field,
+      dynamic value,
+      String categories,
+      String category) async {
     final querySnapshot = await FirebaseFirestore.instance
         .collection(collectionName)
         .where(field, isEqualTo: value)
@@ -25,7 +29,11 @@ class _ArticlesFormationsState extends State<ArticlesFormations> {
   }
 
   Future<List<DocumentSnapshot>> getSecondaryDocumentByCondition(
-      String collectionName, String field, dynamic value, String categories, String category) async {
+      String collectionName,
+      String field,
+      dynamic value,
+      String categories,
+      String category) async {
     final querySnapshot = await FirebaseFirestore.instance
         .collection(collectionName)
         .where(field, isEqualTo: value)
@@ -45,8 +53,8 @@ class _ArticlesFormationsState extends State<ArticlesFormations> {
       body: ListView(
         children: [
           FutureBuilder<List<DocumentSnapshot>>(
-            future:
-                getMainDocumentByCondition('Articles', 'typeOfArticle', 'main', 'category', 'formations'),
+            future: getMainDocumentByCondition(
+                'Articles', 'typeOfArticle', 'main', 'category', 'formations'),
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
                 return Center(child: CircularProgressIndicator());
@@ -61,26 +69,27 @@ class _ArticlesFormationsState extends State<ArticlesFormations> {
                     final formattedDate =
                         '${date.year}-${date.month.toString().padLeft(2, '0')}-${date.day.toString().padLeft(2, '0')} ${date.hour.toString().padLeft(2, '0')}:${date.minute.toString().padLeft(2, '0')}:${date.second.toString().padLeft(2, '0')}';
                     return MainArticle(
-                      imagePath: "${data['imagePath']}",
-                      titleHeadline: "${data['titleHeadline']} ",
-                      titleOverline: "${data['titleOverline']}",
-                      paragraphMainArticle: data['paragraphMainArticle'],
-                      themeMainArticle: "${data['themeMainArticle']}",
-                      writtenBy: "${data['writtenBy']}",
-                      publishDateParam: formattedDate,
-                      legendPicture: "${data['legendPicture']}",
-                      completeArticle: "${data['completeArticle']}",
-                      linkOrNot: "${data['linkOrNOt']}",
-                      link: "${data['link']}",
-                    );
+                        imagePath: "${data['imagePath']}",
+                        titleHeadline: "${data['titleHeadline']} ",
+                        titleOverline: "${data['titleOverline']}",
+                        paragraphMainArticle: data['paragraphMainArticle'],
+                        themeMainArticle: "${data['themeMainArticle']}",
+                        writtenBy: "${data['writtenBy']}",
+                        publishDateParam: formattedDate,
+                        legendPicture: "${data['legendPicture']}",
+                        completeArticle: "${data['completeArticle']}",
+                        linkOrNot: "${data['linkOrNOt']}",
+                        link: "${data['link']}",
+                        imageOrNot: "${data['imageOrNot']}",
+                        image: "${data['image']}");
                   }).toList(),
                 );
               }
             },
           ),
           FutureBuilder<List<DocumentSnapshot>>(
-            future: getSecondaryDocumentByCondition(
-                'Articles', 'typeOfArticle', 'secondary', 'category', 'formations'),
+            future: getSecondaryDocumentByCondition('Articles', 'typeOfArticle',
+                'secondary', 'category', 'formations'),
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
                 return Center(child: CircularProgressIndicator());
@@ -95,18 +104,19 @@ class _ArticlesFormationsState extends State<ArticlesFormations> {
                     final formattedDate =
                         '${date.year}-${date.month.toString().padLeft(2, '0')}-${date.day.toString().padLeft(2, '0')} ${date.hour.toString().padLeft(2, '0')}:${date.minute.toString().padLeft(2, '0')}:${date.second.toString().padLeft(2, '0')}';
                     return SecondaryArticle(
-                      imagePath: "${data['imagePath']}",
-                      titleHeadline: "${data['titleHeadline']} ",
-                      titleOverline: "${data['titleOverline']}",
-                      paragraphMainArticle: data['paragraphMainArticle'],
-                      themeMainArticle: "${data['themeMainArticle']}",
-                      writtenBy: "${data['writtenBy']}",
-                      publishDateParam: formattedDate,
-                      legendPicture: "${data['legendPicture']}",
-                      completeArticle: "${data['completeArticle']}",
-                      linkOrNot: "${data['linkOrNOt']}",
-                      link: "${data['link']}",
-                    );
+                        imagePath: "${data['imagePath']}",
+                        titleHeadline: "${data['titleHeadline']} ",
+                        titleOverline: "${data['titleOverline']}",
+                        paragraphMainArticle: data['paragraphMainArticle'],
+                        themeMainArticle: "${data['themeMainArticle']}",
+                        writtenBy: "${data['writtenBy']}",
+                        publishDateParam: formattedDate,
+                        legendPicture: "${data['legendPicture']}",
+                        completeArticle: "${data['completeArticle']}",
+                        linkOrNot: "${data['linkOrNOt']}",
+                        link: "${data['link']}",
+                        imageOrNot: "${data['imageOrNot']}",
+                        image: "${data['image']}");
                   }).toList(),
                 );
               }

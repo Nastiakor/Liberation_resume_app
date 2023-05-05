@@ -41,22 +41,25 @@ class MainArticle extends StatelessWidget {
   final String? contactOrNot;
   final String? linkOrNot;
   final String? link;
+  final String? imageOrNot;
+  final String? image;
 
-  MainArticle({
-    required this.imagePath,
-    required this.titleOverline,
-    required this.titleHeadline,
-    required this.paragraphMainArticle,
-    required this.themeMainArticle,
-    required this.writtenBy,
-    required this.publishDateParam,
-    required this.legendPicture,
-    required this.completeArticle,
-    this.nextCompleteArticle,
-    this.contactOrNot,
-    this.linkOrNot,
-    this.link,
-  });
+  MainArticle(
+      {required this.imagePath,
+      required this.titleOverline,
+      required this.titleHeadline,
+      required this.paragraphMainArticle,
+      required this.themeMainArticle,
+      required this.writtenBy,
+      required this.publishDateParam,
+      required this.legendPicture,
+      required this.completeArticle,
+      this.nextCompleteArticle,
+      this.contactOrNot,
+      this.linkOrNot,
+      this.link,
+      this.imageOrNot,
+      this.image});
 
   // Define the function to calculate the days until the birthday
   String daysUntilArticle() {
@@ -72,20 +75,21 @@ class MainArticle extends StatelessWidget {
       onTap: () => Navigator.of(context).push(
         MaterialPageRoute(
           builder: (context) => FullArticle(
-            imagePath: imagePath,
-            titleHeadline: titleHeadline,
-            titleOverline: titleOverline,
-            paragraphMainArticle: paragraphMainArticle,
-            themeMainArticle: themeMainArticle,
-            publishDateParam: publishDateParam,
-            writtenBy: writtenBy,
-            legendPicture: legendPicture,
-            completeArticle: completeArticle,
-            nextCompleteArticle: nextCompleteArticle,
-            contactOrNot: contactOrNot,
-            linkOrNot: linkOrNot,
-            link: link,
-          ),
+              imagePath: imagePath,
+              titleHeadline: titleHeadline,
+              titleOverline: titleOverline,
+              paragraphMainArticle: paragraphMainArticle,
+              themeMainArticle: themeMainArticle,
+              publishDateParam: publishDateParam,
+              writtenBy: writtenBy,
+              legendPicture: legendPicture,
+              completeArticle: completeArticle,
+              nextCompleteArticle: nextCompleteArticle,
+              contactOrNot: contactOrNot,
+              linkOrNot: linkOrNot,
+              link: link,
+              imageOrNot: imageOrNot,
+              image: image),
         ),
       ),
       child: Container(
@@ -139,45 +143,51 @@ class MainArticle extends StatelessWidget {
 class FullArticle extends MainArticle {
   String? boolContact;
   String? boolLink;
+  String? boolImage;
 
-  FullArticle({
-    required String imagePath,
-    required String titleHeadline,
-    required String titleOverline,
-    required String paragraphMainArticle,
-    required String themeMainArticle,
-    required String writtenBy,
-    required String publishDateParam,
-    required String legendPicture,
-    required String completeArticle,
-    String? nextCompleteArticle,
-    String? contactOrNot,
-    String? linkOrNot,
-    String? link,
-  }) : super(
-          imagePath: imagePath,
-          titleOverline: titleOverline,
-          titleHeadline: titleHeadline,
-          paragraphMainArticle: paragraphMainArticle,
-          themeMainArticle: themeMainArticle,
-          writtenBy: writtenBy,
-          publishDateParam: publishDateParam,
-          legendPicture: legendPicture,
-          completeArticle: completeArticle,
-          nextCompleteArticle: nextCompleteArticle,
-          contactOrNot: contactOrNot,
-          linkOrNot: linkOrNot,
-          link: link,
-        );
+  FullArticle(
+      {required String imagePath,
+      required String titleHeadline,
+      required String titleOverline,
+      required String paragraphMainArticle,
+      required String themeMainArticle,
+      required String writtenBy,
+      required String publishDateParam,
+      required String legendPicture,
+      required String completeArticle,
+      String? nextCompleteArticle,
+      String? contactOrNot,
+      String? linkOrNot,
+      String? link,
+      String? imageOrNot,
+      String? image})
+      : super(
+            imagePath: imagePath,
+            titleOverline: titleOverline,
+            titleHeadline: titleHeadline,
+            paragraphMainArticle: paragraphMainArticle,
+            themeMainArticle: themeMainArticle,
+            writtenBy: writtenBy,
+            publishDateParam: publishDateParam,
+            legendPicture: legendPicture,
+            completeArticle: completeArticle,
+            nextCompleteArticle: nextCompleteArticle,
+            contactOrNot: contactOrNot,
+            linkOrNot: linkOrNot,
+            link: link,
+            imageOrNot: imageOrNot,
+            image: image);
 
   @override
   Widget build(BuildContext context) {
     print("LON ${linkOrNot}");
     print("link ${link?.isEmpty}");
+    print("image ${imageOrNot}");
     super.contactOrNot?.isEmpty == false
         ? boolContact == true
         : boolContact == false;
     super.linkOrNot?.isEmpty == false ? boolLink == true : boolLink == false;
+    super.imageOrNot?.isEmpty == false ? boolImage == true : boolImage == false;
     var size = MediaQuery.of(context).size;
 
     return Scaffold(
@@ -406,32 +416,31 @@ class FullArticle extends MainArticle {
                         ),
                       ));
             }(),
-            //     () {
-            //   return (linkOrNot?.isEmpty ?? true)
-            //       ? Container()
-            //       : Column(
-            //     children: [
-            //       const Text(
-            //         "Visitez le site d'Ada Tech School :",
-            //         style: TextStyle(
-            //             fontWeight: FontWeight.bold, fontSize: 18),
-            //       ),
-            //       const Padding(
-            //         padding: EdgeInsets.only(bottom: 12),
-            //       ),
-            //       InkWell(
-            //         onTap: () {
-            //           _launchURL(
-            //               'https://adatechschool.fr/');
-            //         },
-            //         child: Image.asset(
-            //           'img/logos/logo_ada.png',
-            //           width: 150,
-            //         ),
-            //       ),
-            //     ],
-            //   );
-            // }(),
+            () {
+              return (image?.isEmpty ?? true)
+                  ? Container()
+                  : Column(
+                      children: [
+                        //       const Text(
+                        //         "Visitez le site d'Ada Tech School :",
+                        //         style: TextStyle(
+                        //             fontWeight: FontWeight.bold, fontSize: 18),
+                        //       ),
+                        const Padding(
+                          padding: EdgeInsets.only(bottom: 12),
+                        ),
+                        InkWell(
+                          onTap: () {
+                            _launchURL("${link}");
+                          },
+                          child: Image.asset(
+                            "${image}",
+                            width: 150,
+                          ),
+                        ),
+                      ],
+                    );
+            }(),
             // //   () {
             // //   return (linkGhibli?.isEmpty ?? true)
             // //       ? Container()
@@ -484,21 +493,24 @@ class SecondaryArticle extends StatelessWidget {
   String? nextCompleteArticle;
   String? linkOrNot;
   String? link;
+  String? imageOrNot;
+  String? image;
 
-  SecondaryArticle({
-    required this.imagePath,
-    required this.titleHeadline,
-    required this.titleOverline,
-    required this.paragraphMainArticle,
-    required this.themeMainArticle,
-    required this.writtenBy,
-    required this.publishDateParam,
-    required this.legendPicture,
-    required this.completeArticle,
-    this.nextCompleteArticle,
-    this.link,
-    this.linkOrNot,
-  });
+  SecondaryArticle(
+      {required this.imagePath,
+      required this.titleHeadline,
+      required this.titleOverline,
+      required this.paragraphMainArticle,
+      required this.themeMainArticle,
+      required this.writtenBy,
+      required this.publishDateParam,
+      required this.legendPicture,
+      required this.completeArticle,
+      this.nextCompleteArticle,
+      this.link,
+      this.linkOrNot,
+      this.imageOrNot,
+      this.image});
 
   @override
   Widget build(BuildContext context) {
@@ -511,18 +523,19 @@ class SecondaryArticle extends StatelessWidget {
           child: InkWell(
             onTap: () => Navigator.of(context).push(MaterialPageRoute(
               builder: (context) => FullArticle(
-                imagePath: imagePath,
-                titleHeadline: titleHeadline,
-                titleOverline: titleOverline,
-                paragraphMainArticle: paragraphMainArticle,
-                themeMainArticle: themeMainArticle,
-                publishDateParam: publishDateParam,
-                writtenBy: writtenBy,
-                legendPicture: legendPicture,
-                completeArticle: completeArticle,
-                link: link,
-                linkOrNot: linkOrNot,
-              ),
+                  imagePath: imagePath,
+                  titleHeadline: titleHeadline,
+                  titleOverline: titleOverline,
+                  paragraphMainArticle: paragraphMainArticle,
+                  themeMainArticle: themeMainArticle,
+                  publishDateParam: publishDateParam,
+                  writtenBy: writtenBy,
+                  legendPicture: legendPicture,
+                  completeArticle: completeArticle,
+                  link: link,
+                  linkOrNot: linkOrNot,
+                  imageOrNot: imageOrNot,
+                  image: image),
             )),
             child: Padding(
               padding: const EdgeInsets.only(left: 15, right: 10),
@@ -586,4 +599,3 @@ Future<void> _launchURL(String link) async {
     throw Exception('Could not launch $_url');
   }
 }
-
