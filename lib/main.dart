@@ -8,21 +8,33 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:cv_flutter_libe/tabs/articles_homePage.dart';
 import 'package:cv_flutter_libe/tabs/articles_projects.dart';
 import 'package:cv_flutter_libe/tabs/articles_contacts.dart';
+import 'package:flutter/foundation.dart';
+import 'dart:io' show Platform;
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await initializeDateFormatting('fr');
-  await Firebase.initializeApp(
+
+  if (kIsWeb) {
+    // Configuration pour le Web
+    await Firebase.initializeApp(
       options: FirebaseOptions(
-        apiKey: "AIzaSyA5G-epm7dKRrs0HL9Zbp8gtts7oxZtypY",
-        authDomain: "portfolio-back-6cb8a.firebaseapp.com",
-        projectId: "portfolio-back-6cb8a",
-        storageBucket: "portfolio-back-6cb8a.appspot.com",
-        messagingSenderId: "108784622080",
-        appId: "1:108784622080:web:f6c8c661a9aad9b9f496e5",),);
+          apiKey: "AIzaSyA5G-epm7dKRrs0HL9Zbp8gtts7oxZtypY",
+          authDomain: "portfolio-back-6cb8a.firebaseapp.com",
+          projectId: "portfolio-back-6cb8a",
+          storageBucket: "portfolio-back-6cb8a.appspot.com",
+          messagingSenderId: "108784622080",
+          appId: "1:108784622080:web:f6c8c661a9aad9b9f496e5",
+          measurementId: "G-3JZQ027PYT",
+      ),
+    );
+  } else {
+    // Configuration pour Android et iOS
+    await Firebase.initializeApp();
+  }
+
   runApp(const MyApp());
 }
-
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 

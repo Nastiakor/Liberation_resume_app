@@ -226,6 +226,7 @@ class Article {
   final String themeTitle;
   final String? caption;
   final List<dynamic>? articlesContenus;
+  final String? abonnes;
 
   Article({
     required this.id,
@@ -241,6 +242,7 @@ class Article {
     required this.themeTitle,
     this.caption,
     this.articlesContenus,
+    this.abonnes,
   });
 
 //La méthode fromJson est une méthode statique utilisée pour convertir un objet JSON en un objet Dart.
@@ -293,6 +295,7 @@ class Article {
     final themeTitle = json['label']['basic']['text'];
     final caption = json['promo_items']['basic']['caption'];
     final articlesContenus = json['content_elements'];
+    final abonnes = json['content_restrictions']['content_code'];
 
     return Article(
       id: json['_id'],
@@ -308,6 +311,7 @@ class Article {
       themeTitle: themeTitle,
       caption: caption,
       articlesContenus: articlesContenus,
+      abonnes: abonnes,
     );
   }
 }
