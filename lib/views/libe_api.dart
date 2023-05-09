@@ -106,6 +106,14 @@ class LiberationAPIState extends State<LiberationAPI> {
                                 final hourFormat = DateFormat('HH:mm');
                                 final formattedHour =
                                     hourFormat.format(dateTime);
+                                final abonnes = contentElement['content_restrictions']['content_code'];
+
+                                String pourAbonnes() {
+                                  if (abonnes == "ouvert") {
+                                    return "";
+                                  }
+                                  else {return "Article offert par Anastasia et Johan";}
+                                }
                                 return InkWell(
                                   onTap: () {
                                     Navigator.push(
@@ -184,6 +192,18 @@ class LiberationAPIState extends State<LiberationAPI> {
                                                     color: Colors.black45,
                                                     fontSize: 13),
                                               ),
+                                              abonnes == "ferme" ?
+                                                 Padding(padding: const EdgeInsets.only(top : 5, left: 0),
+                                                child: Text(pourAbonnes(),
+                                                  style: GoogleFonts.encodeSansCondensed(
+                                                    textStyle: const TextStyle(
+                                                        fontWeight: FontWeight.w600,
+                                                        color: Colors.amber,
+                                                        fontSize: 13,
+                                                        letterSpacing: 0.5),
+                                                  ),
+                                                ),
+                                              ) : Container(),
                                               const SizedBox(height: 10),
                                               const Divider(
                                                 thickness: 0.5,
@@ -212,6 +232,7 @@ class LiberationAPIState extends State<LiberationAPI> {
   }
 }
 
+// a déplacer dans un autre fichier pour du clean code
 class Article {
   final String id;
   final String title;
@@ -296,6 +317,7 @@ class Article {
     final caption = json['promo_items']['basic']['caption'];
     final articlesContenus = json['content_elements'];
     final abonnes = json['content_restrictions']['content_code'];
+
 
     return Article(
       id: json['_id'],
@@ -386,6 +408,12 @@ class ArticleDetailsPageState extends State<ArticleDetailsPage> {
   @override
   Widget build(BuildContext context) {
     String? imageUrl = widget.article.imageUrl;
+    String pourAbonnes() {
+      if (widget.article.abonnes == "ouvert") {
+        return "";
+      }
+      else {return "Article offert";}
+    }
 
  /*   void imageURL() {
       if (widget.article.imageUrl?.isNotEmpty ?? false) {
@@ -395,7 +423,6 @@ class ArticleDetailsPageState extends State<ArticleDetailsPage> {
         }
       }
     }*/
-
 
     List<Widget> paddingWidgets = [];
     if (widget.article.articlesContenus?.isNotEmpty == true) {
@@ -422,7 +449,7 @@ class ArticleDetailsPageState extends State<ArticleDetailsPage> {
       body: ListView(
         children: [
           Padding(
-            padding: const EdgeInsets.only(left: 15.0, top: 8), //Thème
+            padding: const EdgeInsets.only(left: 15.0, top: 8), // Thème
             child: Text(
               widget.article.primarySectionName,
               style: GoogleFonts.sourceSansPro(
@@ -503,6 +530,17 @@ class ArticleDetailsPageState extends State<ArticleDetailsPage> {
                   ),
                 ),
               ]),
+            ),
+          ),
+          Padding(padding: const EdgeInsets.only(left: 15.0, bottom: 5),
+            child: Text(pourAbonnes(),
+              style: GoogleFonts.encodeSansCondensed(
+                textStyle: const TextStyle(
+                    fontWeight: FontWeight.w600,
+                    color: Colors.amber,
+                    fontSize: 13,
+                    letterSpacing: 0.5),
+              ),
             ),
           ),
           Padding(
