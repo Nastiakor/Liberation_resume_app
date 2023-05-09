@@ -1,6 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:date_time_picker/date_time_picker.dart';
+import 'package:datepicker_dropdown/datepicker_dropdown.dart';
+
+final DateTime selectedDate = DateTime.now();
 
 class AddArticle extends StatefulWidget {
   const AddArticle({Key? key}) : super(key: key);
@@ -14,7 +17,10 @@ class _AddArticleState extends State<AddArticle> {
   final titleOverlineController = TextEditingController();
   final paragraphMainArticleController = TextEditingController();
   final writtenByController = TextEditingController();
-  final publishDateParamController = TextEditingController();
+  final publishDateParamController = DatePickerDialog(
+      initialDate: selectedDate,
+      firstDate: DateTime(2023, 5),
+      lastDate: DateTime(2100));
   final imagePathController = TextEditingController();
   final legendPictureController = TextEditingController();
   final completeArticleController = TextEditingController();
@@ -37,7 +43,7 @@ class _AddArticleState extends State<AddArticle> {
               newEntries(
                   'paragraphMainArticle', paragraphMainArticleController),
               newEntries('writtenBy', writtenByController),
-              dateEntry(),
+              addNewDate(),
               newEntries('imagePath', imagePathController),
               newEntries('legendPicture', legendPictureController),
               newEntries('completeArticle', completeArticleController),
@@ -53,7 +59,7 @@ class _AddArticleState extends State<AddArticle> {
                     'paragraphMainArticle':
                         paragraphMainArticleController.value.text,
                     'writtenBy': writtenByController.value.text,
-                    'publishDateParam': publishDateParamController.value.text,
+                    'publishDateParam': publishDateParamController.initialDate,
                     'imagePath': imagePathController.value.text,
                     'legendPicture': legendPictureController.value.text,
                     'completeArticle': completeArticleController.value.text,
@@ -120,5 +126,42 @@ DateTimePicker dateEntry() {
       return null;
     },
     onSaved: (val) => print(val),
+  );
+}
+
+Column addNewDate() {
+  return Column(
+    children: [
+      ListTile(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(4),
+          side: const BorderSide(color: Colors.grey, width: 1.5),
+        ),
+        title: Row(children: [
+          Expanded(
+            child: TextField(
+              decoration: InputDecoration(
+                border: InputBorder.none,
+              ),
+            ),
+          ),
+          Expanded(
+            child: GestureDetector(
+              child: Icon(
+                Icons.arrow_drop_down,
+              ),
+              onTap: () {
+                DatePickerDialog(
+                  initialDate: selectedDate,
+                  firstDate: DateTime(2023, 5),
+                  lastDate: DateTime(2100),
+                );
+              },
+            ),
+          )
+        ]),
+      ),
+      const SizedBox(height: 20),
+    ],
   );
 }
