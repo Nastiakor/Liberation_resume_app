@@ -1,3 +1,4 @@
+import 'package:cv_flutter_libe/add_article.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cv_flutter_libe/view_articles_main_full_secondary.dart';
@@ -121,6 +122,8 @@ class _ArticlesProjectsState extends State<ArticlesProjects> {
             },
           ),
         ],
+      ),
+      floatingActionButton: AddArticle(
       ),
     );
   }
