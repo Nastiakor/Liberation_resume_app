@@ -13,14 +13,15 @@ class AddArticle extends StatefulWidget {
 }
 
 class _AddArticleState extends State<AddArticle> {
+  DateTime? selectedDate;
   final titleHeadlineController = TextEditingController();
   final titleOverlineController = TextEditingController();
   final paragraphMainArticleController = TextEditingController();
   final writtenByController = TextEditingController();
-  final publishDateParamController = DatePickerDialog(
-      initialDate: selectedDate,
-      firstDate: DateTime(2023, 5),
-      lastDate: DateTime(2100));
+  // final publishDateParamController = DatePickerDialog(
+  //     initialDate: selectedDate,
+  //     firstDate: DateTime(2023, 5),
+  //     lastDate: DateTime(2100));
   final imagePathController = TextEditingController();
   final legendPictureController = TextEditingController();
   final completeArticleController = TextEditingController();
@@ -29,6 +30,50 @@ class _AddArticleState extends State<AddArticle> {
 
   @override
   Widget build(BuildContext context) {
+    Column addNewDate() {
+      return Column(
+        children: [
+          ListTile(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(4),
+              side: const BorderSide(color: Colors.grey, width: 1.5),
+            ),
+            title: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  ("Date : ${selectedDate} "),
+                ),
+                GestureDetector(
+                  child: Icon(
+                    Icons.arrow_drop_down,
+                  ),
+                  onTap: () {
+                    showDatePicker(
+                      context: context,
+                      initialDate: DateTime.now(),
+                      firstDate: DateTime(2023, 5),
+                      lastDate: DateTime(2100),
+                    ).then((pickedDate) {
+                      if (pickedDate == null) {
+                        return;
+                      }
+                      setState(() {
+                        selectedDate = pickedDate;
+                      });
+
+                      // mettre à jour selectedDate avec pickedDate ici
+                    });
+                  },
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(height: 20),
+        ],
+      );
+    }
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Add a new article'),
@@ -59,12 +104,12 @@ class _AddArticleState extends State<AddArticle> {
                     'paragraphMainArticle':
                         paragraphMainArticleController.value.text,
                     'writtenBy': writtenByController.value.text,
-                    'publishDateParam': publishDateParamController.initialDate,
                     'imagePath': imagePathController.value.text,
                     'legendPicture': legendPictureController.value.text,
                     'completeArticle': completeArticleController.value.text,
                     'category': categoryController.value.text,
                     'typeOfArticle': typeOfArticleController.value.text,
+                    'publishDateParam': selectedDate,
                   });
                 },
                 child: Text('Ajouter'),
@@ -95,70 +140,6 @@ Column newEntries(name, controller) {
               controller: controller,
             ),
           ),
-        ]),
-      ),
-      const SizedBox(height: 20),
-    ],
-  );
-}
-
-DateTimePicker dateEntry() {
-  return DateTimePicker(
-    type: DateTimePickerType.dateTimeSeparate,
-    dateMask: 'd MMM, yyyy',
-    initialValue: DateTime.now().toString(),
-    firstDate: DateTime(2000),
-    lastDate: DateTime(2100),
-    icon: Icon(Icons.event),
-    dateLabelText: 'Date',
-    timeLabelText: "Hour",
-    selectableDayPredicate: (date) {
-// Disable weekend days to select from the calendar
-      if (date.weekday == 6 || date.weekday == 7) {
-        return false;
-      }
-
-      return true;
-    },
-    onChanged: (val) => print(val),
-    validator: (val) {
-      print(val);
-      return null;
-    },
-    onSaved: (val) => print(val),
-  );
-}
-
-Column addNewDate() {
-  return Column(
-    children: [
-      ListTile(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(4),
-          side: const BorderSide(color: Colors.grey, width: 1.5),
-        ),
-        title: Row(children: [
-          Expanded(
-            child: TextField(
-              decoration: InputDecoration(
-                border: InputBorder.none,
-              ),
-            ),
-          ),
-          Expanded(
-            child: GestureDetector(
-              child: Icon(
-                Icons.arrow_drop_down,
-              ),
-              onTap: () {
-                DatePickerDialog(
-                  initialDate: selectedDate,
-                  firstDate: DateTime(2023, 5),
-                  lastDate: DateTime(2100),
-                );
-              },
-            ),
-          )
         ]),
       ),
       const SizedBox(height: 20),
