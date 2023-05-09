@@ -114,8 +114,7 @@ class _ArticlesProjectsState extends State<ArticlesProjects> {
                         legendPicture: "${data['legendPicture']}",
                         completeArticle: "${data['completeArticle']}",
                         linkOrNot: "${data['linkOrNot']}",
-                        link: "${data['link']}"
-                    );
+                        link: "${data['link']}");
                   }).toList(),
                 );
               }
@@ -123,8 +122,19 @@ class _ArticlesProjectsState extends State<ArticlesProjects> {
           ),
         ],
       ),
-      floatingActionButton: AddArticle(
-      ),
+      floatingActionButton: FloatingActionButton(
+          backgroundColor: Colors.black,
+          child: Icon(Icons.add),
+          onPressed: () {
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (BuildContext context) {
+                  return const AddArticle();
+                },
+                fullscreenDialog: true,
+              ),
+            );
+          }),
     );
   }
 }
