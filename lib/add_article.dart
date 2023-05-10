@@ -1,7 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:date_time_picker/date_time_picker.dart';
-import 'package:datepicker_dropdown/datepicker_dropdown.dart';
 
 final DateTime selectedDate = DateTime.now();
 
@@ -27,6 +25,7 @@ class _AddArticleState extends State<AddArticle> {
   final completeArticleController = TextEditingController();
   final categoryController = TextEditingController();
   final typeOfArticleController = TextEditingController();
+  final themeController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -83,17 +82,18 @@ class _AddArticleState extends State<AddArticle> {
           padding: EdgeInsets.all(10),
           child: Column(
             children: [
-              newEntries('titleHeadline', titleHeadlineController),
-              newEntries('titleOverline', titleOverlineController),
+              newEntries('Headline', titleHeadlineController),
+              newEntries('Overline', titleOverlineController),
               newEntries(
-                  'paragraphMainArticle', paragraphMainArticleController),
-              newEntries('writtenBy', writtenByController),
+                  'First paragraph', paragraphMainArticleController),
+              newEntries('Written by', writtenByController),
               addNewDate(),
-              newEntries('imagePath', imagePathController),
-              newEntries('legendPicture', legendPictureController),
-              newEntries('completeArticle', completeArticleController),
-              newEntries('category', categoryController),
-              newEntries('typeOfArticle', typeOfArticleController),
+              newEntries('Image', imagePathController),
+              newEntries('Caption', legendPictureController),
+              newEntries('Complete article', completeArticleController),
+              newEntries('Category', categoryController),
+              newEntries('Type of article', typeOfArticleController),
+              newEntries('Theme', themeController),
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
                     minimumSize: const Size.fromHeight(50)),

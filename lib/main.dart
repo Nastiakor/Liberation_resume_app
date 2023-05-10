@@ -1,3 +1,4 @@
+import 'package:cv_flutter_libe/archives/home_page.dart';
 import 'package:cv_flutter_libe/tabs/articles_experiences.dart';
 import 'package:cv_flutter_libe/tabs/articles_formations.dart';
 import 'package:flutter/material.dart';
@@ -10,6 +11,7 @@ import 'package:cv_flutter_libe/tabs/articles_projects.dart';
 import 'package:cv_flutter_libe/tabs/articles_contacts.dart';
 import 'package:flutter/foundation.dart';
 import 'dart:io' show Platform;
+import 'package:cv_flutter_libe/tabs/welcome_page.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -62,7 +64,7 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> with SingleTickerPro
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: 5, vsync: this);
+    _tabController = TabController(length: 6, vsync: this);
   }
 
   @override
@@ -119,6 +121,7 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> with SingleTickerPro
           Tab(child: appBarMenu('Nos formations')),
           Tab(child: appBarMenu('Nos expériences')),
           Tab(child: appBarMenu('Contacts')),
+          Tab(child: appBarMenu('Welcome page')),
         ],
       ),
     ),
@@ -130,6 +133,7 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> with SingleTickerPro
             ArticlesFormations(),
             ArticlesExperiences(),
             ArticlesContacts(),
+            WelcomePage(),
           ],
         ),
         resizeToAvoidBottomInset: false,
