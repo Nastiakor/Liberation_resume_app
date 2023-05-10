@@ -1,6 +1,7 @@
 import 'package:cv_flutter_libe/archives/home_page.dart';
 import 'package:cv_flutter_libe/tabs/articles_experiences.dart';
 import 'package:cv_flutter_libe/tabs/articles_formations.dart';
+import 'package:cv_flutter_libe/tabs/login_signup_page.dart';
 import 'package:flutter/material.dart';
 import 'package:cv_flutter_libe/app_bottom_bar/bottom_navigation_bar.dart';
 import 'package:cv_flutter_libe/style.dart';
@@ -12,6 +13,7 @@ import 'package:cv_flutter_libe/tabs/articles_contacts.dart';
 import 'package:flutter/foundation.dart';
 import 'dart:io' show Platform;
 import 'package:cv_flutter_libe/tabs/welcome_page.dart';
+import 'package:cv_flutter_libe/widget_tree.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -64,7 +66,7 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> with SingleTickerPro
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: 6, vsync: this);
+    _tabController = TabController(length: 7, vsync: this);
   }
 
   @override
@@ -122,6 +124,7 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> with SingleTickerPro
           Tab(child: appBarMenu('Nos expériences')),
           Tab(child: appBarMenu('Contacts')),
           Tab(child: appBarMenu('Welcome page')),
+          Tab(child: appBarMenu('Login page')),
         ],
       ),
     ),
@@ -134,6 +137,7 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> with SingleTickerPro
             ArticlesExperiences(),
             ArticlesContacts(),
             WelcomePage(),
+            LoginPage(),
           ],
         ),
         resizeToAvoidBottomInset: false,

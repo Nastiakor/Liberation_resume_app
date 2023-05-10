@@ -1,5 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:cv_flutter_libe/views/login_signup_page/auth.dart';
+import 'package:cv_flutter_libe/auth.dart';
 import 'package:flutter/material.dart';
 
 class WelcomePage extends StatelessWidget {
@@ -12,7 +12,7 @@ class WelcomePage extends StatelessWidget {
   }
 
   Widget _title(){
-    return const Text('Firebase Auth');
+    return const Text('Welcome to our app');
   }
 
   Widget _userId(){
