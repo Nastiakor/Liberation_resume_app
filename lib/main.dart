@@ -16,6 +16,7 @@ import 'package:cv_flutter_libe/tabs/profile_page.dart';
 import 'package:cv_flutter_libe/widget_tree.dart';
 import 'package:cv_flutter_libe/tabs/login_signup_page.dart';
 import 'package:provider/provider.dart';
+import 'package:cv_flutter_libe/auth.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -39,7 +40,11 @@ Future<void> main() async {
     await Firebase.initializeApp();
   }
 
-  runApp(const MyApp());
+  runApp(
+    ChangeNotifierProvider<Auth>(
+      create: (context) => Auth(),
+      child: MyApp(),
+  ),);
 }
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
