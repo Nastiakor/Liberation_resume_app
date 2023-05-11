@@ -7,6 +7,10 @@ class Auth with ChangeNotifier {
 
   User? get currentUser => _firebaseAuth.currentUser;
 
+  User? get user {
+    return _firebaseAuth.currentUser;
+  }
+
   Stream<User?> get authStateChanges => _firebaseAuth.authStateChanges();
 
   Future<void> signInWithEmailAndPassword({
