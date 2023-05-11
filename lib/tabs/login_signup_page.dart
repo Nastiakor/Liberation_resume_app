@@ -50,11 +50,18 @@ class LoginPageState extends State<LoginPage> {
 
   Widget _entryField(
     String title,
+    bool emailOrPassword,
     TextEditingController controller,
   ) {
     return TextField(
+      obscureText: emailOrPassword,
       controller: controller,
       decoration: InputDecoration(
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(30),
+          borderSide: const BorderSide(
+              width: 30, style: BorderStyle.solid, color: Colors.white),
+        ),
         labelText: title,
       ),
     );
@@ -66,6 +73,12 @@ class LoginPageState extends State<LoginPage> {
 
   Widget submitButton() {
     return ElevatedButton(
+      style: ElevatedButton.styleFrom(
+        backgroundColor: Colors.teal,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(30),
+        ),
+      ),
       onPressed:
           isLogin ? signInWithEmailAndPassword : createUserWithEmailAndPassword,
       child: Text(isLogin ? 'Login' : 'Register'),
@@ -88,8 +101,21 @@ class LoginPageState extends State<LoginPage> {
     return Scaffold(
       appBar: AppBar(
         title: _title(),
+        backgroundColor: Colors.teal,
       ),
       body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: <Color>[
+              Color(0x90EE90),
+              Color(0x2E8B57),
+            ],
+            // Gradient from https://learnui.design/tools/gradient-generator.html
+            tileMode: TileMode.mirror,
+          ),
+        ),
         height: double.infinity,
         width: double.infinity,
         padding: const EdgeInsets.all(20),
@@ -97,8 +123,11 @@ class LoginPageState extends State<LoginPage> {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            _entryField('email', _controllerEmail),
-            _entryField('password', _controllerPassword),
+            _entryField('email', false, _controllerEmail),
+            SizedBox(
+              height: 30,
+            ),
+            _entryField('password', true, _controllerPassword),
             _errorMessage(),
             submitButton(),
             loginOrRegisterButton(),

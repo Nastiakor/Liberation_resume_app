@@ -53,6 +53,7 @@ dependencies:
   date_time_picker: ^2.1.0
   datepicker_dropdown: ^0.0.7+4
   firebase_auth: ^4.5.0
+  provider: ^6.0.5
 
 dev_dependencies:
   flutter_test:
