@@ -1,4 +1,4 @@
-import 'package:cv_flutter_libe/tabs/welcome_page.dart';
+import 'package:cv_flutter_libe/tabs/profile_page.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cv_flutter_libe/auth.dart';
@@ -7,10 +7,10 @@ class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<LoginPage> createState() => LoginPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class LoginPageState extends State<LoginPage> {
   String? errorMessage = '';
   bool isLogin = true;
 
@@ -23,7 +23,7 @@ class _LoginPageState extends State<LoginPage> {
         email: _controllerEmail.text,
         password: _controllerPassword.text,
       );
-      Navigator.push(context, MaterialPageRoute(builder: (context) => WelcomePage()));
+      // Navigator.push(context, MaterialPageRoute(builder: (context) => WelcomePage()));
     } on FirebaseAuthException catch (e) {
       setState(() {
         errorMessage = e.message;
@@ -64,7 +64,7 @@ class _LoginPageState extends State<LoginPage> {
     return Text(errorMessage == '' ? '' : 'Humm ? $errorMessage');
   }
 
-  Widget _submitButton() {
+  Widget submitButton() {
     return ElevatedButton(
       onPressed:
           isLogin ? signInWithEmailAndPassword : createUserWithEmailAndPassword,
@@ -72,7 +72,7 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  Widget _loginOrRegisterButton() {
+  Widget loginOrRegisterButton() {
     return TextButton(
       onPressed: () {
         setState(() {
@@ -100,8 +100,8 @@ class _LoginPageState extends State<LoginPage> {
             _entryField('email', _controllerEmail),
             _entryField('password', _controllerPassword),
             _errorMessage(),
-            _submitButton(),
-            _loginOrRegisterButton(),
+            submitButton(),
+            loginOrRegisterButton(),
           ],
         ),
       ),

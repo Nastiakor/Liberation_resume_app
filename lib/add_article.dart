@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:cv_flutter_libe/tabs/login_signup_page.dart';
 
 final DateTime selectedDate = DateTime.now();
 
@@ -16,6 +17,7 @@ class _AddArticleState extends State<AddArticle> {
   final titleOverlineController = TextEditingController();
   final paragraphMainArticleController = TextEditingController();
   final writtenByController = TextEditingController();
+
   // final publishDateParamController = DatePickerDialog(
   //     initialDate: selectedDate,
   //     firstDate: DateTime(2023, 5),
@@ -26,6 +28,7 @@ class _AddArticleState extends State<AddArticle> {
   final categoryController = TextEditingController();
   final typeOfArticleController = TextEditingController();
   final themeController = TextEditingController();
+  bool isLogin = false;
 
   @override
   Widget build(BuildContext context) {
@@ -84,8 +87,7 @@ class _AddArticleState extends State<AddArticle> {
             children: [
               newEntries('Headline', titleHeadlineController),
               newEntries('Overline', titleOverlineController),
-              newEntries(
-                  'First paragraph', paragraphMainArticleController),
+              newEntries('First paragraph', paragraphMainArticleController),
               newEntries('Written by', writtenByController),
               addNewDate(),
               newEntries('Image', imagePathController),
@@ -98,6 +100,7 @@ class _AddArticleState extends State<AddArticle> {
                 style: ElevatedButton.styleFrom(
                     minimumSize: const Size.fromHeight(50)),
                 onPressed: () {
+                  if(isLogin) {
                   FirebaseFirestore.instance.collection('Articles').add({
                     'titleHeadline': titleHeadlineController.value.text,
                     'titleOverline': titleOverlineController.value.text,
@@ -111,6 +114,11 @@ class _AddArticleState extends State<AddArticle> {
                     'typeOfArticle': typeOfArticleController.value.text,
                     'publishDateParam': selectedDate,
                   });
+                } else {
+                    SnackBar(
+                      content: Text('Please, login to add an article'),
+                    );
+                  }
                 },
                 child: Text('Ajouter'),
               ),
@@ -134,6 +142,7 @@ Column newEntries(name, controller) {
           Text('${name} : '),
           Expanded(
             child: TextField(
+              maxLines: null,
               decoration: InputDecoration(
                 border: InputBorder.none,
               ),

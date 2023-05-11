@@ -1,5 +1,5 @@
 import 'package:cv_flutter_libe/auth.dart';
-import 'package:cv_flutter_libe/tabs/welcome_page.dart';
+import 'package:cv_flutter_libe/tabs/profile_page.dart';
 import 'package:cv_flutter_libe/tabs/login_signup_page.dart';
 import 'package:flutter/material.dart';
 
@@ -15,12 +15,12 @@ class _WidgetTreeState extends State<WidgetTree> {
   Widget build(BuildContext context) {
     return StreamBuilder(
       stream: Auth().authStateChanges,
-      builder: (context,snapshot) {
-          if (snapshot.hasData) {
-            return WelcomePage();
-          } else {
-            return const LoginPage();
-          }
+      builder: (context, snapshot) {
+        if (snapshot.hasData) {
+          return WelcomePage();
+        } else {
+          return LoginPage();
+        }
       },
     );
   }

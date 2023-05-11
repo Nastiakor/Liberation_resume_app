@@ -11,18 +11,18 @@ class WelcomePage extends StatelessWidget {
     await Auth().signOut();
   }
 
-  Widget _title(){
+  Widget _title() {
     return const Text('Welcome to our app');
   }
 
-  Widget _userId(){
+  Widget _userUid() {
     return Text(user?.email ?? 'User email');
   }
 
-  Widget _signOutButton(){
+  Widget _signOutButton() {
     return ElevatedButton(
-        onPressed: signOut,
-        child: const Text('Sign Out'),
+      onPressed: signOut,
+      child: const Text('Sign Out'),
     );
   }
 
@@ -40,7 +40,7 @@ class WelcomePage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            _userId(),
+            _userUid(),
             _signOutButton(),
           ],
         ),
