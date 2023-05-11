@@ -14,6 +14,7 @@ import 'package:flutter/foundation.dart';
 import 'dart:io' show Platform;
 import 'package:cv_flutter_libe/tabs/welcome_page.dart';
 import 'package:cv_flutter_libe/widget_tree.dart';
+import 'package:cv_flutter_libe/tabs/login_signup_page.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

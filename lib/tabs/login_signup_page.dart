@@ -1,3 +1,4 @@
+import 'package:cv_flutter_libe/tabs/welcome_page.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cv_flutter_libe/auth.dart';
@@ -22,6 +23,7 @@ class _LoginPageState extends State<LoginPage> {
         email: _controllerEmail.text,
         password: _controllerPassword.text,
       );
+      Navigator.push(context, MaterialPageRoute(builder: (context) => WelcomePage()));
     } on FirebaseAuthException catch (e) {
       setState(() {
         errorMessage = e.message;
