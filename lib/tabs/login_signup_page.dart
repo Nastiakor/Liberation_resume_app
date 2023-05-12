@@ -13,7 +13,6 @@ class LoginPage extends StatefulWidget {
 class LoginPageState extends State<LoginPage> {
   String? errorMessage = '';
   bool isLogin = true;
-
   final TextEditingController _controllerEmail = TextEditingController();
   final TextEditingController _controllerPassword = TextEditingController();
   final TextEditingController _controllerName = TextEditingController();
@@ -36,11 +35,10 @@ class LoginPageState extends State<LoginPage> {
   Future<void> createUserWithEmailAndPassword() async {
     try {
       await Auth().createUserWithEmailAndPassword(
-        email: _controllerEmail.text,
-        password: _controllerPassword.text,
-        name : _controllerName.text,
-        lastName : _controllerLastName.text
-      );
+          email: _controllerEmail.text,
+          password: _controllerPassword.text,
+          name: _controllerName.text,
+          lastName: _controllerLastName.text);
     } on FirebaseAuthException catch (e) {
       setState(() {
         errorMessage = e.message;
@@ -52,73 +50,108 @@ class LoginPageState extends State<LoginPage> {
     return const Text('Firebase Auth');
   }
 
-  Widget _entryField(
-    String title,
-    bool emailOrPassword,
-    TextEditingController controller,
-  ) {
-    return TextField(
-      obscureText: emailOrPassword,
-      controller: controller,
-      decoration: InputDecoration(
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(30),
-          borderSide: const BorderSide(
-              width: 30, style: BorderStyle.solid, color: Colors.white),
+  Widget _logIn() {
+    return Column(children: [
+      TextField(
+        obscureText: false,
+        controller: _controllerEmail,
+        decoration: InputDecoration(
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(30),
+            borderSide: const BorderSide(
+                width: 30, style: BorderStyle.solid, color: Colors.white),
+          ),
+          labelText: 'Email'
         ),
-        labelText: title,
       ),
-    );
+      SizedBox(height: 10),
+      TextField(
+        obscureText: true,
+        controller: _controllerPassword,
+        decoration: InputDecoration(
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(30),
+              borderSide: const BorderSide(
+                  width: 30, style: BorderStyle.solid, color: Colors.white),
+            ),
+            labelText: 'Password'
+        ),
+      ),
+    ]);
   }
 
   Padding _signUp({
     required TextEditingController nameController,
     required TextEditingController lastNameController,
+    required TextEditingController emailController,
     required TextEditingController passwordController,
   }) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
-      child : SingleChildScrollView(
+      child: SingleChildScrollView(
         child: Column(
-      children: [
-        TextField(
-          controller: nameController,
-          decoration: InputDecoration(
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(30),
-              borderSide: const BorderSide(
-                  width: 30, style: BorderStyle.solid, color: Colors.white),
+          children: [
+            TextField(
+              controller: nameController,
+              decoration: InputDecoration(
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(30),
+                  borderSide: const BorderSide(
+                      width: 30, style: BorderStyle.solid, color: Colors.white),
+                ),
+                labelText: 'Name',
+              ),
             ),
-            labelText: 'Name',
-          ),
-        ),
-        SizedBox(height: 10,),
-        TextField(
-          controller: lastNameController,
-          decoration: InputDecoration(
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(30),
-              borderSide: const BorderSide(
-                  width: 30, style: BorderStyle.solid, color: Colors.white),
+            SizedBox(
+              height: 10,
             ),
-            labelText: 'Last Name',
-          ),
-        ),
-        SizedBox(height: 10,),
-        TextField(
-          obscureText: true,
-          controller: passwordController,
-          decoration: InputDecoration(
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(30),
-              borderSide: const BorderSide(
-                  width: 30, style: BorderStyle.solid, color: Colors.white),
+            TextField(
+              controller: lastNameController,
+              decoration: InputDecoration(
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(30),
+                  borderSide: const BorderSide(
+                      width: 30, style: BorderStyle.solid, color: Colors.white),
+                ),
+                labelText: 'Last Name',
+              ),
             ),
-            labelText: 'Password',
-          ),
+            SizedBox(
+              height: 10,
+            ),
+            TextField(
+              controller: emailController,
+              decoration: InputDecoration(
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(30),
+                  borderSide: const BorderSide(
+                      width: 30, style: BorderStyle.solid, color: Colors.white),
+                ),
+                labelText: 'Email',
+              ),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            TextField(
+              obscureText: true,
+              controller: passwordController,
+              decoration: InputDecoration(
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(30),
+                  borderSide: const BorderSide(
+                      width: 30, style: BorderStyle.solid, color: Colors.white),
+                ),
+                labelText: 'Password',
+              ),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+          ],
         ),
-      ],
-    ),),);
+      ),
+    );
   }
 
   Widget _errorMessage() {
@@ -177,15 +210,13 @@ class LoginPageState extends State<LoginPage> {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            _entryField('email', false, _controllerEmail),
-            SizedBox(
-              height: 30,
-            ),
-            _signUp(
-                nameController: _controllerName,
-                lastNameController: _controllerLastName,
-                passwordController: _controllerPassword
-            ),
+            isLogin
+                ? _logIn()
+                : _signUp(
+                    nameController: _controllerName,
+                    lastNameController: _controllerLastName,
+                    emailController: _controllerEmail,
+                    passwordController: _controllerPassword),
             _errorMessage(),
             submitButton(),
             loginOrRegisterButton(),

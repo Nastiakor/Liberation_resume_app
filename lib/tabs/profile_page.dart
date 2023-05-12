@@ -2,8 +2,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cv_flutter_libe/auth.dart';
 import 'package:flutter/material.dart';
 
-class WelcomePage extends StatelessWidget {
-  WelcomePage({Key? key}) : super(key: key);
+class ProfilePage extends StatelessWidget {
+  ProfilePage({Key? key}) : super(key: key);
 
   final User? user = Auth().currentUser;
 
