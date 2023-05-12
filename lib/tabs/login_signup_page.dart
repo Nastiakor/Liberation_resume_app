@@ -16,6 +16,8 @@ class LoginPageState extends State<LoginPage> {
 
   final TextEditingController _controllerEmail = TextEditingController();
   final TextEditingController _controllerPassword = TextEditingController();
+  final TextEditingController _controllerName = TextEditingController();
+  final TextEditingController _controllerLastName = TextEditingController();
 
   Future<void> signInWithEmailAndPassword() async {
     try {
@@ -36,6 +38,8 @@ class LoginPageState extends State<LoginPage> {
       await Auth().createUserWithEmailAndPassword(
         email: _controllerEmail.text,
         password: _controllerPassword.text,
+        name : _controllerName.text,
+        lastName : _controllerLastName.text
       );
     } on FirebaseAuthException catch (e) {
       setState(() {
@@ -65,6 +69,56 @@ class LoginPageState extends State<LoginPage> {
         labelText: title,
       ),
     );
+  }
+
+  Padding _signUp({
+    required TextEditingController nameController,
+    required TextEditingController lastNameController,
+    required TextEditingController passwordController,
+  }) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child : SingleChildScrollView(
+        child: Column(
+      children: [
+        TextField(
+          controller: nameController,
+          decoration: InputDecoration(
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(30),
+              borderSide: const BorderSide(
+                  width: 30, style: BorderStyle.solid, color: Colors.white),
+            ),
+            labelText: 'Name',
+          ),
+        ),
+        SizedBox(height: 10,),
+        TextField(
+          controller: lastNameController,
+          decoration: InputDecoration(
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(30),
+              borderSide: const BorderSide(
+                  width: 30, style: BorderStyle.solid, color: Colors.white),
+            ),
+            labelText: 'Last Name',
+          ),
+        ),
+        SizedBox(height: 10,),
+        TextField(
+          obscureText: true,
+          controller: passwordController,
+          decoration: InputDecoration(
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(30),
+              borderSide: const BorderSide(
+                  width: 30, style: BorderStyle.solid, color: Colors.white),
+            ),
+            labelText: 'Password',
+          ),
+        ),
+      ],
+    ),),);
   }
 
   Widget _errorMessage() {
@@ -127,7 +181,11 @@ class LoginPageState extends State<LoginPage> {
             SizedBox(
               height: 30,
             ),
-            _entryField('password', true, _controllerPassword),
+            _signUp(
+                nameController: _controllerName,
+                lastNameController: _controllerLastName,
+                passwordController: _controllerPassword
+            ),
             _errorMessage(),
             submitButton(),
             loginOrRegisterButton(),

@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/foundation.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Auth with ChangeNotifier {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
@@ -26,12 +27,25 @@ class Auth with ChangeNotifier {
   Future<void> createUserWithEmailAndPassword({
     required String email,
     required String password,
+    required String name,
+    required String lastName
   }) async {
-    await _firebaseAuth.createUserWithEmailAndPassword(
-      email: email,
-      password: password,
+    UserCredential userCredential = await _firebaseAuth.createUserWithEmailAndPassword(
+        email: email,
+        password: password
     );
+
+    // get the user's UID
+    String uid = userCredential.user!.uid;
+
+    // store the additional user data in Firestore
+    await FirebaseFirestore.instance.collection('users').doc(uid).set({
+      'name': name,
+      'lastName': lastName,
+      // any other fields you want to store
+    });
   }
+
 
   Future<void> signOut() async {
     await _firebaseAuth.signOut();
