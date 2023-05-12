@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cv_flutter_libe/auth.dart';
 import 'package:flutter/material.dart';
@@ -19,18 +20,42 @@ class ProfilePage extends StatelessWidget {
     return Text(user?.email ?? 'User email');
   }
 
-  Widget _signOutButton() {
-    return ElevatedButton(
-      onPressed: signOut,
-      child: const Text('Sign Out'),
-    );
+  void fetchNamebyID() async {
+    QuerySnapshot querySnapshot = await FirebaseFirestore.instance
+        .collection('users')
+        .where('id', isEqualTo: user?.uid)
+        .get();
+
+    if (querySnapshot.docs.isEmpty) {
+      print('Aucun document trouvé avec l\'ID spécifié');
+      return;
+    }
+
+    DocumentSnapshot documentSnapshot = querySnapshot.docs[0];
+
+    if (documentSnapshot.exists) {
+      // Récupérer la valeur du champ "name"
+      String nom = documentSnapshot.get('name');
+
+      print('Le nom récupéré est : $nom');
+    }
   }
 
   @override
   Widget build(BuildContext context) {
+    print('coucou');
     return Scaffold(
       appBar: AppBar(
         title: _title(),
+        actions: <Widget>[
+          Builder(
+            builder: (context) => IconButton(
+              icon: Icon(Icons.menu),
+              onPressed: () => Scaffold.of(context).openEndDrawer(),
+              tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
+            ),
+          ),
+        ],
       ),
       body: Container(
         height: double.infinity,
@@ -41,10 +66,28 @@ class ProfilePage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             _userUid(),
-            _signOutButton(),
+            ElevatedButton(
+              child: Text('Fetch Name'),
+              onPressed: fetchNamebyID,
+            ),
+          ],
+        ),
+      ),
+      endDrawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: [
+            const DrawerHeader(child: Text('Welcome')),
+            ElevatedButton(
+              child: Text("Sign out"),
+              onPressed: () {
+                signOut();
+              },
+            ),
           ],
         ),
       ),
     );
   }
 }
+
