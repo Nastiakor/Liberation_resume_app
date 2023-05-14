@@ -1,4 +1,4 @@
-import 'package:cv_flutter_libe/tabs/profile_page.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cv_flutter_libe/auth.dart';
@@ -24,7 +24,7 @@ class LoginPageState extends State<LoginPage> {
         email: _controllerEmail.text,
         password: _controllerPassword.text,
       );
-      // Navigator.push(context, MaterialPageRoute(builder: (context) => WelcomePage()));
+
     } on FirebaseAuthException catch (e) {
       setState(() {
         errorMessage = e.message;
@@ -53,18 +53,19 @@ class LoginPageState extends State<LoginPage> {
   Widget _logIn() {
     return Column(children: [
       TextField(
+        style: const TextStyle(color: Colors.white),
         obscureText: false,
         controller: _controllerEmail,
         decoration: InputDecoration(
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(30),
-            borderSide: const BorderSide(
-                width: 30, style: BorderStyle.solid, color: Colors.white),
-          ),
-          labelText: 'Email'
-        ),
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(30),
+              borderSide: const BorderSide(
+                  width: 30, style: BorderStyle.solid, color: Colors.white),
+            ),
+            labelText: 'Email',
+            labelStyle: const TextStyle(color: Colors.white)),
       ),
-      SizedBox(height: 10),
+      const SizedBox(height: 10),
       TextField(
         obscureText: true,
         controller: _controllerPassword,
@@ -74,8 +75,8 @@ class LoginPageState extends State<LoginPage> {
               borderSide: const BorderSide(
                   width: 30, style: BorderStyle.solid, color: Colors.white),
             ),
-            labelText: 'Password'
-        ),
+            labelText: 'Password',
+            labelStyle: const TextStyle(color: Colors.white)),
       ),
     ]);
   }
@@ -102,7 +103,7 @@ class LoginPageState extends State<LoginPage> {
                 labelText: 'Name',
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             TextField(
@@ -116,7 +117,7 @@ class LoginPageState extends State<LoginPage> {
                 labelText: 'Last Name',
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             TextField(
@@ -130,7 +131,7 @@ class LoginPageState extends State<LoginPage> {
                 labelText: 'Email',
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             TextField(
@@ -145,7 +146,7 @@ class LoginPageState extends State<LoginPage> {
                 labelText: 'Password',
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
           ],
@@ -168,7 +169,10 @@ class LoginPageState extends State<LoginPage> {
       ),
       onPressed:
           isLogin ? signInWithEmailAndPassword : createUserWithEmailAndPassword,
-      child: Text(isLogin ? 'Login' : 'Register'),
+      child: Text(
+        isLogin ? 'Login' : 'Register',
+        style: const TextStyle(color: Colors.white),
+      ),
     );
   }
 
@@ -179,7 +183,10 @@ class LoginPageState extends State<LoginPage> {
           isLogin = !isLogin;
         });
       },
-      child: Text(isLogin ? 'Register instead' : 'Login instead'),
+      child: Text(
+        isLogin ? 'Register instead' : 'Login instead',
+        style: const TextStyle(color: Colors.white),
+      ),
     );
   }
 
@@ -191,13 +198,13 @@ class LoginPageState extends State<LoginPage> {
         backgroundColor: Colors.teal,
       ),
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
             colors: <Color>[
-              Color(0x90EE90),
-              Color(0x2E8B57),
+              Colors.greenAccent,
+              Colors.teal,
             ],
             // Gradient from https://learnui.design/tools/gradient-generator.html
             tileMode: TileMode.mirror,

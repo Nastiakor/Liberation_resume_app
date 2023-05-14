@@ -50,7 +50,7 @@ class ProfilePage extends StatelessWidget {
         actions: <Widget>[
           Builder(
             builder: (context) => IconButton(
-              icon: Icon(Icons.menu),
+              icon: const Icon(Icons.menu),
               onPressed: () => Scaffold.of(context).openEndDrawer(),
               tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
             ),
@@ -67,8 +67,8 @@ class ProfilePage extends StatelessWidget {
           children: <Widget>[
             _userUid(),
             ElevatedButton(
-              child: Text('Fetch Name'),
               onPressed: fetchNamebyID,
+              child: const Text('Fetch Name'),
             ),
           ],
         ),
@@ -79,7 +79,7 @@ class ProfilePage extends StatelessWidget {
           children: [
             const DrawerHeader(child: Text('Welcome')),
             ElevatedButton(
-              child: Text("Sign out"),
+              child: const Text("Sign out"),
               onPressed: () {
                 signOut();
               },

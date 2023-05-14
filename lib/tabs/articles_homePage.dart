@@ -57,7 +57,7 @@ class _ArticlesHomePageState extends State<ArticlesHomePage> {
                 'Articles', 'typeOfArticle', 'main', 'category', 'homePage'),
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
-                return Center(child: CircularProgressIndicator());
+                return const Center(child: CircularProgressIndicator());
               } else if (snapshot.hasError) {
                 return Center(child: Text('Erreur: ${snapshot.error}'));
               } else {
@@ -89,7 +89,7 @@ class _ArticlesHomePageState extends State<ArticlesHomePage> {
                 'secondary', 'category', 'homePage'),
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
-                return Center(child: CircularProgressIndicator());
+                return const Center(child: CircularProgressIndicator());
               } else if (snapshot.hasError) {
                 return Center(child: Text('Erreur: ${snapshot.error}'));
               } else {

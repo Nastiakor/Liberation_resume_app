@@ -180,9 +180,9 @@ class FullArticle extends MainArticle {
 
   @override
   Widget build(BuildContext context) {
-    print("LON ${linkOrNot}");
+    print("LON $linkOrNot");
     print("link ${link?.isEmpty}");
-    print("image ${imageOrNot}");
+    print("image $imageOrNot");
     super.contactOrNot?.isEmpty == false
         ? boolContact == true
         : boolContact == false;
@@ -399,8 +399,8 @@ class FullArticle extends MainArticle {
                   ? Container()
                   : InkWell(
                       onTap: () {
-                        _launchURL("${link}");
-                        print("linkOrNot${link}");
+                        _launchURL("$link");
+                        print("linkOrNot$link");
                       },
                       child: Align(
                         alignment: Alignment.topRight,
@@ -431,10 +431,10 @@ class FullArticle extends MainArticle {
                         ),
                         InkWell(
                           onTap: () {
-                            _launchURL("${link}");
+                            _launchURL("$link");
                           },
                           child: Image.asset(
-                            "${image}",
+                            "$image",
                             width: 150,
                           ),
                         ),

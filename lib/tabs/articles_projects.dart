@@ -2,7 +2,6 @@ import 'package:cv_flutter_libe/add_article.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cv_flutter_libe/view_articles_main_full_secondary.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:provider/provider.dart';
 import 'package:cv_flutter_libe/auth.dart';
 
@@ -60,7 +59,7 @@ class _ArticlesProjectsState extends State<ArticlesProjects> {
           'Articles', 'typeOfArticle', 'main', 'category', 'Nos projets'),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return Center(child: CircularProgressIndicator());
+          return const Center(child: CircularProgressIndicator());
         } else if (snapshot.hasError) {
           return Center(child: Text('Erreur: ${snapshot.error}'));
         } else {
@@ -93,7 +92,7 @@ class _ArticlesProjectsState extends State<ArticlesProjects> {
     future: getSecondaryDocumentByCondition('Articles', 'typeOfArticle',            'secondary', 'category', 'Nos projets'),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return Center(child: CircularProgressIndicator());
+          return const Center(child: CircularProgressIndicator());
         } else if (snapshot.hasError) {
           return Center(child: Text('Erreur: ${snapshot.error}'));
         } else {
@@ -132,7 +131,7 @@ class _ArticlesProjectsState extends State<ArticlesProjects> {
             // L'utilisateur est connecté, affichez le bouton
             return FloatingActionButton(
               backgroundColor: Colors.black,
-              child: Icon(Icons.add),
+              child: const Icon(Icons.add),
               onPressed: () {
                 Navigator.of(context).push(
                   MaterialPageRoute(

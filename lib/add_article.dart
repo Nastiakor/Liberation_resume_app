@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:cv_flutter_libe/tabs/login_signup_page.dart';
 
 final DateTime selectedDate = DateTime.now();
 
@@ -44,10 +43,10 @@ class _AddArticleState extends State<AddArticle> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  ("Date : ${selectedDate} "),
+                  ("Date : $selectedDate "),
                 ),
                 GestureDetector(
-                  child: Icon(
+                  child: const Icon(
                     Icons.arrow_drop_down,
                   ),
                   onTap: () {
@@ -82,7 +81,7 @@ class _AddArticleState extends State<AddArticle> {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.all(10),
+          padding: const EdgeInsets.all(10),
           child: Column(
             children: [
               newEntries('Headline', titleHeadlineController),
@@ -115,12 +114,12 @@ class _AddArticleState extends State<AddArticle> {
                     'publishDateParam': selectedDate,
                   });
                 } else {
-                    SnackBar(
+                    const SnackBar(
                       content: Text('Please, login to add an article'),
                     );
                   }
                 },
-                child: Text('Ajouter'),
+                child: const Text('Ajouter'),
               ),
             ],
           ),
@@ -139,11 +138,11 @@ Column newEntries(name, controller) {
           side: const BorderSide(color: Colors.grey, width: 1.5),
         ),
         title: Row(children: [
-          Text('${name} : '),
+          Text('$name : '),
           Expanded(
             child: TextField(
               maxLines: null,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 border: InputBorder.none,
               ),
               controller: controller,

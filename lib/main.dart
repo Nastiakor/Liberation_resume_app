@@ -1,7 +1,5 @@
-import 'package:cv_flutter_libe/archives/home_page.dart';
 import 'package:cv_flutter_libe/tabs/articles_experiences.dart';
 import 'package:cv_flutter_libe/tabs/articles_formations.dart';
-import 'package:cv_flutter_libe/tabs/login_signup_page.dart';
 import 'package:flutter/material.dart';
 import 'package:cv_flutter_libe/app_bottom_bar/bottom_navigation_bar.dart';
 import 'package:cv_flutter_libe/style.dart';
@@ -11,10 +9,7 @@ import 'package:cv_flutter_libe/tabs/articles_homePage.dart';
 import 'package:cv_flutter_libe/tabs/articles_projects.dart';
 import 'package:cv_flutter_libe/tabs/articles_contacts.dart';
 import 'package:flutter/foundation.dart';
-import 'dart:io' show Platform;
-import 'package:cv_flutter_libe/tabs/profile_page.dart';
 import 'package:cv_flutter_libe/widget_tree.dart';
-import 'package:cv_flutter_libe/tabs/login_signup_page.dart';
 import 'package:provider/provider.dart';
 import 'package:cv_flutter_libe/auth.dart';
 
@@ -25,7 +20,7 @@ Future<void> main() async {
   if (kIsWeb) {
     // Configuration pour le Web
     await Firebase.initializeApp(
-      options: FirebaseOptions(
+      options: const FirebaseOptions(
           apiKey: "AIzaSyA5G-epm7dKRrs0HL9Zbp8gtts7oxZtypY",
           authDomain: "portfolio-back-6cb8a.firebaseapp.com",
           projectId: "portfolio-back-6cb8a",
@@ -43,7 +38,7 @@ Future<void> main() async {
   runApp(
     ChangeNotifierProvider<Auth>(
       create: (context) => Auth(),
-      child: MyApp(),
+      child: const MyApp(),
   ),);
 }
 class MyApp extends StatelessWidget {
@@ -142,7 +137,7 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> with SingleTickerPro
             ArticlesFormations(),
             ArticlesExperiences(),
             ArticlesContacts(),
-            WidgetTree(),
+            const WidgetTree(),
           ],
         ),
         resizeToAvoidBottomInset: false,
