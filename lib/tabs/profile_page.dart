@@ -3,12 +3,29 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cv_flutter_libe/auth.dart';
 import 'package:flutter/material.dart';
 
-DocumentSnapshot? documentSnapshot;
-
-class ProfilePage extends StatelessWidget {
+class ProfilePage extends StatefulWidget {
   ProfilePage({Key? key}) : super(key: key);
 
+  @override
+  State<ProfilePage> createState() => _ProfilePageState();
+}
+
+class _ProfilePageState extends State<ProfilePage> {
   final User? user = Auth().currentUser;
+  Future<DocumentSnapshot>? documentSnapshot;
+
+  @override
+  void initState() {
+    super.initState();
+    documentSnapshot = fetchNamebyID();
+  }
+
+  Future<DocumentSnapshot> fetchNamebyID() async {
+    return await FirebaseFirestore.instance
+        .collection('users')
+        .doc(user?.uid)
+        .get();
+  }
 
   Future<void> signOut() async {
     await Auth().signOut();
@@ -22,40 +39,32 @@ class ProfilePage extends StatelessWidget {
     return Text(user?.email ?? 'User email');
   }
 
-  Future<String?> fetchNamebyID() async {
-    // print(user?.uid);
-    String? name;
-    // QuerySnapshot querySnapshot =
-    await FirebaseFirestore.instance
-        .collection('users')
-        // .where('id', isEqualTo: user?.uid)
-        .doc(user?.uid)
-        .get()
-        .then((value) {
-      print(value['lastName']);
-      documentSnapshot = value;
-    });
-
-    // if (querySnapshot.docs.isEmpty) {
-    //  print('Aucun document trouvé avec l\'ID spécifié');
-    // }
-
-    final docRef = db.collection("users").doc(user?.uid);
-    docRef.get().then(
-      (DocumentSnapshot doc) {
-        final data = doc.data() as Map<String, dynamic>;
-      },
-      onError: (e) => print("Error getting document: $e"),
-    );
-
-    //if (documentSnapshot.exists) {
-    // Récupérer la valeur du champ "name"
-    //name = documentSnapshot.get('name');
-
-    //print('Le nom récupéré est : $name');
-
-    // }
-  }
+  // void fetchNamebyID() async {
+  //   // print(user?.uid);
+  //   // QuerySnapshot querySnapshot =
+  //   final documentSnapshot = await FirebaseFirestore.instance
+  //       .collection('users')
+  //       // .where('id', isEqualTo: user?.uid)
+  //       .doc(user?.uid)
+  //       .get();
+  //
+  //   print(documentSnapshot.data());
+  //
+  //   var name = documentSnapshot['name'];
+  //   var lastName = documentSnapshot['lastName'];
+  //
+  //   // if (querySnapshot.docs.isEmpty) {
+  //   //  print('Aucun document trouvé avec l\'ID spécifié');
+  //   // }
+  //
+  //   //if (documentSnapshot.exists) {
+  //   // Récupérer la valeur du champ "name"
+  //   //name = documentSnapshot.get('name');
+  //
+  //   //print('Le nom récupéré est : $name');
+  //
+  //   // }
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -75,35 +84,50 @@ class ProfilePage extends StatelessWidget {
           ),
         ],
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Stack(
-            alignment: Alignment.topCenter,
-            children: [
-              Image.asset(
-                'img/85808-cherche-ancien-affiche-vectoriel.jpg',
-                width: size,
-                height: 150,
-                fit: BoxFit.cover,
-              ),
-              Padding(
-                padding: EdgeInsets.only(top: 80),
-                child: CircleAvatar(
-                  radius: 65,
-                  backgroundColor: Colors.white,
-                  child: myProfilePic(72),
-                ),
-              ),
-            ],
-          ),
-          Row(
-            children: [
-              fetchNamebyID(),
-              _userUid(),
-            ],
-          ),
-        ],
+      body: StreamBuilder<DocumentSnapshot>(
+        stream: FirebaseFirestore.instance.collection('users').doc(user?.uid).snapshots(),
+        builder: (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return CircularProgressIndicator();
+          } else if (snapshot.hasError) {
+            return Text("Something went wrong: ${snapshot.error}");
+          } else if (snapshot.hasData) {
+            Map<String, dynamic>? data = snapshot.data!.data() as Map<String, dynamic>?;
+            if (data != null) {
+              return Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Stack(
+                    alignment: Alignment.topCenter,
+                    children: [
+                      Image.asset(
+                        'img/85808-cherche-ancien-affiche-vectoriel.jpg',
+                        width: size,
+                        height: 150,
+                        fit: BoxFit.cover,
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(top: 80),
+                        child: CircleAvatar(
+                          radius: 65,
+                          backgroundColor: Colors.white,
+                          child: myProfilePic(72),
+                        ),
+                      ),
+                    ],
+                  ),
+                  Text("Name: ${data['name']}"), // Display the name
+                  Text("Last name: ${data['lastName']}"), // Display the last name
+                  _userUid(),
+                ],
+              );
+            } else {
+              return Text("No data");
+            }
+          } else {
+            return Text("No data");
+          }
+        },
       ),
       endDrawer: Drawer(
         child: ListView(
