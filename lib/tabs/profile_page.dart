@@ -20,7 +20,9 @@ class ProfilePage extends StatelessWidget {
     return Text(user?.email ?? 'User email');
   }
 
-  void fetchNamebyID() async {
+  Future <String?> fetchNamebyID() async {
+    print(user?.uid);
+    String? name;
     QuerySnapshot querySnapshot = await FirebaseFirestore.instance
         .collection('users')
         .where('id', isEqualTo: user?.uid)
@@ -28,22 +30,23 @@ class ProfilePage extends StatelessWidget {
 
     if (querySnapshot.docs.isEmpty) {
       print('Aucun document trouvé avec l\'ID spécifié');
-      return;
     }
 
-    DocumentSnapshot documentSnapshot = querySnapshot.docs[0];
+    // DocumentSnapshot documentSnapshot = querySnapshot.docs[0];
 
-    if (documentSnapshot.exists) {
+    //if (documentSnapshot.exists) {
       // Récupérer la valeur du champ "name"
-      String nom = documentSnapshot.get('name');
+      //name = documentSnapshot.get('name');
 
-      print('Le nom récupéré est : $nom');
-    }
+      //print('Le nom récupéré est : $name');
+    print(querySnapshot.docs[0]);
+   // }
+    return name;
   }
 
   @override
   Widget build(BuildContext context) {
-    print('coucou');
+    // print(user?.uid);
     return Scaffold(
       appBar: AppBar(
         title: _title(),
@@ -66,9 +69,9 @@ class ProfilePage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             _userUid(),
-            ElevatedButton(
+           ElevatedButton(
               onPressed: fetchNamebyID,
-              child: const Text('Fetch Name'),
+              child: _userUid(),
             ),
           ],
         ),

@@ -24,7 +24,6 @@ class LoginPageState extends State<LoginPage> {
         email: _controllerEmail.text,
         password: _controllerPassword.text,
       );
-
     } on FirebaseAuthException catch (e) {
       setState(() {
         errorMessage = e.message;
@@ -53,10 +52,15 @@ class LoginPageState extends State<LoginPage> {
   Widget _logIn() {
     return Column(children: [
       TextField(
+        cursorColor: Colors.white,
         style: const TextStyle(color: Colors.white),
         obscureText: false,
         controller: _controllerEmail,
         decoration: InputDecoration(
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(30),
+              borderSide: const BorderSide(color: Colors.white),
+            ),
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(30),
               borderSide: const BorderSide(
@@ -67,9 +71,15 @@ class LoginPageState extends State<LoginPage> {
       ),
       const SizedBox(height: 10),
       TextField(
+        cursorColor: Colors.white,
+        style: const TextStyle(color: Colors.white),
         obscureText: true,
         controller: _controllerPassword,
         decoration: InputDecoration(
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(30),
+              borderSide: const BorderSide(color: Colors.white),
+            ),
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(30),
               borderSide: const BorderSide(
@@ -93,58 +103,85 @@ class LoginPageState extends State<LoginPage> {
         child: Column(
           children: [
             TextField(
-              controller: nameController,
+              cursorColor: Colors.white,
+              style: const TextStyle(color: Colors.white),
+              obscureText: false,
+              controller: _controllerName,
               decoration: InputDecoration(
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(30),
-                  borderSide: const BorderSide(
-                      width: 30, style: BorderStyle.solid, color: Colors.white),
-                ),
-                labelText: 'Name',
-              ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(30),
+                    borderSide: const BorderSide(color: Colors.white),
+                  ),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(30),
+                    borderSide: const BorderSide(
+                        width: 30, style: BorderStyle.solid, color: Colors.white),
+                  ),
+                  labelText: 'Name',
+                  labelStyle: const TextStyle(color: Colors.white)),
             ),
             const SizedBox(
               height: 10,
             ),
             TextField(
-              controller: lastNameController,
+              cursorColor: Colors.white,
+              style: const TextStyle(color: Colors.white),
+              obscureText: false,
+              controller: _controllerLastName,
               decoration: InputDecoration(
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(30),
-                  borderSide: const BorderSide(
-                      width: 30, style: BorderStyle.solid, color: Colors.white),
-                ),
-                labelText: 'Last Name',
-              ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(30),
+                    borderSide: const BorderSide(color: Colors.white),
+                  ),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(30),
+                    borderSide: const BorderSide(
+                        width: 30, style: BorderStyle.solid, color: Colors.white),
+                  ),
+                  labelText: 'Last name',
+                  labelStyle: const TextStyle(color: Colors.white)),
             ),
             const SizedBox(
               height: 10,
             ),
             TextField(
-              controller: emailController,
+              cursorColor: Colors.white,
+              style: const TextStyle(color: Colors.white),
+              obscureText: false,
+              controller: _controllerEmail,
               decoration: InputDecoration(
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(30),
-                  borderSide: const BorderSide(
-                      width: 30, style: BorderStyle.solid, color: Colors.white),
-                ),
-                labelText: 'Email',
-              ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(30),
+                    borderSide: const BorderSide(color: Colors.white),
+                  ),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(30),
+                    borderSide: const BorderSide(
+                        width: 30, style: BorderStyle.solid, color: Colors.white),
+                  ),
+                  labelText: 'Email',
+                  labelStyle: const TextStyle(color: Colors.white)),
             ),
             const SizedBox(
               height: 10,
             ),
             TextField(
+              cursorColor: Colors.white,
+              style: const TextStyle(color: Colors.white),
               obscureText: true,
-              controller: passwordController,
+              controller: _controllerPassword,
               decoration: InputDecoration(
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(30),
-                  borderSide: const BorderSide(
-                      width: 30, style: BorderStyle.solid, color: Colors.white),
-                ),
-                labelText: 'Password',
-              ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(30),
+                    borderSide: const BorderSide(color: Colors.white),
+                  ),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(30),
+                    borderSide: const BorderSide(
+                        width: 30, style: BorderStyle.solid, color: Colors.white),
+                  ),
+                  labelText: 'Password',
+                  labelStyle: const TextStyle(color: Colors.white)),
             ),
             const SizedBox(
               height: 10,
