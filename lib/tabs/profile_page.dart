@@ -22,26 +22,43 @@ class ProfilePage extends StatelessWidget {
 
   Future <String?> fetchNamebyID() async {
     print(user?.uid);
+    dynamic db;
     String? name;
     QuerySnapshot querySnapshot = await FirebaseFirestore.instance
         .collection('users')
         .where('id', isEqualTo: user?.uid)
         .get();
 
-    if (querySnapshot.docs.isEmpty) {
-      print('Aucun document trouvé avec l\'ID spécifié');
-    }
+    db = FirebaseFirestore.instance;
 
-    // DocumentSnapshot documentSnapshot = querySnapshot.docs[0];
+    final docRef = db.collection("users").doc(user?.uid);
+    docRef.get().then(
+          (DocumentSnapshot doc) {
+        final data = doc.data() as Map<String, dynamic>;
+      },
+      onError: (e) => print("Error getting document: $e"),
+    );
 
-    //if (documentSnapshot.exists) {
-      // Récupérer la valeur du champ "name"
-      //name = documentSnapshot.get('name');
+    print("dbcollection-> ${db.collection('users')}");
 
-      //print('Le nom récupéré est : $name');
-    print(querySnapshot.docs[0]);
-   // }
-    return name;
+/*
+
+     if (querySnapshot.docs.isEmpty) {
+       print('Aucun document trouvé avec l\'ID spécifié');
+       return null;
+     }
+
+     DocumentSnapshot documentSnapshot = querySnapshot.docs[0];
+
+     if (documentSnapshot.exists) {
+       //Récupérer la valeur du champ "name"
+      name = documentSnapshot.get('name');
+
+      print('Le nom récupéré est : $name');
+      print(querySnapshot.docs[0]);
+    }*/
+
+  return name;
   }
 
   @override
