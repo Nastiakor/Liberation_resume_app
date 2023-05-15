@@ -40,7 +40,13 @@ class ProfilePage extends StatelessWidget {
     //  print('Aucun document trouvé avec l\'ID spécifié');
     // }
 
-    // DocumentSnapshot documentSnapshot = querySnapshot.docs[0];
+    final docRef = db.collection("users").doc(user?.uid);
+    docRef.get().then(
+      (DocumentSnapshot doc) {
+        final data = doc.data() as Map<String, dynamic>;
+      },
+      onError: (e) => print("Error getting document: $e"),
+    );
 
     //if (documentSnapshot.exists) {
     // Récupérer la valeur du champ "name"
@@ -49,7 +55,6 @@ class ProfilePage extends StatelessWidget {
     //print('Le nom récupéré est : $name');
 
     // }
-
   }
 
   @override
