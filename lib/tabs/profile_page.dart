@@ -3,6 +3,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cv_flutter_libe/auth.dart';
 import 'package:flutter/material.dart';
 
+DocumentSnapshot? documentSnapshot;
+
 class ProfilePage extends StatelessWidget {
   ProfilePage({Key? key}) : super(key: key);
 
@@ -20,35 +22,43 @@ class ProfilePage extends StatelessWidget {
     return Text(user?.email ?? 'User email');
   }
 
-  Future <String?> fetchNamebyID() async {
-    print(user?.uid);
+  Future<String?> fetchNamebyID() async {
+    // print(user?.uid);
     String? name;
-    QuerySnapshot querySnapshot = await FirebaseFirestore.instance
+    // QuerySnapshot querySnapshot =
+    await FirebaseFirestore.instance
         .collection('users')
-        .where('id', isEqualTo: user?.uid)
-        .get();
+        // .where('id', isEqualTo: user?.uid)
+        .doc(user?.uid)
+        .get()
+        .then((value) {
+      print(value['lastName']);
+      documentSnapshot = value;
+    });
 
-    if (querySnapshot.docs.isEmpty) {
-      print('Aucun document trouvé avec l\'ID spécifié');
-    }
+    // if (querySnapshot.docs.isEmpty) {
+    //  print('Aucun document trouvé avec l\'ID spécifié');
+    // }
 
     // DocumentSnapshot documentSnapshot = querySnapshot.docs[0];
 
     //if (documentSnapshot.exists) {
-      // Récupérer la valeur du champ "name"
-      //name = documentSnapshot.get('name');
+    // Récupérer la valeur du champ "name"
+    //name = documentSnapshot.get('name');
 
-      //print('Le nom récupéré est : $name');
-    print(querySnapshot.docs[0]);
-   // }
-    return name;
+    //print('Le nom récupéré est : $name');
+
+    // }
+
   }
 
   @override
   Widget build(BuildContext context) {
+    double size = MediaQuery.of(context).size.width;
     // print(user?.uid);
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.teal,
         title: _title(),
         actions: <Widget>[
           Builder(
@@ -60,21 +70,35 @@ class ProfilePage extends StatelessWidget {
           ),
         ],
       ),
-      body: Container(
-        height: double.infinity,
-        width: double.infinity,
-        padding: const EdgeInsets.all(20),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            _userUid(),
-           ElevatedButton(
-              onPressed: fetchNamebyID,
-              child: _userUid(),
-            ),
-          ],
-        ),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Stack(
+            alignment: Alignment.topCenter,
+            children: [
+              Image.asset(
+                'img/85808-cherche-ancien-affiche-vectoriel.jpg',
+                width: size,
+                height: 150,
+                fit: BoxFit.cover,
+              ),
+              Padding(
+                padding: EdgeInsets.only(top: 80),
+                child: CircleAvatar(
+                  radius: 65,
+                  backgroundColor: Colors.white,
+                  child: myProfilePic(72),
+                ),
+              ),
+            ],
+          ),
+          Row(
+            children: [
+              fetchNamebyID(),
+              _userUid(),
+            ],
+          ),
+        ],
       ),
       endDrawer: Drawer(
         child: ListView(
@@ -94,3 +118,7 @@ class ProfilePage extends StatelessWidget {
   }
 }
 
+CircleAvatar myProfilePic(double radius) {
+  return CircleAvatar(
+      radius: radius, backgroundImage: AssetImage("img/image_0.png"));
+}

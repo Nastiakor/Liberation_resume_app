@@ -49,6 +49,8 @@ class _ArticlesHomePageState extends State<ArticlesHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    double size = MediaQuery.of(context).size.width;
+
     return Scaffold(
       body: ListView(
         children: [
