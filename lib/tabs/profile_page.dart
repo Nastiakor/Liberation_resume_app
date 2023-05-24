@@ -94,32 +94,25 @@ class _ProfilePageState extends State<ProfilePage> {
           } else if (snapshot.hasData) {
             Map<String, dynamic>? data = snapshot.data!.data() as Map<String, dynamic>?;
             if (data != null) {
-              return Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Stack(
-                    alignment: Alignment.topCenter,
-                    children: [
-                      Image.asset(
-                        'img/85808-cherche-ancien-affiche-vectoriel.jpg',
-                        width: size,
-                        height: 150,
-                        fit: BoxFit.cover,
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(top: 80),
-                        child: CircleAvatar(
-                          radius: 65,
-                          backgroundColor: Colors.white,
-                          child: myProfilePic(72),
-                        ),
-                      ),
-                    ],
-                  ),
-                  Text("Name: ${data['name']}"), // Display the name
-                  Text("Last name: ${data['lastName']}"), // Display the last name
-                  _userUid(),
-                ],
+              return Center(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    Stack(
+                      alignment: Alignment.topCenter,
+                      children: [
+                        CircleAvatar(
+                            radius: 65,
+                            backgroundColor: Colors.white,
+                            child: Image.network("https://1fid.com/wp-content/uploads/2022/06/Twitter-profile-picture-4-1024x1024.jpg")
+                          ),
+                      ],
+                    ),
+                    Text("Name: ${data['name']}"), // Display the name
+                    Text("Last name: ${data['lastName']}"), // Display the last name
+                    _userUid(),
+                  ],
+                ),
               );
             } else {
               return Text("No data");
