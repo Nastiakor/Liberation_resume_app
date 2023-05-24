@@ -1,7 +1,12 @@
+import 'dart:typed_data';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cv_flutter_libe/utils.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cv_flutter_libe/auth.dart';
 import 'package:flutter/material.dart';
+import 'package:cv_flutter_libe/utils.dart';
+import 'package:image_picker/image_picker.dart';
 
 class ProfilePage extends StatefulWidget {
   ProfilePage({Key? key}) : super(key: key);
@@ -11,8 +16,16 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
+  Uint8List? _image;
   final User? user = Auth().currentUser;
   Future<DocumentSnapshot>? documentSnapshot;
+
+  void selectImage() async {
+  Uint8List img = await pickImage(ImageSource.gallery);
+  setState(() {
+    _image = img;
+  });
+  }
 
   @override
   void initState() {
@@ -106,16 +119,24 @@ class _ProfilePageState extends State<ProfilePage> {
                     Stack(
                       alignment: Alignment.topCenter,
                       children: [
+                        _image != null ?
+                        CircleAvatar(
+                          radius: 65,
+                          backgroundImage: MemoryImage(_image!),
+                        )
+                        :
                         CircleAvatar(
                           radius: 65,
                           backgroundColor: Colors.white,
                           child: Image.asset("img/logos/profilepic.jpg"),
                         ),
-                        Positioned(
+                         Positioned(
                           child: IconButton(
                             onPressed: () {},
                             icon: Icon(Icons.add_a_photo),
                           ),
+                          bottom: -10,
+                          left: 80,
                         ),
                       ],
                     ),
@@ -157,3 +178,4 @@ CircleAvatar myProfilePic(double radius) {
   return CircleAvatar(
       radius: radius, backgroundImage: AssetImage("img/logos/profilepic.jpg"));
 }
+
