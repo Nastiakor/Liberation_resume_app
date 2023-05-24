@@ -132,7 +132,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         ),
                          Positioned(
                           child: IconButton(
-                            onPressed: () {},
+                            onPressed: selectImage,
                             icon: Icon(Icons.add_a_photo),
                           ),
                           bottom: -10,
