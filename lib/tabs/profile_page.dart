@@ -85,14 +85,19 @@ class _ProfilePageState extends State<ProfilePage> {
         ],
       ),
       body: StreamBuilder<DocumentSnapshot>(
-        stream: FirebaseFirestore.instance.collection('users').doc(user?.uid).snapshots(),
-        builder: (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
+        stream: FirebaseFirestore.instance
+            .collection('users')
+            .doc(user?.uid)
+            .snapshots(),
+        builder:
+            (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return CircularProgressIndicator();
           } else if (snapshot.hasError) {
             return Text("Something went wrong: ${snapshot.error}");
           } else if (snapshot.hasData) {
-            Map<String, dynamic>? data = snapshot.data!.data() as Map<String, dynamic>?;
+            Map<String, dynamic>? data =
+                snapshot.data!.data() as Map<String, dynamic>?;
             if (data != null) {
               return Center(
                 child: Column(
@@ -102,14 +107,22 @@ class _ProfilePageState extends State<ProfilePage> {
                       alignment: Alignment.topCenter,
                       children: [
                         CircleAvatar(
-                            radius: 65,
-                            backgroundColor: Colors.white,
-                            child: Image.network("https://1fid.com/wp-content/uploads/2022/06/Twitter-profile-picture-4-1024x1024.jpg")
+                          radius: 65,
+                          backgroundColor: Colors.white,
+                          child: Image.asset("img/logos/profilepic.jpg"),
+                        ),
+                        Positioned(
+                          child: IconButton(
+                            onPressed: () {},
+                            icon: Icon(Icons.add_a_photo),
                           ),
+                        ),
                       ],
                     ),
+
                     Text("Name: ${data['name']}"), // Display the name
-                    Text("Last name: ${data['lastName']}"), // Display the last name
+                    Text(
+                        "Last name: ${data['lastName']}"), // Display the last name
                     _userUid(),
                   ],
                 ),
@@ -142,5 +155,5 @@ class _ProfilePageState extends State<ProfilePage> {
 
 CircleAvatar myProfilePic(double radius) {
   return CircleAvatar(
-      radius: radius, backgroundImage: AssetImage("img/image_0.png"));
+      radius: radius, backgroundImage: AssetImage("img/logos/profilepic.jpg"));
 }
