@@ -1,5 +1,4 @@
 import 'dart:typed_data';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cv_flutter_libe/utils.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -7,6 +6,8 @@ import 'package:cv_flutter_libe/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:cv_flutter_libe/utils.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:cv_flutter_libe/ressources/add_data.dart';
+import 'package:cv_flutter_libe/main.dart';
 
 class ProfilePage extends StatefulWidget {
   ProfilePage({Key? key}) : super(key: key);
@@ -50,6 +51,10 @@ class _ProfilePageState extends State<ProfilePage> {
 
   Widget _userUid() {
     return Text(user?.email ?? 'User email');
+  }
+
+  void saveProfile() async{
+    String resp = await StoreData().saveData(file: _image!);
   }
 
   // void fetchNamebyID() async {
@@ -138,6 +143,7 @@ class _ProfilePageState extends State<ProfilePage> {
                           bottom: -10,
                           left: 80,
                         ),
+                        ElevatedButton(onPressed: saveProfile, child: Text('Save your profile'),)
                       ],
                     ),
 
