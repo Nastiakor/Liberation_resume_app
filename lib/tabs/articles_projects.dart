@@ -53,74 +53,75 @@ class _ArticlesProjectsState extends State<ArticlesProjects> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: ListView(
-          children: [
-      FutureBuilder<List<DocumentSnapshot>>(
-      future: getMainDocumentByCondition(
-          'Articles', 'typeOfArticle', 'main', 'category', 'Nos projets'),
-      builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return const Center(child: CircularProgressIndicator());
-        } else if (snapshot.hasError) {
-          return Center(child: Text('Erreur: ${snapshot.error}'));
-        } else {
-          final documents = snapshot.data!;
-          return Column(
-            children: documents.map((doc) {
-              final data = doc.data() as Map<String, dynamic>;
-              final date = data['publishDateParam'].toDate();
-              final formattedDate =
-                  '${date.year}-${date.month.toString().padLeft(2, '0')}-${date.day.toString().padLeft(2, '0')} ${date.hour.toString().padLeft(2, '0')}:${date.minute.toString().padLeft(2, '0')}:${date.second.toString().padLeft(2, '0')}';
-              return MainArticle(
-                imagePath: "${data['imagePath']}",
-                titleHeadline: "${data['titleHeadline']} ",
-                titleOverline: "${data['titleOverline']}",
-                paragraphMainArticle: data['paragraphMainArticle'],
-                themeMainArticle: "${data['themeMainArticle']}",
-                writtenBy: "${data['writtenBy']}",
-                publishDateParam: formattedDate,
-                legendPicture: "${data['legendPicture']}",
-                completeArticle: "${data['completeArticle']}",
-                linkOrNot: "${data['linkOrNot']}",
-                link: "${data['link']}",
-              );
-            }).toList(),
-          );
-        }
-      },
-    ),
-    FutureBuilder<List<DocumentSnapshot>>(
-    future: getSecondaryDocumentByCondition('Articles', 'typeOfArticle',            'secondary', 'category', 'Nos projets'),
-      builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return const Center(child: CircularProgressIndicator());
-        } else if (snapshot.hasError) {
-          return Center(child: Text('Erreur: ${snapshot.error}'));
-        } else {
-          final documents = snapshot.data!;
-          return Column(
-            children: documents.map((doc) {
-              final data = doc.data() as Map<String, dynamic>;
-              final date = data['publishDateParam'].toDate();
-              final formattedDate =
-                  '${date.year}-${date.month.toString().padLeft(2, '0')}-${date.day.toString().padLeft(2, '0')} ${date.hour.toString().padLeft(2, '0')}:${date.minute.toString().padLeft(2, '0')}:${date.second.toString().padLeft(2, '0')}';
-              return SecondaryArticle(
-                  imagePath: "${data['imagePath']}",
-                  titleHeadline: "${data['titleHeadline']} ",
-                  titleOverline: "${data['titleOverline']}",
-                  paragraphMainArticle: data['paragraphMainArticle'],
-                  themeMainArticle: "${data['themeMainArticle']}",
-                  writtenBy: "${data['writtenBy']}",
-                  publishDateParam: formattedDate,
-                  legendPicture: "${data['legendPicture']}",
-                  completeArticle: "${data['completeArticle']}",
-                  linkOrNot: "${data['linkOrNot']}",
-                  link: "${data['link']}");
-            }).toList(),
-          );
-        }
-      },
-    ),
-          ],
+        children: [
+          FutureBuilder<List<DocumentSnapshot>>(
+            future: getMainDocumentByCondition(
+                'Articles', 'typeOfArticle', 'main', 'category', 'Nos projets'),
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return const Center(child: CircularProgressIndicator());
+              } else if (snapshot.hasError) {
+                return Center(child: Text('Erreur: ${snapshot.error}'));
+              } else {
+                final documents = snapshot.data!;
+                return Column(
+                  children: documents.map((doc) {
+                    final data = doc.data() as Map<String, dynamic>;
+                    final date = data['publishDateParam'].toDate();
+                    final formattedDate =
+                        '${date.year}-${date.month.toString().padLeft(2, '0')}-${date.day.toString().padLeft(2, '0')} ${date.hour.toString().padLeft(2, '0')}:${date.minute.toString().padLeft(2, '0')}:${date.second.toString().padLeft(2, '0')}';
+                    return MainArticle(
+                      imagePath: "${data['imagePath']}",
+                      titleHeadline: "${data['titleHeadline']} ",
+                      titleOverline: "${data['titleOverline']}",
+                      paragraphMainArticle: data['paragraphMainArticle'],
+                      themeMainArticle: "${data['themeMainArticle']}",
+                      writtenBy: "${data['writtenBy']}",
+                      publishDateParam: formattedDate,
+                      legendPicture: "${data['legendPicture']}",
+                      completeArticle: "${data['completeArticle']}",
+                      linkOrNot: "${data['linkOrNot']}",
+                      link: "${data['link']}",
+                    );
+                  }).toList(),
+                );
+              }
+            },
+          ),
+          FutureBuilder<List<DocumentSnapshot>>(
+            future: getSecondaryDocumentByCondition('Articles', 'typeOfArticle',
+                'secondary', 'category', 'Nos projets'),
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return const Center(child: CircularProgressIndicator());
+              } else if (snapshot.hasError) {
+                return Center(child: Text('Erreur: ${snapshot.error}'));
+              } else {
+                final documents = snapshot.data!;
+                return Column(
+                  children: documents.map((doc) {
+                    final data = doc.data() as Map<String, dynamic>;
+                    final date = data['publishDateParam'].toDate();
+                    final formattedDate =
+                        '${date.year}-${date.month.toString().padLeft(2, '0')}-${date.day.toString().padLeft(2, '0')} ${date.hour.toString().padLeft(2, '0')}:${date.minute.toString().padLeft(2, '0')}:${date.second.toString().padLeft(2, '0')}';
+                    return SecondaryArticle(
+                        imagePath: "${data['imagePath']}",
+                        titleHeadline: "${data['titleHeadline']} ",
+                        titleOverline: "${data['titleOverline']}",
+                        paragraphMainArticle: data['paragraphMainArticle'],
+                        themeMainArticle: "${data['themeMainArticle']}",
+                        writtenBy: "${data['writtenBy']}",
+                        publishDateParam: formattedDate,
+                        legendPicture: "${data['legendPicture']}",
+                        completeArticle: "${data['completeArticle']}",
+                        linkOrNot: "${data['linkOrNot']}",
+                        link: "${data['link']}");
+                  }).toList(),
+                );
+              }
+            },
+          ),
+        ],
       ),
       floatingActionButton: Consumer<Auth>(
         builder: (context, auth, _) {
