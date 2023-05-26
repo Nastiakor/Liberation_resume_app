@@ -49,7 +49,7 @@ class _ArticlesExperiencesState extends State<ArticlesExperiences> {
                 getMainDocumentByCondition('Articles', 'typeOfArticle', 'main', 'category', 'Nos expériences'),
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
-                return Center(child: CircularProgressIndicator());
+                return const Center(child: CircularProgressIndicator());
               } else if (snapshot.hasError) {
                 return Center(child: Text('Erreur: ${snapshot.error}'));
               } else {
@@ -81,7 +81,7 @@ class _ArticlesExperiencesState extends State<ArticlesExperiences> {
                 'Articles', 'typeOfArticle', 'secondary', 'category', 'Nos expériences'),
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
-                return Center(child: CircularProgressIndicator());
+                return const Center(child: CircularProgressIndicator());
               } else if (snapshot.hasError) {
                 return Center(child: Text('Erreur: ${snapshot.error}'));
               } else {

@@ -57,7 +57,7 @@ class _ArticlesFormationsState extends State<ArticlesFormations> {
                 'Articles', 'typeOfArticle', 'main', 'category', 'formations'),
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
-                return Center(child: CircularProgressIndicator());
+                return const Center(child: CircularProgressIndicator());
               } else if (snapshot.hasError) {
                 return Center(child: Text('Erreur: ${snapshot.error}'));
               } else {
@@ -92,7 +92,7 @@ class _ArticlesFormationsState extends State<ArticlesFormations> {
                 'secondary', 'category', 'formations'),
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
-                return Center(child: CircularProgressIndicator());
+                return const Center(child: CircularProgressIndicator());
               } else if (snapshot.hasError) {
                 return Center(child: Text('Erreur: ${snapshot.error}'));
               } else {

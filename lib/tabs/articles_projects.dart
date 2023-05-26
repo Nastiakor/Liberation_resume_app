@@ -2,6 +2,8 @@ import 'package:cv_flutter_libe/add_article.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cv_flutter_libe/view_articles_main_full_secondary.dart';
+import 'package:provider/provider.dart';
+import 'package:cv_flutter_libe/auth.dart';
 
 class ArticlesProjects extends StatefulWidget {
   @override
@@ -19,7 +21,6 @@ class _ArticlesProjectsState extends State<ArticlesProjects> {
         .collection(collectionName)
         .where(field, isEqualTo: value)
         .where(categories, isEqualTo: category)
-        // .limit(7)
         .get();
 
     if (querySnapshot.docs.isNotEmpty) {
@@ -58,7 +59,7 @@ class _ArticlesProjectsState extends State<ArticlesProjects> {
                 'Articles', 'typeOfArticle', 'main', 'category', 'Nos projets'),
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
-                return Center(child: CircularProgressIndicator());
+                return const Center(child: CircularProgressIndicator());
               } else if (snapshot.hasError) {
                 return Center(child: Text('Erreur: ${snapshot.error}'));
               } else {
@@ -92,7 +93,7 @@ class _ArticlesProjectsState extends State<ArticlesProjects> {
                 'secondary', 'category', 'Nos projets'),
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
-                return Center(child: CircularProgressIndicator());
+                return const Center(child: CircularProgressIndicator());
               } else if (snapshot.hasError) {
                 return Center(child: Text('Erreur: ${snapshot.error}'));
               } else {
@@ -122,19 +123,30 @@ class _ArticlesProjectsState extends State<ArticlesProjects> {
           ),
         ],
       ),
-      floatingActionButton: FloatingActionButton(
-          backgroundColor: Colors.black,
-          child: Icon(Icons.add),
-          onPressed: () {
-            Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (BuildContext context) {
-                  return const AddArticle();
-                },
-                fullscreenDialog: true,
-              ),
+      floatingActionButton: Consumer<Auth>(
+        builder: (context, auth, _) {
+          if (auth.user == null) {
+            // L'utilisateur n'est pas connecté, ne montrez pas le bouton
+            return Container();
+          } else {
+            // L'utilisateur est connecté, affichez le bouton
+            return FloatingActionButton(
+              backgroundColor: Colors.black,
+              child: const Icon(Icons.add),
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (BuildContext context) {
+                      return const AddArticle();
+                    },
+                    fullscreenDialog: true,
+                  ),
+                );
+              },
             );
-          }),
+          }
+        },
+      ),
     );
   }
 }

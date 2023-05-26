@@ -9,7 +9,11 @@ class ArticlesHomePage extends StatefulWidget {
 
 class _ArticlesHomePageState extends State<ArticlesHomePage> {
   Future<List<DocumentSnapshot>> getMainDocumentByCondition(
-      String collectionName, String field, dynamic value, String categories, String category) async {
+      String collectionName,
+      String field,
+      dynamic value,
+      String categories,
+      String category) async {
     final querySnapshot = await FirebaseFirestore.instance
         .collection(collectionName)
         .where(field, isEqualTo: value)
@@ -25,7 +29,11 @@ class _ArticlesHomePageState extends State<ArticlesHomePage> {
   }
 
   Future<List<DocumentSnapshot>> getSecondaryDocumentByCondition(
-      String collectionName, String field, dynamic value, String categories, String category) async {
+      String collectionName,
+      String field,
+      dynamic value,
+      String categories,
+      String category) async {
     final querySnapshot = await FirebaseFirestore.instance
         .collection(collectionName)
         .where(field, isEqualTo: value)
@@ -41,15 +49,17 @@ class _ArticlesHomePageState extends State<ArticlesHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    double size = MediaQuery.of(context).size.width;
+
     return Scaffold(
       body: ListView(
         children: [
           FutureBuilder<List<DocumentSnapshot>>(
-            future:
-                getMainDocumentByCondition('Articles', 'typeOfArticle', 'main', 'category', 'homePage'),
+            future: getMainDocumentByCondition(
+                'Articles', 'typeOfArticle', 'main', 'category', 'homePage'),
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
-                return Center(child: CircularProgressIndicator());
+                return const Center(child: CircularProgressIndicator());
               } else if (snapshot.hasError) {
                 return Center(child: Text('Erreur: ${snapshot.error}'));
               } else {
@@ -77,11 +87,11 @@ class _ArticlesHomePageState extends State<ArticlesHomePage> {
             },
           ),
           FutureBuilder<List<DocumentSnapshot>>(
-            future: getSecondaryDocumentByCondition(
-                'Articles', 'typeOfArticle', 'secondary', 'category', 'homePage'),
+            future: getSecondaryDocumentByCondition('Articles', 'typeOfArticle',
+                'secondary', 'category', 'homePage'),
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
-                return Center(child: CircularProgressIndicator());
+                return const Center(child: CircularProgressIndicator());
               } else if (snapshot.hasError) {
                 return Center(child: Text('Erreur: ${snapshot.error}'));
               } else {

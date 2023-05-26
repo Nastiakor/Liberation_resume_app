@@ -1,7 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:date_time_picker/date_time_picker.dart';
-import 'package:datepicker_dropdown/datepicker_dropdown.dart';
 
 final DateTime selectedDate = DateTime.now();
 
@@ -18,6 +16,7 @@ class _AddArticleState extends State<AddArticle> {
   final titleOverlineController = TextEditingController();
   final paragraphMainArticleController = TextEditingController();
   final writtenByController = TextEditingController();
+
   // final publishDateParamController = DatePickerDialog(
   //     initialDate: selectedDate,
   //     firstDate: DateTime(2023, 5),
@@ -27,6 +26,8 @@ class _AddArticleState extends State<AddArticle> {
   final completeArticleController = TextEditingController();
   final categoryController = TextEditingController();
   final typeOfArticleController = TextEditingController();
+  final themeController = TextEditingController();
+  bool isLogin = false;
 
   @override
   Widget build(BuildContext context) {
@@ -42,10 +43,10 @@ class _AddArticleState extends State<AddArticle> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  ("Date : ${selectedDate} "),
+                  ("Date : $selectedDate "),
                 ),
                 GestureDetector(
-                  child: Icon(
+                  child: const Icon(
                     Icons.arrow_drop_down,
                   ),
                   onTap: () {
@@ -80,39 +81,52 @@ class _AddArticleState extends State<AddArticle> {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.all(10),
+          padding: const EdgeInsets.all(10),
           child: Column(
             children: [
-              newEntries('titleHeadline', titleHeadlineController),
-              newEntries('titleOverline', titleOverlineController),
-              newEntries(
-                  'paragraphMainArticle', paragraphMainArticleController),
-              newEntries('writtenBy', writtenByController),
+              newEntries('Headline', titleHeadlineController),
+              newEntries('Overline', titleOverlineController),
+              newEntries('First paragraph', paragraphMainArticleController),
+              newEntries('Written by', writtenByController),
               addNewDate(),
-              newEntries('imagePath', imagePathController),
-              newEntries('legendPicture', legendPictureController),
-              newEntries('completeArticle', completeArticleController),
-              newEntries('category', categoryController),
-              newEntries('typeOfArticle', typeOfArticleController),
+              newEntries('Image', imagePathController),
+              newEntries('Caption', legendPictureController),
+              newEntries('Complete article', completeArticleController),
+              newEntries('Category', categoryController),
+              newEntries('Type of article', typeOfArticleController),
+              newEntries('Theme', themeController),
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
                     minimumSize: const Size.fromHeight(50)),
                 onPressed: () {
-                  FirebaseFirestore.instance.collection('Articles').add({
-                    'titleHeadline': titleHeadlineController.value.text,
-                    'titleOverline': titleOverlineController.value.text,
-                    'paragraphMainArticle':
-                        paragraphMainArticleController.value.text,
-                    'writtenBy': writtenByController.value.text,
-                    'imagePath': imagePathController.value.text,
-                    'legendPicture': legendPictureController.value.text,
-                    'completeArticle': completeArticleController.value.text,
-                    'category': categoryController.value.text,
-                    'typeOfArticle': typeOfArticleController.value.text,
-                    'publishDateParam': selectedDate,
-                  });
+                  FirebaseFirestore.instance.collection('Articles').add(
+                    {
+                      'titleHeadline': titleHeadlineController.value.text,
+                      'titleOverline': titleOverlineController.value.text,
+                      'paragraphMainArticle':
+                          paragraphMainArticleController.value.text,
+                      'writtenBy': writtenByController.value.text,
+                      'imagePath': imagePathController.value.text,
+                      'legendPicture': legendPictureController.value.text,
+                      'completeArticle': completeArticleController.value.text,
+                      'category': categoryController.value.text,
+                      'typeOfArticle': typeOfArticleController.value.text,
+                      'publishDateParam': selectedDate,
+                    },
+                  );
+                  final snackBar = SnackBar(
+                    content: const Text('Bravo !'),
+                    action: SnackBarAction(
+                      label: 'Votre article a bien été ajouté',
+                      onPressed: () {
+                        // Some code to undo the change.
+                      },
+                    ),
+                  );
+                  ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                  Navigator.pop(context);
                 },
-                child: Text('Ajouter'),
+                child: const Text('Ajouter'),
               ),
             ],
           ),
@@ -131,10 +145,11 @@ Column newEntries(name, controller) {
           side: const BorderSide(color: Colors.grey, width: 1.5),
         ),
         title: Row(children: [
-          Text('${name} : '),
+          Text('$name : '),
           Expanded(
             child: TextField(
-              decoration: InputDecoration(
+              maxLines: null,
+              decoration: const InputDecoration(
                 border: InputBorder.none,
               ),
               controller: controller,
