@@ -25,7 +25,7 @@ class _WidgetTreeState extends State<WidgetTree> {
         }
       },
     ),
-      bottomNavigationBar: MyBottomHomeNavigationBar(currentIndex: 3),
+      bottomNavigationBar: MyBottomHomeNavigationBar(currentIndex: 4),
     );
   }
 }

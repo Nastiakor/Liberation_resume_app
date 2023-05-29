@@ -153,7 +153,7 @@ class LoginPageState extends State<LoginPage> {
                 CircleAvatar(
                   radius: 65,
                   backgroundColor: Colors.white,
-                  child: Image.asset("img/logos/profilepic.jpg"),
+                  child: Image.asset("img/logos/profilepic.png"),
                 ),
                 Positioned(
                   child: IconButton(
@@ -165,6 +165,7 @@ class LoginPageState extends State<LoginPage> {
                 ),
                ],
             ),
+            SizedBox(height: 15),
             TextField(
               cursorColor: Colors.white,
               style: const TextStyle(color: Colors.white),
