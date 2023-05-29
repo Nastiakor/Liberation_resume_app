@@ -59,12 +59,17 @@ class LoginPageState extends State<LoginPage> {
 
   Future<void> createUserWithEmailAndPassword() async {
     try {
+      String? downloadUrl;
+      if(_image != null) {
+        downloadUrl = await StoreData().uploadImageToStorage('ProfileImage', _image!);
+      }
       await Auth().createUserWithEmailAndPassword(
-          email: _controllerEmail.text,
-          password: _controllerPassword.text,
-          name: _controllerName.text,
-          lastName: _controllerLastName.text);
-          imagePicture: String resp = await StoreData().saveData(file: _image!);
+        email: _controllerEmail.text,
+        password: _controllerPassword.text,
+        name: _controllerName.text,
+        lastName: _controllerLastName.text,
+        photoURL: downloadUrl,
+      );
     } on FirebaseAuthException catch (e) {
       setState(() {
         errorMessage = e.message;
@@ -72,12 +77,16 @@ class LoginPageState extends State<LoginPage> {
     }
   }
 
+
+
   Widget _title() {
     return const Text('Firebase Auth');
   }
 
   Widget _logIn() {
-    return Column(children: [
+    return SingleChildScrollView(
+      child: Column(
+        children: [
       TextField(
         cursorColor: Colors.white,
         style: const TextStyle(color: Colors.white),
@@ -115,7 +124,7 @@ class LoginPageState extends State<LoginPage> {
             labelText: 'Password',
             labelStyle: const TextStyle(color: Colors.white)),
       ),
-    ]);
+    ]),);
   }
 
   Padding _signUp({
@@ -151,8 +160,7 @@ class LoginPageState extends State<LoginPage> {
                   bottom: -10,
                   left: 80,
                 ),
-                ElevatedButton(onPressed: saveProfile, child: Text('Save your profile'),)
-              ],
+               ],
             ),
             TextField(
               cursorColor: Colors.white,
@@ -356,6 +364,6 @@ class StoreData {
   }
 }
 
-void saveProfile() async{
+/*void saveProfile() async{
   String resp = await StoreData().saveData(file: _image!);
-}
+}*/

@@ -1,14 +1,16 @@
 import 'dart:typed_data';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:cv_flutter_libe/utils.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:cv_flutter_libe/auth.dart';
 import 'package:flutter/material.dart';
-import 'package:cv_flutter_libe/utils.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:cv_flutter_libe/ressources/add_data.dart';
-import 'package:cv_flutter_libe/main.dart';
+import 'package:cv_flutter_libe/auth.dart';
 
+
+void checkCurrentUser() {
+  final User? currentUser = FirebaseAuth.instance.currentUser;
+  print('Current user after relogin: $currentUser'); // Vérifiez l'utilisateur dans la console
+}
 class ProfilePage extends StatefulWidget {
   ProfilePage({Key? key}) : super(key: key);
 
@@ -19,15 +21,45 @@ class ProfilePage extends StatefulWidget {
 class _ProfilePageState extends State<ProfilePage> {
   Uint8List? _image;
   final User? user = Auth().currentUser;
+  String? photoURL;
   Future<DocumentSnapshot>? documentSnapshot;
+  final _nameController = TextEditingController();
+  final _lastNameController = TextEditingController();
 
-  void selectImage() async {
-  Uint8List img = await pickImage(ImageSource.gallery);
-  setState(() {
-    _image = img;
-  });
+  void uploadProfileImage() async {
+    if (_image != null) {
+      StoreData storeData = StoreData();
+      String userId = user?.uid ?? ''; // Récupérer l'ID de l'utilisateur
+      String imageUrl = await storeData.uploadImageToStorage('ProfileImage_$userId', _image!);
+
+      if (imageUrl.isNotEmpty) {
+        await FirebaseFirestore.instance
+            .collection('users')
+            .doc(user?.uid)
+            .update({
+          'photoURL': imageUrl,
+        });
+
+        setState(() {
+          photoURL = imageUrl;
+        });
+        print('Profile image updated successfully');
+      } else {
+        print('Failed to upload profile image');
+      }
+    }
   }
 
+  void selectImage() async {
+    final ImagePicker _picker = ImagePicker();
+    final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
+
+    if (image != null) {
+      _image = await image.readAsBytes();
+      setState(() {}); // Rafraîchir l'affichage de l'image immédiatement après la sélection
+      uploadProfileImage();
+    }
+  }
   @override
   void initState() {
     super.initState();
@@ -42,65 +74,95 @@ class _ProfilePageState extends State<ProfilePage> {
   }
 
   Future<void> signOut() async {
-    await Auth().signOut();
+    await FirebaseAuth.instance.signOut();
+    checkCurrentUser();
+    setState(() {
+      _image = null; // Réinitialiser l'image de profil à null
+    });
   }
 
-  Widget _title() {
-    return const Text('Welcome to our app');
+
+  void saveProfile() async {
+    if (_image != null) {
+      StoreData storeData = StoreData();
+      String userId = user?.uid ?? '';
+      String imageUrl = await storeData.uploadImageToStorage('ProfileImage_$userId', _image!);
+
+      if (imageUrl.isNotEmpty) {
+        await FirebaseFirestore.instance
+            .collection('users')
+            .doc(user?.uid)
+            .update({
+          'photoURL': imageUrl,
+        });
+
+        print('Profile image updated successfully');
+      } else {
+        print('Failed to upload profile image');
+      }
+    }
   }
 
-  Widget _userUid() {
-    return Text(user?.email ?? 'User email');
+  void updateUserDataDialog() {
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text('Modifiez votre nom et prénom'),
+            content: Column(
+              children: [
+                TextField(
+                  controller: _nameController,
+                  decoration: InputDecoration(
+                    labelText: 'Prénom',
+                  ),
+                ),
+                TextField(
+                  controller: _lastNameController,
+                  decoration: InputDecoration(
+                    labelText: 'Nom',
+                  ),
+                ),
+              ],
+            ),
+            actions: [
+              TextButton(
+                child: Text('Annuler'),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+              TextButton(
+                child: Text('Mettre à jour'),
+                onPressed: updateUserData,
+              ),
+            ],
+          );
+        }
+    );
   }
 
-  void saveProfile() async{
-    String resp = await StoreData().saveData(file: _image!);
+  void updateUserData() async {
+    Navigator.of(context).pop(); // Fermer le dialogue
+    if (_nameController.text.isNotEmpty && _lastNameController.text.isNotEmpty) {
+      await FirebaseFirestore.instance
+          .collection('users')
+          .doc(user?.uid)
+          .update({
+        'name': _nameController.text,
+        'lastName': _lastNameController.text,
+      });
+      print('User name and last name updated successfully');
+    } else {
+      print('Failed to update user name and last name');
+    }
   }
-
-  // void fetchNamebyID() async {
-  //   // print(user?.uid);
-  //   // QuerySnapshot querySnapshot =
-  //   final documentSnapshot = await FirebaseFirestore.instance
-  //       .collection('users')
-  //       // .where('id', isEqualTo: user?.uid)
-  //       .doc(user?.uid)
-  //       .get();
-  //
-  //   print(documentSnapshot.data());
-  //
-  //   var name = documentSnapshot['name'];
-  //   var lastName = documentSnapshot['lastName'];
-  //
-  //   // if (querySnapshot.docs.isEmpty) {
-  //   //  print('Aucun document trouvé avec l\'ID spécifié');
-  //   // }
-  //
-  //   //if (documentSnapshot.exists) {
-  //   // Récupérer la valeur du champ "name"
-  //   //name = documentSnapshot.get('name');
-  //
-  //   //print('Le nom récupéré est : $name');
-  //
-  //   // }
-  // }
 
   @override
   Widget build(BuildContext context) {
-    double size = MediaQuery.of(context).size.width;
-    // print(user?.uid);
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.teal,
-        title: _title(),
-        actions: <Widget>[
-          Builder(
-            builder: (context) => IconButton(
-              icon: const Icon(Icons.menu),
-              onPressed: () => Scaffold.of(context).openEndDrawer(),
-              tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
-            ),
-          ),
-        ],
+        title: const Text('Welcome to our app'),
       ),
       body: StreamBuilder<DocumentSnapshot>(
         stream: FirebaseFirestore.instance
@@ -115,46 +177,59 @@ class _ProfilePageState extends State<ProfilePage> {
             return Text("Something went wrong: ${snapshot.error}");
           } else if (snapshot.hasData) {
             Map<String, dynamic>? data =
-                snapshot.data!.data() as Map<String, dynamic>?;
+            snapshot.data!.data() as Map<String, dynamic>?;
             if (data != null) {
+              final String? photoURL = data['photoURL'];
+              print('Photo URL from Firestore: $photoURL');
+
               return Center(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
+                    SizedBox(height: 20),
                     Stack(
                       alignment: Alignment.topCenter,
                       children: [
-                        _image != null ?
                         CircleAvatar(
                           radius: 65,
-                          backgroundImage: MemoryImage(_image!),
-                        )
-                        :
-                        CircleAvatar(
-                          radius: 65,
+                          backgroundImage: photoURL != null ? NetworkImage(photoURL!) : null,
                           backgroundColor: Colors.white,
-                          child: Image.asset("img/logos/profilepic.jpg"),
+                          child: photoURL == null
+                              ? Image.asset("img/logos/profilepic.jpg")
+                              : null,
                         ),
-                         Positioned(
+                        Positioned(
+                          top: 95,
+                          left: 85,
                           child: IconButton(
                             onPressed: selectImage,
                             icon: Icon(Icons.add_a_photo),
                           ),
-                          bottom: -10,
-                          left: 80,
                         ),
-                        ElevatedButton(onPressed: saveProfile, child: Text('Save your profile'),)
                       ],
                     ),
 
-                    Text("Name: ${data['name']}"), // Display the name
-                    Text(
-                        "Last name: ${data['lastName']}"), // Display the last name
-                    _userUid(),
+                    Text("Name: ${data['name']}"),
+                    Text("Last name: ${data['lastName']}"),
+                    Text("User email: ${user?.email ?? 'User email'}"),
+                    SizedBox(height: 20),
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        primary: Colors.blue, // couleur de fond du bouton
+                        onPrimary: Colors.white, // couleur du texte
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20), // forme arrondie du bouton
+                        ),
+                        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12), // espacement intérieur du bouton
+                      ),
+                      onPressed: updateUserDataDialog,
+                      child: Text('Modifier votre nom et prénom'),
+                    ),
                   ],
                 ),
               );
-            } else {
+            }
+            {
               return Text("No data");
             }
           } else {
@@ -169,9 +244,7 @@ class _ProfilePageState extends State<ProfilePage> {
             const DrawerHeader(child: Text('Welcome')),
             ElevatedButton(
               child: const Text("Sign out"),
-              onPressed: () {
-                signOut();
-              },
+              onPressed: signOut,
             ),
           ],
         ),
@@ -179,9 +252,3 @@ class _ProfilePageState extends State<ProfilePage> {
     );
   }
 }
-
-CircleAvatar myProfilePic(double radius) {
-  return CircleAvatar(
-      radius: radius, backgroundImage: AssetImage("img/logos/profilepic.jpg"));
-}
-

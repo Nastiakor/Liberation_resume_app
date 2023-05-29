@@ -27,7 +27,8 @@ class Auth with ChangeNotifier {
     required String email,
     required String password,
     required String name,
-    required String lastName
+    required String lastName,
+    String? photoURL,
   }) async {
     UserCredential userCredential = await _firebaseAuth.createUserWithEmailAndPassword(
         email: email,
@@ -41,6 +42,7 @@ class Auth with ChangeNotifier {
     await FirebaseFirestore.instance.collection('users').doc(uid).set({
       'name': name,
       'lastName': lastName,
+      'photoURL': photoURL,  // add the photoURL field here
       // any other fields you want to store
     });
   }
