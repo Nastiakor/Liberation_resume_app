@@ -102,7 +102,7 @@ class _ProfilePageState extends State<ProfilePage> {
     }
   }
 
-  Future<void> updateUserDataDialog() async {
+  void updateUserDataDialog() async {
     String name = '';
     String lastName = '';
 
@@ -122,48 +122,62 @@ class _ProfilePageState extends State<ProfilePage> {
       }
     }
 
+    bool isDataChanged = false; // Variable pour vérifier si les données ont été modifiées
+
     showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            title: Text('Modifiez votre nom et prénom'),
-            content: Column(
-              children: [
-                TextField(
-                  controller: _nameController,
-                  decoration: InputDecoration(
-                    labelText: 'Prénom',
-                    hintText: 'Entrez votre prénom ici',
-                  ),
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Modifiez votre nom et prénom'),
+          content: Column(
+            children: [
+              TextField(
+                controller: _nameController,
+                decoration: InputDecoration(
+                  labelText: 'Prénom',
+                  hintText: 'Entrez votre prénom ici',
                 ),
-                TextField(
-                  controller: _lastNameController,
-                  decoration: InputDecoration(
-                    labelText: 'Nom',
-                    hintText: 'Modifiez votre nom ici' + name,
-                  ),
-                ),
-              ],
-            ),
-            actions: [
-              TextButton(
-                child: Text('Annuler'),
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
               ),
-              TextButton(
-                child: Text('Mettre à jour'),
-                onPressed: updateUserData,
+              TextField(
+                controller: _lastNameController,
+                decoration: InputDecoration(
+                  labelText: 'Nom',
+                  hintText: 'Modifiez votre nom ici' + name,
+                ),
               ),
             ],
-          );
-        }
+          ),
+          actions: [
+            TextButton(
+              child: Text('Annuler'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+            TextButton(
+              child: Text('Mettre à jour'),
+              onPressed: () {
+                Navigator.of(context).pop(); // Fermer la boîte de dialogue
+
+                // Vérifier si les champs de texte contiennent des données modifiées
+                if (_nameController.text.isNotEmpty || _lastNameController.text.isNotEmpty) {
+                  isDataChanged = true;
+                }
+
+                if (isDataChanged) {
+                  updateUserData(); // Mettre à jour les données si des modifications ont été effectuées
+                }
+              },
+            ),
+          ],
+        );
+      },
     );
   }
 
+
   void updateUserData() async {
-    Navigator.of(context).pop(); // Fermer le dialogue
+
     if (_nameController.text.isNotEmpty && _lastNameController.text.isNotEmpty) {
       await FirebaseFirestore.instance
           .collection('users')
