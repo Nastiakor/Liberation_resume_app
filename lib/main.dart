@@ -68,7 +68,7 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> with SingleTickerPro
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: 6, vsync: this);
+    _tabController = TabController(length: 5, vsync: this);
   }
 
   @override
@@ -125,7 +125,6 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> with SingleTickerPro
           Tab(child: appBarMenu('Nos formations')),
           Tab(child: appBarMenu('Nos expériences')),
           Tab(child: appBarMenu('Contacts')),
-          Tab(child: appBarMenu('Login page')),
         ],
       ),
     ),
@@ -137,7 +136,6 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> with SingleTickerPro
             ArticlesFormations(),
             ArticlesExperiences(),
             ArticlesContacts(),
-            const WidgetTree(),
           ],
         ),
         resizeToAvoidBottomInset: false,

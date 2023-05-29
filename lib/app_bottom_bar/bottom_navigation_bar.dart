@@ -1,5 +1,6 @@
 import 'package:cv_flutter_libe/icons.dart';
 import 'package:cv_flutter_libe/views/news_feed_nyt.dart';
+import 'package:cv_flutter_libe/widget_tree.dart';
 import 'package:flutter/material.dart';
 import 'package:cv_flutter_libe/main.dart';
 import 'package:cv_flutter_libe/views/libe_api.dart';
@@ -53,6 +54,9 @@ class MyBottomHomeNavigationBarState extends State<MyBottomHomeNavigationBar> {
         BottomNavigationBarItem(
           icon: Icon(Icons.location_city_sharp, size: 29),
           label: 'Best of the NYT',
+        ),     BottomNavigationBarItem(
+          icon: Icon(Icons.account_circle, size: 29),
+          label: 'Login',
         ),
       ],
       selectedItemColor: Colors.black,
@@ -68,6 +72,9 @@ class MyBottomHomeNavigationBarState extends State<MyBottomHomeNavigationBar> {
           } else if (widget.currentIndex == 2) {
             Navigator.push(context,
                 MaterialPageRoute(builder: (context) => const NYTAPI()));
+          }else if (widget.currentIndex == 3) {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => const WidgetTree()));
           }
         });
       },
