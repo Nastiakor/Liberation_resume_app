@@ -70,6 +70,9 @@ class LoginPageState extends State<LoginPage> {
         lastName: _controllerLastName.text,
         photoURL: downloadUrl,
       );
+      setState(() {
+        _image = null; // Réinitialiser l'image de profil à null
+      });
     } on FirebaseAuthException catch (e) {
       setState(() {
         errorMessage = e.message;
@@ -290,6 +293,11 @@ class LoginPageState extends State<LoginPage> {
   }
 
   @override
+  void initState() {
+    super.initState();
+    // Réinitialiser _image à null chaque fois que le widget est inséré dans l'arbre des widgets.
+    _image = null;
+  }
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(

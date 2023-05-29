@@ -81,7 +81,6 @@ class _ProfilePageState extends State<ProfilePage> {
     });
   }
 
-
   void saveProfile() async {
     if (_image != null) {
       StoreData storeData = StoreData();
@@ -103,7 +102,26 @@ class _ProfilePageState extends State<ProfilePage> {
     }
   }
 
-  void updateUserDataDialog() {
+  Future<void> updateUserDataDialog() async {
+    String name = '';
+    String lastName = '';
+
+    DocumentSnapshot snapshot = await FirebaseFirestore.instance
+        .collection('users')
+        .doc(user?.uid)
+        .get();
+
+    if (snapshot.exists) {
+      var userDocument = snapshot.data() as Map<String, dynamic>?;
+      if(userDocument != null && userDocument.containsKey('name')) {
+        name = userDocument['name'];
+        lastName = userDocument['lastName'];
+        _nameController.text = name;
+        _lastNameController.text = lastName;
+        print('Name from Firestore: $name');
+      }
+    }
+
     showDialog(
         context: context,
         builder: (BuildContext context) {
@@ -115,12 +133,14 @@ class _ProfilePageState extends State<ProfilePage> {
                   controller: _nameController,
                   decoration: InputDecoration(
                     labelText: 'Prénom',
+                    hintText: 'Entrez votre prénom ici',
                   ),
                 ),
                 TextField(
                   controller: _lastNameController,
                   decoration: InputDecoration(
                     labelText: 'Nom',
+                    hintText: 'Modifiez votre nom ici' + name,
                   ),
                 ),
               ],
@@ -153,7 +173,24 @@ class _ProfilePageState extends State<ProfilePage> {
         'lastName': _lastNameController.text,
       });
       print('User name and last name updated successfully');
-    } else {
+    } else if (_lastNameController.text.isNotEmpty) {
+      await FirebaseFirestore.instance
+          .collection('users')
+          .doc(user?.uid)
+          .update({
+        'lastName': _lastNameController.text,
+      });
+      print('User name and last name updated successfully');
+    } else if (_nameController.text.isNotEmpty) {
+      await FirebaseFirestore.instance
+          .collection('users')
+          .doc(user?.uid)
+          .update({
+        'name': _nameController.text,
+      });
+      print('User name and last name updated successfully');
+    }
+    else {
       print('Failed to update user name and last name');
     }
   }
