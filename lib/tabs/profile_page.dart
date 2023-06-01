@@ -247,7 +247,7 @@ class _ProfilePageState extends State<ProfilePage> {
                           backgroundImage: photoURL != null ? NetworkImage(photoURL!) : null,
                           backgroundColor: Colors.white,
                           child: photoURL == null
-                              ? Image.asset("img/logos/profilepic.jpg")
+                              ? Image.asset("img/logos/profilepic.png")
                               : null,
                         ),
                         Positioned(
