@@ -113,13 +113,24 @@ class _AddArticleState extends State<AddArticle> {
                     'typeOfArticle': typeOfArticleController.value.text,
                     'publishDateParam': selectedDate,
                   });
+                  final snackBar = SnackBar(
+                    content: const Text('Bravo !'),
+                    action: SnackBarAction(
+                      label: 'Votre article a bien été ajouté',
+                      onPressed: () {
+                        // Some code to undo the change.
+                      },
+                    ),
+                  );
+                  ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                  Navigator.pop(context);
                 } else {
                     const SnackBar(
                       content: Text('Please, login to add an article'),
                     );
                   }
                 },
-                child: const Text('Ajouter'),
+                child: const Text('Ajouter article'),
               ),
             ],
           ),

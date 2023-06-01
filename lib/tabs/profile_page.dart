@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:cv_flutter_libe/ressources/add_data.dart';
 import 'package:cv_flutter_libe/auth.dart';
+import 'package:cv_flutter_libe/add_article.dart';
 
 
 void checkCurrentUser() {
@@ -213,7 +214,7 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Welcome to our app'),
+        title: const Text('Welcome to'),
       ),
       body: StreamBuilder<DocumentSnapshot>(
         stream: FirebaseFirestore.instance
@@ -296,6 +297,18 @@ class _ProfilePageState extends State<ProfilePage> {
             ElevatedButton(
               child: const Text("Sign out"),
               onPressed: signOut,
+            ),
+            ElevatedButton(
+              child: const Text("Ajouter une recommandation"),
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (BuildContext context) {
+                      return AddArticle();
+                    },
+                  ),
+                );
+              },
             ),
           ],
         ),
