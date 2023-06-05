@@ -126,7 +126,7 @@ class _AddArticleState extends State<AddArticle> {
                   ScaffoldMessenger.of(context).showSnackBar(snackBar);
                   Navigator.pop(context);
                 },
-                child: const Text('Ajouter'),
+                child: const Text('Ajouter article'),
               ),
             ],
           ),

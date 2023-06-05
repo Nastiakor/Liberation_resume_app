@@ -72,7 +72,7 @@ class MyStatefulWidgetState extends State<MyStatefulWidget>
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: 6, vsync: this);
+    _tabController = TabController(length: 5, vsync: this);
   }
 
   @override
@@ -105,34 +105,33 @@ class MyStatefulWidgetState extends State<MyStatefulWidget>
         isTabSwiped = false;
       },
       child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.white,
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Image.asset(
-                'img/j&a.png',
-                width: 50,
-              ),
-            ],
-          ),
-          bottom: TabBar(
-            controller: _tabController,
-            indicatorSize: TabBarIndicatorSize.label,
-            indicatorColor: Colors.black,
-            isScrollable: true,
-            labelStyle: const TextStyle(fontWeight: FontWeight.w700),
-            unselectedLabelStyle: const TextStyle(),
-            tabs: [
-              Tab(child: appBarMenu('Présentation')),
-              Tab(child: appBarMenu('Nos projets')),
-              Tab(child: appBarMenu('Nos formations')),
-              Tab(child: appBarMenu('Nos expériences')),
-              Tab(child: appBarMenu('Contacts')),
-              Tab(child: appBarMenu('Login page')),
-            ],
-          ),
-        ),
+      appBar: AppBar(
+      backgroundColor: Colors.white,
+      title: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Image.asset(
+              'img/j&a.png',
+              width: 50,
+            ),
+        ],
+      ),
+      bottom: TabBar(
+        controller: _tabController,
+        indicatorSize: TabBarIndicatorSize.label,
+        indicatorColor: Colors.black,
+        isScrollable: true,
+        labelStyle: const TextStyle(fontWeight: FontWeight.w700),
+        unselectedLabelStyle: const TextStyle(),
+        tabs: [
+          Tab(child: appBarMenu('Présentation')),
+          Tab(child: appBarMenu('Nos projets')),
+          Tab(child: appBarMenu('Nos formations')),
+          Tab(child: appBarMenu('Nos expériences')),
+          Tab(child: appBarMenu('Contacts')),
+        ],
+      ),
+    ),
         body: TabBarView(
           controller: _tabController,
           children: [
@@ -141,7 +140,6 @@ class MyStatefulWidgetState extends State<MyStatefulWidget>
             ArticlesFormations(),
             ArticlesExperiences(),
             ArticlesContacts(),
-            const WidgetTree(),
           ],
         ),
         resizeToAvoidBottomInset: false,

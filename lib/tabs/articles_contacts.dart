@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cv_flutter_libe/view_articles_main_full_secondary.dart';
+import 'package:mailer/mailer.dart';
 
 class ArticlesContacts extends StatefulWidget {
   @override
@@ -47,6 +48,8 @@ class _ArticlesContactsState extends State<ArticlesContacts> {
     }
   }
 
+  final _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -86,7 +89,32 @@ class _ArticlesContactsState extends State<ArticlesContacts> {
               }
             },
           ),
-        ],
+          SizedBox(height: 15),
+          Form(
+            key:_formKey,
+            child: Column(
+              children: [
+                TextFormField(
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Are you stupid or what ? Please enter some text';
+                      }
+                    return null;
+                    },
+                ),
+                Padding(padding: EdgeInsets.symmetric(vertical: 15),
+                child: ElevatedButton(
+                  onPressed: () {
+                    if (_formKey.currentState!.validate()) {
+                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Processing data')));
+                    }
+                  },
+                  child: const Text("Envoi gros"),
+                ),
+                ),
+              ],),
+            ),
+              ],
       ),
     );
   }

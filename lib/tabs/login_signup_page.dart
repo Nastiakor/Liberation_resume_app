@@ -2,6 +2,23 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cv_flutter_libe/auth.dart';
+import 'package:cv_flutter_libe/add_article.dart';
+import 'package:cv_flutter_libe/tabs/profile_page.dart';
+import 'package:firebase_storage/firebase_storage.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cv_flutter_libe/utils.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:cv_flutter_libe/ressources/add_data.dart';
+import 'package:cv_flutter_libe/main.dart';
+import 'dart:typed_data';
+import 'package:cloud_firestore/cloud_firestore.dart';
+
+
+Uint8List? _image;
+final FirebaseStorage _storage = FirebaseStorage.instance;
+final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -18,6 +35,15 @@ class LoginPageState extends State<LoginPage> {
   final TextEditingController _controllerName = TextEditingController();
   final TextEditingController _controllerLastName = TextEditingController();
 
+
+  void selectImage() async {
+    Uint8List img = await pickImage(ImageSource.gallery);
+    setState(() {
+      _image = img;
+    });
+  }
+
+
   Future<void> signInWithEmailAndPassword() async {
     try {
       await Auth().signInWithEmailAndPassword(
@@ -33,11 +59,20 @@ class LoginPageState extends State<LoginPage> {
 
   Future<void> createUserWithEmailAndPassword() async {
     try {
+      String? downloadUrl;
+      if(_image != null) {
+        downloadUrl = await StoreData().uploadImageToStorage('ProfileImage', _image!);
+      }
       await Auth().createUserWithEmailAndPassword(
-          email: _controllerEmail.text,
-          password: _controllerPassword.text,
-          name: _controllerName.text,
-          lastName: _controllerLastName.text);
+        email: _controllerEmail.text,
+        password: _controllerPassword.text,
+        name: _controllerName.text,
+        lastName: _controllerLastName.text,
+        photoURL: downloadUrl,
+      );
+      setState(() {
+        _image = null; // Réinitialiser l'image de profil à null
+      });
     } on FirebaseAuthException catch (e) {
       setState(() {
         errorMessage = e.message;
@@ -45,12 +80,16 @@ class LoginPageState extends State<LoginPage> {
     }
   }
 
+
+
   Widget _title() {
     return const Text('Firebase Auth');
   }
 
   Widget _logIn() {
-    return Column(children: [
+    return SingleChildScrollView(
+      child: Column(
+        children: [
       TextField(
         cursorColor: Colors.white,
         style: const TextStyle(color: Colors.white),
@@ -88,7 +127,7 @@ class LoginPageState extends State<LoginPage> {
             labelText: 'Password',
             labelStyle: const TextStyle(color: Colors.white)),
       ),
-    ]);
+    ]),);
   }
 
   Padding _signUp({
@@ -102,6 +141,31 @@ class LoginPageState extends State<LoginPage> {
       child: SingleChildScrollView(
         child: Column(
           children: [
+            Stack(
+              alignment: Alignment.topCenter,
+              children: [
+                _image != null ?
+                CircleAvatar(
+                  radius: 65,
+                  backgroundImage: MemoryImage(_image!),
+                )
+                    :
+                CircleAvatar(
+                  radius: 65,
+                  backgroundColor: Colors.white,
+                  child: Image.asset("img/logos/profilepic.png"),
+                ),
+                Positioned(
+                  child: IconButton(
+                    onPressed: selectImage,
+                    icon: Icon(Icons.add_a_photo),
+                  ),
+                  bottom: -10,
+                  left: 80,
+                ),
+               ],
+            ),
+            SizedBox(height: 15),
             TextField(
               cursorColor: Colors.white,
               style: const TextStyle(color: Colors.white),
@@ -213,6 +277,8 @@ class LoginPageState extends State<LoginPage> {
     );
   }
 
+
+
   Widget loginOrRegisterButton() {
     return TextButton(
       onPressed: () {
@@ -228,6 +294,11 @@ class LoginPageState extends State<LoginPage> {
   }
 
   @override
+  void initState() {
+    super.initState();
+    // Réinitialiser _image à null chaque fois que le widget est inséré dans l'arbre des widgets.
+    _image = null;
+  }
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -270,3 +341,38 @@ class LoginPageState extends State<LoginPage> {
     );
   }
 }
+class StoreData {
+
+  Future<String> uploadImageToStorage(String childName, Uint8List file) async {
+
+    Reference ref = _storage.ref().child(childName);
+    UploadTask uploadTask = ref.putData(file);
+    TaskSnapshot snapshot = await uploadTask;
+    String downloadUrl = await snapshot.ref.getDownloadURL();
+    return downloadUrl;
+  }
+
+  Future<String> saveData(
+      {required Uint8List file}
+      )
+  async {
+    String resp = "some errors occured";
+    try{
+      String imageUrl = await uploadImageToStorage('ProfileImage', file);
+      await _firestore.collection('users').add({
+
+        'imageLink': imageUrl,
+      });
+      resp = "success";
+    }
+    catch(err)
+    {
+      resp = err.toString();
+    }
+    return resp;
+  }
+}
+
+/*void saveProfile() async{
+  String resp = await StoreData().saveData(file: _image!);
+}*/
