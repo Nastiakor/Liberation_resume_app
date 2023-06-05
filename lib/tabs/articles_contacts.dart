@@ -82,39 +82,55 @@ class _ArticlesContactsState extends State<ArticlesContacts> {
                         legendPicture: "${data['legendPicture']}",
                         completeArticle: "${data['completeArticle']}",
                         contactOrNot: "${data['contactOrNot']}",
-                        nextCompleteArticle: "${data['nextCompleteArticle']}"
-                    );
+                        nextCompleteArticle: "${data['nextCompleteArticle']}");
                   }).toList(),
                 );
               }
             },
           ),
-          SizedBox(height: 15),
-          Form(
-            key:_formKey,
-            child: Column(
-              children: [
-                TextFormField(
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Are you stupid or what ? Please enter some text';
+          Container(
+            margin: EdgeInsets.all(15),
+            child: Form(
+              key: _formKey,
+              child: Column(
+                children: [
+                  TextFormField(
+                    style: TextStyle(color: Colors.black),
+                    decoration: InputDecoration(
+                      labelText: 'Laissez-nous un message :',
+                      labelStyle: TextStyle(color: Colors.black),
+                      hintText: 'Veuillez saisir votre message ici',
+                      border: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.teal),
+                      ),
+                    ),
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Are you stupid or what ? Please enter some text';
                       }
-                    return null;
+                      return null;
                     },
-                ),
-                Padding(padding: EdgeInsets.symmetric(vertical: 15),
-                child: ElevatedButton(
-                  onPressed: () {
-                    if (_formKey.currentState!.validate()) {
-                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Processing data')));
-                    }
-                  },
-                  child: const Text("Envoi gros"),
-                ),
-                ),
-              ],),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(vertical: 15),
+                    child: ElevatedButton(
+                      onPressed: () {
+                        if (_formKey.currentState!.validate()) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              content: Text('Processing data'),
+                            ),
+                          );
+                        }
+                      },
+                      child: const Text("Envoi gros"),
+                    ),
+                  ),
+                ],
+              ),
             ),
-              ],
+          ),
+        ],
       ),
     );
   }

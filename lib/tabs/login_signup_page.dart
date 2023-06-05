@@ -7,14 +7,10 @@ import 'package:cv_flutter_libe/tabs/profile_page.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cv_flutter_libe/utils.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:cv_flutter_libe/ressources/add_data.dart';
 import 'package:cv_flutter_libe/main.dart';
 import 'dart:typed_data';
-import 'package:cloud_firestore/cloud_firestore.dart';
-
 
 Uint8List? _image;
 final FirebaseStorage _storage = FirebaseStorage.instance;
