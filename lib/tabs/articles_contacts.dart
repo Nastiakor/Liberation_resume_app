@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cv_flutter_libe/view_articles_main_full_secondary.dart';
 import 'package:mailer/mailer.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class ArticlesContacts extends StatefulWidget {
   @override
@@ -90,44 +91,66 @@ class _ArticlesContactsState extends State<ArticlesContacts> {
           ),
           Container(
             margin: EdgeInsets.all(15),
-            child: Form(
-              key: _formKey,
-              child: Column(
-                children: [
-                  TextFormField(
-                    style: TextStyle(color: Colors.black),
-                    decoration: InputDecoration(
-                      labelText: 'Laissez-nous un message :',
-                      labelStyle: TextStyle(color: Colors.black),
-                      hintText: 'Veuillez saisir votre message ici',
-                      border: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.teal),
+            child: Column(
+              children: [
+                Row(
+                  children: [
+                    Text.rich(
+                      TextSpan(
+                        text: "LAISSEZ-NOUS UN MESSAGE",
+                        style: GoogleFonts.encodeSansCondensed(
+                            textStyle: const TextStyle(
+                                fontWeight: FontWeight.w600,
+                                color: Colors.purple,
+                                fontSize: 20,
+                                letterSpacing: 0.6
+                            )
+                        ),
                       ),
                     ),
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Are you stupid or what ? Please enter some text';
-                      }
-                      return null;
-                    },
+                  ],
+                ),
+                SizedBox(height: 15),
+                Form(
+                  key: _formKey,
+                  child: Column(
+                    children: [
+                      TextFormField(
+                        maxLines: 10,
+                        style: TextStyle(color: Colors.black),
+                        decoration: InputDecoration(
+                          labelStyle: TextStyle(color: Colors.black),
+                          hintText: 'Veuillez saisir votre message ici',
+                          border: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.teal),
+                          ),
+                        ),
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Are you stupid or what ? Please enter some text';
+                          }
+                          return null;
+                        },
+                      ),
+                      Padding(
+                        padding: EdgeInsets.symmetric(vertical: 15),
+                        child: ElevatedButton(
+                          onPressed: () {
+                            if (_formKey.currentState!.validate()) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                  content: Text('Processing data'),
+                                ),
+                              );
+                            }
+                          },
+                          child: const Text("Envoi gros"),
+                        ),
+                      ),
+                    ],
                   ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(vertical: 15),
-                    child: ElevatedButton(
-                      onPressed: () {
-                        if (_formKey.currentState!.validate()) {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(
-                              content: Text('Processing data'),
-                            ),
-                          );
-                        }
-                      },
-                      child: const Text("Envoi gros"),
-                    ),
-                  ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ],
