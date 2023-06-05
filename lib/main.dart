@@ -21,13 +21,13 @@ Future<void> main() async {
     // Configuration pour le Web
     await Firebase.initializeApp(
       options: const FirebaseOptions(
-          apiKey: "AIzaSyA5G-epm7dKRrs0HL9Zbp8gtts7oxZtypY",
-          authDomain: "portfolio-back-6cb8a.firebaseapp.com",
-          projectId: "portfolio-back-6cb8a",
-          storageBucket: "portfolio-back-6cb8a.appspot.com",
-          messagingSenderId: "108784622080",
-          appId: "1:108784622080:web:f6c8c661a9aad9b9f496e5",
-          measurementId: "G-3JZQ027PYT",
+        apiKey: "AIzaSyA5G-epm7dKRrs0HL9Zbp8gtts7oxZtypY",
+        authDomain: "portfolio-back-6cb8a.firebaseapp.com",
+        projectId: "portfolio-back-6cb8a",
+        storageBucket: "portfolio-back-6cb8a.appspot.com",
+        messagingSenderId: "108784622080",
+        appId: "1:108784622080:web:f6c8c661a9aad9b9f496e5",
+        measurementId: "G-3JZQ027PYT",
       ),
     );
   } else {
@@ -39,8 +39,10 @@ Future<void> main() async {
     ChangeNotifierProvider<Auth>(
       create: (context) => Auth(),
       child: const MyApp(),
-  ),);
+    ),
+  );
 }
+
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
@@ -49,6 +51,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: _title,
       home: MyStatefulWidget(),
     );
@@ -62,7 +65,8 @@ class MyStatefulWidget extends StatefulWidget {
   State<MyStatefulWidget> createState() => MyStatefulWidgetState();
 }
 
-class MyStatefulWidgetState extends State<MyStatefulWidget> with SingleTickerProviderStateMixin {
+class MyStatefulWidgetState extends State<MyStatefulWidget>
+    with SingleTickerProviderStateMixin {
   late TabController _tabController;
 
   @override
@@ -79,12 +83,12 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> with SingleTickerPro
 
   @override
   Widget build(BuildContext context) {
-
     bool isTabSwiped = false;
 
     return GestureDetector(
       onPanUpdate: (DragUpdateDetails details) {
-        if (!isTabSwiped && details.delta.dx.abs() > 10) { // swipe threshold
+        if (!isTabSwiped && details.delta.dx.abs() > 10) {
+          // swipe threshold
           isTabSwiped = true;
           if (details.delta.dx.isNegative) {
             if (_tabController.index < _tabController.length - 1) {
@@ -144,4 +148,3 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> with SingleTickerPro
     );
   }
 }
-

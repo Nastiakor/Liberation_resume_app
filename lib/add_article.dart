@@ -99,20 +99,21 @@ class _AddArticleState extends State<AddArticle> {
                 style: ElevatedButton.styleFrom(
                     minimumSize: const Size.fromHeight(50)),
                 onPressed: () {
-                  if(isLogin) {
-                  FirebaseFirestore.instance.collection('Articles').add({
-                    'titleHeadline': titleHeadlineController.value.text,
-                    'titleOverline': titleOverlineController.value.text,
-                    'paragraphMainArticle':
-                        paragraphMainArticleController.value.text,
-                    'writtenBy': writtenByController.value.text,
-                    'imagePath': imagePathController.value.text,
-                    'legendPicture': legendPictureController.value.text,
-                    'completeArticle': completeArticleController.value.text,
-                    'category': categoryController.value.text,
-                    'typeOfArticle': typeOfArticleController.value.text,
-                    'publishDateParam': selectedDate,
-                  });
+                  FirebaseFirestore.instance.collection('Articles').add(
+                    {
+                      'titleHeadline': titleHeadlineController.value.text,
+                      'titleOverline': titleOverlineController.value.text,
+                      'paragraphMainArticle':
+                          paragraphMainArticleController.value.text,
+                      'writtenBy': writtenByController.value.text,
+                      'imagePath': imagePathController.value.text,
+                      'legendPicture': legendPictureController.value.text,
+                      'completeArticle': completeArticleController.value.text,
+                      'category': categoryController.value.text,
+                      'typeOfArticle': typeOfArticleController.value.text,
+                      'publishDateParam': selectedDate,
+                    },
+                  );
                   final snackBar = SnackBar(
                     content: const Text('Bravo !'),
                     action: SnackBarAction(
@@ -124,11 +125,6 @@ class _AddArticleState extends State<AddArticle> {
                   );
                   ScaffoldMessenger.of(context).showSnackBar(snackBar);
                   Navigator.pop(context);
-                } else {
-                    const SnackBar(
-                      content: Text('Please, login to add an article'),
-                    );
-                  }
                 },
                 child: const Text('Ajouter article'),
               ),
