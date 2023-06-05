@@ -1,7 +1,9 @@
 import 'dart:typed_data';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+
 import 'package:image_picker/image_picker.dart';
 import 'package:cv_flutter_libe/ressources/add_data.dart';
 import 'package:cv_flutter_libe/auth.dart';
@@ -82,6 +84,7 @@ class _ProfilePageState extends State<ProfilePage> {
     });
   }
 
+  // à priori non utilisée
   void saveProfile() async {
     if (_image != null) {
       StoreData storeData = StoreData();
@@ -119,7 +122,6 @@ class _ProfilePageState extends State<ProfilePage> {
         lastName = userDocument['lastName'];
         _nameController.text = name;
         _lastNameController.text = lastName;
-        print('Name from Firestore: $name');
       }
     }
 
