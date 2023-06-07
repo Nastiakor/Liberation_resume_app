@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cv_flutter_libe/view_articles_main_full_secondary.dart';
 import 'package:mailer/mailer.dart';
+import 'package:mailer/smtp_server.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class ArticlesContacts extends StatefulWidget {
   @override
@@ -9,6 +12,11 @@ class ArticlesContacts extends StatefulWidget {
 }
 
 class _ArticlesContactsState extends State<ArticlesContacts> {
+  final nameController = TextEditingController();
+  final lastNameController = TextEditingController();
+  final mailController = TextEditingController();
+  final messageController = TextEditingController();
+
   Future<List<DocumentSnapshot>> getMainDocumentByCondition(
       String collectionName,
       String field,
@@ -19,7 +27,7 @@ class _ArticlesContactsState extends State<ArticlesContacts> {
         .collection(collectionName)
         .where(field, isEqualTo: value)
         .where(categories, isEqualTo: category)
-        // .limit(7)
+    // .limit(7)
         .get();
 
     if (querySnapshot.docs.isNotEmpty) {
@@ -49,10 +57,12 @@ class _ArticlesContactsState extends State<ArticlesContacts> {
   }
 
   final _formKey = GlobalKey<FormState>();
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
       body: ListView(
         children: [
           FutureBuilder<List<DocumentSnapshot>>(
@@ -82,39 +92,118 @@ class _ArticlesContactsState extends State<ArticlesContacts> {
                         legendPicture: "${data['legendPicture']}",
                         completeArticle: "${data['completeArticle']}",
                         contactOrNot: "${data['contactOrNot']}",
-                        nextCompleteArticle: "${data['nextCompleteArticle']}"
-                    );
+                        nextCompleteArticle: "${data['nextCompleteArticle']}");
                   }).toList(),
                 );
               }
             },
           ),
-          SizedBox(height: 15),
-          Form(
-            key:_formKey,
+          Container(
+            margin: EdgeInsets.all(15),
             child: Column(
               children: [
-                TextFormField(
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Are you stupid or what ? Please enter some text';
-                      }
-                    return null;
-                    },
+                Row(
+                  children: [
+                    Text.rich(
+                      TextSpan(
+                        text: "LAISSEZ-NOUS UN MESSAGE",
+                        style: GoogleFonts.encodeSansCondensed(
+                            textStyle: const TextStyle(
+                                fontWeight: FontWeight.w600,
+                                color: Colors.purple,
+                                fontSize: 20,
+                                letterSpacing: 0.6)),
+                      ),
+                    ),
+                  ],
                 ),
-                Padding(padding: EdgeInsets.symmetric(vertical: 15),
-                child: ElevatedButton(
-                  onPressed: () {
-                    if (_formKey.currentState!.validate()) {
-                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Processing data')));
-                    }
-                  },
-                  child: const Text("Envoi gros"),
+                SizedBox(height: 15),
+                Form(
+                  key: _formKey,
+                  child: Column(
+                    children: [
+                      TextField(
+                        style: TextStyle(color: Colors.black),
+                        decoration: InputDecoration(
+                          labelStyle: TextStyle(color: Colors.black),
+                          hintText: 'Quel est votre prénom ?',
+                          border: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.teal),
+                          ),
+                        ),
+                        controller: nameController,
+                      ),
+                      SizedBox(height: 15),
+                      TextField(
+                        style: TextStyle(color: Colors.black),
+                        decoration: InputDecoration(
+                          labelStyle: TextStyle(color: Colors.black),
+                          hintText: 'Quel est votre nom ?',
+                          border: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.teal),
+                          ),
+                        ),
+                        controller: lastNameController,
+                      ),
+                      SizedBox(height: 15),
+                      TextField(
+                        style: TextStyle(color: Colors.black),
+                        decoration: InputDecoration(
+                          labelStyle: TextStyle(color: Colors.black),
+                          hintText: 'Veuillez saisir votre mail',
+                          border: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.teal),
+                          ),
+                        ),
+                        controller: mailController,
+                      ),
+                      SizedBox(height: 15),
+                      TextField(
+                        maxLines: 15,
+                        style: TextStyle(color: Colors.black),
+                        decoration: InputDecoration(
+                          labelStyle: TextStyle(color: Colors.black),
+                          hintText: 'Veuillez saisir votre message ici',
+                          border: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.teal),
+                          ),
+                        ),
+                        controller: messageController,
+                      ),
+                      Padding(
+                        padding: EdgeInsets.symmetric(vertical: 15),
+                        child: ElevatedButton(
+                          onPressed: () {
+                            FirebaseFirestore.instance.collection('messages').add({
+                              'name': nameController.value.text,
+                              'lastName': lastNameController.value.text,
+                              'mail': mailController.value.text,
+                              'message': messageController.value.text,
+                            }).then((_) {
+                              // Réinitialisation des champs de texte
+                              nameController.clear();
+                              lastNameController.clear();
+                              mailController.clear();
+                              messageController.clear();
+
+                              // Affichage de la Snackbar
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text('Message envoyé avec succès'),
+                                ),
+                              );
+                            });
+                          },
+                          child: const Text("Envoyer"),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-                ),
-              ],),
-            ),
               ],
+            ),
+          ),
+        ],
       ),
     );
   }
