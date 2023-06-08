@@ -216,7 +216,7 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Welcome to'),
+        title: const Text('Welcome to your page'),
       ),
       body: StreamBuilder<DocumentSnapshot>(
         stream: FirebaseFirestore.instance
@@ -246,7 +246,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       children: [
                         CircleAvatar(
                           radius: 65,
-                          backgroundImage: photoURL != null ? NetworkImage(photoURL!) : null,
+                          backgroundImage: photoURL != null ? NetworkImage(photoURL) : null,
                           backgroundColor: Colors.white,
                           child: photoURL == null
                               ? Image.asset("img/logos/profilepic.png")
