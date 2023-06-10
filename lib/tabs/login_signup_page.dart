@@ -11,6 +11,8 @@ import 'package:image_picker/image_picker.dart';
 import 'package:cv_flutter_libe/ressources/add_data.dart';
 import 'package:cv_flutter_libe/main.dart';
 import 'dart:typed_data';
+import 'package:flutter/cupertino.dart';
+
 
 Uint8List? _image;
 final FirebaseStorage _storage = FirebaseStorage.instance;
@@ -28,6 +30,7 @@ class LoginPageState extends State<LoginPage> {
   bool isLogin = true;
   final TextEditingController _controllerEmail = TextEditingController();
   final TextEditingController _controllerPassword = TextEditingController();
+  final TextEditingController _controllerwhoiam = TextEditingController();
   final TextEditingController _controllerName = TextEditingController();
   final TextEditingController _controllerLastName = TextEditingController();
 
@@ -63,6 +66,7 @@ class LoginPageState extends State<LoginPage> {
         email: _controllerEmail.text,
         password: _controllerPassword.text,
         name: _controllerName.text,
+        whoiam: _controllerwhoiam.text,
         lastName: _controllerLastName.text,
         photoURL: downloadUrl,
       );
@@ -127,6 +131,7 @@ class LoginPageState extends State<LoginPage> {
   Padding _signUp({
     required TextEditingController nameController,
     required TextEditingController lastNameController,
+    required TextEditingController whoiam,
     required TextEditingController emailController,
     required TextEditingController passwordController,
   }) {
@@ -197,6 +202,27 @@ class LoginPageState extends State<LoginPage> {
                         width: 30, style: BorderStyle.solid, color: Colors.white),
                   ),
                   labelText: 'Last name',
+                  labelStyle: const TextStyle(color: Colors.white)),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            TextField(
+              cursorColor: Colors.white,
+              style: const TextStyle(color: Colors.white),
+              obscureText: false,
+              controller: _controllerwhoiam,
+              decoration: InputDecoration(
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(30),
+                    borderSide: const BorderSide(color: Colors.white),
+                  ),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(30),
+                    borderSide: const BorderSide(
+                        width: 30, style: BorderStyle.solid, color: Colors.white),
+                  ),
+                  labelText: 'Who are you ? Job ...',
                   labelStyle: const TextStyle(color: Colors.white)),
             ),
             const SizedBox(
@@ -319,13 +345,19 @@ class LoginPageState extends State<LoginPage> {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            isLogin
+            Expanded(
+                child: SingleChildScrollView(
+                    child: isLogin
                 ? _logIn()
                 : _signUp(
                     nameController: _controllerName,
                     lastNameController: _controllerLastName,
+                    whoiam: _controllerwhoiam,
                     emailController: _controllerEmail,
-                    passwordController: _controllerPassword),
+                    passwordController: _controllerPassword
+                    ),
+                ),
+            ),
             _errorMessage(),
             submitButton(),
             loginOrRegisterButton(),
