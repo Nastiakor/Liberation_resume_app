@@ -9,7 +9,6 @@ import 'package:cv_flutter_libe/tabs/articles_homePage.dart';
 import 'package:cv_flutter_libe/tabs/articles_projects.dart';
 import 'package:cv_flutter_libe/tabs/articles_contacts.dart';
 import 'package:flutter/foundation.dart';
-import 'package:cv_flutter_libe/widget_tree.dart';
 import 'package:provider/provider.dart';
 import 'package:cv_flutter_libe/auth.dart';
 

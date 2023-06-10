@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:cv_flutter_libe/ressources/add_data.dart';
 import 'package:cv_flutter_libe/auth.dart';
+import 'package:cv_flutter_libe/add_recommendation.dart';
 import 'package:cv_flutter_libe/add_article.dart';
 
 
@@ -279,6 +280,46 @@ class _ProfilePageState extends State<ProfilePage> {
                       onPressed: updateUserDataDialog,
                       child: Text('Modifier votre nom et prénom'),
                     ),
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        primary: Colors.green, // couleur de fond du bouton
+                        onPrimary: Colors.white, // couleur du texte
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20), // forme arrondie du bouton
+                        ),
+                        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12), // espacement intérieur du bouton
+                      ),
+                      child: const Text("Ajouter une recommandation pour Anastasia"),
+                      onPressed: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (BuildContext context) {
+                              return RecommendationPage();
+                            },
+                          ),
+                        );
+                      },
+                    ),
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        primary: Colors.red, // couleur de fond du bouton
+                        onPrimary: Colors.white, // couleur du texte
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20), // forme arrondie du bouton
+                        ),
+                        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12), // espacement intérieur du bouton
+                      ),
+                      child: const Text("Ajouter une recommandation pour Johan"),
+                      onPressed: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (BuildContext context) {
+                              return RecommendationPage();
+                            },
+                          ),
+                        );
+                      },
+                    ),
                   ],
                 ),
               );
@@ -299,18 +340,6 @@ class _ProfilePageState extends State<ProfilePage> {
             ElevatedButton(
               child: const Text("Sign out"),
               onPressed: signOut,
-            ),
-            ElevatedButton(
-              child: const Text("Ajouter une recommandation"),
-              onPressed: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (BuildContext context) {
-                      return AddArticle();
-                    },
-                  ),
-                );
-              },
             ),
           ],
         ),
