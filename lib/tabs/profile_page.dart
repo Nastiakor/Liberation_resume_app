@@ -6,6 +6,8 @@ import 'package:image_picker/image_picker.dart';
 import 'package:cv_flutter_libe/ressources/add_data.dart';
 import 'package:cv_flutter_libe/auth.dart';
 import 'package:cv_flutter_libe/add_recommendation.dart';
+import 'package:cv_flutter_libe/widget_tree.dart';
+
 
 void checkCurrentUser() {
   final User? currentUser = FirebaseAuth.instance.currentUser;
@@ -26,6 +28,7 @@ class _ProfilePageState extends State<ProfilePage> {
   Future<DocumentSnapshot>? documentSnapshot;
   final _nameController = TextEditingController();
   final _lastNameController = TextEditingController();
+  bool _isFormSubmitted = false;
 
   Future<bool> hasRecommendation(String candidateName) async {
     User? currentUser = FirebaseAuth.instance.currentUser;
@@ -92,13 +95,23 @@ class _ProfilePageState extends State<ProfilePage> {
         .get();
   }
 
+  void resetPageState() {
+    _image = null;
+    _nameController.text = '';
+    _lastNameController.text = '';
+    // Réinitialisez d'autres états de la page si nécessaire
+  }
+
   Future<void> signOut() async {
     await FirebaseAuth.instance.signOut();
     checkCurrentUser();
-    setState(() {
-      _image = null;
-    });
+    resetPageState();
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (context) => WidgetTree()),
+    );
   }
+
 
   void updateUserDataDialog() async {
     String name = '';
@@ -173,6 +186,7 @@ class _ProfilePageState extends State<ProfilePage> {
   }
 
   void updateUserData() async {
+
     if (_nameController.text.isNotEmpty &&
         _lastNameController.text.isNotEmpty) {
       await FirebaseFirestore.instance
@@ -202,6 +216,9 @@ class _ProfilePageState extends State<ProfilePage> {
     } else {
       print('Failed to update user name and last name');
     }
+
+
+
   }
 
   @override

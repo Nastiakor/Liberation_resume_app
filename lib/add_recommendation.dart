@@ -1,7 +1,9 @@
   import 'package:flutter/material.dart';
   import 'package:cloud_firestore/cloud_firestore.dart';
   import 'package:firebase_auth/firebase_auth.dart';
-  
+  import 'package:cv_flutter_libe/tabs/profile_page.dart';
+
+
   class RecommendationPage extends StatefulWidget {
     final String candidateName;
 
@@ -111,7 +113,13 @@
       print('Recommendation submitted!');
 
       // Fermer la page après avoir soumis la recommandation
-      Navigator.pop(context);
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (BuildContext context) => ProfilePage(),
+        ),
+      );
+
     }
 
 
