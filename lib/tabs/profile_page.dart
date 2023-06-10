@@ -1,20 +1,17 @@
 import 'dart:typed_data';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-
 import 'package:image_picker/image_picker.dart';
 import 'package:cv_flutter_libe/ressources/add_data.dart';
 import 'package:cv_flutter_libe/auth.dart';
 import 'package:cv_flutter_libe/add_recommendation.dart';
-import 'package:cv_flutter_libe/add_article.dart';
-
 
 void checkCurrentUser() {
   final User? currentUser = FirebaseAuth.instance.currentUser;
-  print('Current user after relogin: $currentUser'); // Vérifiez l'utilisateur dans la console
+  print('Current user after relogin: $currentUser');
 }
+
 class ProfilePage extends StatefulWidget {
   ProfilePage({Key? key}) : super(key: key);
 
@@ -30,11 +27,28 @@ class _ProfilePageState extends State<ProfilePage> {
   final _nameController = TextEditingController();
   final _lastNameController = TextEditingController();
 
+  Future<bool> hasRecommendation(String candidateName) async {
+    User? currentUser = FirebaseAuth.instance.currentUser;
+    String? userId = currentUser?.uid;
+
+    if (userId != null) {
+      DocumentSnapshot documentSnapshot = await FirebaseFirestore.instance
+          .collection('Recommendations')
+          .doc('$userId-$candidateName')
+          .get();
+
+      return documentSnapshot.exists;
+    }
+
+    return false;
+  }
+
   void uploadProfileImage() async {
     if (_image != null) {
       StoreData storeData = StoreData();
-      String userId = user?.uid ?? ''; // Récupérer l'ID de l'utilisateur
-      String imageUrl = await storeData.uploadImageToStorage('ProfileImage_$userId', _image!);
+      String userId = user?.uid ?? '';
+      String imageUrl =
+      await storeData.uploadImageToStorage('ProfileImage_$userId', _image!);
 
       if (imageUrl.isNotEmpty) {
         await FirebaseFirestore.instance
@@ -60,10 +74,11 @@ class _ProfilePageState extends State<ProfilePage> {
 
     if (image != null) {
       _image = await image.readAsBytes();
-      setState(() {}); // Rafraîchir l'affichage de l'image immédiatement après la sélection
+      setState(() {});
       uploadProfileImage();
     }
   }
+
   @override
   void initState() {
     super.initState();
@@ -81,30 +96,8 @@ class _ProfilePageState extends State<ProfilePage> {
     await FirebaseAuth.instance.signOut();
     checkCurrentUser();
     setState(() {
-      _image = null; // Réinitialiser l'image de profil à null
+      _image = null;
     });
-  }
-
-  // à priori non utilisée
-  void saveProfile() async {
-    if (_image != null) {
-      StoreData storeData = StoreData();
-      String userId = user?.uid ?? '';
-      String imageUrl = await storeData.uploadImageToStorage('ProfileImage_$userId', _image!);
-
-      if (imageUrl.isNotEmpty) {
-        await FirebaseFirestore.instance
-            .collection('users')
-            .doc(user?.uid)
-            .update({
-          'photoURL': imageUrl,
-        });
-
-        print('Profile image updated successfully');
-      } else {
-        print('Failed to upload profile image');
-      }
-    }
   }
 
   void updateUserDataDialog() async {
@@ -118,7 +111,7 @@ class _ProfilePageState extends State<ProfilePage> {
 
     if (snapshot.exists) {
       var userDocument = snapshot.data() as Map<String, dynamic>?;
-      if(userDocument != null && userDocument.containsKey('name')) {
+      if (userDocument != null && userDocument.containsKey('name')) {
         name = userDocument['name'];
         lastName = userDocument['lastName'];
         _nameController.text = name;
@@ -126,7 +119,7 @@ class _ProfilePageState extends State<ProfilePage> {
       }
     }
 
-    bool isDataChanged = false; // Variable pour vérifier si les données ont été modifiées
+    bool isDataChanged = false;
 
     showDialog(
       context: context,
@@ -161,15 +154,15 @@ class _ProfilePageState extends State<ProfilePage> {
             TextButton(
               child: Text('Mettre à jour'),
               onPressed: () {
-                Navigator.of(context).pop(); // Fermer la boîte de dialogue
+                Navigator.of(context).pop();
 
-                // Vérifier si les champs de texte contiennent des données modifiées
-                if (_nameController.text.isNotEmpty || _lastNameController.text.isNotEmpty) {
+                if (_nameController.text.isNotEmpty ||
+                    _lastNameController.text.isNotEmpty) {
                   isDataChanged = true;
                 }
 
                 if (isDataChanged) {
-                  updateUserData(); // Mettre à jour les données si des modifications ont été effectuées
+                  updateUserData();
                 }
               },
             ),
@@ -179,10 +172,9 @@ class _ProfilePageState extends State<ProfilePage> {
     );
   }
 
-
   void updateUserData() async {
-
-    if (_nameController.text.isNotEmpty && _lastNameController.text.isNotEmpty) {
+    if (_nameController.text.isNotEmpty &&
+        _lastNameController.text.isNotEmpty) {
       await FirebaseFirestore.instance
           .collection('users')
           .doc(user?.uid)
@@ -207,8 +199,7 @@ class _ProfilePageState extends State<ProfilePage> {
         'name': _nameController.text,
       });
       print('User name and last name updated successfully');
-    }
-    else {
+    } else {
       print('Failed to update user name and last name');
     }
   }
@@ -235,7 +226,6 @@ class _ProfilePageState extends State<ProfilePage> {
             snapshot.data!.data() as Map<String, dynamic>?;
             if (data != null) {
               final String? photoURL = data['photoURL'];
-              print('Photo URL from Firestore: $photoURL');
 
               return Center(
                 child: Column(
@@ -247,7 +237,8 @@ class _ProfilePageState extends State<ProfilePage> {
                       children: [
                         CircleAvatar(
                           radius: 65,
-                          backgroundImage: photoURL != null ? NetworkImage(photoURL!) : null,
+                          backgroundImage:
+                          photoURL != null ? NetworkImage(photoURL!) : null,
                           backgroundColor: Colors.white,
                           child: photoURL == null
                               ? Image.asset("img/logos/profilepic.png")
@@ -263,68 +254,115 @@ class _ProfilePageState extends State<ProfilePage> {
                         ),
                       ],
                     ),
-
                     Text("Name: ${data['name']}"),
                     Text("Last name: ${data['lastName']}"),
                     Text("User email: ${user?.email ?? 'User email'}"),
                     SizedBox(height: 20),
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        primary: Colors.blue, // couleur de fond du bouton
-                        onPrimary: Colors.white, // couleur du texte
+                        primary: Colors.blue,
+                        onPrimary: Colors.white,
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20), // forme arrondie du bouton
+                          borderRadius: BorderRadius.circular(20),
                         ),
-                        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12), // espacement intérieur du bouton
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 20,
+                          vertical: 12,
+                        ),
                       ),
                       onPressed: updateUserDataDialog,
                       child: Text('Modifier votre nom et prénom'),
                     ),
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        primary: Colors.green, // couleur de fond du bouton
-                        onPrimary: Colors.white, // couleur du texte
+                        primary: Colors.green,
+                        onPrimary: Colors.white,
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20), // forme arrondie du bouton
+                          borderRadius: BorderRadius.circular(20),
                         ),
-                        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12), // espacement intérieur du bouton
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 20,
+                          vertical: 12,
+                        ),
                       ),
-                      child: const Text("Ajouter une recommandation pour Anastasia"),
                       onPressed: () {
                         Navigator.of(context).push(
                           MaterialPageRoute(
                             builder: (BuildContext context) {
-                              return RecommendationPage();
+                              return RecommendationPage(
+                                candidateName: "Anastasia",
+                              );
                             },
                           ),
                         );
                       },
+                      child: FutureBuilder<bool>(
+                        future: hasRecommendation("Anastasia"),
+                        builder:
+                            (BuildContext context, AsyncSnapshot<bool> snapshot) {
+                          if (snapshot.connectionState == ConnectionState.waiting) {
+                            return CircularProgressIndicator();
+                          } else if (snapshot.hasError) {
+                            return Text("Something went wrong: ${snapshot.error}");
+                          } else if (snapshot.hasData) {
+                            bool hasRecommendation = snapshot.data!;
+                            return Text(
+                              hasRecommendation
+                                  ? "Modifier votre recommandation pour Anastasia"
+                                  : "Ajouter une recommandation pour Anastasia",
+                            );
+                          } else {
+                            return Text("No data");
+                          }
+                        },
+                      ),
                     ),
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        primary: Colors.red, // couleur de fond du bouton
-                        onPrimary: Colors.white, // couleur du texte
+                        primary: Colors.red,
+                        onPrimary: Colors.white,
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20), // forme arrondie du bouton
+                          borderRadius: BorderRadius.circular(20),
                         ),
-                        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12), // espacement intérieur du bouton
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 20,
+                          vertical: 12,
+                        ),
                       ),
-                      child: const Text("Ajouter une recommandation pour Johan"),
                       onPressed: () {
                         Navigator.of(context).push(
                           MaterialPageRoute(
                             builder: (BuildContext context) {
-                              return RecommendationPage();
+                              return RecommendationPage(candidateName: "Johan");
                             },
                           ),
                         );
                       },
+                      child: FutureBuilder<bool>(
+                        future: hasRecommendation("Johan"),
+                        builder:
+                            (BuildContext context, AsyncSnapshot<bool> snapshot) {
+                          if (snapshot.connectionState == ConnectionState.waiting) {
+                            return CircularProgressIndicator();
+                          } else if (snapshot.hasError) {
+                            return Text("Something went wrong: ${snapshot.error}");
+                          } else if (snapshot.hasData) {
+                            bool hasRecommendation = snapshot.data!;
+                            return Text(
+                              hasRecommendation
+                                  ? "Modifier votre recommandation pour Johan"
+                                  : "Ajouter une recommandation pour Johan",
+                            );
+                          } else {
+                            return Text("No data");
+                          }
+                        },
+                      ),
                     ),
                   ],
                 ),
               );
-            }
-            {
+            } else {
               return Text("No data");
             }
           } else {
