@@ -11,6 +11,7 @@ import 'package:cv_flutter_libe/tabs/articles_contacts.dart';
 import 'package:flutter/foundation.dart';
 import 'package:provider/provider.dart';
 import 'package:cv_flutter_libe/auth.dart';
+import 'package:cv_flutter_libe/tabs/recommendation.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -71,7 +72,7 @@ class MyStatefulWidgetState extends State<MyStatefulWidget>
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: 5, vsync: this);
+    _tabController = TabController(length: 6, vsync: this);
   }
 
   @override
@@ -127,6 +128,7 @@ class MyStatefulWidgetState extends State<MyStatefulWidget>
           Tab(child: appBarMenu('Nos projets')),
           Tab(child: appBarMenu('Nos formations')),
           Tab(child: appBarMenu('Nos expériences')),
+          Tab(child: appBarMenu('Recommandations')),
           Tab(child: appBarMenu('Contacts')),
         ],
       ),
@@ -138,6 +140,7 @@ class MyStatefulWidgetState extends State<MyStatefulWidget>
             ArticlesProjects(),
             ArticlesFormations(),
             ArticlesExperiences(),
+            RecommandationPage(),
             ArticlesContacts(),
           ],
         ),
