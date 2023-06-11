@@ -1,10 +1,10 @@
-import 'package:cv_flutter_libe/icons.dart';
-import 'package:cv_flutter_libe/views/news_feed_nyt.dart';
-import 'package:cv_flutter_libe/widget_tree.dart';
+import 'package:cv_flutter_libe/ressources/icons/icons.dart';
+import 'package:cv_flutter_libe/services/news_feed_nyt.dart';
+import 'package:cv_flutter_libe/utils/widget_tree.dart';
 import 'package:flutter/material.dart';
 import 'package:cv_flutter_libe/main.dart';
-import 'package:cv_flutter_libe/views/libe_api.dart';
-import 'package:cv_flutter_libe/views/chez_pol.dart';
+import 'package:cv_flutter_libe/services/libe_api.dart';
+import 'package:cv_flutter_libe/services/chez_pol.dart';
 
 void showModal(BuildContext context) {
   showDialog(
@@ -23,6 +23,7 @@ void showModal(BuildContext context) {
   );
 }
 
+// ignore: must_be_immutable
 class MyBottomHomeNavigationBar extends StatefulWidget {
   int currentIndex;
 

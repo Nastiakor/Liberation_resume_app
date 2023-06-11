@@ -1,17 +1,14 @@
-import 'package:cv_flutter_libe/tabs/articles_experiences.dart';
-import 'package:cv_flutter_libe/tabs/articles_formations.dart';
 import 'package:flutter/material.dart';
-import 'package:cv_flutter_libe/app_bottom_bar/bottom_navigation_bar.dart';
-import 'package:cv_flutter_libe/style.dart';
+import 'package:cv_flutter_libe/views/components/bottom_navigation_bar.dart';
+import 'package:cv_flutter_libe/utils/theme/style.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:cv_flutter_libe/tabs/articles_homePage.dart';
-import 'package:cv_flutter_libe/tabs/articles_projects.dart';
-import 'package:cv_flutter_libe/tabs/articles_contacts.dart';
+import 'package:cv_flutter_libe/views/pages/articles_contacts.dart';
 import 'package:flutter/foundation.dart';
 import 'package:provider/provider.dart';
-import 'package:cv_flutter_libe/auth.dart';
-import 'package:cv_flutter_libe/tabs/recommendation.dart';
+import 'package:cv_flutter_libe/services/auth.dart';
+import 'package:cv_flutter_libe/views/pages/recommendation.dart';
+import 'package:cv_flutter_libe/views/pages/tabs.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -136,10 +133,10 @@ class MyStatefulWidgetState extends State<MyStatefulWidget>
         body: TabBarView(
           controller: _tabController,
           children: [
-            ArticlesHomePage(),
-            ArticlesProjects(),
-            ArticlesFormations(),
-            ArticlesExperiences(),
+            tabsContent(tabCategory:'homePage'),
+            tabsContent(tabCategory:'Nos projets'),
+            tabsContent(tabCategory:'formations'),
+            tabsContent(tabCategory:'Nos expériences'),
             RecommandationPage(),
             ArticlesContacts(),
           ],

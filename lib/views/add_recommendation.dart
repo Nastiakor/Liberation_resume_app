@@ -1,13 +1,13 @@
   import 'package:flutter/material.dart';
   import 'package:cloud_firestore/cloud_firestore.dart';
   import 'package:firebase_auth/firebase_auth.dart';
-  import 'package:cv_flutter_libe/tabs/profile_page.dart';
+  import 'package:cv_flutter_libe/views/pages/profile_page.dart';
 
 
   class RecommendationPage extends StatefulWidget {
     final String candidateName;
 
-    RecommendationPage({required this.candidateName});
+    RecommendationPage({super.key, required this.candidateName});
     @override
     _RecommendationPageState createState() => _RecommendationPageState();
   }

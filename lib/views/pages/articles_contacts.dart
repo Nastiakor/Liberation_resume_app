@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:cv_flutter_libe/view_articles_main_full_secondary.dart';
-import 'package:mailer/mailer.dart';
-import 'package:mailer/smtp_server.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:google_sign_in/google_sign_in.dart';
+import 'package:cv_flutter_libe/models/main_article.dart';
 
 class ArticlesContacts extends StatefulWidget {
   @override
@@ -128,7 +125,7 @@ class _ArticlesContactsState extends State<ArticlesContacts> {
                           labelStyle: TextStyle(color: Colors.black),
                           hintText: 'Quel est votre prénom ?',
                           border: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.teal),
+                            borderSide: const BorderSide(color: Colors.teal),
                           ),
                         ),
                         controller: nameController,

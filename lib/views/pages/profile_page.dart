@@ -4,9 +4,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:cv_flutter_libe/ressources/add_data.dart';
-import 'package:cv_flutter_libe/auth.dart';
-import 'package:cv_flutter_libe/add_recommendation.dart';
-import 'package:cv_flutter_libe/widget_tree.dart';
+import 'package:cv_flutter_libe/services/auth.dart';
+import 'package:cv_flutter_libe/views/add_recommendation.dart';
+import 'package:cv_flutter_libe/utils/widget_tree.dart';
 
 
 void checkCurrentUser() {
@@ -29,7 +29,6 @@ class _ProfilePageState extends State<ProfilePage> {
   final _nameController = TextEditingController();
   final _lastNameController = TextEditingController();
   final _whoiamController = TextEditingController();
-  bool _isFormSubmitted = false;
 
   Future<bool> hasRecommendation(String candidateName) async {
     User? currentUser = FirebaseAuth.instance.currentUser;
@@ -164,8 +163,8 @@ class _ProfilePageState extends State<ProfilePage> {
                 ),  TextField(
                   controller: _whoiamController,
                   decoration: InputDecoration(
-                    labelText: 'Nom',
-                    hintText: 'Modifiez votre nom ici' + name,
+                    labelText: 'Qui es-tu ?',
+                    hintText: 'Qui es-tu ?',
                   ),
                 ),
               ],
@@ -290,7 +289,7 @@ class _ProfilePageState extends State<ProfilePage> {
                           CircleAvatar(
                             radius: 65,
                             backgroundImage:
-                            photoURL != null ? NetworkImage(photoURL!) : null,
+                            photoURL != null ? NetworkImage(photoURL) : null,
                             backgroundColor: Colors.white,
                             child: photoURL == null
                                 ? Image.asset("img/logos/profilepic.png")
@@ -313,8 +312,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       SizedBox(height: 20),
                       ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                          primary: Colors.blue,
-                          onPrimary: Colors.white,
+                          foregroundColor: Colors.white, primary: Colors.blue,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20),
                           ),
@@ -328,8 +326,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       ),
                       ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                          primary: Colors.green,
-                          onPrimary: Colors.white,
+                          foregroundColor: Colors.white, primary: Colors.green,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20),
                           ),
