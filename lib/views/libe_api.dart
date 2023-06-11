@@ -15,8 +15,6 @@ import 'package:html/dom.dart' as html_dom;
 const titleColor = Color(0XFFE60004);
 final unescape = HtmlUnescape();
 
-void main() => runApp(const LiberationAPI());
-
 class LiberationAPI extends StatefulWidget {
   const LiberationAPI({Key? key}) : super(key: key);
 
@@ -218,9 +216,9 @@ class LiberationAPIState extends State<LiberationAPI> {
                                 );
                               }),
                         )
-                      : Row(
+                      : const Row(
                           mainAxisAlignment: MainAxisAlignment.center,
-                          children: const [
+                          children: [
                             Center(child: CircularProgressIndicator())
                           ],
                         )

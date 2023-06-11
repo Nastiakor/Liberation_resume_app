@@ -26,7 +26,8 @@ class _ChezPolState extends State<ChezPol> {
 
   Column _buildFullWidthTile(
       Map<String, dynamic> newsletter, String deliveryDate) {
-    return Column(children: [
+    return Column(
+        children: [
       GestureDetector(
         onTap: () {
           Navigator.push(
@@ -65,7 +66,7 @@ class _ChezPolState extends State<ChezPol> {
                         children: [
                           TextSpan(
                             text:
-                            " ${newsletter['title'].split(' ')[0].toUpperCase()}", // Premier mot du titre
+                                " ${newsletter['title'].split(' ')[0].toUpperCase()}", // Premier mot du titre
                             style: GoogleFonts.varelaRound(
                               color: Colors.green,
                               fontWeight: FontWeight.bold,
@@ -75,7 +76,7 @@ class _ChezPolState extends State<ChezPol> {
                           ),
                           TextSpan(
                             text:
-                            " ${newsletter['title'].split(' ').sublist(1).join(' ').toUpperCase()}", // Reste du titre
+                                " ${newsletter['title'].split(' ').sublist(1).join(' ').toUpperCase()}", // Reste du titre
                             style: GoogleFonts.varelaRound(
                               color: Colors.black,
                               fontWeight: FontWeight.bold,
@@ -123,7 +124,7 @@ class _ChezPolState extends State<ChezPol> {
                             .toUpperCase()
                             .contains(expression.toUpperCase())) {
                           List<String> splitText =
-                          remainingText.split(expression.toUpperCase());
+                              remainingText.split(expression.toUpperCase());
                           spans.add(
                             TextSpan(
                               text: splitText[0],
@@ -235,7 +236,7 @@ class _ChezPolState extends State<ChezPol> {
                             children: [
                               TextSpan(
                                 text:
-                                " ${newsletter['title'].split(' ')[0].toUpperCase()}", // Premier mot du titre
+                                    " ${newsletter['title'].split(' ')[0].toUpperCase()}", // Premier mot du titre
                                 style: GoogleFonts.varelaRound(
                                   color: Colors.green,
                                   fontWeight: FontWeight.bold,
@@ -245,7 +246,7 @@ class _ChezPolState extends State<ChezPol> {
                               ),
                               TextSpan(
                                 text:
-                                " ${newsletter['title'].split(' ').sublist(1).join(' ').toUpperCase()}", // Reste du titre
+                                    " ${newsletter['title'].split(' ').sublist(1).join(' ').toUpperCase()}", // Reste du titre
                                 style: GoogleFonts.varelaRound(
                                   color: Colors.black,
                                   fontWeight: FontWeight.bold,
@@ -269,77 +270,77 @@ class _ChezPolState extends State<ChezPol> {
           ],
         ),
         newsletter['summary'] != null &&
-            (newsletter['summary'] as List).isNotEmpty
+                (newsletter['summary'] as List).isNotEmpty
             ? Padding(
-          padding: const EdgeInsets.only(top: 16.0, bottom: 16, left:15),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: (newsletter['summary'] as List)
-                .map<Widget>((summaryPoint) {
-              List<InlineSpan> spans = [];
-              String remainingText = summaryPoint;
+                padding: const EdgeInsets.only(top: 16.0, bottom: 16, left: 15),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: (newsletter['summary'] as List)
+                      .map<Widget>((summaryPoint) {
+                    List<InlineSpan> spans = [];
+                    String remainingText = summaryPoint;
 
-              for (var expression in highlightedExpressions) {
-                if (remainingText
-                    .toUpperCase()
-                    .contains(expression.toUpperCase())) {
-                  List<String> splitText =
-                  remainingText.split(expression.toUpperCase());
-                  spans.add(
-                    TextSpan(
-                      text: splitText[0],
-                      style: TextStyle(
-                        fontSize: 14,
-                        color: Colors.black,
-                      ),
-                    ),
-                  );
-                  spans.add(
-                    TextSpan(
-                      text: expression,
-                      style: TextStyle(
-                        fontSize: 14,
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        backgroundColor: Colors.green,
-                      ),
-                    ),
-                  );
-                  if (splitText.length > 1) {
-                    remainingText = splitText[1];
-                  }
-                }
-              }
+                    for (var expression in highlightedExpressions) {
+                      if (remainingText
+                          .toUpperCase()
+                          .contains(expression.toUpperCase())) {
+                        List<String> splitText =
+                            remainingText.split(expression.toUpperCase());
+                        spans.add(
+                          TextSpan(
+                            text: splitText[0],
+                            style: TextStyle(
+                              fontSize: 14,
+                              color: Colors.black,
+                            ),
+                          ),
+                        );
+                        spans.add(
+                          TextSpan(
+                            text: expression,
+                            style: TextStyle(
+                              fontSize: 14,
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              backgroundColor: Colors.green,
+                            ),
+                          ),
+                        );
+                        if (splitText.length > 1) {
+                          remainingText = splitText[1];
+                        }
+                      }
+                    }
 
-              if (spans.isEmpty) {
-                spans.add(
-                  TextSpan(
-                    text: remainingText,
-                    style: TextStyle(
-                      fontSize: 14,
-                      color: Colors.black,
-                    ),
-                  ),
-                );
-              } else if (remainingText.isNotEmpty) {
-                spans.add(
-                  TextSpan(
-                    text: remainingText,
-                    style: TextStyle(
-                      fontSize: 14,
-                      color: Colors.black,
-                    ),
-                  ),
-                );
-              }
-              return RichText(
-                text: TextSpan(
-                  children: spans,
+                    if (spans.isEmpty) {
+                      spans.add(
+                        TextSpan(
+                          text: remainingText,
+                          style: TextStyle(
+                            fontSize: 14,
+                            color: Colors.black,
+                          ),
+                        ),
+                      );
+                    } else if (remainingText.isNotEmpty) {
+                      spans.add(
+                        TextSpan(
+                          text: remainingText,
+                          style: TextStyle(
+                            fontSize: 14,
+                            color: Colors.black,
+                          ),
+                        ),
+                      );
+                    }
+                    return RichText(
+                      text: TextSpan(
+                        children: spans,
+                      ),
+                    );
+                  }).toList(),
                 ),
-              );
-            }).toList(),
-          ),
-        )
+              )
             : Container(),
       ],
     );
@@ -358,7 +359,7 @@ class _ChezPolState extends State<ChezPol> {
 
       if (response.statusCode == 200) {
         List<dynamic> jsonDataResponse =
-        jsonDecode(utf8.decode(response.bodyBytes));
+            jsonDecode(utf8.decode(response.bodyBytes));
 
         for (var newsletter in jsonDataResponse) {
           final Uri newsletterUrl = Uri.parse(newsletter['url']);
@@ -369,7 +370,7 @@ class _ChezPolState extends State<ChezPol> {
             if (response.statusCode == 200) {
               final dom.Document document = parser.parse(response.body);
               final List<dom.Element> imgTags =
-              document.getElementsByTagName('img');
+                  document.getElementsByTagName('img');
               final dom.Element? introElement = document
                   .querySelector('p[data-testid="ica9aRUf7iwNPk5keB2IX"]');
               final List<dom.Element> summaryElements = document
@@ -460,9 +461,9 @@ class _ChezPolState extends State<ChezPol> {
         automaticallyImplyLeading: false,
         backgroundColor: Colors.white,
         title: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-        Image.asset(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Image.asset(
               'img/chezpol.png',
               width: 150,
             ),
@@ -490,7 +491,7 @@ class _ChezPolState extends State<ChezPol> {
               itemBuilder: (context, index) {
                 final newsletter = snapshot.data![index];
                 final String deliveryDate =
-                formatDeliveryDate(newsletter['deliveredAt']);
+                    formatDeliveryDate(newsletter['deliveredAt']);
                 return _buildFullWidthTile(newsletter, deliveryDate);
               },
             );

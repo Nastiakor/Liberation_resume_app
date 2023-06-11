@@ -13,7 +13,7 @@ class AppBarMain extends AppBar {
       backgroundColor: Colors.white,
       title: Row(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
+        children: [
           Image.asset(
               'img/j&a.png',
               width: 50,
@@ -27,8 +27,6 @@ class AppBarMain extends AppBar {
 class AppBarFeed extends AppBar {
   AppBarFeed({Key? key})
       : super(
-// Here we take the value from the MyHomePage object that was created by
-// the App.build method, and use it to set our appbar title.
           automaticallyImplyLeading: false,
           backgroundColor: Colors.white,
           title: Row(

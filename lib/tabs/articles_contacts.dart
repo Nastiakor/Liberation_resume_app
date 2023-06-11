@@ -27,7 +27,7 @@ class _ArticlesContactsState extends State<ArticlesContacts> {
         .collection(collectionName)
         .where(field, isEqualTo: value)
         .where(categories, isEqualTo: category)
-    // .limit(7)
+        // .limit(7)
         .get();
 
     if (querySnapshot.docs.isNotEmpty) {
@@ -174,7 +174,9 @@ class _ArticlesContactsState extends State<ArticlesContacts> {
                         padding: EdgeInsets.symmetric(vertical: 15),
                         child: ElevatedButton(
                           onPressed: () {
-                            FirebaseFirestore.instance.collection('messages').add({
+                            FirebaseFirestore.instance
+                                .collection('messages')
+                                .add({
                               'name': nameController.value.text,
                               'lastName': lastNameController.value.text,
                               'mail': mailController.value.text,

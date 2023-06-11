@@ -140,7 +140,7 @@ class MyStatefulWidgetState extends State<MyStatefulWidget>
             ArticlesProjects(),
             ArticlesFormations(),
             ArticlesExperiences(),
-            RecommandationPage(),
+            const RecommandationPage(),
             ArticlesContacts(),
           ],
         ),

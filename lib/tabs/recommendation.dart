@@ -8,6 +8,7 @@ class RecommandationPage extends StatefulWidget {
   _RecommandationPageState createState() => _RecommandationPageState();
 }
 
+// tentative d'animation
 class _RecommandationPageState extends State<RecommandationPage> with SingleTickerProviderStateMixin {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   late AnimationController _animationController;

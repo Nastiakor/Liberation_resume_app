@@ -22,12 +22,15 @@ class NYTAPI extends StatefulWidget {
 
 class NYTAPIState extends State<NYTAPI> {
   final String apiKey = tokenNYT;
-  final String apiUrl = "https://api.nytimes.com/svc/mostpopular/v2/emailed/7.json";
+  final String apiUrl =
+      "https://api.nytimes.com/svc/mostpopular/v2/emailed/7.json";
 
   List<dynamic> _articles = [];
 
   Future<void> _fetchArticles() async {
-    var response = await http.get(Uri.parse(apiUrl + "?api-key=" + apiKey));
+    var response = await http.get(
+      Uri.parse(apiUrl + "?api-key=" + apiKey),
+    );
     if (response.statusCode == 200) {
       setState(() {
         _articles = json.decode(response.body)["results"];
@@ -248,6 +251,7 @@ class ArticlePage extends StatelessWidget {
       bottomNavigationBar: const BottomBarArticle(),
     );
   }
+
   _launchURL() async {
     String url = article['url'];
     final uri = Uri.parse(url);
@@ -258,6 +262,3 @@ class ArticlePage extends StatelessWidget {
     }
   }
 }
-
-
-
