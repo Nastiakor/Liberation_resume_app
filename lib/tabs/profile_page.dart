@@ -164,8 +164,8 @@ class _ProfilePageState extends State<ProfilePage> {
                 ),  TextField(
                   controller: _whoiamController,
                   decoration: InputDecoration(
-                    labelText: 'Nom',
-                    hintText: 'Modifiez votre nom ici' + name,
+                    labelText: 'Who are you for Johan or Anastasia ?',
+                    hintText: 'Who are you ?',
                   ),
                 ),
               ],

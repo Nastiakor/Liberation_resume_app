@@ -3,7 +3,7 @@
    <application
         android:label="cv_flutter_libe"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/launcher_icon">
         <activity
             xmlns:tools="http://schemas.android.com/tools"
             android:name=".MainActivity"
