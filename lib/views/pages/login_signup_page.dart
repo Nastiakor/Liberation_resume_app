@@ -55,7 +55,8 @@ class LoginPageState extends State<LoginPage> {
     try {
       String? downloadUrl;
       if(_image != null) {
-        downloadUrl = await StoreData().uploadImageToStorage('ProfileImage', _image!);
+        String uniqueId = DateTime.now().millisecondsSinceEpoch.toString(); // Générer un identifiant unique
+        downloadUrl = await StoreData().uploadImageToStorage('ProfileImage_$uniqueId', _image!); // Utiliser l'identifiant unique dans le nom de fichier
       }
       await Auth().createUserWithEmailAndPassword(
         email: _controllerEmail.text,

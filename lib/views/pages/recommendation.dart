@@ -8,6 +8,7 @@ class RecommandationPage extends StatefulWidget {
   _RecommandationPageState createState() => _RecommandationPageState();
 }
 
+// tentative d'animation
 class _RecommandationPageState extends State<RecommandationPage> with SingleTickerProviderStateMixin {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   late AnimationController _animationController;
@@ -136,6 +137,7 @@ class _RecommandationPageState extends State<RecommandationPage> with SingleTick
     final recommenders = ['Johan', 'Anastasia'];
     final recommendersList = <DocumentSnapshot>[];
 
+
     return Scaffold(
       body: FutureBuilder<List<QuerySnapshot>>(
         future: Future.wait(recommenders.map((recommender) {
@@ -157,11 +159,22 @@ class _RecommandationPageState extends State<RecommandationPage> with SingleTick
             recommendersList.addAll(querySnapshot.docs);
           }
 
+          var alternateList = <DocumentSnapshot>[];
+          for (int i = 0; i < recommendersList.length; i++) {
+            if (i < recommendersList.length / 2) {
+              alternateList.add(recommendersList[i]);
+              var correspondingIndex = i + (recommendersList.length / 2).ceil();
+              if (correspondingIndex < recommendersList.length) {
+                alternateList.add(recommendersList[correspondingIndex]);
+              }
+            }
+          }
+
           return PageView.builder(
             controller: PageController(viewportFraction: 0.8),
-            itemCount: recommendersList.length,
+            itemCount: alternateList.length,
             itemBuilder: (context, index) {
-              var document = recommendersList[index];
+              var document = alternateList[index];
               Map<String, dynamic> data = document.data() as Map<String, dynamic>;
               List<String> hardSkills = List<String>.from(data['hardSkills']);
               List<String> softSkills = List<String>.from(data['softSkills']);
