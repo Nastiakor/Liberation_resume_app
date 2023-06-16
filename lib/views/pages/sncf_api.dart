@@ -12,46 +12,53 @@ class SncfAPI extends StatefulWidget {
 }
 
 class _SncfAPIState extends State<SncfAPI> {
-  late Future<Train> futureTrain;
-  @override
+  late Future<List<Train>> futureTrains;
 
+  @override
   void initState() {
     super.initState();
-    futureTrain = fetchTrain();
+    futureTrains = TrainService.fetchTrains();
   }
 
   Widget build(BuildContext context) {
     return Center(
       child: Scaffold(
         body: SafeArea(
-          child: FutureBuilder<Train>(
-            future: futureTrain,
+          child: FutureBuilder<List<Train>>(
+            future: futureTrains,
             builder: (context, snapshot) {
-            if (snapshot.connectionState == ConnectionState.done && snapshot.hasData) {
-                print('snap ${snapshot}');
-                return Column(
-                  children: [
-                    Text(snapshot.data!.departureStation),
-                    Text(snapshot.data!.arrivalStation),
-                    Text('${snapshot.data!.departureTime}'),
-                    Text('${snapshot.data!.arrivalTime}'),
-                    Text('${snapshot.data!.duration}'),
-                    Text('${snapshot.data!.co2Emission}'),
-                    ],
+              if (snapshot.connectionState == ConnectionState.done && snapshot.hasData) {
+                return ListView.builder(
+                  itemCount: snapshot.data!.length,
+                  itemBuilder: (context, index) {
+                    var train = snapshot.data![index];
+                    return Column(
+                      children: [
+                        Text('Gare de départ: ${train.departureStation}'),
+                        Text('Jour de départ: ${train.departureDay}'),  // Ajout du jour de départ
+                        Text('Heure de départ: ${train.departureTime}'), // Heure de départ en format HH:mm:ss
+                        Text('Gare d\'arrivée: ${train.arrivalStation}'),
+                        Text('Jour d\'arrivée: ${train.arrivalDay}'), // Ajout du jour d'arrivée
+                        Text('Heure d\'arrivée: ${train.arrivalTime}'), // Heure d'arrivée en format HH:mm:ss
+                        Text('Durée du trajet: ${train.duration}'),
+                        Text('Émissions de CO2: ${train.co2Emission.toStringAsFixed(2)} kg'),
+                        SizedBox(height: 20),
+                      ],
+                    );
+                  },
                 );
+              } else if (snapshot.connectionState == ConnectionState.done && snapshot.hasError) {
+                return Text('ERREUR : ${snapshot.error}');
+              } else {
+                // En attente du chargement des données
+                return CircularProgressIndicator();
               }
-              else if (snapshot.connectionState == ConnectionState.done && snapshot.hasError) {
-              return Text('ERREUR : ${snapshot.error}');
-              return const CircularProgressIndicator();
-            } else {
-              // Pendant ce temps, le hamster tourne dans la roue.
-              return CircularProgressIndicator();
-            }
-            }
+            },
           ),
         ),
         bottomNavigationBar: MyBottomHomeNavigationBar(currentIndex: 1),
-    ),
+      ),
     );
   }
 }
+
