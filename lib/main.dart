@@ -137,7 +137,7 @@ class MyStatefulWidgetState extends State<MyStatefulWidget>
             tabsContent(tabCategory:'Nos projets'),
             tabsContent(tabCategory:'formations'),
             tabsContent(tabCategory:'Nos expériences'),
-            RecommandationPage(),
+            const RecommandationPage(),
             ArticlesContacts(),
           ],
         ),
