@@ -11,13 +11,12 @@ class SncfAPI extends StatefulWidget {
 }
 
 class _SncfAPIState extends State<SncfAPI> {
-  late Future<Train> futureTrain;
+  late Future<List<Train>> futureTrains;
 
   @override
   void initState() {
     super.initState();
-    futureTrain = fetchTrain();
-    // precacheImage(AssetImage('img/entetesncf.png'), context);
+    futureTrains = TrainService.fetchTrains();
   }
 
   Widget build(BuildContext context) {
@@ -39,30 +38,15 @@ class _SncfAPIState extends State<SncfAPI> {
                         child: Image.asset('img/entetesncf.png'),
                       ),
                       SizedBox(height: 200),
-                      Text(
-                        snapshot.data!.departureStation,
-                        style: TextStyle(color: Colors.white),
-                      ),
-                      Text(
-                        snapshot.data!.arrivalStation,
-                        style: TextStyle(color: Colors.white),
-                      ),
-                      Text(
-                        '${snapshot.data!.departureTime}',
-                        style: TextStyle(color: Colors.white),
-                      ),
-                      Text(
-                        '${snapshot.data!.arrivalTime}',
-                        style: TextStyle(color: Colors.white),
-                      ),
-                      Text(
-                        '${snapshot.data!.duration}',
-                        style: TextStyle(color: Colors.white),
-                      ),
-                      Text(
-                        '${snapshot.data!.co2Emission}',
-                        style: TextStyle(color: Colors.white),
-                      ),
+                      Text('Gare de départ: ${train.departureStation}'),
+                        Text('Jour de départ: ${train.departureDay}'),  // Ajout du jour de départ
+                        Text('Heure de départ: ${train.departureTime}'), // Heure de départ en format HH:mm:ss
+                        Text('Gare d\'arrivée: ${train.arrivalStation}'),
+                        Text('Jour d\'arrivée: ${train.arrivalDay}'), // Ajout du jour d'arrivée
+                        Text('Heure d\'arrivée: ${train.arrivalTime}'), // Heure d'arrivée en format HH:mm:ss
+                        Text('Durée du trajet: ${train.duration}'),
+                        Text('Émissions de CO2: ${train.co2Emission.toStringAsFixed(2)} kg'),
+                     
                     ],
                   );
                 } else if (snapshot.connectionState == ConnectionState.done &&
@@ -80,3 +64,4 @@ class _SncfAPIState extends State<SncfAPI> {
     );
   }
 }
+
