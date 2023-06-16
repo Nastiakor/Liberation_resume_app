@@ -1,8 +1,8 @@
-import 'package:cv_flutter_libe/auth.dart';
-import 'package:cv_flutter_libe/tabs/profile_page.dart';
-import 'package:cv_flutter_libe/tabs/login_signup_page.dart';
+import 'package:cv_flutter_libe/services/auth.dart';
+import 'package:cv_flutter_libe/views/pages/profile_page.dart';
+import 'package:cv_flutter_libe/views/pages/login_signup_page.dart';
 import 'package:flutter/material.dart';
-import 'package:cv_flutter_libe/app_bottom_bar/bottom_navigation_bar.dart';
+import 'package:cv_flutter_libe/views/components/bottom_navigation_bar.dart';
 
 class WidgetTree extends StatefulWidget {
   const WidgetTree({Key? key}) : super(key: key);
@@ -25,7 +25,7 @@ class _WidgetTreeState extends State<WidgetTree> {
         }
       },
     ),
-      bottomNavigationBar: MyBottomHomeNavigationBar(currentIndex: 4),
+      bottomNavigationBar: MyBottomHomeNavigationBar(currentIndex: 5),
     );
   }
 }

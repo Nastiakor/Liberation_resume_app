@@ -15,7 +15,6 @@ class StoreData {
   Future<String> saveData({required Uint8List file}) async {
     String resp = "some errors occurred";
     try {
-      String imageUrl = await uploadImageToStorage('ProfileImage', file);
       resp = "success";
     } catch (err) {
       resp = err.toString();

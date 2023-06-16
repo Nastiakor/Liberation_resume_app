@@ -1,4 +1,4 @@
-import 'package:cv_flutter_libe/app_bottom_bar/app_bar.dart';
+import 'package:cv_flutter_libe/views/components/app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 

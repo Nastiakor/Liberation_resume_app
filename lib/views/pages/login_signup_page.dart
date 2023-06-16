@@ -1,16 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:cv_flutter_libe/auth.dart';
-import 'package:cv_flutter_libe/add_article.dart';
-import 'package:cv_flutter_libe/tabs/profile_page.dart';
+import 'package:cv_flutter_libe/services/auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:cv_flutter_libe/utils.dart';
+import 'package:cv_flutter_libe/utils/utils.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:cv_flutter_libe/ressources/add_data.dart';
-import 'package:cv_flutter_libe/main.dart';
 import 'dart:typed_data';
+
 
 Uint8List? _image;
 final FirebaseStorage _storage = FirebaseStorage.instance;
@@ -28,6 +25,7 @@ class LoginPageState extends State<LoginPage> {
   bool isLogin = true;
   final TextEditingController _controllerEmail = TextEditingController();
   final TextEditingController _controllerPassword = TextEditingController();
+  final TextEditingController _controllerwhoiam = TextEditingController();
   final TextEditingController _controllerName = TextEditingController();
   final TextEditingController _controllerLastName = TextEditingController();
 
@@ -57,12 +55,14 @@ class LoginPageState extends State<LoginPage> {
     try {
       String? downloadUrl;
       if(_image != null) {
-        downloadUrl = await StoreData().uploadImageToStorage('ProfileImage', _image!);
+        String uniqueId = DateTime.now().millisecondsSinceEpoch.toString(); // Générer un identifiant unique
+        downloadUrl = await StoreData().uploadImageToStorage('ProfileImage_$uniqueId', _image!); // Utiliser l'identifiant unique dans le nom de fichier
       }
       await Auth().createUserWithEmailAndPassword(
         email: _controllerEmail.text,
         password: _controllerPassword.text,
         name: _controllerName.text,
+        whoiam: _controllerwhoiam.text,
         lastName: _controllerLastName.text,
         photoURL: downloadUrl,
       );
@@ -75,8 +75,6 @@ class LoginPageState extends State<LoginPage> {
       });
     }
   }
-
-
 
   Widget _title() {
     return const Text('Firebase Auth');
@@ -129,6 +127,7 @@ class LoginPageState extends State<LoginPage> {
   Padding _signUp({
     required TextEditingController nameController,
     required TextEditingController lastNameController,
+    required TextEditingController whoiam,
     required TextEditingController emailController,
     required TextEditingController passwordController,
   }) {
@@ -199,6 +198,27 @@ class LoginPageState extends State<LoginPage> {
                         width: 30, style: BorderStyle.solid, color: Colors.white),
                   ),
                   labelText: 'Last name',
+                  labelStyle: const TextStyle(color: Colors.white)),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            TextField(
+              cursorColor: Colors.white,
+              style: const TextStyle(color: Colors.white),
+              obscureText: false,
+              controller: _controllerwhoiam,
+              decoration: InputDecoration(
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(30),
+                    borderSide: const BorderSide(color: Colors.white),
+                  ),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(30),
+                    borderSide: const BorderSide(
+                        width: 30, style: BorderStyle.solid, color: Colors.white),
+                  ),
+                  labelText: 'Who are you ? Job ...',
                   labelStyle: const TextStyle(color: Colors.white)),
             ),
             const SizedBox(
@@ -321,13 +341,19 @@ class LoginPageState extends State<LoginPage> {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            isLogin
+            Expanded(
+                child: SingleChildScrollView(
+                    child: isLogin
                 ? _logIn()
                 : _signUp(
                     nameController: _controllerName,
                     lastNameController: _controllerLastName,
+                    whoiam: _controllerwhoiam,
                     emailController: _controllerEmail,
-                    passwordController: _controllerPassword),
+                    passwordController: _controllerPassword
+                    ),
+                ),
+            ),
             _errorMessage(),
             submitButton(),
             loginOrRegisterButton(),
@@ -371,4 +397,6 @@ class StoreData {
 
 /*void saveProfile() async{
   String resp = await StoreData().saveData(file: _image!);
-}*/
+}
+
+*/

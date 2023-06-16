@@ -1,28 +1,13 @@
-import 'package:cv_flutter_libe/icons.dart';
-import 'package:cv_flutter_libe/views/news_feed_nyt.dart';
-import 'package:cv_flutter_libe/widget_tree.dart';
+import 'package:cv_flutter_libe/ressources/icons/icons.dart';
+import 'package:cv_flutter_libe/services/news_feed_nyt.dart';
+import 'package:cv_flutter_libe/utils/widget_tree.dart';
 import 'package:flutter/material.dart';
 import 'package:cv_flutter_libe/main.dart';
-import 'package:cv_flutter_libe/views/libe_api.dart';
-import 'package:cv_flutter_libe/views/chez_pol.dart';
+import 'package:cv_flutter_libe/services/libe_api.dart';
+import 'package:cv_flutter_libe/services/chez_pol.dart';
+import 'package:cv_flutter_libe/views/pages/sncf_api.dart';
 
-void showModal(BuildContext context) {
-  showDialog(
-    context: context,
-    builder: (BuildContext context) => AlertDialog(
-      content: const Text('Example Dialog'),
-      actions: <TextButton>[
-        TextButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          child: const Text('Close'),
-        )
-      ],
-    ),
-  );
-}
-
+// ignore: must_be_immutable
 class MyBottomHomeNavigationBar extends StatefulWidget {
   int currentIndex;
 
@@ -47,6 +32,9 @@ class MyBottomHomeNavigationBarState extends State<MyBottomHomeNavigationBar> {
         BottomNavigationBarItem(
           icon: Icon(Icons.supervisor_account_rounded, size: 24),
           label: 'Portfolio',
+        ),   BottomNavigationBarItem(
+          icon: Icon(Icons.train, size: 24),
+          label: 'SNCF',
         ),
         BottomNavigationBarItem(
           icon: Icon(MyFlutterApp.passage_du_temps, size: 24),
@@ -69,19 +57,22 @@ class MyBottomHomeNavigationBarState extends State<MyBottomHomeNavigationBar> {
       onTap: (index) {
         setState(() {
           widget.currentIndex = index;
-          if (widget.currentIndex == 1) {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => const LiberationAPI()));
-          } else if (widget.currentIndex == 0) {
+          if (widget.currentIndex == 0) {
             Navigator.push(context,
                 MaterialPageRoute(builder: (context) => const MyApp()));
-          } else if (widget.currentIndex == 2) {
+          } else if (widget.currentIndex == 1) {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => const SncfAPI()));
+          }else if (widget.currentIndex == 2) {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => const LiberationAPI()));
+          } else if (widget.currentIndex == 3) {
             Navigator.push(context,
                 MaterialPageRoute(builder: (context) => const NYTAPI()));
-          }else if (widget.currentIndex == 3) {
+          }else if (widget.currentIndex == 4) {
             Navigator.push(context,
                 MaterialPageRoute(builder: (context) => ChezPol()));
-          }else if (widget.currentIndex == 4) {
+          } else if (widget.currentIndex == 5) {
             Navigator.push(context,
                 MaterialPageRoute(builder: (context) => const WidgetTree()));
           }

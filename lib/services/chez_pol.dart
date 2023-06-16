@@ -5,8 +5,8 @@ import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:html/parser.dart' as parser;
 import 'package:html/dom.dart' as dom;
 import 'package:google_fonts/google_fonts.dart';
-import 'package:cv_flutter_libe/app_bottom_bar/bottom_navigation_bar.dart';
-import 'package:cv_flutter_libe/app_bottom_bar/bottom_bar_article.dart';
+import 'package:cv_flutter_libe/views/components/bottom_navigation_bar.dart';
+import 'package:cv_flutter_libe/views/components/bottom_bar_article.dart';
 
 class ChezPol extends StatefulWidget {
   ChezPol({Key? key}) : super(key: key);
@@ -497,7 +497,7 @@ class _ChezPolState extends State<ChezPol> {
           }
         },
       ),
-      bottomNavigationBar: MyBottomHomeNavigationBar(currentIndex: 3),
+      bottomNavigationBar: MyBottomHomeNavigationBar(currentIndex: 4),
     );
   }
 }
@@ -505,7 +505,7 @@ class _ChezPolState extends State<ChezPol> {
 class WebViewPage extends StatelessWidget {
   final String url;
 
-  WebViewPage({required this.url});
+  WebViewPage({super.key, required this.url});
 
   @override
   Widget build(BuildContext context) {

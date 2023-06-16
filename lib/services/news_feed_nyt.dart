@@ -1,11 +1,11 @@
 import 'dart:convert';
-import 'package:cv_flutter_libe/app_bottom_bar/app_bar_nyt.dart';
-import 'package:cv_flutter_libe/views/tokens.dart';
+import 'package:cv_flutter_libe/views/components/app_bar_nyt.dart';
+import 'package:cv_flutter_libe/services/tokens.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:url_launcher/url_launcher.dart';
-import 'package:cv_flutter_libe/app_bottom_bar/bottom_navigation_bar.dart';
-import 'package:cv_flutter_libe/app_bottom_bar/bottom_bar_article.dart';
+import 'package:cv_flutter_libe/views/components/bottom_navigation_bar.dart';
+import 'package:cv_flutter_libe/views/components/bottom_bar_article.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 
@@ -143,7 +143,7 @@ class NYTAPIState extends State<NYTAPI> {
                 },
               )
             : const Center(child: CircularProgressIndicator()),
-        bottomNavigationBar: MyBottomHomeNavigationBar(currentIndex: 2),
+        bottomNavigationBar: MyBottomHomeNavigationBar(currentIndex: 3),
       ),
     );
   }

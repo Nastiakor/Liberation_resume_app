@@ -1,15 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:cv_flutter_libe/view_articles_main_full_secondary.dart';
+import 'package:cv_flutter_libe/models/secondary_article.dart';
+import 'package:cv_flutter_libe/models/main_article.dart';
 
-class ArticlesExperiences extends StatefulWidget {
+class tabsContent extends StatefulWidget {
+  final String tabCategory;
+
+  tabsContent({super.key, required this.tabCategory});
+
   @override
-  _ArticlesExperiencesState createState() => _ArticlesExperiencesState();
+  _tabsContentState createState() => _tabsContentState();
 }
 
-class _ArticlesExperiencesState extends State<ArticlesExperiences> {
+class _tabsContentState extends State<tabsContent> {
+
+  bool isLoading = true; // Ajoutez cette variable d'état
+
   Future<List<DocumentSnapshot>> getMainDocumentByCondition(
-      String collectionName, String field, dynamic value, String categories, String category) async {
+      String collectionName,
+      String field,
+      dynamic value,
+      String categories,
+      String category) async {
     final querySnapshot = await FirebaseFirestore.instance
         .collection(collectionName)
         .where(field, isEqualTo: value)
@@ -25,7 +37,11 @@ class _ArticlesExperiencesState extends State<ArticlesExperiences> {
   }
 
   Future<List<DocumentSnapshot>> getSecondaryDocumentByCondition(
-      String collectionName, String field, dynamic value, String categories, String category) async {
+      String collectionName,
+      String field,
+      dynamic value,
+      String categories,
+      String category) async {
     final querySnapshot = await FirebaseFirestore.instance
         .collection(collectionName)
         .where(field, isEqualTo: value)
@@ -45,8 +61,8 @@ class _ArticlesExperiencesState extends State<ArticlesExperiences> {
       body: ListView(
         children: [
           FutureBuilder<List<DocumentSnapshot>>(
-            future:
-                getMainDocumentByCondition('Articles', 'typeOfArticle', 'main', 'category', 'Nos expériences'),
+            future: getMainDocumentByCondition(
+                'Articles', 'typeOfArticle', 'main', 'category',widget.tabCategory),
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
                 return const Center(child: CircularProgressIndicator());
@@ -61,24 +77,27 @@ class _ArticlesExperiencesState extends State<ArticlesExperiences> {
                     final formattedDate =
                         '${date.year}-${date.month.toString().padLeft(2, '0')}-${date.day.toString().padLeft(2, '0')} ${date.hour.toString().padLeft(2, '0')}:${date.minute.toString().padLeft(2, '0')}:${date.second.toString().padLeft(2, '0')}';
                     return MainArticle(
-                      imagePath: "${data['imagePath']}",
-                      titleHeadline: "${data['titleHeadline']} ",
-                      titleOverline: "${data['titleOverline']}",
-                      paragraphMainArticle: data['paragraphMainArticle'],
-                      themeMainArticle: "${data['themeMainArticle']}",
-                      writtenBy: "${data['writtenBy']}",
-                      publishDateParam: formattedDate,
-                      legendPicture: "${data['legendPicture']}",
-                      completeArticle: "${data['completeArticle']}",
-                    );
+                        imagePath: "${data['imagePath']}",
+                        titleHeadline: "${data['titleHeadline']} ",
+                        titleOverline: "${data['titleOverline']}",
+                        paragraphMainArticle: data['paragraphMainArticle'],
+                        themeMainArticle: "${data['themeMainArticle']}",
+                        writtenBy: "${data['writtenBy']}",
+                        publishDateParam: formattedDate,
+                        legendPicture: "${data['legendPicture']}",
+                        completeArticle: "${data['completeArticle']}",
+                        linkOrNot: "${data['linkOrNOt']}",
+                        link: "${data['link']}",
+                        imageOrNot: "${data['imageOrNot']}",
+                        image: "${data['image']}");
                   }).toList(),
                 );
               }
             },
           ),
           FutureBuilder<List<DocumentSnapshot>>(
-            future: getSecondaryDocumentByCondition(
-                'Articles', 'typeOfArticle', 'secondary', 'category', 'Nos expériences'),
+            future: getSecondaryDocumentByCondition('Articles', 'typeOfArticle',
+                'secondary', 'category', widget.tabCategory),
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
                 return const Center(child: CircularProgressIndicator());
@@ -93,16 +112,19 @@ class _ArticlesExperiencesState extends State<ArticlesExperiences> {
                     final formattedDate =
                         '${date.year}-${date.month.toString().padLeft(2, '0')}-${date.day.toString().padLeft(2, '0')} ${date.hour.toString().padLeft(2, '0')}:${date.minute.toString().padLeft(2, '0')}:${date.second.toString().padLeft(2, '0')}';
                     return SecondaryArticle(
-                      imagePath: "${data['imagePath']}",
-                      titleHeadline: "${data['titleHeadline']} ",
-                      titleOverline: "${data['titleOverline']}",
-                      paragraphMainArticle: data['paragraphMainArticle'],
-                      themeMainArticle: "${data['themeMainArticle']}",
-                      writtenBy: "${data['writtenBy']}",
-                      publishDateParam: formattedDate,
-                      legendPicture: "${data['legendPicture']}",
-                      completeArticle: "${data['completeArticle']}",
-                    );
+                        imagePath: "${data['imagePath']}",
+                        titleHeadline: "${data['titleHeadline']} ",
+                        titleOverline: "${data['titleOverline']}",
+                        paragraphMainArticle: data['paragraphMainArticle'],
+                        themeMainArticle: "${data['themeMainArticle']}",
+                        writtenBy: "${data['writtenBy']}",
+                        publishDateParam: formattedDate,
+                        legendPicture: "${data['legendPicture']}",
+                        completeArticle: "${data['completeArticle']}",
+                        linkOrNot: "${data['linkOrNOt']}",
+                        link: "${data['link']}",
+                        imageOrNot: "${data['imageOrNot']}",
+                        image: "${data['image']}");
                   }).toList(),
                 );
               }
