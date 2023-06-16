@@ -143,7 +143,7 @@ class NYTAPIState extends State<NYTAPI> {
                 },
               )
             : const Center(child: CircularProgressIndicator()),
-        bottomNavigationBar: MyBottomHomeNavigationBar(currentIndex: 2),
+        bottomNavigationBar: MyBottomHomeNavigationBar(currentIndex: 3),
       ),
     );
   }

@@ -258,7 +258,7 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Welcome to your profile page'),
+        title: const Text('Welcome'),
       ),
       body: SingleChildScrollView(
         child: StreamBuilder<DocumentSnapshot>(

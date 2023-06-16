@@ -227,7 +227,7 @@ class LiberationAPIState extends State<LiberationAPI> {
                         )
                 ],
               ),
-        bottomNavigationBar: MyBottomHomeNavigationBar(currentIndex: 1),
+        bottomNavigationBar: MyBottomHomeNavigationBar(currentIndex: 2),
       ),
     );
   }

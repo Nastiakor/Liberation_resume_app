@@ -497,7 +497,7 @@ class _ChezPolState extends State<ChezPol> {
           }
         },
       ),
-      bottomNavigationBar: MyBottomHomeNavigationBar(currentIndex: 3),
+      bottomNavigationBar: MyBottomHomeNavigationBar(currentIndex: 4),
     );
   }
 }
