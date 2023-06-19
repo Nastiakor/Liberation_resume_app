@@ -6,9 +6,13 @@ import 'package:intl/intl.dart';
 
 class TrainService {
 
-  static Future<List<Train>> fetchTrains() async {
+  static Future<List<Train>> fetchTrains(String departureGareCode, String arrivalGareCode, String datetime) async {
+    print("Gare de départ code ${departureGareCode}");
+    print("Gare d'arrivée code ${arrivalGareCode}");
+    print("Datetime ${datetime}");
+
     final response = await http.get(
-      Uri.parse('https://api.sncf.com/v1/coverage/sncf/journeys?from=admin%3Afr%3A75056&to=admin%3Afr%3A13055&datetime=20230616T143530&datetime_represents=departure&first_section_mode%5B%5D=walking&last_section_mode%5B%5D=walking&min_nb_transfers=0&direct_path=none&min_nb_journeys=5&is_journey_schedules=True&allowed_id%5B%5D=stop_point%3ASNCF%3A87686006%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87751008%3ALongDistanceTrain&count=15'),
+      Uri.parse('https://api.sncf.com/v1/coverage/sncf/journeys?from=admin%3Afr%3A${departureGareCode}&to=admin%3Afr%3A${arrivalGareCode}&datetime=${datetime}&count=15'),
       headers: {"Authorization": "0b5df37f-3ecd-45ef-8c7d-34fd1743428f"},
     );
 
@@ -90,3 +94,5 @@ class TrainService {
 }
 
 // Uri.parse('https://api.sncf.com/v1/coverage/sncf/journeys?from=admin%3Afr%3A75056&to=admin%3Afr%3A18033&count=15'),
+// Uri.parse('https://api.sncf.com/v1/coverage/sncf/journeys?from=admin%3Afr%3A75056&to=admin%3Afr%3A13055&datetime=20230616T143530&datetime_represents=departure&first_section_mode%5B%5D=walking&last_section_mode%5B%5D=walking&min_nb_transfers=0&direct_path=none&min_nb_journeys=5&is_journey_schedules=True&allowed_id%5B%5D=stop_point%3ASNCF%3A87686006%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87751008%3ALongDistanceTrain&count=15,
+//  Uri.parse('https://api.sncf.com/v1/coverage/sncf/journeys?from=admin%3Afr%3A75056&to=admin%3Afr%3A${gareCode}&datetime=20230616T143530&datetime_represents=departure&first_section_mode%5B%5D=walking&last_section_mode%5B%5D=walking&min_nb_transfers=0&direct_path=none&min_nb_journeys=5&is_journey_schedules=True&allowed_id%5B%5D=stop_point%3ASNCF%3A87686006%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87751008%3ALongDistanceTrain&count=15'
