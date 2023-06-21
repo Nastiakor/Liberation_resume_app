@@ -264,7 +264,7 @@ class _SncfAPIState extends State<SncfAPI> {
                             });
                           },
                           displayStringForOption: (CommuneInfo option) =>
-                          option.aliasLibelleNonContraint,
+                              option.aliasLibelleNonContraint,
                           onSelected: (CommuneInfo? selection) {
                             setState(() {
                               _selectedDepartureCommuneInfo = selection;
@@ -296,7 +296,7 @@ class _SncfAPIState extends State<SncfAPI> {
                             });
                           },
                           displayStringForOption: (CommuneInfo option) =>
-                          option.aliasLibelleNonContraint,
+                              option.aliasLibelleNonContraint,
                           onSelected: (CommuneInfo? selection) {
                             setState(() {
                               _selectedArrivalCommuneInfo = selection;
@@ -396,23 +396,23 @@ class _SncfAPIState extends State<SncfAPI> {
                 ),
                 trains.isNotEmpty
                     ? ListView.builder(
-                  shrinkWrap: true,
-                  physics: NeverScrollableScrollPhysics(),
-                  itemCount: trains.length,
-                  itemBuilder: (context, index) {
-                    final train = trains[index];
-                    return _buildTrainCard(train);
-                  },
-                )
+                        shrinkWrap: true,
+                        physics: NeverScrollableScrollPhysics(),
+                        itemCount: trains.length,
+                        itemBuilder: (context, index) {
+                          final train = trains[index];
+                          return _buildTrainCard(train);
+                        },
+                      )
                     : Center(
-                  child: Text(
-                    'Aucun train trouvé',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 16,
-                    ),
-                  ),
-                ),
+                        child: Text(
+                          'Aucun train trouvé',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 16,
+                          ),
+                        ),
+                      ),
               ],
             ),
           ),

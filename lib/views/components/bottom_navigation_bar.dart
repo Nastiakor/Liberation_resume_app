@@ -6,6 +6,7 @@ import 'package:cv_flutter_libe/main.dart';
 import 'package:cv_flutter_libe/services/libe_api.dart';
 import 'package:cv_flutter_libe/services/chez_pol.dart';
 import 'package:cv_flutter_libe/views/pages/sncf_api.dart';
+import 'package:cv_flutter_libe/views/pages/useradgents_feed.dart';
 
 // ignore: must_be_immutable
 class MyBottomHomeNavigationBar extends StatefulWidget {
@@ -68,7 +69,7 @@ class MyBottomHomeNavigationBarState extends State<MyBottomHomeNavigationBar> {
                 MaterialPageRoute(builder: (context) => const LiberationAPI()));
           } else if (widget.currentIndex == 3) {
             Navigator.push(context,
-                MaterialPageRoute(builder: (context) => const NYTAPI()));
+                MaterialPageRoute(builder: (context) => const UseradgentsPage()));
           }else if (widget.currentIndex == 4) {
             Navigator.push(context,
                 MaterialPageRoute(builder: (context) => ChezPol()));
