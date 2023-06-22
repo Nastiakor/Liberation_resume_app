@@ -17,6 +17,7 @@ class _UseradgentsPageState extends State<UseradgentsPage> {
   @override
   _fetchUseradgentsJSON() async {
     var response = await UseradgentsService.fetchUseradgentsFeed();
+    print(response);
 
     if (response.statusCode == 200) {
       // Si la requête a réussi
