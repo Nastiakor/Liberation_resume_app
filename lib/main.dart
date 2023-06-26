@@ -10,6 +10,7 @@ import 'package:cv_flutter_libe/services/auth.dart';
 import 'package:cv_flutter_libe/views/pages/recommendation.dart';
 import 'package:cv_flutter_libe/views/pages/tabs.dart';
 
+
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await initializeDateFormatting('fr');
