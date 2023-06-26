@@ -44,7 +44,7 @@ class Useradgents {
   final String? photo;
   final String? post;
   final String? content;
-  final String? date;
+  final DateTime? date; // Modifier le type en DateTime
   final String? shortDescription;
   final List<dynamic>? themes;
   final String? title;
@@ -82,7 +82,7 @@ class Useradgents {
       photo: json['photo'] ?? '',
       post: json['post'] ?? '',
       content: json['content'] ?? '',
-      date: json['date'] ?? '',
+      date: DateTime.parse(json['date'] ?? ''), // Parse la chaîne en DateTime
       shortDescription: json['shortDescription'] ?? '',
       themes: json['themes'] ?? '',
       title: json['title'] ?? '',
@@ -92,4 +92,6 @@ class Useradgents {
     );
   }
 }
+
+
 

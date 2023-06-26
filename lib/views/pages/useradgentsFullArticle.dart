@@ -10,7 +10,7 @@ class UseradgentsFullArticle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final formattedDate = DateFormat('dd MMMM', 'fr_FR').format(DateTime.parse(useradgents.date ?? ''));
+    final formattedDate = DateFormat('dd MMMM', 'fr_FR').format(DateTime.parse(useradgents.date?.toString() ?? ''));
 
     return Scaffold(
       appBar: AppBar(
