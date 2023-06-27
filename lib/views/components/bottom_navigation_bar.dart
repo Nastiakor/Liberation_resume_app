@@ -43,7 +43,7 @@ class MyBottomHomeNavigationBarState extends State<MyBottomHomeNavigationBar> {
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.location_city_sharp, size: 29),
-          label: 'Best of the NYT',
+          label: 'UserAdgents',
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.account_balance, size: 29),
