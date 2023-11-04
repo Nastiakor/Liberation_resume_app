@@ -6,7 +6,7 @@ import 'package:cv_flutter_libe/models/main_article.dart';
 class tabsContent extends StatefulWidget {
   final String tabCategory;
 
-  tabsContent({super.key, required this.tabCategory});
+  const tabsContent({super.key, required this.tabCategory});
 
   @override
   _tabsContentState createState() => _tabsContentState();

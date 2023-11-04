@@ -47,7 +47,7 @@ class _RecommandationPageState extends State<RecommandationPage> with SingleTick
       children: [
         Text(
           "${data['additionalComments']}",
-          style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400, color: Colors.black),
+          style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w400, color: Colors.black),
         ),
         const SizedBox(height: 8),
         Row(
@@ -57,7 +57,7 @@ class _RecommandationPageState extends State<RecommandationPage> with SingleTick
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
+                  const Text(
                     "Compétences techniques:",
                     style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: Colors.black),
                   ),
@@ -67,7 +67,7 @@ class _RecommandationPageState extends State<RecommandationPage> with SingleTick
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Icon(
+                          const Icon(
                             Icons.check_circle,
                             color: Colors.green,
                             size: 12,
@@ -76,7 +76,7 @@ class _RecommandationPageState extends State<RecommandationPage> with SingleTick
                           Flexible(
                             child: Text(
                               skill,
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontSize: 12,
                                 fontWeight: FontWeight.w400,
                                 color: Colors.black,
@@ -94,7 +94,7 @@ class _RecommandationPageState extends State<RecommandationPage> with SingleTick
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
+                  const Text(
                     "Compétences non techniques:",
                     style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: Colors.black),
                   ),
@@ -104,7 +104,7 @@ class _RecommandationPageState extends State<RecommandationPage> with SingleTick
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Icon(
+                          const Icon(
                             Icons.check_circle,
                             color: Colors.blue,
                             size: 12,
@@ -113,7 +113,7 @@ class _RecommandationPageState extends State<RecommandationPage> with SingleTick
                           Flexible(
                             child: Text(
                               skill,
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontSize: 12,
                                 fontWeight: FontWeight.w400,
                                 color: Colors.black,
@@ -212,7 +212,7 @@ class _RecommandationPageState extends State<RecommandationPage> with SingleTick
                                         color: Colors.red,
                                       ),
                                     ),
-                                    SizedBox(height: 15),
+                                    const SizedBox(height: 15),
                                     Row(
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
@@ -238,7 +238,7 @@ class _RecommandationPageState extends State<RecommandationPage> with SingleTick
                                             children: [
                                               Container(
                                                 padding: const EdgeInsets.only(bottom: 6),
-                                                decoration: BoxDecoration(
+                                                decoration: const BoxDecoration(
                                                   border: Border(
                                                     bottom: BorderSide(
                                                       color: Colors.grey,
@@ -341,7 +341,7 @@ class _RecommandationPageState extends State<RecommandationPage> with SingleTick
                                                   children: [
                                                     Container(
                                                       padding: const EdgeInsets.only(bottom: 6),
-                                                      decoration: BoxDecoration(
+                                                      decoration: const BoxDecoration(
                                                         border: Border(
                                                           bottom: BorderSide(
                                                             color: Colors.grey,
@@ -373,7 +373,7 @@ class _RecommandationPageState extends State<RecommandationPage> with SingleTick
                                           const SizedBox(height: 8),
                                           Text(
                                             "${data['additionalComments']}",
-                                            style: TextStyle(
+                                            style: const TextStyle(
                                               fontSize: 14,
                                               fontWeight: FontWeight.w400,
                                               color: Colors.black,
@@ -387,7 +387,7 @@ class _RecommandationPageState extends State<RecommandationPage> with SingleTick
                                                 child: Column(
                                                   crossAxisAlignment: CrossAxisAlignment.start,
                                                   children: [
-                                                    Text(
+                                                    const Text(
                                                       "Compétences techniques:",
                                                       style: TextStyle(
                                                         fontSize: 12,
@@ -401,7 +401,7 @@ class _RecommandationPageState extends State<RecommandationPage> with SingleTick
                                                         child: Row(
                                                           crossAxisAlignment: CrossAxisAlignment.start,
                                                           children: [
-                                                            Icon(
+                                                            const Icon(
                                                               Icons.check_circle,
                                                               color: Colors.green,
                                                               size: 12,
@@ -410,7 +410,7 @@ class _RecommandationPageState extends State<RecommandationPage> with SingleTick
                                                             Flexible(
                                                               child: Text(
                                                                 skill,
-                                                                style: TextStyle(
+                                                                style: const TextStyle(
                                                                   fontSize: 12,
                                                                   fontWeight: FontWeight.w400,
                                                                   color: Colors.black,
@@ -428,7 +428,7 @@ class _RecommandationPageState extends State<RecommandationPage> with SingleTick
                                                 child: Column(
                                                   crossAxisAlignment: CrossAxisAlignment.start,
                                                   children: [
-                                                    Text(
+                                                    const Text(
                                                       "Compétences non techniques:",
                                                       style: TextStyle(
                                                         fontSize: 12,
@@ -442,7 +442,7 @@ class _RecommandationPageState extends State<RecommandationPage> with SingleTick
                                                         child: Row(
                                                           crossAxisAlignment: CrossAxisAlignment.start,
                                                           children: [
-                                                            Icon(
+                                                            const Icon(
                                                               Icons.check_circle,
                                                               color: Colors.blue,
                                                               size: 12,
@@ -451,7 +451,7 @@ class _RecommandationPageState extends State<RecommandationPage> with SingleTick
                                                             Flexible(
                                                               child: Text(
                                                                 skill,
-                                                                style: TextStyle(
+                                                                style: const TextStyle(
                                                                   fontSize: 12,
                                                                   fontWeight: FontWeight.w400,
                                                                   color: Colors.black,

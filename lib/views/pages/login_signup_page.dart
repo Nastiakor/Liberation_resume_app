@@ -153,14 +153,14 @@ class LoginPageState extends State<LoginPage> {
                 Positioned(
                   child: IconButton(
                     onPressed: selectImage,
-                    icon: Icon(Icons.add_a_photo),
+                    icon: const Icon(Icons.add_a_photo),
                   ),
                   bottom: -10,
                   left: 80,
                 ),
                ],
             ),
-            SizedBox(height: 15),
+            const SizedBox(height: 15),
             TextField(
               cursorColor: Colors.white,
               style: const TextStyle(color: Colors.white),

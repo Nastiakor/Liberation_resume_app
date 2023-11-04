@@ -28,11 +28,13 @@ class TrainService {
 
   static List<Train> _trainsFromJson(Map<String, dynamic> json) {
     var journeys = json['journeys'] as List<dynamic>? ?? [];
-    print('Nombre de voyages reçus: ${journeys.length}'); // Ajoutez cette ligne
+    print('Nombre de voyages reçus: ${journeys.length}');
     List<Train> trains = [];
 
     for (var journey in journeys) {
       String departureStation = '';
+      String gareDeparture = '';
+      String gareArrival = '';
       String arrivalStation = '';
       String departureTime = '';
       String arrivalTime = '';

@@ -13,7 +13,7 @@ class MoisTabs extends StatelessWidget {
       length: mois.length,
       child: Scaffold(
         appBar: AppBar(
-          title: Text('Tabs par mois et année'),
+          title: const Text('Tabs par mois et année'),
           bottom: TabBar(
             tabs: _generateTabs(mois),
           ),

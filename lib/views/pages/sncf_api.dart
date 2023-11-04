@@ -65,8 +65,8 @@ class _SncfAPIState extends State<SncfAPI> {
 
   Widget _buildTrainCard(Train train) {
     return Container(
-      margin: EdgeInsets.all(16),
-      padding: EdgeInsets.all(16),
+      margin: const EdgeInsets.all(16),
+      padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(8),
@@ -76,63 +76,63 @@ class _SncfAPIState extends State<SncfAPI> {
         children: [
           Text(
             'Gare de départ: ${removePostalCode(train.departureStation)}',
-            style: TextStyle(
+            style: const TextStyle(
               color: Colors.black,
               fontSize: 18,
               fontWeight: FontWeight.bold,
             ),
           ),
-          SizedBox(height: 8),
+          const SizedBox(height: 8),
           Text(
             'Gare d\'arrivée: ${removePostalCode(train.arrivalStation)}',
-            style: TextStyle(
+            style: const TextStyle(
               color: Colors.black,
               fontSize: 18,
               fontWeight: FontWeight.bold,
             ),
           ),
-          SizedBox(height: 16),
+          const SizedBox(height: 16),
           Text(
             'Jour de départ: ${train.departureDay}',
-            style: TextStyle(
+            style: const TextStyle(
               color: Colors.black,
               fontWeight: FontWeight.bold,
             ),
           ),
           Text(
             'Heure de départ: ${train.departureTime}',
-            style: TextStyle(
+            style: const TextStyle(
               color: Colors.black,
               fontWeight: FontWeight.bold,
             ),
           ),
-          SizedBox(height: 8),
+          const SizedBox(height: 8),
           Text(
             'Jour d\'arrivée: ${train.arrivalDay}',
-            style: TextStyle(
+            style: const TextStyle(
               color: Colors.black,
               fontWeight: FontWeight.bold,
             ),
           ),
           Text(
             'Heure d\'arrivée: ${train.arrivalTime}',
-            style: TextStyle(
+            style: const TextStyle(
               color: Colors.black,
               fontWeight: FontWeight.bold,
             ),
           ),
-          SizedBox(height: 16),
+          const SizedBox(height: 16),
           Text(
             'Durée du trajet: ${formatDuration(train.duration)}',
-            style: TextStyle(
+            style: const TextStyle(
               color: Colors.black,
               fontWeight: FontWeight.bold,
             ),
           ),
-          SizedBox(height: 8),
+          const SizedBox(height: 8),
           Text(
             'Émissions de CO2: ${train.co2Emission.toStringAsFixed(2)} kg',
-            style: TextStyle(
+            style: const TextStyle(
               color: Colors.black,
               fontWeight: FontWeight.bold,
             ),
@@ -162,7 +162,7 @@ class _SncfAPIState extends State<SncfAPI> {
       context: context,
       initialDate: _selectedDate,
       firstDate: DateTime.now(),
-      lastDate: DateTime.now().add(Duration(days: 365)),
+      lastDate: DateTime.now().add(const Duration(days: 365)),
     );
     if (pickedDate != null && pickedDate != _selectedDate) {
       setState(() {
@@ -233,7 +233,7 @@ class _SncfAPIState extends State<SncfAPI> {
             width: double.infinity,
             child: Column(
               children: [
-                SizedBox(height: 100),
+                const SizedBox(height: 100),
                 Container(
                   child: Image.asset('img/entetesncf.png'),
                 ),
@@ -241,10 +241,17 @@ class _SncfAPIState extends State<SncfAPI> {
                   padding: const EdgeInsets.all(16.0),
                   child: Column(
                     children: [
-                      Text(
-                        "Gare de départ:",
-                        style: TextStyle(color: Colors.white, fontSize: 18),
+                      const Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Ville de départ :",
+                            style: TextStyle(color: Colors.white, fontSize: 18),
+                            textAlign: TextAlign.start,
+                          ),
+                        ],
                       ),
+                    const SizedBox(height: 8),
                       Container(
                         width: MediaQuery.of(context).size.width * 0.5,
                         decoration: BoxDecoration(
@@ -270,51 +277,106 @@ class _SncfAPIState extends State<SncfAPI> {
                               _selectedDepartureCommuneInfo = selection;
                             });
                           },
-                        ),
-                      ),
-                      SizedBox(height: 16),
-                      Text(
-                        "Gare d'arrivée:",
-                        style: TextStyle(color: Colors.white, fontSize: 18),
-                      ),
-                      Container(
-                        width: MediaQuery.of(context).size.width * 0.5,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                        child: Autocomplete<CommuneInfo>(
-                          optionsBuilder: (TextEditingValue textEditingValue) {
-                            if (textEditingValue.text.isEmpty) {
-                              return const Iterable<CommuneInfo>.empty();
-                            }
-                            final query = textEditingValue.text.toLowerCase();
-                            return _communeInfos.where((CommuneInfo option) {
-                              return option.aliasLibelleNonContraint
-                                  .toLowerCase()
-                                  .contains(query);
-                            });
+                          fieldViewBuilder: (
+                            BuildContext context,
+                            TextEditingController textEditingController,
+                            FocusNode focusNode,
+                            VoidCallback onFieldSubmitted,
+                            ) {
+                          return TextField(
+                            controller: textEditingController,
+                            focusNode: focusNode,
+                            onSubmitted: (String value) {
+                            onFieldSubmitted();
                           },
-                          displayStringForOption: (CommuneInfo option) =>
+                          decoration: InputDecoration(
+                          contentPadding: const EdgeInsets.only(left: 16.0), // Marge à gauche à l'intérieur du champ
+                          border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(8.0),
+                          ),
+                          ),
+                          );
+                          },
+
+                        ),
+                      ),
+                      const SizedBox(height: 16),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: <Widget>[
+                          const Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                "Ville d'arrivée :",
+                                style: TextStyle(color: Colors.white, fontSize: 18),
+                                textAlign: TextAlign.center,
+                              ),
+                            ],
+                          ),
+                          const SizedBox(height: 8),
+                          Container(
+                            width: MediaQuery.of(context).size.width * 0.5,
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            child: Autocomplete<CommuneInfo>(
+                              optionsBuilder: (TextEditingValue textEditingValue) {
+                                if (textEditingValue.text.isEmpty) {
+                                  return const Iterable<CommuneInfo>.empty();
+                                }
+                                final query = textEditingValue.text.toLowerCase();
+                                return _communeInfos.where((CommuneInfo option) {
+                                  return option.aliasLibelleNonContraint
+                                      .toLowerCase()
+                                      .contains(query);
+                                },
+                                );
+                              },
+                              displayStringForOption: (CommuneInfo option) =>
                               option.aliasLibelleNonContraint,
-                          onSelected: (CommuneInfo? selection) {
-                            setState(() {
-                              _selectedArrivalCommuneInfo = selection;
-                            });
-                          },
-                        ),
+                              onSelected: (CommuneInfo? selection) {
+                                setState(() {
+                                  _selectedArrivalCommuneInfo = selection;
+                                });
+                              },
+                              fieldViewBuilder: (
+                                  BuildContext context,
+                                  TextEditingController textEditingController,
+                                  FocusNode focusNode,
+                                  VoidCallback onFieldSubmitted,
+                                  ) {
+                                return TextField(
+                                  controller: textEditingController,
+                                  focusNode: focusNode,
+                                  onSubmitted: (String value) {
+                                    onFieldSubmitted();
+                                  },
+                                  decoration: InputDecoration(
+                                    contentPadding: const EdgeInsets.only(left: 16.0), // Marge à gauche à l'intérieur du champ
+                                    border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(8.0),
+                                    ),
+                                  ),
+                                );
+                              },
+                            ),
+                          ),
+                        ],
                       ),
-                      SizedBox(height: 16),
+                      const SizedBox(height: 16),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Text(
                             'Date sélectionnée : ${_formatSelectedDate()}',
-                            style: TextStyle(
+                            style: const TextStyle(
                               color: Colors.white,
                               fontSize: 16,
                             ),
                           ),
+              const SizedBox(height: 4),
                           ElevatedButton(
                             onPressed: () => _selectDate(context),
                             style: ElevatedButton.styleFrom(
@@ -322,12 +384,12 @@ class _SncfAPIState extends State<SncfAPI> {
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(8),
                               ),
-                              padding: EdgeInsets.symmetric(
+                              padding: const EdgeInsets.symmetric(
                                 vertical: 12,
                                 horizontal: 24,
                               ),
                             ),
-                            child: Text(
+                            child: const Text(
                               'Sélectionner une date',
                               style: TextStyle(
                                 color: Colors.white,
@@ -337,17 +399,18 @@ class _SncfAPIState extends State<SncfAPI> {
                           ),
                         ],
                       ),
-                      SizedBox(height: 16),
+                      const SizedBox(height: 16),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
                             'Heure sélectionnée : ${_selectedTime.format(context)}',
-                            style: TextStyle(
+                            style: const TextStyle(
                               color: Colors.white,
                               fontSize: 16,
                             ),
                           ),
+                          const SizedBox(height: 4),
                           ElevatedButton(
                             onPressed: () => _selectTime(context),
                             style: ElevatedButton.styleFrom(
@@ -355,12 +418,12 @@ class _SncfAPIState extends State<SncfAPI> {
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(8),
                               ),
-                              padding: EdgeInsets.symmetric(
+                              padding: const EdgeInsets.symmetric(
                                 vertical: 12,
                                 horizontal: 24,
                               ),
                             ),
-                            child: Text(
+                            child: const Text(
                               'Sélectionner une heure',
                               style: TextStyle(
                                 color: Colors.white,
@@ -370,7 +433,7 @@ class _SncfAPIState extends State<SncfAPI> {
                           ),
                         ],
                       ),
-                      SizedBox(height: 16),
+                      const SizedBox(height: 16),
                       ElevatedButton(
                         onPressed: _fetchTrains,
                         style: ElevatedButton.styleFrom(
@@ -378,12 +441,12 @@ class _SncfAPIState extends State<SncfAPI> {
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(8),
                           ),
-                          padding: EdgeInsets.symmetric(
+                          padding: const EdgeInsets.symmetric(
                             vertical: 12,
                             horizontal: 24,
                           ),
                         ),
-                        child: Text(
+                        child: const Text(
                           'Rechercher',
                           style: TextStyle(
                             color: Colors.white,
@@ -397,14 +460,14 @@ class _SncfAPIState extends State<SncfAPI> {
                 trains.isNotEmpty
                     ? ListView.builder(
                         shrinkWrap: true,
-                        physics: NeverScrollableScrollPhysics(),
+                        physics: const NeverScrollableScrollPhysics(),
                         itemCount: trains.length,
                         itemBuilder: (context, index) {
                           final train = trains[index];
                           return _buildTrainCard(train);
                         },
                       )
-                    : Center(
+                    : const Center(
                         child: Text(
                           'Aucun train trouvé',
                           style: TextStyle(
