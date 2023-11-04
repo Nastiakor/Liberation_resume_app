@@ -101,7 +101,7 @@ class _UseradgentsPageState extends State<UseradgentsPage>
       ),
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Useradgents'),
+          title: const Text('Useradgents'),
           centerTitle: true,
           backgroundColor: Colors.black,
           bottom: TabBar(
@@ -110,7 +110,7 @@ class _UseradgentsPageState extends State<UseradgentsPage>
           ),
         ),
         body: _isLoading
-            ? Center(
+            ? const Center(
           child: SpinKitFoldingCube(
             color: Colors.pinkAccent,
             size: 50.0,
@@ -135,7 +135,7 @@ class _UseradgentsPageState extends State<UseradgentsPage>
                         padding: const EdgeInsets.all(8.0),
                         child: Text(
                           '${_months[monthIndex]} $year',
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
                           ),
@@ -182,7 +182,7 @@ class _UseradgentsPageState extends State<UseradgentsPage>
                                       color: Colors.grey.withOpacity(0.5),
                                       spreadRadius: 1,
                                       blurRadius: 7,
-                                      offset: Offset(0, 3),
+                                      offset: const Offset(0, 3),
                                     ),
                                   ],
                                 ),
@@ -191,7 +191,7 @@ class _UseradgentsPageState extends State<UseradgentsPage>
                                   CrossAxisAlignment.start,
                                   children: [
                                     ClipRRect(
-                                      borderRadius: BorderRadius.vertical(
+                                      borderRadius: const BorderRadius.vertical(
                                         top: Radius.circular(15),
                                       ),
                                       child: useradgents.featuredImages !=
@@ -213,20 +213,20 @@ class _UseradgentsPageState extends State<UseradgentsPage>
                                       ),
                                     ),
                                     Padding(
-                                      padding: EdgeInsets.all(16.0),
+                                      padding: const EdgeInsets.all(16.0),
                                       child: Column(
                                         crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                         children: [
                                           Text(
                                             useradgents.title ?? '',
-                                            style: TextStyle(
+                                            style: const TextStyle(
                                               fontWeight: FontWeight.bold,
                                               fontSize: 18,
                                               color: Colors.black,
                                             ),
                                           ),
-                                          SizedBox(height: 8),
+                                          const SizedBox(height: 8),
                                           Html(
                                             data: useradgents.shortDescription ?? '',
                                             style: {
@@ -236,7 +236,7 @@ class _UseradgentsPageState extends State<UseradgentsPage>
                                               ),
                                             },
                                           ),
-                                          SizedBox(height: 8),
+                                          const SizedBox(height: 8),
                                           Row(
                                             children: [
                                               if (useradgents.authors != null &&
@@ -247,12 +247,12 @@ class _UseradgentsPageState extends State<UseradgentsPage>
                                                         '',
                                                   ),
                                                 ),
-                                              SizedBox(width: 8),
+                                              const SizedBox(width: 8),
                                               if (useradgents.authors != null &&
                                                   useradgents.authors!.isNotEmpty)
                                                 Text(
                                                   "${useradgents.authors!.first.name} ${useradgents.authors!.first.lastname}",
-                                                  style: TextStyle(
+                                                  style: const TextStyle(
                                                     fontWeight: FontWeight.w600,
                                                     fontSize: 14,
                                                     color: Colors.black,

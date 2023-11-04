@@ -15,7 +15,7 @@ void checkCurrentUser() {
 }
 
 class ProfilePage extends StatefulWidget {
-  ProfilePage({Key? key}) : super(key: key);
+  const ProfilePage({Key? key}) : super(key: key);
 
   @override
   State<ProfilePage> createState() => _ProfilePageState();
@@ -110,7 +110,7 @@ class _ProfilePageState extends State<ProfilePage> {
     resetPageState();
     Navigator.pushReplacement(
       context,
-      MaterialPageRoute(builder: (context) => WidgetTree()),
+      MaterialPageRoute(builder: (context) => const WidgetTree()),
     );
   }
 
@@ -143,13 +143,13 @@ class _ProfilePageState extends State<ProfilePage> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Modifiez votre profil'),
+          title: const Text('Modifiez votre profil'),
           content: SingleChildScrollView(
             child: Column(
               children: [
                 TextField(
                   controller: _nameController,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     labelText: 'Prénom',
                     hintText: 'Entrez votre prénom ici',
                   ),
@@ -162,7 +162,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   ),
                 ),  TextField(
                   controller: _whoiamController,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     labelText: 'Qui es-tu ?',
                     hintText: 'Qui es-tu ?',
                   ),
@@ -172,13 +172,13 @@ class _ProfilePageState extends State<ProfilePage> {
           ),
           actions: [
             TextButton(
-              child: Text('Annuler'),
+              child: const Text('Annuler'),
               onPressed: () {
                 Navigator.of(context).pop();
               },
             ),
             TextButton(
-              child: Text('Mettre à jour'),
+              child: const Text('Mettre à jour'),
               onPressed: () {
                 Navigator.of(context).pop();
 
@@ -269,7 +269,7 @@ class _ProfilePageState extends State<ProfilePage> {
           builder:
               (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
-              return CircularProgressIndicator();
+              return const CircularProgressIndicator();
             } else if (snapshot.hasError) {
               return Text("Something went wrong: ${snapshot.error}");
             } else if (snapshot.hasData) {
@@ -280,9 +280,10 @@ class _ProfilePageState extends State<ProfilePage> {
 
                 return Center(
                   child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: <Widget>[
-                      SizedBox(height: 20),
+                      const SizedBox(height: 20),
                       Stack(
                         alignment: Alignment.topCenter,
                         children: [
@@ -300,7 +301,7 @@ class _ProfilePageState extends State<ProfilePage> {
                             left: 85,
                             child: IconButton(
                               onPressed: selectImage,
-                              icon: Icon(Icons.add_a_photo),
+                              icon: const Icon(Icons.add_a_photo),
                             ),
                           ),
                         ],
@@ -309,20 +310,20 @@ class _ProfilePageState extends State<ProfilePage> {
                       Text("Last name: ${data['lastName']}"),
                       Text("Who I am: ${data['whoiam']}"),
                       Text("email: ${user?.email ?? 'User email'}"),
-                      SizedBox(height: 20),
+                      const SizedBox(height: 20),
                       ElevatedButton(
                         style: ElevatedButton.styleFrom(
                           foregroundColor: Colors.white, primary: Colors.blue,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20),
                           ),
-                          padding: EdgeInsets.symmetric(
+                          padding: const EdgeInsets.symmetric(
                             horizontal: 20,
                             vertical: 12,
                           ),
                         ),
                         onPressed: updateUserDataDialog,
-                        child: Text('Modifier votre profil'),
+                        child: const Text('Modifier votre profil'),
                       ),
                       ElevatedButton(
                         style: ElevatedButton.styleFrom(
@@ -330,7 +331,7 @@ class _ProfilePageState extends State<ProfilePage> {
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20),
                           ),
-                          padding: EdgeInsets.symmetric(
+                          padding: const EdgeInsets.symmetric(
                             horizontal: 20,
                             vertical: 12,
                           ),
@@ -351,7 +352,7 @@ class _ProfilePageState extends State<ProfilePage> {
                           builder:
                               (BuildContext context, AsyncSnapshot<bool> snapshot) {
                             if (snapshot.connectionState == ConnectionState.waiting) {
-                              return CircularProgressIndicator();
+                              return const CircularProgressIndicator();
                             } else if (snapshot.hasError) {
                               return Text("Something went wrong: ${snapshot.error}");
                             } else if (snapshot.hasData) {
@@ -362,7 +363,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                     : "Ajouter une recommandation pour Anastasia",
                               );
                             } else {
-                              return Text("No data");
+                              return const Text("No data");
                             }
                           },
                         ),
@@ -374,7 +375,7 @@ class _ProfilePageState extends State<ProfilePage> {
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20),
                           ),
-                          padding: EdgeInsets.symmetric(
+                          padding: const EdgeInsets.symmetric(
                             horizontal: 20,
                             vertical: 12,
                           ),
@@ -393,7 +394,7 @@ class _ProfilePageState extends State<ProfilePage> {
                           builder:
                               (BuildContext context, AsyncSnapshot<bool> snapshot) {
                             if (snapshot.connectionState == ConnectionState.waiting) {
-                              return CircularProgressIndicator();
+                              return const CircularProgressIndicator();
                             } else if (snapshot.hasError) {
                               return Text("Something went wrong: ${snapshot.error}");
                             } else if (snapshot.hasData) {
@@ -404,7 +405,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                     : "Ajouter une recommandation pour Johan",
                               );
                             } else {
-                              return Text("No data");
+                              return const Text("No data");
                             }
                           },
                         ),
@@ -413,10 +414,10 @@ class _ProfilePageState extends State<ProfilePage> {
                   ),
                 );
               } else {
-                return Text("No data");
+                return const Text("No data");
               }
             } else {
-              return Text("No data");
+              return const Text("No data");
             }
           },
         ),

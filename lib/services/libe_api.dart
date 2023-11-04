@@ -219,7 +219,7 @@ class LiberationAPIState extends State<LiberationAPI> {
                                 );
                               }),
                         )
-                      : Row(
+                      : const Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: const [
                             Center(child: CircularProgressIndicator())
@@ -560,10 +560,10 @@ class ArticleDetailsPageState extends State<ArticleDetailsPage> {
                 : Padding(
               padding: const EdgeInsets.all(8.0),
               child: Image.network(
-                imageUrl ?? '',
-                height: 200,
-                width: double.infinity,
-                fit: BoxFit.fitWidth,
+                 imageUrl ?? '',
+                 height: 200,
+                 width: double.infinity,
+                 fit: BoxFit.fitWidth,
               ),
             );
           }(),

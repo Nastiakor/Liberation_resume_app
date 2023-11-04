@@ -96,7 +96,7 @@ class _ArticlesContactsState extends State<ArticlesContacts> {
             },
           ),
           Container(
-            margin: EdgeInsets.all(15),
+            margin: const EdgeInsets.all(15),
             child: Column(
               children: [
                 Row(
@@ -114,26 +114,26 @@ class _ArticlesContactsState extends State<ArticlesContacts> {
                     ),
                   ],
                 ),
-                SizedBox(height: 15),
+                const SizedBox(height: 15),
                 Form(
                   key: _formKey,
                   child: Column(
                     children: [
                       TextField(
-                        style: TextStyle(color: Colors.black),
-                        decoration: InputDecoration(
+                        style: const TextStyle(color: Colors.black),
+                        decoration: const InputDecoration(
                           labelStyle: TextStyle(color: Colors.black),
                           hintText: 'Quel est votre prénom ?',
                           border: OutlineInputBorder(
-                            borderSide: const BorderSide(color: Colors.teal),
+                            borderSide: BorderSide(color: Colors.teal),
                           ),
                         ),
                         controller: nameController,
                       ),
-                      SizedBox(height: 15),
+                      const SizedBox(height: 15),
                       TextField(
-                        style: TextStyle(color: Colors.black),
-                        decoration: InputDecoration(
+                        style: const TextStyle(color: Colors.black),
+                        decoration: const InputDecoration(
                           labelStyle: TextStyle(color: Colors.black),
                           hintText: 'Quel est votre nom ?',
                           border: OutlineInputBorder(
@@ -142,10 +142,10 @@ class _ArticlesContactsState extends State<ArticlesContacts> {
                         ),
                         controller: lastNameController,
                       ),
-                      SizedBox(height: 15),
+                      const SizedBox(height: 15),
                       TextField(
-                        style: TextStyle(color: Colors.black),
-                        decoration: InputDecoration(
+                        style: const TextStyle(color: Colors.black),
+                        decoration: const InputDecoration(
                           labelStyle: TextStyle(color: Colors.black),
                           hintText: 'Veuillez saisir votre mail',
                           border: OutlineInputBorder(
@@ -154,11 +154,11 @@ class _ArticlesContactsState extends State<ArticlesContacts> {
                         ),
                         controller: mailController,
                       ),
-                      SizedBox(height: 15),
+                      const SizedBox(height: 15),
                       TextField(
                         maxLines: 15,
-                        style: TextStyle(color: Colors.black),
-                        decoration: InputDecoration(
+                        style: const TextStyle(color: Colors.black),
+                        decoration: const InputDecoration(
                           labelStyle: TextStyle(color: Colors.black),
                           hintText: 'Veuillez saisir votre message ici',
                           border: OutlineInputBorder(
@@ -168,7 +168,7 @@ class _ArticlesContactsState extends State<ArticlesContacts> {
                         controller: messageController,
                       ),
                       Padding(
-                        padding: EdgeInsets.symmetric(vertical: 15),
+                        padding: const EdgeInsets.symmetric(vertical: 15),
                         child: ElevatedButton(
                           onPressed: () {
                             FirebaseFirestore.instance.collection('messages').add({
@@ -185,7 +185,7 @@ class _ArticlesContactsState extends State<ArticlesContacts> {
 
                               // Affichage de la Snackbar
                               ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(
+                                const SnackBar(
                                   content: Text('Message envoyé avec succès'),
                                 ),
                               );

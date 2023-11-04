@@ -21,7 +21,7 @@ class MainArticle extends StatelessWidget {
   final String? imageOrNot;
   final String? image;
 
-  MainArticle(
+  const MainArticle(
       {required this.imagePath,
         required this.titleOverline,
         required this.titleHeadline,

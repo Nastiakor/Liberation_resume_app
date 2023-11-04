@@ -9,7 +9,7 @@ import 'package:cv_flutter_libe/views/components/bottom_navigation_bar.dart';
 import 'package:cv_flutter_libe/views/components/bottom_bar_article.dart';
 
 class ChezPol extends StatefulWidget {
-  ChezPol({Key? key}) : super(key: key);
+  const ChezPol({Key? key}) : super(key: key);
 
   @override
   _ChezPolState createState() => _ChezPolState();
@@ -43,7 +43,7 @@ class _ChezPolState extends State<ChezPol> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(height: 5),
+              const SizedBox(height: 5),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16.0),
                 child: RichText(
@@ -89,24 +89,24 @@ class _ChezPolState extends State<ChezPol> {
                   ),
                 ),
               ),
-              SizedBox(height: 8),
+              const SizedBox(height: 8),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16.0),
                 child: Text(
                   newsletter['intro'],
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 14,
                     color: Colors.black,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
-              SizedBox(height: 12),
+              const SizedBox(height: 12),
               if (newsletter['imageUrl'] != null &&
                   newsletter['imageUrl'] != '')
                 Image.network(newsletter['imageUrl'],
                     width: double.infinity, height: 200, fit: BoxFit.cover),
-              SizedBox(height: 12),
+              const SizedBox(height: 12),
               if (newsletter['summary'] != null &&
                   (newsletter['summary'] as List).isNotEmpty)
                 Padding(
@@ -127,7 +127,7 @@ class _ChezPolState extends State<ChezPol> {
                           spans.add(
                             TextSpan(
                               text: splitText[0],
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontSize: 14,
                                 color: Colors.black,
                               ),
@@ -136,7 +136,7 @@ class _ChezPolState extends State<ChezPol> {
                           spans.add(
                             TextSpan(
                               text: expression,
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontSize: 14,
                                 color: Colors.white,
                                 backgroundColor: Colors.red,
@@ -153,7 +153,7 @@ class _ChezPolState extends State<ChezPol> {
                         spans.add(
                           TextSpan(
                             text: remainingText,
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontSize: 14,
                               color: Colors.black,
                             ),
@@ -163,7 +163,7 @@ class _ChezPolState extends State<ChezPol> {
                         spans.add(
                           TextSpan(
                             text: remainingText,
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontSize: 14,
                               color: Colors.black,
                             ),
@@ -175,7 +175,7 @@ class _ChezPolState extends State<ChezPol> {
                         child: RichText(
                           text: TextSpan(
                             text: '',
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontSize: 14,
                               color: Colors.black,
                               fontWeight: FontWeight.w500,
@@ -187,12 +187,12 @@ class _ChezPolState extends State<ChezPol> {
                     }).toList(),
                   ),
                 ),
-              SizedBox(height: 10),
-              Divider(
+              const SizedBox(height: 10),
+              const Divider(
                 thickness: 1,
                 color: Colors.black,
               ),
-              SizedBox(height: 5),
+              const SizedBox(height: 5),
             ],
           ),
         ),
@@ -260,7 +260,7 @@ class _ChezPolState extends State<ChezPol> {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.only(left: 15, top: 5, right: 8),
+                    padding: const EdgeInsets.only(left: 15, top: 5, right: 8),
                     child: Text("${newsletter['intro']}"),
                   ),
                 ],
@@ -288,7 +288,7 @@ class _ChezPolState extends State<ChezPol> {
                   spans.add(
                     TextSpan(
                       text: splitText[0],
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 14,
                         color: Colors.black,
                       ),
@@ -297,7 +297,7 @@ class _ChezPolState extends State<ChezPol> {
                   spans.add(
                     TextSpan(
                       text: expression,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 14,
                         color: Colors.white,
                         fontWeight: FontWeight.bold,
@@ -315,7 +315,7 @@ class _ChezPolState extends State<ChezPol> {
                 spans.add(
                   TextSpan(
                     text: remainingText,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 14,
                       color: Colors.black,
                     ),
@@ -325,7 +325,7 @@ class _ChezPolState extends State<ChezPol> {
                 spans.add(
                   TextSpan(
                     text: remainingText,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 14,
                       color: Colors.black,
                     ),
@@ -473,7 +473,7 @@ class _ChezPolState extends State<ChezPol> {
         future: _futureNewsletters,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(
+            return const Center(
               child: CircularProgressIndicator(),
             );
           } else if (snapshot.hasError) {
@@ -505,7 +505,7 @@ class _ChezPolState extends State<ChezPol> {
 class WebViewPage extends StatelessWidget {
   final String url;
 
-  WebViewPage({super.key, required this.url});
+  const WebViewPage({super.key, required this.url});
 
   @override
   Widget build(BuildContext context) {
@@ -516,7 +516,7 @@ class WebViewPage extends StatelessWidget {
           initialUrlRequest: URLRequest(url: Uri.parse(url)),
         ),
       ),
-      bottomNavigationBar: BottomBarArticle(),
+      bottomNavigationBar: const BottomBarArticle(),
     );
   }
 }

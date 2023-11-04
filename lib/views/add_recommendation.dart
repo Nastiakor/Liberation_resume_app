@@ -7,7 +7,7 @@
   class RecommendationPage extends StatefulWidget {
     final String candidateName;
 
-    RecommendationPage({super.key, required this.candidateName});
+    const RecommendationPage({super.key, required this.candidateName});
     @override
     _RecommendationPageState createState() => _RecommendationPageState();
   }
@@ -127,13 +127,13 @@
     Widget build(BuildContext context) {
       return Scaffold(
         appBar: AppBar(
-          title: Text("Page de recommandation"),
+          title: const Text("Page de recommandation"),
         ),
         body: Center( // Ajouté pour centrer les éléments
           child: ListView(
             children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
+              const Padding(
+                padding: EdgeInsets.all(8.0),
                 child: Center( // Ajouté pour centrer le texte
                   child: Text(
                     'Soft Skills',
@@ -166,8 +166,8 @@
                   }).toList(),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
+              const Padding(
+                padding: EdgeInsets.all(8.0),
                 child: Center( // Ajouté pour centrer le texte
                   child: Text(
                     'Hard Skills',
@@ -202,7 +202,7 @@
                 child: TextFormField(
                   maxLines: 5,
                   controller: _commentController,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     labelText: "Ajouter des commentaires",
                     border: OutlineInputBorder(),
                   ),
@@ -211,7 +211,7 @@
               Center( // Ajouté pour centrer le bouton
                 child: ElevatedButton(
                   onPressed: _submitRecommendations,
-                  child: Text("Envoyer la recommandation"),
+                  child: const Text("Envoyer la recommandation"),
                 ),
               ),
             ],
@@ -223,35 +223,35 @@
     Icon getIconForSoftSkill(String skill) {
       switch (skill) {
         case 'Communication':
-          return Icon(Icons.chat);
+          return const Icon(Icons.chat);
         case 'Adaptabilité':
-          return Icon(Icons.compare_arrows);
+          return const Icon(Icons.compare_arrows);
         case 'Empathie':
-          return Icon(Icons.favorite);
+          return const Icon(Icons.favorite);
         case 'Bienveillance':
-          return Icon(Icons.favorite_border);
+          return const Icon(Icons.favorite_border);
         case 'Esprit d\'équipe':
-          return Icon(Icons.group);
+          return const Icon(Icons.group);
         case 'Tolérance':
-          return Icon(Icons.accessibility_new);
+          return const Icon(Icons.accessibility_new);
         case 'Dynamisme':
-          return Icon(Icons.flash_on);
+          return const Icon(Icons.flash_on);
         case 'Autonomie':
-          return Icon(Icons.person_pin);
+          return const Icon(Icons.person_pin);
         case 'Esprit d\'initiative':
-          return Icon(Icons.lightbulb_outline);
+          return const Icon(Icons.lightbulb_outline);
         case 'Sens des responsabilités':
-          return Icon(Icons.assignment_turned_in);
+          return const Icon(Icons.assignment_turned_in);
         case 'Résolution de conflits':
-          return Icon(Icons.how_to_vote);
+          return const Icon(Icons.how_to_vote);
         case 'Confiance en soi':
-          return Icon(Icons.verified_user);
+          return const Icon(Icons.verified_user);
         case 'Capacité à déléguer':
-          return Icon(Icons.work_outline);
+          return const Icon(Icons.work_outline);
         case 'Intelligence émotionnelle':
-          return Icon(Icons.emoji_emotions);
+          return const Icon(Icons.emoji_emotions);
         default:
-          return Icon(Icons.star); // Icône par défaut
+          return const Icon(Icons.star); // Icône par défaut
       }
     }
   }

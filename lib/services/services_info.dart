@@ -1,7 +1,6 @@
 import 'dart:convert';
-import 'package:http/http.dart' as http;
-import 'package:cv_flutter_libe/models/commune_info.dart';
 import 'package:flutter/services.dart';
+import 'package:cv_flutter_libe/models/commune_info.dart';
 
 class CommuneInfoService {
 
@@ -12,25 +11,31 @@ class CommuneInfoService {
   }
 
   static List<CommuneInfo> _communeInfoFromJson(List<dynamic> json) {
+    var uniqueNamesSet = <String>{};
     List<CommuneInfo> communeInfos = [];
 
     for (var info in json) {
-      String aliasLibelleNonContraint = info['alias_libelle_noncontraint'] ?? '';
-      String departementNumero = info['departement_numero'] ?? '';
-      String communeCode = info['commune_code'] ?? '';
+      String aliasLibelleNonContraint = info['commune_libellemin'] ?? '';
+      String gareStation = info['alias_libelle_noncontraint'] ?? '';
+      // Vérifiez si le nom de la ville est déjà dans le Set
+      if (!uniqueNamesSet.contains(aliasLibelleNonContraint)) {
+        // Si non, ajoutez-le au Set et à la liste
+        uniqueNamesSet.add(aliasLibelleNonContraint);
+        String departementNumero = info['departement_numero'] ?? '';
+        String communeCode = info['commune_code'] ?? '';
 
-      // Ajouter un "0" si communeCode a seulement 2 caractères
-      if (communeCode.length == 2) {
-        communeCode = '0' + communeCode;
+        if (communeCode.length == 2) {
+          communeCode = '0' + communeCode;
+        }
+
+        String codeConcatene = departementNumero + communeCode;
+
+        communeInfos.add(CommuneInfo(
+          aliasLibelleNonContraint: aliasLibelleNonContraint,
+          codeConcatene: codeConcatene,
+          gareStation: gareStation,
+        ));
       }
-
-      // Concaténer departementNumero et communeCode
-      String codeConcatene = departementNumero + communeCode;
-
-      communeInfos.add(CommuneInfo(
-        aliasLibelleNonContraint: aliasLibelleNonContraint,
-        codeConcatene: codeConcatene,
-      ));
     }
 
     return communeInfos;
