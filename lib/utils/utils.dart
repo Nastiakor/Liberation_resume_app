@@ -7,7 +7,6 @@ XFile? _file = await _imagePicker.pickImage(source: source);
 if(_file != null) {
   return await _file.readAsBytes();
 }
-print("no images selected, t'as pas compris quoi ?");
 }
 
 String calculatePublishingDate(DateTime publishingDate) {

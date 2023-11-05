@@ -11,7 +11,6 @@ import 'package:cv_flutter_libe/utils/widget_tree.dart';
 
 void checkCurrentUser() {
   final User? currentUser = FirebaseAuth.instance.currentUser;
-  print('Current user after relogin: $currentUser');
 }
 
 class ProfilePage extends StatefulWidget {
@@ -64,9 +63,7 @@ class _ProfilePageState extends State<ProfilePage> {
         setState(() {
           photoURL = imageUrl;
         });
-        print('Profile image updated successfully');
       } else {
-        print('Failed to upload profile image');
       }
     }
   }
@@ -210,7 +207,6 @@ class _ProfilePageState extends State<ProfilePage> {
         'lastName': _lastNameController.text,
         'whoiam': _whoiamController.text,
       });
-      print('User name and last name updated successfully');
     }
     else if (_nameController.text.isNotEmpty &&
         _lastNameController.text.isNotEmpty) {
@@ -221,7 +217,6 @@ class _ProfilePageState extends State<ProfilePage> {
         'name': _nameController.text,
         'lastName': _lastNameController.text,
       });
-      print('User name and last name updated successfully');
     } else if (_lastNameController.text.isNotEmpty) {
       await FirebaseFirestore.instance
           .collection('users')
@@ -229,7 +224,6 @@ class _ProfilePageState extends State<ProfilePage> {
           .update({
         'lastName': _lastNameController.text,
       });
-      print('User name and last name updated successfully');
     } else if (_nameController.text.isNotEmpty) {
       await FirebaseFirestore.instance
           .collection('users')
@@ -237,7 +231,6 @@ class _ProfilePageState extends State<ProfilePage> {
           .update({
         'name': _nameController.text,
       });
-      print('User name and last name updated successfully');
     } else if (_whoiamController.text.isNotEmpty) {
       await FirebaseFirestore.instance
           .collection('users')
@@ -245,9 +238,7 @@ class _ProfilePageState extends State<ProfilePage> {
           .update({
         'whoiam': _whoiamController.text,
       });
-      print('User name and last name updated successfully');
     } else {
-      print('Failed to update user name and last name');
     }
 
 

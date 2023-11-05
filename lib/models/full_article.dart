@@ -45,9 +45,6 @@ class FullArticle extends MainArticle {
 
   @override
   Widget build(BuildContext context) {
-    print("LON $linkOrNot");
-    print("link ${link?.isEmpty}");
-    print("image $imageOrNot");
     super.contactOrNot?.isEmpty == false
         ? boolContact == true
         : boolContact == false;
@@ -265,7 +262,6 @@ class FullArticle extends MainArticle {
                   : InkWell(
                   onTap: () {
                     _launchURL("$link");
-                    print("linkOrNot$link");
                   },
                   child: Align(
                     alignment: Alignment.topRight,

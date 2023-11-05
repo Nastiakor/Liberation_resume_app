@@ -67,20 +67,12 @@ class _RecommandationPageState extends State<RecommandationPage> with SingleTick
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const Icon(
-                            Icons.check_circle,
-                            color: Colors.green,
-                            size: 12,
-                          ),
+                          const Icon(Icons.check_circle, color: Colors.green, size: 12),
                           const SizedBox(width: 4),
                           Flexible(
                             child: Text(
                               skill,
-                              style: const TextStyle(
-                                fontSize: 12,
-                                fontWeight: FontWeight.w400,
-                                color: Colors.black,
-                              ),
+                              style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w400, color: Colors.black),
                             ),
                           ),
                         ],
@@ -89,7 +81,7 @@ class _RecommandationPageState extends State<RecommandationPage> with SingleTick
                 ],
               ),
             ),
-            const SizedBox(width: 16),
+            const SizedBox(width: 16), // Ajustez cette valeur pour rapprocher les colonnes
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -101,24 +93,14 @@ class _RecommandationPageState extends State<RecommandationPage> with SingleTick
                   for (var skill in softSkills)
                     Padding(
                       padding: const EdgeInsets.only(left: 8.0),
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                      child: Wrap(
+                        crossAxisAlignment: WrapCrossAlignment.start,
                         children: [
-                          const Icon(
-                            Icons.check_circle,
-                            color: Colors.blue,
-                            size: 12,
-                          ),
+                          const Icon(Icons.check_circle, color: Colors.blue, size: 12),
                           const SizedBox(width: 4),
-                          Flexible(
-                            child: Text(
-                              skill,
-                              style: const TextStyle(
-                                fontSize: 12,
-                                fontWeight: FontWeight.w400,
-                                color: Colors.black,
-                              ),
-                            ),
+                          Text(
+                            skill,
+                            style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w400, color: Colors.black),
                           ),
                         ],
                       ),
@@ -130,6 +112,7 @@ class _RecommandationPageState extends State<RecommandationPage> with SingleTick
         ),
       ],
     );
+
   }
 
   @override

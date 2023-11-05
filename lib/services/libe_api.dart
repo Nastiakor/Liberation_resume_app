@@ -103,7 +103,7 @@ class LiberationAPIState extends State<LiberationAPI> {
                                 final displayDate =
                                     contentElement['display_date'] ?? '';
                                 final dateTime = DateTime.parse(displayDate)
-                                    .add(const Duration(hours: 2));
+                                    .add(const Duration(hours: 1));
                                 final hourFormat = DateFormat('HH:mm');
                                 final formattedHour =
                                     hourFormat.format(dateTime);
