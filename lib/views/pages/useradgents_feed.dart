@@ -56,11 +56,9 @@ class _UseradgentsPageState extends State<UseradgentsPage>
     });
 
     var response = await UseradgentsService.fetchUseradgentsFeed();
-    print(response);
 
     if (response.statusCode == 200) {
       List<dynamic> jsonResponse = jsonDecode(response.body);
-      print(jsonResponse);
 
       List<Useradgents> useradgentsList =
       jsonResponse.map((data) => Useradgents.fromJson(data)).toList();
@@ -85,9 +83,7 @@ class _UseradgentsPageState extends State<UseradgentsPage>
         });
       }
 
-      print('First title: ${useradgentsList[0].title}');
     } else {
-      print('Error fetching data');
     }
   }
 

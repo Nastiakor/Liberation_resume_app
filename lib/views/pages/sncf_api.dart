@@ -47,6 +47,7 @@ class _SncfAPIState extends State<SncfAPI> {
         _selectedArrivalCommuneInfo!.codeConcatene,
         datetime,
       );
+
       setState(() {
         trains = fetchedTrains;
       });
@@ -64,6 +65,50 @@ class _SncfAPIState extends State<SncfAPI> {
   }
 
   Widget _buildTrainCard(Train train) {
+
+    String correspondancesCitiesString = '';
+    List<String> correspondancesCities = List<String>.from(train.correspondenceCities ?? []);
+
+    if (correspondancesCities.isNotEmpty) {
+      if (correspondancesCities.length > 1) {
+        correspondancesCities = correspondancesCities.sublist(0, correspondancesCities.length - 1);
+      }
+      correspondancesCitiesString = correspondancesCities.join(', ');
+    }
+
+    Widget correspondancesWidget = train.numberOfCorrespondences >= 1
+        ? Column(
+      crossAxisAlignment: CrossAxisAlignment.start, // Alignement à gauche
+      children: [
+        Text(
+          'Nombre de Correspondances: ${train.numberOfCorrespondences}',
+          style: const TextStyle(
+            color: Colors.red,
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        const SizedBox(height: 2),
+        Text(
+          'via : $correspondancesCitiesString',
+          style: const TextStyle(
+            color: Colors.pinkAccent,
+            fontSize: 16,
+            fontWeight: FontWeight.normal,
+          ),
+        ),
+      ],
+    )
+        : Text(
+      'Trajet direct',
+      style: const TextStyle(
+        color: Colors.green,
+        fontSize: 18,
+        fontWeight: FontWeight.bold,
+      ),
+    );
+
+
     return Container(
       margin: const EdgeInsets.all(16),
       padding: const EdgeInsets.all(16),
@@ -75,7 +120,7 @@ class _SncfAPIState extends State<SncfAPI> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Gare de départ: ${removePostalCode(train.departureStation)}',
+            'Gare de départ: ${train.departureGare}',
             style: const TextStyle(
               color: Colors.black,
               fontSize: 18,
@@ -84,13 +129,15 @@ class _SncfAPIState extends State<SncfAPI> {
           ),
           const SizedBox(height: 8),
           Text(
-            'Gare d\'arrivée: ${removePostalCode(train.arrivalStation)}',
+            'Gare d\'arrivée: ${train.arrivalGare}',
             style: const TextStyle(
               color: Colors.black,
               fontSize: 18,
               fontWeight: FontWeight.bold,
             ),
           ),
+          const SizedBox(height: 8),
+          correspondancesWidget,
           const SizedBox(height: 16),
           Text(
             'Jour de départ: ${train.departureDay}',

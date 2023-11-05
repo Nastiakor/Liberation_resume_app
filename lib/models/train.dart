@@ -7,6 +7,11 @@ class Train {
   final String departureTime;
   final double co2Emission;
   final Duration duration;
+  final String? departureGare;
+  final String? arrivalGare;
+  final int numberOfCorrespondences;
+  final List? correspondenceCities;
+
 
   const Train({
     required this.departureStation,
@@ -17,5 +22,9 @@ class Train {
     required this.departureTime,
     required this.co2Emission,
     required this.duration,
+    required this.numberOfCorrespondences,
+    this.departureGare,
+    this.arrivalGare,
+    this.correspondenceCities
   });
 }

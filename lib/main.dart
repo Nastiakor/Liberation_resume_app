@@ -134,10 +134,10 @@ class MyStatefulWidgetState extends State<MyStatefulWidget>
         body: TabBarView(
           controller: _tabController,
           children: [
-            tabsContent(tabCategory:'homePage'),
-            tabsContent(tabCategory:'Nos projets'),
-            tabsContent(tabCategory:'formations'),
-            tabsContent(tabCategory:'Nos expériences'),
+            const tabsContent(tabCategory:'homePage'),
+            const tabsContent(tabCategory:'Nos projets'),
+            const tabsContent(tabCategory:'formations'),
+            const tabsContent(tabCategory:'Nos expériences'),
             const RecommandationPage(),
             ArticlesContacts(),
           ],

@@ -15,26 +15,21 @@ class TrainService {
       headers: {"Authorization": "0b5df37f-3ecd-45ef-8c7d-34fd1743428f"},
     );
 
-    if (response.statusCode == 200) {
-      print(response.body); // Print JSON en une seule ligne
-      print(const JsonEncoder.withIndent('  ').convert(jsonDecode(response.body))); // Print JSON indenté
+    if (response.statusCode == 200) {// Print JSON en une seule ligne
       return _trainsFromJson(jsonDecode(response.body));
     } else {
-      print("Code d'erreur: ${response.statusCode}");
-      print("Corps de la réponse: ${response.body}");
       throw Exception('Erreur de chargement');
     }
   }
 
   static List<Train> _trainsFromJson(Map<String, dynamic> json) {
     var journeys = json['journeys'] as List<dynamic>? ?? [];
-    print('Nombre de voyages reçus: ${journeys.length}');
     List<Train> trains = [];
 
     for (var journey in journeys) {
       String departureStation = '';
       String gareDeparture = '';
-      String gareArrival = '';
+      String arrivalGare = '';
       String arrivalStation = '';
       String departureTime = '';
       String arrivalTime = '';
@@ -42,6 +37,9 @@ class TrainService {
       String arrivalDay = '';
       double co2Emission = 0.0;
       Duration duration = Duration.zero;
+      List<String> correspondenceCities = [];
+      int transportSectionsCount = 0;
+      int numberOfCorrespondences = 0;
 
       DateFormat dayFormat = DateFormat("EEEE dd MMMM yyyy", "fr_FR");
       DateFormat timeFormat = DateFormat("HH:mm:ss");
@@ -52,6 +50,13 @@ class TrainService {
 
       if (firstSection != null && firstSection.containsKey('from') && firstSection['from'] is Map<String, dynamic>) {
         departureStation = (firstSection['from']['name'] ?? '') as String;
+      }
+
+      for (var section in sections) {
+        if (section['type'] == 'public_transport' && section['from'] != null && section['from']['embedded_type'] == 'stop_point') {
+          gareDeparture = (section['from']['stop_point']['name'] ?? '') as String;
+          break;
+        }
       }
 
       if (lastSection != null && lastSection.containsKey('to') && lastSection['to'] is Map<String, dynamic>) {
@@ -78,6 +83,28 @@ class TrainService {
         duration = Duration(seconds: int.tryParse(journey['durations']['total'].toString()) ?? 0);
       }
 
+      for (var i = sections.length - 1; i >= 0; i--) {
+        var section = sections[i];
+        if (section['type'] == 'public_transport' && section['to'] != null && section['to']['embedded_type'] == 'stop_point') {
+          arrivalGare = (section['to']['stop_point']['name'] ?? '') as String;
+          break;
+        }
+      }
+
+      //var sections = journey['sections'] as List<dynamic>? ?? [];
+      for (var section in sections) {
+        if (section['type'] == 'public_transport') {
+          if (section['to'] != null && section['to']['embedded_type'] == 'stop_point') {
+            String city = (section['to']['stop_point']['name'] ?? '') as String;
+            correspondenceCities.add(city);
+          }
+        }
+      }
+
+          numberOfCorrespondences = correspondenceCities.length > 1 ? correspondenceCities.length - 1 : 0;
+        print("Nombre de correspondances calculé : $numberOfCorrespondences");
+        print(correspondenceCities);
+
       trains.add(Train(
         departureStation: departureStation,
         arrivalStation: arrivalStation,
@@ -87,9 +114,12 @@ class TrainService {
         arrivalDay: arrivalDay,
         co2Emission: co2Emission,
         duration: duration,
+        arrivalGare : arrivalGare,
+        departureGare: gareDeparture,
+        numberOfCorrespondences: numberOfCorrespondences,
+        correspondenceCities: correspondenceCities,
       ));
     }
-
     return trains;
   }
 }
